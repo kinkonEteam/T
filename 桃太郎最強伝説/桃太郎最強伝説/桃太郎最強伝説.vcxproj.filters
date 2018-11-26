@@ -1,0 +1,436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ソース ファイル\Map">
+      <UniqueIdentifier>{a761d459-e9b1-4cd4-b11e-6a275c958389}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Map\floor1">
+      <UniqueIdentifier>{b483d8c5-605c-46f5-839f-eda4b5a438f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Map\floor2">
+      <UniqueIdentifier>{67309b52-1836-4b8c-b5b5-fe669583286a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Map\floor3">
+      <UniqueIdentifier>{2770ffb6-25af-4859-82f2-30fd0b6cc733}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Map\floor4">
+      <UniqueIdentifier>{4ded8da6-d877-43a1-8560-ea6c6d2904d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Map\floor5">
+      <UniqueIdentifier>{cad020fa-9c4f-4fba-af60-6fecd718d809}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Character">
+      <UniqueIdentifier>{36f64f7e-f2e0-402d-9c5f-8c3776e3d3f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Character\BOSS">
+      <UniqueIdentifier>{80b29630-3184-48e4-bec4-449062578604}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Character\おとも">
+      <UniqueIdentifier>{f2efa0b1-ae23-40a0-b0e6-74bcaeced973}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Character\主人公">
+      <UniqueIdentifier>{b43dc6b9-f603-4a00-8e3d-b9d56d22374d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene">
+      <UniqueIdentifier>{086c3e0e-0525-4fa1-bd7f-749e0deac220}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameTitle">
+      <UniqueIdentifier>{08d31525-e54a-4624-8ff2-92956de210f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Events">
+      <UniqueIdentifier>{df7492ec-fcd7-4943-a957-95358be37316}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Events\Dog">
+      <UniqueIdentifier>{f52a0652-4129-45ab-9531-dd62e1d3a741}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Map\floor1\敵">
+      <UniqueIdentifier>{e13dc496-023b-46a1-be83-b61f9419d7c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Item">
+      <UniqueIdentifier>{c9cdef14-d63b-41dc-a4a5-38f9271d1605}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GameL\Audio.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GameL\DirectXDevice.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GameL\Draw2DTex_Source.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GameL\DrawFont.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GameL\DrawTexture.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GameL\GameL_Main.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GameL\HitBoxManager.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GameL\MultiThread.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GameL\SceneManager.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GameL\SceneObjManager.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GameL\SetWindow.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GameL\UserData.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GameL\WICTextureLoader.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GameL\WinInputs.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjMap1.cpp">
+      <Filter>ソース ファイル\Map\floor1</Filter>
+    </ClCompile>
+    <ClCompile Include="Scenefloor1.cpp">
+      <Filter>ソース ファイル\Map\floor1</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjMap2.cpp">
+      <Filter>ソース ファイル\Map\floor2</Filter>
+    </ClCompile>
+    <ClCompile Include="Scenefloor2.cpp">
+      <Filter>ソース ファイル\Map\floor2</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjMap3.cpp">
+      <Filter>ソース ファイル\Map\floor3</Filter>
+    </ClCompile>
+    <ClCompile Include="Scenefloor3.cpp">
+      <Filter>ソース ファイル\Map\floor3</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjMap4.cpp">
+      <Filter>ソース ファイル\Map\floor4</Filter>
+    </ClCompile>
+    <ClCompile Include="Scenefloor4.cpp">
+      <Filter>ソース ファイル\Map\floor4</Filter>
+    </ClCompile>
+    <ClCompile Include="Scenefloor5.cpp">
+      <Filter>ソース ファイル\Map\floor5</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjMap5.cpp">
+      <Filter>ソース ファイル\Map\floor5</Filter>
+    </ClCompile>
+    <ClCompile Include="UtilityModule.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjSword.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjBoss.cpp">
+      <Filter>ソース ファイル\Character\BOSS</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjDog.cpp">
+      <Filter>ソース ファイル\Character\おとも</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjEnemy.cpp">
+      <Filter>ソース ファイル\Map\floor1\敵</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjEnemy2.cpp">
+      <Filter>ソース ファイル\Map\floor1\敵</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjEnemy3.cpp">
+      <Filter>ソース ファイル\Map\floor1\敵</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjHero.cpp">
+      <Filter>ソース ファイル\Character\主人公</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMain.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneTitle.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjTitle.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjFlyKiji.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjTalk.cpp">
+      <Filter>ソース ファイル\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjClub.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMain.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneClear.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGameOver.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjEveDog.cpp">
+      <Filter>ソース ファイル\Events\Dog</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjPheasant.cpp">
+      <Filter>ソース ファイル\Character\おとも</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjMonke.cpp">
+      <Filter>ソース ファイル\Character\おとも</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjYami.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjGoldBullion.cpp">
+      <Filter>ソース ファイル\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjPeach.cpp">
+      <Filter>ソース ファイル\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjPlum.cpp">
+      <Filter>ソース ファイル\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjSilverBullion.cpp">
+      <Filter>ソース ファイル\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjYellowPeach.cpp">
+      <Filter>ソース ファイル\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjHeroGauge.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjHorn.cpp">
+      <Filter>ソース ファイル\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Itemlist.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjBullet.cpp">
+      <Filter>ソース ファイル\Character\BOSS</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjhomingfire.cpp">
+      <Filter>ソース ファイル\Character\BOSS</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjSummary.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneSummary.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjClear.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjGameOver.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameL\Audio.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\DirectXDevice.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\DirectXTex.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\DrawFont.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\DrawTexture.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\HitBoxManager.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\MultiThread.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\SceneManager.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\SceneObjManager.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\SetWindow.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\UserData.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\WICTextureLoader.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\WinInputs.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GameHead.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenefloor1.h">
+      <Filter>ソース ファイル\Map\floor1</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjMap1.h">
+      <Filter>ソース ファイル\Map\floor1</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjMap2.h">
+      <Filter>ソース ファイル\Map\floor2</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenefloor2.h">
+      <Filter>ソース ファイル\Map\floor2</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjMap3.h">
+      <Filter>ソース ファイル\Map\floor3</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenefloor3.h">
+      <Filter>ソース ファイル\Map\floor3</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjMap4.h">
+      <Filter>ソース ファイル\Map\floor4</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenefloor4.h">
+      <Filter>ソース ファイル\Map\floor4</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenefloor5.h">
+      <Filter>ソース ファイル\Map\floor5</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjMap5.h">
+      <Filter>ソース ファイル\Map\floor5</Filter>
+    </ClInclude>
+    <ClInclude Include="UtilityModule.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjSword.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjBoss.h">
+      <Filter>ソース ファイル\Character\BOSS</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjDog.h">
+      <Filter>ソース ファイル\Character\おとも</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjEnemy.h">
+      <Filter>ソース ファイル\Map\floor1\敵</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjEnemy2.h">
+      <Filter>ソース ファイル\Map\floor1\敵</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjEnemy3.h">
+      <Filter>ソース ファイル\Map\floor1\敵</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjHero.h">
+      <Filter>ソース ファイル\Character\主人公</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneTitle.h">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjTitle.h">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjTalk.h">
+      <Filter>ソース ファイル\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMain.h">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGameOver.h">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ScecneClear.h">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjEveDog.h">
+      <Filter>ソース ファイル\Events\Dog</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjFlyKiji.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjClub.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjMonke.h">
+      <Filter>ソース ファイル\Character\おとも</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjPheasant.h">
+      <Filter>ソース ファイル\Character\おとも</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjYami.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjSilverBullion.h">
+      <Filter>ソース ファイル\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjGoldBullion.h">
+      <Filter>ソース ファイル\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjPeach.h">
+      <Filter>ソース ファイル\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjPlum.h">
+      <Filter>ソース ファイル\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjYellowPeach.h">
+      <Filter>ソース ファイル\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjHeroGauge.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjHorn.h">
+      <Filter>ソース ファイル\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjBullet.h">
+      <Filter>ソース ファイル\Character\BOSS</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjhomingfire.h">
+      <Filter>ソース ファイル\Character\BOSS</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjSummary.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneSummary.h">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjClear.h">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjGameOver.h">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GameL\DirectXTex.inl">
+      <Filter>リソース ファイル</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="GameL\DirectXTex.lib">
+      <Filter>リソース ファイル</Filter>
+    </Library>
+  </ItemGroup>
+</Project>
