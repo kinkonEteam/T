@@ -30,22 +30,22 @@ void CObjMap1::Init()
 	setenemy();
 	sethero();
 
-	/*
+	
 	//アイテム出現
-	for (int a = 0; a < 56; a++)
+	for (int i = 0; i < 56; i++)
 	{
-		for (int b = 0; b < 56; b++)
+		for (int j = 0; j < 56; j++)
 		{
-			if (m_map[a][b] == 5)
+			if (m_map[i][j] == 5)
 			{
 				//アイテムオブジェクト作成
-				CObjItem* i = new CObjItem(b * 50.0f, a * 50.0f);		//オブジェクト作成
-				Objs::InsertObj(i, OBJ_ITEM, 5);	//マネージャに登録
+				CObjPeach* p = new CObjPeach(j * 50.0f, i * 50.0f);		//オブジェクト作成
+				Objs::InsertObj(p, OBJ_PEACH, 2);	//マネージャに登録
 
 			}
 		}
 	}
-	*/
+	
 
 	//敵出現
 	for (int i = 0; i < 56; i++)

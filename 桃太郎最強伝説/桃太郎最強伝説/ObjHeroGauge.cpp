@@ -17,12 +17,14 @@ void CObjHeroGauge::Init()
 {
 	change = 1;
 	ad = 4;
+	ac = 6;
 }
 
 //アクション
 void CObjHeroGauge::Action()
 {
 	CObjHero* obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
+	CObjPeach* objp = (CObjPeach*)Objs::GetObj(OBJ_PEACH);
 	if (obj != nullptr)
 	{
 		gethp = obj->Gethp();
@@ -31,6 +33,13 @@ void CObjHeroGauge::Action()
 		{
 			change++;//ハートを1減らす
 			ad--;//調整値を1ずらす
+			ac--;//増用の値を調整する
+		}
+		else if (gethp == ac)
+		{
+			change--;//ハートを1増やす
+			ac++;//調整値を1ずらす
+			ad++;//減用の値を調整する
 		}
 	}
 }

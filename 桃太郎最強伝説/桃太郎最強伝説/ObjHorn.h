@@ -12,12 +12,14 @@ using namespace GameL;
 class CObjHorn : public CObj
 {
 public:
-	CObjHorn() {};
+	CObjHorn(float x, float y) ;
 	~CObjHorn() {};
 	void Init();	//イニシャライズ
 	void Action();	//アクション
 	void Draw();	//ドロー
 private:
+	float m_px;		 //位置
+	float m_py;
 	float m_x;	//アイテムヒットボックス用
 	float m_y;	//アイテムヒットボックス用
 	bool m_del;	//削除チェック
