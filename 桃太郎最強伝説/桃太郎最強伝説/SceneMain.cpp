@@ -116,6 +116,9 @@ void CSceneMain::InitScene()
 
 	//外部グラフィックを読み込み17番に登録(512×512ピクセル)
 	Draw::LoadImage(L"暗闇+2.png", 17, TEX_SIZE_512);
+	
+
+
 
 	//主人公オブジェクト作成
 //	CObjHero* obj = new CObjHero();		//オブジェクト作成
