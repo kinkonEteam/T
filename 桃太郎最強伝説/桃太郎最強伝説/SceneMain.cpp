@@ -64,8 +64,8 @@ void CSceneMain::InitScene()
 	Audio::LoadAudio(2, L"アイテムゲット.wav", EFFECT);		//アイテム取得時SE
 	Audio::LoadAudio(3, L"仲間ゲット.wav", EFFECT);			//お供を増やした時用SE
 
-	Audio::LoadAudio(10, L"StairsSE.wav", EFFECT);			//階段用SE
-	Audio::LoadAudio(11, L"ButtonSE.wav", EFFECT);			//インベントリ用SE(予定)															//ボリュームを1.0に戻す
+	Audio::LoadAudio(4, L"StairsSE.wav", EFFECT);			//階段用SE
+	Audio::LoadAudio(5, L"ButtonSE.wav", EFFECT);			//インベントリ用SE(予定)															//ボリュームを1.0に戻す
 	float v = Audio::VolumeMaster(0);
 	v = Audio::VolumeMaster((1.0 - v));
 
