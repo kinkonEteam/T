@@ -143,10 +143,6 @@ void CObjHero::Action()
 	//移動ベクトルの正規化
 	UnitVec(&m_vy, &m_vx);
 
-	//移動ベクトルを座標に加算する(※ここで移動速度変更出来る)
-//	m_px += m_vx * 1.0f;			
-//	m_py += m_vy * 1.0f;
-
 	//スクロール
 	CObjMap1*b = (CObjMap1*)Objs::GetObj(OBJ_MAP1);
 		m_px = 375;
@@ -222,9 +218,17 @@ void CObjHero::Action()
 		}
 
 		//アイテムに当たった場合以下の処理をする
-		if (hit->CheckObjNameHit(ELEMENT_ITEM) != nullptr)
+		if (hit->CheckElementHit(ELEMENT_ITEM) == true)
 		{
-			switch (ELEMENT_ITEM)
+			if (hit->CheckObjNameHit(OBJ_PEACH) != nullptr)
+				m_hp += 1;
+			if (hit->CheckObjNameHit(OBJ_YELLOW_PEACH) != nullptr)
+				m_hp += 3;
+			if (hit->CheckObjNameHit(OBJ_PLUM) != nullptr)
+				;
+			if (hit->CheckObjNameHit(OBJ_CLUB) != nullptr)
+				;
+/*			switch (ELEMENT_ITEM)
 			{
 			case PEACH:
 				Audio::Start(8);//回復音を鳴らす
@@ -232,28 +236,10 @@ void CObjHero::Action()
 				break;
 
 			case YELLOW_PEACH: //HPを3回復
-				Audio::Start(8);//回復音を鳴らす
-				m_hp += 3;
+				;
 				break;
 
-			case OBJ_PLUM: //
-				Audio::Start(2);//アイテム取得音を鳴らす
-				item_list[0] += 1;
-				break;
-
-			case OBJ_HORN: //
-				Audio::Start(2);//アイテム取得音を鳴らす
-				item_list[1] += 1;
-				break;
-
-			case OBJ_GOLD_BULLION: //
-				Audio::Start(2);//アイテム取得音を鳴らす
-				item_list[2] += 1;
-				break;
-
-			case OBJ_SILVER_BULLION: //
-				Audio::Start(2);//アイテム取得音を鳴らす
-				item_list[3] += 1;
+			case PLUM: //インベントリに追加
 				break;
 
 			case OBJ_CLUB: //移動速度を0.8倍する。
@@ -262,8 +248,7 @@ void CObjHero::Action()
 				m_py *= 0.8;
 				item_list[4] += 1;
 				break;
-			}
-
+			}*/
 		}
 	//HPが0になったら破棄
 	if (m_hp <= 0)

@@ -19,7 +19,8 @@ using namespace GameL;
 //コンストラクタ
 CScenefloor5::CScenefloor5()
 {
-
+	Audio::Stop(0);//ダンジョンBGMを停止
+	Audio::Start(1);//ボス用BGMをスタート
 }
 
 //デストラクタ
