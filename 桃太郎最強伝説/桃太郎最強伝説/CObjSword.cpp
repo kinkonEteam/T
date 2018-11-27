@@ -32,8 +32,9 @@ void CObjSword::Init()
 //アクション
 void CObjSword::Action()
 {
+	//主人公の情報を取得
 	CObjHero* obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
-	if (obj != nullptr)
+	if (obj != nullptr)//主人公が存在する場合
 	{
 		//主人公の位置を常に取得し、代入
 		m_x = obj->GetX();

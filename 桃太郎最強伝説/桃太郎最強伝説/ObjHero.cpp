@@ -11,6 +11,8 @@
 //使用するネームスペース
 using namespace GameL;
 
+extern int HP;		//Date.cpp内で宣言したグローバル変数をextern宣言
+
 CObjHero::CObjHero(float x, float y)
 {
 	m_px = x;
@@ -23,7 +25,7 @@ void CObjHero::Init()
 	m_vx = 0.0f;		//移動ベクトル
 	m_vy = 0.0f;
 
-	m_hp = 5;			//初期HP５
+	m_hp = HP;			//初期HP５
 	m_time = 70;
 	alpha = 1.0f;
 	count = 10;
@@ -76,10 +78,12 @@ void CObjHero::Action()
 		else//放している場合
 			m_Sf = true;
 
-		//キジ攻撃の入力判定、押しっぱなし制御
+
+		//キジの情報を取得
+		CObjFlyKiji* obj = (CObjFlyKiji*)Objs::GetObj(OBJ_FLYKIJI);
 		if (Input::GetVKey('S') == true)
 		{
-			if (m_Kf == true)
+			if (obj == nullptr)//キジ情報が存在しない場合
 			{
 				//遠距離攻撃音を鳴らす
 				Audio::Start(5);
@@ -87,8 +91,6 @@ void CObjHero::Action()
 				//キジオブジェクト作成				キジに座標と向きを渡す
 				CObjFlyKiji* kiji = new CObjFlyKiji(m_px, m_py, m_posture);//作成
 				Objs::InsertObj(kiji, OBJ_FLYKIJI, 3);	//マネージャーに登録
-
-				m_Kf = false;
 			}
 		}
 		else //押してない場合
