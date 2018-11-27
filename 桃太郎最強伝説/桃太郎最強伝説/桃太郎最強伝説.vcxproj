@@ -111,6 +111,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CObjBullet.cpp" />
+    <ClCompile Include="CObjEveKiji.cpp" />
+    <ClCompile Include="CObjEveMnky.cpp" />
     <ClCompile Include="CObjFlyKiji.cpp" />
     <ClCompile Include="CObjhomingfire.cpp" />
     <ClCompile Include="CObjSword.cpp" />
@@ -204,6 +206,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CObjBullet.h" />
+    <ClInclude Include="CObjEveKiji.h" />
+    <ClInclude Include="CObjEveMnky.h" />
     <ClInclude Include="CObjFlyKiji.h" />
     <ClInclude Include="CObjhomingfire.h" />
     <ClInclude Include="CObjSword.h" />

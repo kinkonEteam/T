@@ -61,6 +61,12 @@
     <Filter Include="ソース ファイル\Item">
       <UniqueIdentifier>{c9cdef14-d63b-41dc-a4a5-38f9271d1605}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Events\Mnky">
+      <UniqueIdentifier>{efdd6016-8577-4daa-88af-12ed1cbe07b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Events\Kiji">
+      <UniqueIdentifier>{da65c502-1752-49aa-914f-e6617d6853d5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameL\Audio.cpp">
@@ -243,6 +249,12 @@
     <ClCompile Include="ObjGameOver.cpp">
       <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="CObjEveMnky.cpp">
+      <Filter>ソース ファイル\Events\Mnky</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjEveKiji.cpp">
+      <Filter>ソース ファイル\Events\Kiji</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameL\Audio.h">
@@ -421,6 +433,12 @@
     </ClInclude>
     <ClInclude Include="ObjGameOver.h">
       <Filter>ソース ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjEveMnky.h">
+      <Filter>ソース ファイル\Events\Mnky</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjEveKiji.h">
+      <Filter>ソース ファイル\Events\Kiji</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
