@@ -183,9 +183,6 @@
     <ClCompile Include="ObjTalk.cpp">
       <Filter>ソース ファイル\Events</Filter>
     </ClCompile>
-    <ClCompile Include="ObjClub.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="SceneMain.cpp">
       <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
@@ -248,6 +245,9 @@
     </ClCompile>
     <ClCompile Include="ObjGameOver.cpp">
       <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjClub.cpp">
+      <Filter>ソース ファイル\Item</Filter>
     </ClCompile>
     <ClCompile Include="CObjEveMnky.cpp">
       <Filter>ソース ファイル\Events\Mnky</Filter>
@@ -383,9 +383,6 @@
     <ClInclude Include="Inventory.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="ObjClub.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="ObjMonke.h">
       <Filter>ソース ファイル\Character\おとも</Filter>
     </ClInclude>
@@ -433,12 +430,6 @@
     </ClInclude>
     <ClInclude Include="ObjGameOver.h">
       <Filter>ソース ファイル\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="CObjEveMnky.h">
-      <Filter>ソース ファイル\Events\Mnky</Filter>
-    </ClInclude>
-    <ClInclude Include="CObjEveKiji.h">
-      <Filter>ソース ファイル\Events\Kiji</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
