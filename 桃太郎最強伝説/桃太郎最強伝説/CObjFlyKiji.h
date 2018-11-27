@@ -27,9 +27,9 @@ private:
 	float m_vx;    //X方向の速度用変数
 	float m_vy;    //Y方向の速度用変数
 
-	/*
+	
 	int m_ani_time; //アニメーションタイム
 	int m_ani_frame;//フレーム
 	int m_s;		//ani_timeを徐々に加速させる変数
-	*/
+	
 };
