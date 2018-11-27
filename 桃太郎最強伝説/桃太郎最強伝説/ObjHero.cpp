@@ -6,6 +6,7 @@
 #include "GameL\WinInputs.h"
 #include "GameL\HitBoxManager.h"
 #include "Inventory.h"
+#include "GameL\Audio.h"
 //使用するネームスペース
 using namespace GameL;
 
@@ -53,6 +54,8 @@ void CObjHero::Action()
 		{
 			if (m_Sf == true)
 			{
+				//近距離攻撃音を鳴らす
+				Audio::Start(4);
 				//剣オブジェクト作成		ここで剣に座標と向きを渡す
 				CObjSword* swd = new CObjSword(m_px, m_py, m_posture);//作成
 				Objs::InsertObj(swd, OBJ_SWORD, 3);	//マネージャーに登録
@@ -68,6 +71,9 @@ void CObjHero::Action()
 		{
 			if (m_Kf == true)
 			{
+				//遠距離攻撃音を鳴らす
+				Audio::Start(5);
+
 				//キジオブジェクト作成				キジに座標と向きを渡す
 				CObjFlyKiji* kiji = new CObjFlyKiji(m_px, m_py, m_posture);//作成
 				Objs::InsertObj(kiji, OBJ_FLYKIJI, 3);	//マネージャーに登録

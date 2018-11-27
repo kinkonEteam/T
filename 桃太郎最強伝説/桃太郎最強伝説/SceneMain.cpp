@@ -75,7 +75,7 @@ void CSceneMain::InitScene()
 	float v = Audio::VolumeMaster(0);
 	v = Audio::VolumeMaster((1.0 - v));
 
-	//Audio::Start(0);
+	Audio::Start(0);
 
 
 	//外部グラフィックを読み込み0番に登録(512×512ピクセル)

@@ -56,7 +56,6 @@ class CObjHero :public CObj
 		bool m_hit_left;
 		bool m_hit_right;
 
-		int item_num[5];	//アイテムの所持数確認用
 		//踏んでいるblockの種類を確認用
 		int m_block_type;
 
