@@ -121,8 +121,8 @@ void CSceneMain::InitScene()
 //	CObjHero* obj = new CObjHero();		//オブジェクト作成
 	//Objs::InsertObj(obj, OBJ_HERO, 1);	//マネージャに登録
 
-	//アイテムオブジェクト作成
-	CObjPeach* i = new CObjPeach();		//オブジェクト作成
+/*	//アイテムオブジェクト作成
+	CObjPeach* p = new CObjPeach();		//オブジェクト作成
 	Objs::InsertObj(i, OBJ_ITEM, 1);	//マネージャに登録
 
 	CObjYellowPeach* yp = new CObjYellowPeach();		//オブジェクト作成
@@ -148,7 +148,7 @@ void CSceneMain::InitScene()
 
 	//イベントオブジェクト作成
 	CObjEveDog* eve = new CObjEveDog();
-	Objs::InsertObj(eve, OBJ_TALK, 3);
+	Objs::InsertObj(eve, OBJ_TALK, 3);*/
 
 
 	//暗闇作成

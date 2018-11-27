@@ -12,12 +12,14 @@ using namespace GameL;
 class CObjGoldBullion : public CObj
 {
 public:
-	CObjGoldBullion() {};
+	CObjGoldBullion(float x,float y) ;
 	~CObjGoldBullion() {};
 	void Init();	//イニシャライズ
 	void Action();	//アクション
 	void Draw();	//ドロー
 private:
+	float m_px;		 //位置
+	float m_py;
 	float m_x;	//アイテムヒットボックス用
 	float m_y;	//アイテムヒットボックス用
 	bool m_del;	//削除チェック

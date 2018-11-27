@@ -125,10 +125,6 @@ void CObjHero::Action()
 	//移動ベクトルの正規化
 	UnitVec(&m_vy, &m_vx);
 
-	//移動ベクトルを座標に加算する(※ここで移動速度変更出来る)
-//	m_px += m_vx * 1.0f;			
-//	m_py += m_vy * 1.0f;
-
 	//スクロール
 	CObjMap1*b = (CObjMap1*)Objs::GetObj(OBJ_MAP1);
 		m_px = 375;
@@ -201,9 +197,17 @@ void CObjHero::Action()
 		}
 
 		//アイテムに当たった場合以下の処理をする
-		if (hit->CheckObjNameHit(ELEMENT_ITEM) != nullptr)
+		if (hit->CheckElementHit(ELEMENT_ITEM) == true)
 		{
-			switch (ELEMENT_ITEM)
+			if (hit->CheckObjNameHit(OBJ_PEACH) != nullptr)
+				m_hp += 1;
+			if (hit->CheckObjNameHit(OBJ_YELLOW_PEACH) != nullptr)
+				m_hp += 3;
+			if (hit->CheckObjNameHit(OBJ_PLUM) != nullptr)
+				;
+			if (hit->CheckObjNameHit(OBJ_CLUB) != nullptr)
+				;
+/*			switch (ELEMENT_ITEM)
 			{
 			case PEACH:
 				m_hp += 1; //HPを1回復
@@ -218,7 +222,7 @@ void CObjHero::Action()
 
 			case CLUB: //移動速度を0.8倍する。
 				break;
-			}
+			}*/
 		}
 	//HPが0になったら破棄
 	if (m_hp <= 0)
