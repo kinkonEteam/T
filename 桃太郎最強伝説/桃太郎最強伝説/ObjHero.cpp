@@ -219,34 +219,33 @@ void CObjHero::Action()
 		if (hit->CheckElementHit(ELEMENT_ITEM) == true)
 		{
 			if (hit->CheckObjNameHit(OBJ_PEACH) != nullptr)
-				m_hp += 1;
-			if (hit->CheckObjNameHit(OBJ_YELLOW_PEACH) != nullptr)
-				m_hp += 3;
-			if (hit->CheckObjNameHit(OBJ_PLUM) != nullptr)
-				;
-			if (hit->CheckObjNameHit(OBJ_CLUB) != nullptr)
-				;
-/*			switch (ELEMENT_ITEM)
 			{
-			case PEACH:
+				
+				m_hp += 1;
 				Audio::Start(8);//回復音を鳴らす
-				m_hp += 1; //HPを1回復
-				break;
+			}
+			if (hit->CheckObjNameHit(OBJ_YELLOW_PEACH) != nullptr)
+				Audio::Start(8);//回復音を鳴らす
+				m_hp += 3;
 
-			case YELLOW_PEACH: //HPを3回復
-				;
-				break;
+			if (hit->CheckObjNameHit(OBJ_PLUM) != nullptr)
+				Audio::Start(2);//アイテム取得音を鳴らす
 
-			case PLUM: //インベントリに追加
-				break;
+			if (hit->CheckObjNameHit(OBJ_HORN) != nullptr)
+				Audio::Start(2);//アイテム取得音を鳴らす
 
-			case OBJ_CLUB: //移動速度を0.8倍する。
+			if (hit->CheckObjNameHit(OBJ_GOLD_BULLION) != nullptr)
+				Audio::Start(2);//アイテム取得音を鳴らす
+
+			if (hit->CheckObjNameHit(OBJ_SILVER_BULLION) != nullptr)
+				Audio::Start(2);//アイテム取得音を鳴らす
+
+			if (hit->CheckObjNameHit(OBJ_CLUB) != nullptr)
 				Audio::Start(9);//デバフ音を鳴らす
-				m_px *= 0.8;
-				m_py *= 0.8;
-				item_list[4] += 1;
-				break;
-			}*/
+				//移動速度を0.8倍する
+				//m_px *= 0.8;
+				//m_py *= 0.8;
+
 		}
 	//HPが0になったら破棄
 	if (m_hp <= 0)
