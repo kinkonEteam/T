@@ -117,6 +117,7 @@
     <ClCompile Include="CObjhomingfire.cpp" />
     <ClCompile Include="CObjSword.cpp" />
     <ClCompile Include="CObjEveDog.cpp" />
+    <ClCompile Include="Date.cpp" />
     <ClCompile Include="Inventory.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
