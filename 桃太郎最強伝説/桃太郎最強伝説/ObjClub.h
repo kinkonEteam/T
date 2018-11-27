@@ -8,12 +8,12 @@ using namespace GameL;
 #define ITEM_TOP	(111.0f)
 #define ITEM_LEFT	(256.0f)
 
-//オブジェクト：キャラクターブロック
-class CObjPeach : public CObj
+//オブジェクト：アイテムブロック
+class CObjClub : public CObj
 {
 public:
-	CObjPeach() {};
-	~CObjPeach() {};
+	CObjClub() {};
+	~CObjClub() {};
 	void Init();	//イニシャライズ
 	void Action();	//アクション
 	void Draw();	//ドロー

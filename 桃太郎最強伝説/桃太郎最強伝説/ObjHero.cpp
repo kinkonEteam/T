@@ -6,6 +6,8 @@
 #include "GameL\WinInputs.h"
 #include "GameL\HitBoxManager.h"
 #include "Inventory.h"
+#include "GameL\Audio.h"
+#include "Itemlist.cpp"
 //使用するネームスペース
 using namespace GameL;
 
@@ -36,6 +38,15 @@ void CObjHero::Init()
 
 	//HitBox作成座標とサイズx,y、エレメントとオブジェクトを設定
 	Hits::SetHitBox(this, m_px+5, m_py+3, 40, 47, ELEMENT_PLAYER, OBJ_HERO, 1);
+
+	Audio::LoadAudio(4, L"近接攻撃.wav", EFFECT);			//近接攻撃SE
+	Audio::LoadAudio(5, L"kijiSE.wav", EFFECT);				//遠距離攻撃SE
+	Audio::LoadAudio(6, L"damage.wav", EFFECT);				//ダメージSE
+	Audio::LoadAudio(8, L"heal.wav", EFFECT);				//体力回復時SE
+	Audio::LoadAudio(9, L"speeddown.wav", EFFECT);			//棍棒取得時用SE
+
+	//音量を0.9下げる
+	float Volume = Audio::VolumeMaster(-0.9f);
 }
 
 //アクション
@@ -53,6 +64,8 @@ void CObjHero::Action()
 		{
 			if (m_Sf == true)
 			{
+				//近距離攻撃音を鳴らす
+				Audio::Start(4);
 				//剣オブジェクト作成		ここで剣に座標と向きを渡す
 				CObjSword* swd = new CObjSword(m_px, m_py, m_posture);//作成
 				Objs::InsertObj(swd, OBJ_SWORD, 3);	//マネージャーに登録
@@ -68,6 +81,9 @@ void CObjHero::Action()
 		{
 			if (m_Kf == true)
 			{
+				//遠距離攻撃音を鳴らす
+				Audio::Start(5);
+
 				//キジオブジェクト作成				キジに座標と向きを渡す
 				CObjFlyKiji* kiji = new CObjFlyKiji(m_px, m_py, m_posture);//作成
 				Objs::InsertObj(kiji, OBJ_FLYKIJI, 3);	//マネージャーに登録
@@ -150,6 +166,9 @@ void CObjHero::Action()
 
 			for (int i = 0; i < hit->GetCount(); i++)
 			{
+				//ダメージ音を鳴らす
+				Audio::Start(6);
+
 				//敵の左右に当たったら
 				float r = hit_data[i]->r;
 				if ((r < 45 && r >= 0) || r > 315)
@@ -210,6 +229,7 @@ void CObjHero::Action()
 /*			switch (ELEMENT_ITEM)
 			{
 			case PEACH:
+				Audio::Start(8);//回復音を鳴らす
 				m_hp += 1; //HPを1回復
 				break;
 
@@ -220,7 +240,11 @@ void CObjHero::Action()
 			case PLUM: //インベントリに追加
 				break;
 
-			case CLUB: //移動速度を0.8倍する。
+			case OBJ_CLUB: //移動速度を0.8倍する。
+				Audio::Start(9);//デバフ音を鳴らす
+				m_px *= 0.8;
+				m_py *= 0.8;
+				item_list[4] += 1;
 				break;
 			}*/
 		}

@@ -111,10 +111,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CObjBullet.cpp" />
+    <ClCompile Include="CObjEveKiji.cpp" />
+    <ClCompile Include="CObjEveMnky.cpp" />
     <ClCompile Include="CObjFlyKiji.cpp" />
     <ClCompile Include="CObjhomingfire.cpp" />
     <ClCompile Include="CObjSword.cpp" />
     <ClCompile Include="CObjEveDog.cpp" />
+    <ClCompile Include="Date.cpp" />
     <ClCompile Include="Inventory.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
@@ -124,7 +127,7 @@
     </ClCompile>
     <ClCompile Include="ObjClear.cpp" />
     <ClCompile Include="ObjClub.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="ObjDog.cpp" />
     <ClCompile Include="ObjEnemy.cpp" />
@@ -204,6 +207,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CObjBullet.h" />
+    <ClInclude Include="CObjEveKiji.h" />
+    <ClInclude Include="CObjEveMnky.h" />
     <ClInclude Include="CObjFlyKiji.h" />
     <ClInclude Include="CObjhomingfire.h" />
     <ClInclude Include="CObjSword.h" />
@@ -215,7 +220,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="ObjClub.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="ObjClear.h" />
     <ClInclude Include="ObjDog.h" />
