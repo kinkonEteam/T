@@ -221,15 +221,15 @@ void CObjHero::Action()
 		if (hit->CheckElementHit(ELEMENT_ITEM) == true)
 		{
 			if (hit->CheckObjNameHit(OBJ_PEACH) != nullptr)
-			{
-				
+			{				
 				m_hp += 1;
 				Audio::Start(8);//‰ñ•œ‰¹‚ð–Â‚ç‚·
 			}
 			if (hit->CheckObjNameHit(OBJ_YELLOW_PEACH) != nullptr)
+			{
 				Audio::Start(8);//‰ñ•œ‰¹‚ð–Â‚ç‚·
 				m_hp += 3;
-
+			}
 			if (hit->CheckObjNameHit(OBJ_PLUM) != nullptr)
 				Audio::Start(2);//ƒAƒCƒeƒ€Žæ“¾‰¹‚ð–Â‚ç‚·
 
