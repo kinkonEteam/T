@@ -7,6 +7,7 @@
 #include "GameL\HitBoxManager.h"
 #include "Inventory.h"
 #include "GameL\Audio.h"
+#include "Itemlist.cpp"
 //使用するネームスペース
 using namespace GameL;
 
@@ -169,6 +170,9 @@ void CObjHero::Action()
 
 			for (int i = 0; i < hit->GetCount(); i++)
 			{
+				//ダメージ音を鳴らす
+				Audio::Start(6);
+
 				//敵の左右に当たったら
 				float r = hit_data[i]->r;
 				if ((r < 45 && r >= 0) || r > 315)
@@ -221,19 +225,43 @@ void CObjHero::Action()
 			switch (ELEMENT_ITEM)
 			{
 			case PEACH:
+				Audio::Start(8);//回復音を鳴らす
 				m_hp += 1; //HPを1回復
 				break;
 
 			case YELLOW_PEACH: //HPを3回復
-				;
+				Audio::Start(8);//回復音を鳴らす
+				m_hp += 3;
 				break;
 
-			case PLUM: //インベントリに追加
+			case OBJ_PLUM: //
+				Audio::Start(2);//アイテム取得音を鳴らす
+				item_list[0] += 1;
 				break;
 
-			case CLUB: //移動速度を0.8倍する。
+			case OBJ_HORN: //
+				Audio::Start(2);//アイテム取得音を鳴らす
+				item_list[1] += 1;
+				break;
+
+			case OBJ_GOLD_BULLION: //
+				Audio::Start(2);//アイテム取得音を鳴らす
+				item_list[2] += 1;
+				break;
+
+			case OBJ_SILVER_BULLION: //
+				Audio::Start(2);//アイテム取得音を鳴らす
+				item_list[3] += 1;
+				break;
+
+			case OBJ_CLUB: //移動速度を0.8倍する。
+				Audio::Start(9);//デバフ音を鳴らす
+				m_px *= 0.8;
+				m_py *= 0.8;
+				item_list[4] += 1;
 				break;
 			}
+
 		}
 	//HPが0になったら破棄
 	if (m_hp <= 0)
