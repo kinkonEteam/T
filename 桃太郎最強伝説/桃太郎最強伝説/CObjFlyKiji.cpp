@@ -38,9 +38,9 @@ void CObjFlyKiji::Init()
 //アクション
 void CObjFlyKiji::Action()
 {
-	//主人公の位置を常に取得し、代入
+	//主人公の情報を取得
 	CObjHero* obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
-	if (obj != nullptr)
+	if (obj != nullptr)//主人公情報が存在する場合
 	{
 		m_x = obj->GetX();
 		m_y = obj->GetY();
@@ -92,8 +92,6 @@ void CObjFlyKiji::Action()
 	//ELEMENT_ENEMYを持つオブジェクトと接触したら
 	if (hit->CheckElementHit(ELEMENT_ENEMY) == true)
 	{
-		//主人公の位置を取得
-		obj->SetKf(true);
 		this->SetStatus(false);  //自身を削除
 		Hits::DeleteHitBox(this);//HitBoxを削除
 	}

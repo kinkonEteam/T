@@ -18,7 +18,8 @@ class CObjHeroGauge : public CObj
 		float Gethp() { return gethp; }
 	private:
 		float gethp;//体力戻り値
-		int change;//HP変化用
-		int ad;//if文条件調整用
+		int change;
+		int ad;//HP増加調整用
+		int ac;//HP減少調整用
 
 };
