@@ -11,8 +11,8 @@ void CObjEveKiji::Init()
 	m_f = true;		//初期値
 	m_page = 0;
 
-	//外部グラフィックを読み込み8番に登録(512*512)
-	Draw::LoadImage(L"talk.png", 8, TEX_SIZE_512);
+	//外部グラフィックを読み込み9番に登録(512*512)
+	Draw::LoadImage(L"talk.png", 9, TEX_SIZE_512);
 	//外部グラフィックを読み込み4番に登録(512×512ピクセル)
 	Draw::LoadImage(L"kiji.png", 20, TEX_SIZE_1024);
 
@@ -23,8 +23,8 @@ void CObjEveKiji::Init()
 	CObjTalk* black = new CObjTalk(1, 4);	//オブジェクト作成
 	Objs::InsertObj(black, OBJ_TALK, 5);	//優先度5(高)に設定し登録
 	//立ち絵表示
-	CObjTalk* dog = new CObjTalk(4, 4);	//オブジェクト作成
-	Objs::InsertObj(dog, OBJ_TALK, 3);	//優先度5(高)に設定し登録
+	CObjTalk* dog = new CObjTalk(4, 4);		//オブジェクト作成
+	Objs::InsertObj(dog, OBJ_TALK, 4);		//優先度5(高)に設定し登録
 }
 
 void CObjEveKiji::Action()
@@ -62,13 +62,13 @@ void CObjEveKiji::Draw()
 		Font::StrDraw(L"", 50, 520, 30, c);
 	}
 	else if (m_page == 2) {					//3ページ
-		Font::StrDraw(L"「ありがとうございます。", 50, 440, 30, c);
-		Font::StrDraw(L"上からの援護はおまかせください」", 50, 480, 30, c);
+		Font::StrDraw(L"「ありがとうございます。上からの援護はおまかせく", 50, 440, 30, c);
+		Font::StrDraw(L"　ださい」", 50, 480, 30, c);
 		Font::StrDraw(L"", 50, 520, 30, c);
 	}
 	else if (m_page == 3) {					//3ページ
-		Font::StrDraw(L"キジが仲間になった！", 50, 440, 30, c);
-		Font::StrDraw(L"遠距離攻撃が可能になった！", 50, 480, 30, c);
+		Font::StrDraw(L"キジが仲間になった！遠距離攻撃が可能になった！", 50, 440, 30, c);
+		Font::StrDraw(L"", 50, 480, 30, c);
 		Font::StrDraw(L"", 50, 520, 30, c);
 	}
 	else {

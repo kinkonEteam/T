@@ -36,9 +36,10 @@ class CObjHero :public CObj
 		float alpha;
 
 
-		float m_posture; //p¨
+		int m_posture; //p¨
 
-		int m_hp;		 //HP
+		int m_hp;			//HP
+		int m_hp_max;		//Å‘åHP
 		int m_map[56][56];//ƒ}ƒbƒvî•ñ
 		int m_time;//–³“GŠÔ‘ª’è
 		int m_f;//–³“GŠÔ

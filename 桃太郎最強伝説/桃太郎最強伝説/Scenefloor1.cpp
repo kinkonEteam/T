@@ -104,6 +104,10 @@ void CScenefloor1::InitScene()
 	ObjYami* Y = new ObjYami(2);
 	Objs::InsertObj(Y, OBJ_YAMI, 3);
 
+	//暗闇作成
+	CObjEveKiji* K = new CObjEveKiji();
+	Objs::InsertObj(K, OBJ_YAMI, 5);
+
 	//主人公体力ゲージオブジェクト作成
 	CObjHeroGauge* objg = new CObjHeroGauge();
 	Objs::InsertObj(objg, OBJ_HEROGAUGE, 20);
