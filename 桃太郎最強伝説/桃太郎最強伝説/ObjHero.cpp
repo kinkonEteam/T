@@ -224,23 +224,28 @@ void CObjHero::Action()
 		//アイテムに当たった場合以下の処理をする
 		if (hit->CheckElementHit(ELEMENT_ITEM) == true)
 		{
-			if (m_hp != m_hp_max) {//HPが最大値でない場合のみ回復
-				if (hit->CheckObjNameHit(OBJ_PEACH) != nullptr)
-				{
-					m_hp += 1;
-					Audio::Start(8);//回復音を鳴らす
-				}
-				if (hit->CheckObjNameHit(OBJ_YELLOW_PEACH) != nullptr)
-				{
-					Audio::Start(8);//回復音を鳴らす
-					m_hp += 3;
-				}
+			if (hit->CheckObjNameHit(OBJ_PEACH) != nullptr)
+			{				
+				m_hp += 1;
+				Audio::Start(8);//回復音を鳴らす
 			}
-			else {}//最大値の場合、回復出来ない
+			if (hit->CheckObjNameHit(OBJ_YELLOW_PEACH) != nullptr)
+			{
+				Audio::Start(8);//回復音を鳴らす
+				m_hp += 3;
+			}
 			if (hit->CheckObjNameHit(OBJ_PLUM) != nullptr)
-				Audio::Start(2);//アイテム取得音を鳴らす
+				;
 			if (hit->CheckObjNameHit(OBJ_CLUB) != nullptr)
+				;
+		}
+
+		if (hit->CheckElementHit(ELEMENT_FIELD) == true)
+		{
+			Scene::SetScene(new CScenefloor2());
+		}
 				Audio::Start(2);//アイテム取得音を鳴らす
+
 			if (hit->CheckObjNameHit(OBJ_HORN) != nullptr)
 				Audio::Start(2);//アイテム取得音を鳴らす
 
@@ -252,16 +257,11 @@ void CObjHero::Action()
 
 			if (hit->CheckObjNameHit(OBJ_CLUB) != nullptr)
 				Audio::Start(9);//デバフ音を鳴らす
-								//移動速度を0.8倍する
-								//m_px *= 0.8;
-								//m_py *= 0.8;
-		}
+				//移動速度を0.8倍する
+				//m_px *= 0.8;
+				//m_py *= 0.8;
 
-		if (hit->CheckElementHit(ELEMENT_FIELD) == true)
-		{
-			Scene::SetScene(new CScenefloor2());
 		}
-
 	//HPが0になったら破棄
 	if (m_hp <= 0)
 	{
@@ -270,7 +270,7 @@ void CObjHero::Action()
 		this->SetStatus(false);	//自身に削除命令を出す
 		Hits::DeleteHitBox(this);//主人公が所有するHitBoxを削除する。
 
-		/*Scene::SetScene(new CSceneGameOver());*/
+		Scene::SetScene(new CSceneGameOver());
 	}
 }
 
@@ -297,4 +297,5 @@ void CObjHero::Draw()
 	dst.m_bottom=50.0f + m_py;
 
 	Draw::Draw(0, &src, &dst, c, 0.0f);
+
 }
