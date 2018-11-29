@@ -50,11 +50,13 @@ void CObjHero::Init()
 	//HitBox作成座標とサイズx,y、エレメントとオブジェクトを設定
 	Hits::SetHitBox(this, m_px+5, m_py+3, 40, 47, ELEMENT_PLAYER, OBJ_HERO, 1);
 
+	
 	Audio::LoadAudio(4, L"近接攻撃.wav", EFFECT);			//近接攻撃SE
 	Audio::LoadAudio(5, L"kijiSE.wav", EFFECT);				//遠距離攻撃SE
 	Audio::LoadAudio(6, L"damage.wav", EFFECT);				//ダメージSE
 	Audio::LoadAudio(8, L"heal.wav", EFFECT);				//体力回復時SE
 	Audio::LoadAudio(9, L"speeddown.wav", EFFECT);			//棍棒取得時用SE
+	Audio::LoadAudio(10, L"StairsSE.wav", EFFECT);			//近接攻撃SE
 
 	//音量を0.9下げる
 	float Volume = Audio::VolumeMaster(-0.9f);
@@ -259,6 +261,8 @@ void CObjHero::Action()
 
 		if (hit->CheckElementHit(ELEMENT_FIELD) == true)
 		{
+			Audio::Start(10);
+			Sleep(1000);
 			Scene::SetScene(new CScenefloor2());
 		}
 
