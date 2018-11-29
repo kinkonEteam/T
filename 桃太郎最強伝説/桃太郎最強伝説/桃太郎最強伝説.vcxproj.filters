@@ -79,6 +79,9 @@
     <Filter Include="ソース ファイル\Character\敵">
       <UniqueIdentifier>{e13dc496-023b-46a1-be83-b61f9419d7c4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\暗闇">
+      <UniqueIdentifier>{631c5c67-8da3-40b5-b697-66eb770a6c9c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameL\Audio.cpp">
@@ -198,9 +201,6 @@
     <ClCompile Include="ObjMonke.cpp">
       <Filter>ソース ファイル\Character\おとも</Filter>
     </ClCompile>
-    <ClCompile Include="ObjYami.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="ObjGoldBullion.cpp">
       <Filter>ソース ファイル\Item</Filter>
     </ClCompile>
@@ -272,6 +272,9 @@
     </ClCompile>
     <ClCompile Include="ObjClub.cpp">
       <Filter>ソース ファイル\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjYami.cpp">
+      <Filter>ソース ファイル\暗闇</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -392,9 +395,6 @@
     <ClInclude Include="ObjPheasant.h">
       <Filter>ソース ファイル\Character\おとも</Filter>
     </ClInclude>
-    <ClInclude Include="ObjYami.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="ObjSilverBullion.h">
       <Filter>ソース ファイル\Item</Filter>
     </ClInclude>
@@ -460,6 +460,9 @@
     </ClInclude>
     <ClInclude Include="ObjClub.h">
       <Filter>ソース ファイル\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjYami.h">
+      <Filter>ソース ファイル\暗闇</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

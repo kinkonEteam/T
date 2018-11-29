@@ -30,6 +30,17 @@ enum OBJ_NAME
 					OBJ_BULLET,
 					OBJ_HOMING_FIRE,
 					OBJ_SUMMARY,
+					OBJ_PEACH,
+					OBJ_YELLOW_PEACH,
+					OBJ_PLUM,
+					OBJ_CLUB,
+					OBJ_HORN,
+					OBJ_GOLD_BULLION,
+					OBJ_SILVER_BULLION,
+					OBJ_HEROGAUGE,
+					OBJ_YAMI,
+					OBJ_STAIR,
+
 };
 //------------------------------------------------
 
@@ -108,6 +119,9 @@ enum ITEM
 #include "CObjEveDog.h"
 #include"CObjhomingfire.h"
 #include"ObjSummary.h"
+#include "ObjHeroGauge.h"
+#include"ObjYami.h"
+#include"Objstair.h"
 
 
 //------------------------------------------------
@@ -119,6 +133,7 @@ enum ITEM
 #include "Scenefloor3.h"
 #include "Scenefloor4.h"
 #include "Scenefloor5.h"
+
 
 #include "SceneMain.h"
 #include "SceneTitle.h"
