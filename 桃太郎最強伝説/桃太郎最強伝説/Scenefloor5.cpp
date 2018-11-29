@@ -19,8 +19,7 @@ using namespace GameL;
 //コンストラクタ
 CScenefloor5::CScenefloor5()
 {
-	Audio::Stop(0);//ダンジョンBGMを停止
-	Audio::Start(1);//ボス用BGMをスタート
+	
 }
 
 //デストラクタ
@@ -32,6 +31,11 @@ CScenefloor5::~CScenefloor5()
 //初期化メソッド
 void CScenefloor5::InitScene()
 {
+	//ボス戦用BGM読み込み
+	Audio::LoadAudio(1, L"BossBGM.wav", BACK_MUSIC);
+
+	Audio::Start(1);//ボス用BGMをスタート
+
 	//外部データの読み込み（階層5情報）
 	unique_ptr<wchar_t>p;//ステージ情報ポインター
 	int size;			//ステージ情報の大きさ

@@ -35,7 +35,7 @@ void CScenefloor1::InitScene()
 	Audio::LoadAudio(0, L"DungeonBGM.wav", BACK_MUSIC);		//ダンジョン用BGM
 
 															//ボリュームを1.0に戻す
-	float v = Audio::VolumeMaster(0);
+	float v = Audio::VolumeMaster(2);
 	v = Audio::VolumeMaster((1.0 - v));
 	//音楽スタート
 	Audio::Start(0);
