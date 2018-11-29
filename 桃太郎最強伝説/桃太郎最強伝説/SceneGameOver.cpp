@@ -32,9 +32,9 @@ void CSceneGameOver::InitScene()
 	//出力させる文字のグラフィックを作成
 	Font::SetStrTex(L"GAME OVER");
 
-	Audio::LoadAudio(0, L"GameOverBGM.wav", SOUND_TYPE::BACK_MUSIC);	//ゲームオーバー用BGM
+	Audio::LoadAudio(2, L"GameOverBGM.wav", SOUND_TYPE::BACK_MUSIC);	//ゲームオーバー用BGM
 
-	//ボリュームを1.0に戻す																	//ボリュームを1.0に戻す
+																		//ボリュームを1.0に戻す																	//ボリュームを1.0に戻す
 	float v = Audio::VolumeMaster(0);
 	v = Audio::VolumeMaster((1.0 - v));
 

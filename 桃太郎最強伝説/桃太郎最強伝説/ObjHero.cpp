@@ -14,7 +14,9 @@ using namespace GameL;
 //Date.cpp内で宣言したグローバル変数をextern宣言
 extern int HP;				//HP
 extern bool OTOMO[3];		//お供所持情報
-
+void CObjHero::SAVE() {		//セーブ関数の定義
+	HP = m_hp;
+}
 CObjHero::CObjHero(float x, float y)
 {//オブジェ作成時に渡されたx,y座標をメンバ変数に代入
 	m_px = x;
@@ -24,9 +26,9 @@ CObjHero::CObjHero(float x, float y)
 //イニシャライズ
 void CObjHero::Init()
 {
-	m_vx = 0.0f;		//移動ベクトル初期化
+	m_vx = 0.0f;		//初期移動ベクトル
 	m_vy = 0.0f;
-	m_hp_max = 5;		//最大HP
+	m_hp_max = 5;		//初期最大HP
 
 	//OTOMO[0犬,1キジ,2猿] == true(ある) or false(ない)
 	if (OTOMO[0] == true) {	//犬が居る場合
@@ -48,11 +50,13 @@ void CObjHero::Init()
 	//HitBox作成座標とサイズx,y、エレメントとオブジェクトを設定
 	Hits::SetHitBox(this, m_px+5, m_py+3, 40, 47, ELEMENT_PLAYER, OBJ_HERO, 1);
 
+	
 	Audio::LoadAudio(4, L"近接攻撃.wav", EFFECT);			//近接攻撃SE
 	Audio::LoadAudio(5, L"kijiSE.wav", EFFECT);				//遠距離攻撃SE
 	Audio::LoadAudio(6, L"damage.wav", EFFECT);				//ダメージSE
 	Audio::LoadAudio(8, L"heal.wav", EFFECT);				//体力回復時SE
 	Audio::LoadAudio(9, L"speeddown.wav", EFFECT);			//棍棒取得時用SE
+	Audio::LoadAudio(10, L"StairsSE.wav", EFFECT);			//近接攻撃SE
 
 	//音量を0.9下げる
 	float Volume = Audio::VolumeMaster(-0.9f);
@@ -222,19 +226,23 @@ void CObjHero::Action()
 		//アイテムに当たった場合以下の処理をする
 		if (hit->CheckElementHit(ELEMENT_ITEM) == true)
 		{
-			if (hit->CheckObjNameHit(OBJ_PEACH) != nullptr)
-			{				
-				m_hp += 1;
-				Audio::Start(8);//回復音を鳴らす
+			if (m_hp != m_hp_max) {//HPが最大値でない場合のみ回復
+				if (hit->CheckObjNameHit(OBJ_PEACH) != nullptr)
+				{
+					m_hp += 1;
+					Audio::Start(8);//回復音を鳴らす
+				}
+				if (hit->CheckObjNameHit(OBJ_YELLOW_PEACH) != nullptr)
+				{
+					Audio::Start(8);//回復音を鳴らす
+					m_hp += 3;
+				}
 			}
-			if (hit->CheckObjNameHit(OBJ_YELLOW_PEACH) != nullptr)
-			{
-				Audio::Start(8);//回復音を鳴らす
-				m_hp += 3;
-			}
+			else {}//最大値の場合、回復出来ない
 			if (hit->CheckObjNameHit(OBJ_PLUM) != nullptr)
 				Audio::Start(2);//アイテム取得音を鳴らす
-
+			if (hit->CheckObjNameHit(OBJ_CLUB) != nullptr)
+				Audio::Start(2);//アイテム取得音を鳴らす
 			if (hit->CheckObjNameHit(OBJ_HORN) != nullptr)
 				Audio::Start(2);//アイテム取得音を鳴らす
 
@@ -246,11 +254,18 @@ void CObjHero::Action()
 
 			if (hit->CheckObjNameHit(OBJ_CLUB) != nullptr)
 				Audio::Start(9);//デバフ音を鳴らす
-				//移動速度を0.8倍する
-				//m_px *= 0.8;
-				//m_py *= 0.8;
-
+								//移動速度を0.8倍する
+								//m_px *= 0.8;
+								//m_py *= 0.8;
 		}
+
+		if (hit->CheckElementHit(ELEMENT_FIELD) == true)
+		{
+			Audio::Start(10);
+			Sleep(1000);
+			Scene::SetScene(new CScenefloor2());
+		}
+
 	//HPが0になったら破棄
 	if (m_hp <= 0)
 	{
@@ -259,7 +274,7 @@ void CObjHero::Action()
 		this->SetStatus(false);	//自身に削除命令を出す
 		Hits::DeleteHitBox(this);//主人公が所有するHitBoxを削除する。
 
-		Scene::SetScene(new CSceneGameOver());
+		/*Scene::SetScene(new CSceneGameOver());*/
 	}
 }
 
@@ -286,5 +301,4 @@ void CObjHero::Draw()
 	dst.m_bottom=50.0f + m_py;
 
 	Draw::Draw(0, &src, &dst, c, 0.0f);
-
 }

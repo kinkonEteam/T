@@ -52,9 +52,6 @@
     <Filter Include="ソース ファイル\Events\Dog">
       <UniqueIdentifier>{f52a0652-4129-45ab-9531-dd62e1d3a741}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\Map\floor1\敵">
-      <UniqueIdentifier>{e13dc496-023b-46a1-be83-b61f9419d7c4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\Item">
       <UniqueIdentifier>{c9cdef14-d63b-41dc-a4a5-38f9271d1605}</UniqueIdentifier>
     </Filter>
@@ -78,6 +75,9 @@
     </Filter>
     <Filter Include="ソース ファイル\Scene\あらすじ">
       <UniqueIdentifier>{d2222367-2c26-4fd0-8589-6c5ab1f59d1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Character\敵">
+      <UniqueIdentifier>{e13dc496-023b-46a1-be83-b61f9419d7c4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -166,13 +166,13 @@
       <Filter>ソース ファイル\Character\おとも</Filter>
     </ClCompile>
     <ClCompile Include="ObjEnemy.cpp">
-      <Filter>ソース ファイル\Map\floor1\敵</Filter>
+      <Filter>ソース ファイル\Character\敵</Filter>
     </ClCompile>
     <ClCompile Include="ObjEnemy2.cpp">
-      <Filter>ソース ファイル\Map\floor1\敵</Filter>
+      <Filter>ソース ファイル\Character\敵</Filter>
     </ClCompile>
     <ClCompile Include="ObjEnemy3.cpp">
-      <Filter>ソース ファイル\Map\floor1\敵</Filter>
+      <Filter>ソース ファイル\Character\敵</Filter>
     </ClCompile>
     <ClCompile Include="ObjHero.cpp">
       <Filter>ソース ファイル\Character\主人公</Filter>
@@ -185,9 +185,6 @@
     </ClCompile>
     <ClCompile Include="ObjTalk.cpp">
       <Filter>ソース ファイル\Events</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjClub.cpp">
-      <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="SceneMain.cpp">
       <Filter>ソース ファイル\Scene</Filter>
@@ -269,6 +266,12 @@
     </ClCompile>
     <ClCompile Include="SceneSummary.cpp">
       <Filter>ソース ファイル\Scene\あらすじ</Filter>
+    </ClCompile>
+    <ClCompile Include="Objstair.cpp">
+      <Filter>ソース ファイル\Map\floor1</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjClub.cpp">
+      <Filter>ソース ファイル\Item</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -360,13 +363,13 @@
       <Filter>ソース ファイル\Character\おとも</Filter>
     </ClInclude>
     <ClInclude Include="ObjEnemy.h">
-      <Filter>ソース ファイル\Map\floor1\敵</Filter>
+      <Filter>ソース ファイル\Character\敵</Filter>
     </ClInclude>
     <ClInclude Include="ObjEnemy2.h">
-      <Filter>ソース ファイル\Map\floor1\敵</Filter>
+      <Filter>ソース ファイル\Character\敵</Filter>
     </ClInclude>
     <ClInclude Include="ObjEnemy3.h">
-      <Filter>ソース ファイル\Map\floor1\敵</Filter>
+      <Filter>ソース ファイル\Character\敵</Filter>
     </ClInclude>
     <ClInclude Include="ObjHero.h">
       <Filter>ソース ファイル\Character\主人公</Filter>
@@ -381,9 +384,6 @@
       <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Inventory.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjClub.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="ObjMonke.h">
@@ -454,6 +454,12 @@
     </ClInclude>
     <ClInclude Include="SceneSummary.h">
       <Filter>ソース ファイル\Scene\あらすじ</Filter>
+    </ClInclude>
+    <ClInclude Include="Objstair.h">
+      <Filter>ソース ファイル\Map\floor1</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjClub.h">
+      <Filter>ソース ファイル\Item</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
