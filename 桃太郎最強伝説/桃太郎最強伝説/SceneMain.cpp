@@ -58,9 +58,6 @@ void CSceneMain::InitScene()
 	}
 
 	//BGM・SEの読み込み
-
-	Audio::LoadAudio(1, L"BossBGM.wav", BACK_MUSIC);		//ボス戦用BGM
-
 	Audio::LoadAudio(2, L"アイテムゲット.wav", EFFECT);		//アイテム取得時SE
 	Audio::LoadAudio(3, L"仲間ゲット.wav", EFFECT);			//お供を増やした時用SE
 

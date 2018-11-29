@@ -31,7 +31,12 @@ CScenefloor5::~CScenefloor5()
 //初期化メソッド
 void CScenefloor5::InitScene()
 {
-	//外部データの読み込み（階層1情報）
+	//ボス戦用BGM読み込み
+	Audio::LoadAudio(1, L"BossBGM.wav", BACK_MUSIC);
+
+	Audio::Start(1);//ボス用BGMをスタート
+
+	//外部データの読み込み（階層5情報）
 	unique_ptr<wchar_t>p;//ステージ情報ポインター
 	int size;			//ステージ情報の大きさ
 	p = Save::ExternalDataOpen(L"Book5.csv", &size);//外部データ読み込み

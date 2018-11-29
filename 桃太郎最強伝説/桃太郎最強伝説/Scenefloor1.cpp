@@ -33,6 +33,12 @@ CScenefloor1::~CScenefloor1()
 //初期化メソッド
 void CScenefloor1::InitScene()
 {
+	//BGMの読み込み
+	Audio::LoadAudio(0, L"DungeonBGM.wav", BACK_MUSIC);		//ダンジョン用BGM
+
+															//ボリュームを1.0に戻す
+	float v = Audio::VolumeMaster(2);
+	v = Audio::VolumeMaster((1.0 - v));
 	//音楽スタート
 	Audio::Start(0);
 	//外部データの読み込み（階層1情報）
