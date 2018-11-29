@@ -231,9 +231,6 @@
     <ClCompile Include="CObjhomingfire.cpp">
       <Filter>ソース ファイル\Character\BOSS</Filter>
     </ClCompile>
-    <ClCompile Include="ObjSummary.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="CObjEveMnky.cpp">
       <Filter>ソース ファイル\Events\Mnky</Filter>
     </ClCompile>
@@ -275,6 +272,9 @@
     </ClCompile>
     <ClCompile Include="ObjYami.cpp">
       <Filter>ソース ファイル\暗闇</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjSummary.cpp">
+      <Filter>ソース ファイル\Scene\あらすじ</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -422,9 +422,6 @@
     <ClInclude Include="CObjhomingfire.h">
       <Filter>ソース ファイル\Character\BOSS</Filter>
     </ClInclude>
-    <ClInclude Include="ObjSummary.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="CObjEveMnky.h">
       <Filter>ソース ファイル\Events\Mnky</Filter>
     </ClInclude>
@@ -463,6 +460,9 @@
     </ClInclude>
     <ClInclude Include="ObjYami.h">
       <Filter>ソース ファイル\暗闇</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjSummary.h">
+      <Filter>ソース ファイル\Scene\あらすじ</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
