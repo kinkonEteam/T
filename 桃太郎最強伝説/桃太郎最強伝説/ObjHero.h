@@ -25,7 +25,7 @@ class CObjHero :public CObj
 		void SetVY(float vy) { m_vy = vy; }
 		void SetVX(float vx) { m_vx = vx; }
 
-		void SetKf(float f) { m_Kf = f; }
+		void SAVE();//セーブ関数(.cppで定義)
 	private:
 
 	//主人公の位置と移動用

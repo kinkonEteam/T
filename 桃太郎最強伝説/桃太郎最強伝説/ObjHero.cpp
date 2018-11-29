@@ -14,7 +14,9 @@ using namespace GameL;
 //Date.cpp内で宣言したグローバル変数をextern宣言
 extern int HP;				//HP
 extern bool OTOMO[3];		//お供所持情報
-
+void CObjHero::SAVE() {		//セーブ関数の定義
+	HP = m_hp;
+}
 CObjHero::CObjHero(float x, float y)
 {//オブジェ作成時に渡されたx,y座標をメンバ変数に代入
 	m_px = x;
@@ -24,9 +26,9 @@ CObjHero::CObjHero(float x, float y)
 //イニシャライズ
 void CObjHero::Init()
 {
-	m_vx = 0.0f;		//移動ベクトル初期化
+	m_vx = 0.0f;		//初期移動ベクトル
 	m_vy = 0.0f;
-	m_hp_max = 5;		//最大HP
+	m_hp_max = 5;		//初期最大HP
 
 	//OTOMO[0犬,1キジ,2猿] == true(ある) or false(ない)
 	if (OTOMO[0] == true) {	//犬が居る場合
@@ -222,16 +224,19 @@ void CObjHero::Action()
 		//アイテムに当たった場合以下の処理をする
 		if (hit->CheckElementHit(ELEMENT_ITEM) == true)
 		{
-			if (hit->CheckObjNameHit(OBJ_PEACH) != nullptr)
-			{				
-				m_hp += 1;
-				Audio::Start(8);//回復音を鳴らす
+			if (m_hp != m_hp_max) {//HPが最大値でない場合のみ回復
+				if (hit->CheckObjNameHit(OBJ_PEACH) != nullptr)
+				{
+					m_hp += 1;
+					Audio::Start(8);//回復音を鳴らす
+				}
+				if (hit->CheckObjNameHit(OBJ_YELLOW_PEACH) != nullptr)
+				{
+					Audio::Start(8);//回復音を鳴らす
+					m_hp += 3;
+				}
 			}
-			if (hit->CheckObjNameHit(OBJ_YELLOW_PEACH) != nullptr)
-			{
-				Audio::Start(8);//回復音を鳴らす
-				m_hp += 3;
-			}
+			else {}//最大値の場合、回復出来ない
 			if (hit->CheckObjNameHit(OBJ_PLUM) != nullptr)
 				Audio::Start(2);//アイテム取得音を鳴らす
 

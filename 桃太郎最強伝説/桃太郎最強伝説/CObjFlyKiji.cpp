@@ -100,8 +100,6 @@ void CObjFlyKiji::Action()
 	bool check = CheckWindow(m_x, m_y, 0.0f, 0.0f, 800.0f, 600.0f);
 	if (check == false)
 	{
-		//ålŒö‚ÌˆÊ’u‚ğæ“¾
-		obj->SetKf(true);
 		this->SetStatus(false);  //©g‚ğíœ
 		Hits::DeleteHitBox(this);//HitBox‚ğíœ
 	}
