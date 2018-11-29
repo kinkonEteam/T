@@ -223,27 +223,19 @@ void CObjHero::Action()
 		if (hit->CheckElementHit(ELEMENT_ITEM) == true)
 		{
 			if (hit->CheckObjNameHit(OBJ_PEACH) != nullptr)
+			{
 				m_hp += 1;//体力1up
 				Audio::Start(8);//回復音を鳴らす
 			}
 			if (hit->CheckObjNameHit(OBJ_YELLOW_PEACH) != nullptr)
 			{
 				Audio::Start(8);//回復音を鳴らす
-				m_hp += 3;
 				m_hp += 3;//体力3up
 			}
 			if (hit->CheckObjNameHit(OBJ_PLUM) != nullptr)
-				;
-			if (hit->CheckObjNameHit(OBJ_CLUB) != nullptr)
-				;
-		}
-
-		if (hit->CheckElementHit(ELEMENT_FIELD) == true)
-		{
-			Scene::SetScene(new CScenefloor2());
-		}
 				Audio::Start(2);//アイテム取得音を鳴らす
-
+			if (hit->CheckObjNameHit(OBJ_CLUB) != nullptr)
+				Audio::Start(2);//アイテム取得音を鳴らす
 			if (hit->CheckObjNameHit(OBJ_HORN) != nullptr)
 				Audio::Start(2);//アイテム取得音を鳴らす
 
@@ -255,11 +247,16 @@ void CObjHero::Action()
 
 			if (hit->CheckObjNameHit(OBJ_CLUB) != nullptr)
 				Audio::Start(9);//デバフ音を鳴らす
-				//移動速度を0.8倍する
-				//m_px *= 0.8;
-				//m_py *= 0.8;
-
+								//移動速度を0.8倍する
+								//m_px *= 0.8;
+								//m_py *= 0.8;
 		}
+
+		if (hit->CheckElementHit(ELEMENT_FIELD) == true)
+		{
+			Scene::SetScene(new CScenefloor2());
+		}
+
 	//HPが0になったら破棄
 	if (m_hp <= 0)
 	{
@@ -268,7 +265,7 @@ void CObjHero::Action()
 		this->SetStatus(false);	//自身に削除命令を出す
 		Hits::DeleteHitBox(this);//主人公が所有するHitBoxを削除する。
 
-		Scene::SetScene(new CSceneGameOver());
+		/*Scene::SetScene(new CSceneGameOver());*/
 	}
 }
 
@@ -295,5 +292,4 @@ void CObjHero::Draw()
 	dst.m_bottom=50.0f + m_py;
 
 	Draw::Draw(0, &src, &dst, c, 0.0f);
-
 }
