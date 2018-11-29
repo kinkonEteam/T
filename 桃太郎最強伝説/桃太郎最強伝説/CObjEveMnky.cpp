@@ -11,8 +11,8 @@ void CObjEveMnky::Init()
 	m_f = true;		//初期値
 	m_page = 0;
 
-	//外部グラフィックを読み込み8番に登録(512*512)
-	Draw::LoadImage(L"talk.png", 8, TEX_SIZE_512);
+	//外部グラフィックを読み込み9番に登録(512*512)
+	Draw::LoadImage(L"talk.png", 9, TEX_SIZE_512);
 	//外部グラフィックを読み込み4番に登録(512×512ピクセル)
 	Draw::LoadImage(L"mnky.png", 18, TEX_SIZE_1024);
 
@@ -62,13 +62,13 @@ void CObjEveMnky::Draw()
 		Font::StrDraw(L"", 50, 520, 30, c);
 	}
 	else if (m_page == 2) {					//3ページ
-		Font::StrDraw(L"「サンキュー！", 50, 440, 30, c);
-		Font::StrDraw(L"オレは早いぜ！おいて行かれるなよ！」", 50, 480, 30, c);
+		Font::StrDraw(L"「サンキュー！オレは早いぜ！おいて行かれるなよ！」", 50, 440, 30, c);
+		Font::StrDraw(L"", 50, 480, 30, c);
 		Font::StrDraw(L"", 50, 520, 30, c);
 	}
 	else if (m_page == 3) {					//3ページ
-		Font::StrDraw(L"サルが仲間になった！", 50, 440, 30, c);
-		Font::StrDraw(L"移動速度が上昇した！", 50, 480, 30, c);
+		Font::StrDraw(L"サルが仲間になった！移動速度が上昇した！", 50, 440, 30, c);
+		Font::StrDraw(L"", 50, 480, 30, c);
 		Font::StrDraw(L"", 50, 520, 30, c);
 	}
 	else {

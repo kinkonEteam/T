@@ -19,18 +19,26 @@ using namespace GameL;
 //コンストラクタ
 CScenefloor1::CScenefloor1()
 {
-
+	
 }
 
 //デストラクタ
 CScenefloor1::~CScenefloor1()
 {
-
+	
 }
 
 //初期化メソッド
 void CScenefloor1::InitScene()
 {
+	//BGMの読み込み
+	Audio::LoadAudio(0, L"DungeonBGM.wav", BACK_MUSIC);		//ダンジョン用BGM
+
+															//ボリュームを1.0に戻す
+	float v = Audio::VolumeMaster(0);
+	v = Audio::VolumeMaster((1.0 - v));
+	//音楽スタート
+	Audio::Start(0);
 	//外部データの読み込み（階層1情報）
 	unique_ptr<wchar_t>p;//ステージ情報ポインター
 	int size;			//ステージ情報の大きさ
@@ -93,6 +101,8 @@ void CScenefloor1::InitScene()
 	//外部グラフィックを読み込み4番に登録(512×512ピクセル)
 	Draw::LoadImage(L"暗闇+2.png", 17, TEX_SIZE_512);
 
+	//外部グラフィックを読み込み11番に登録(512×512ピクセル)
+	Draw::LoadImage(L"風エフェクト.png", 11, TEX_SIZE_512);
 
 	//階層1オブジェクト作成
 	CObjMap1* objb = new CObjMap1(map);
