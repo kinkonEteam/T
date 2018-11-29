@@ -219,35 +219,20 @@ void CObjHero::Action()
 		if (hit->CheckElementHit(ELEMENT_ITEM) == true)
 		{
 			if (hit->CheckObjNameHit(OBJ_PEACH) != nullptr)
-				m_hp += 1;
+				m_hp += 1;//体力1up
 			if (hit->CheckObjNameHit(OBJ_YELLOW_PEACH) != nullptr)
-				m_hp += 3;
+				m_hp += 3;//体力3up
 			if (hit->CheckObjNameHit(OBJ_PLUM) != nullptr)
 				;
 			if (hit->CheckObjNameHit(OBJ_CLUB) != nullptr)
 				;
-/*			switch (ELEMENT_ITEM)
-			{
-			case PEACH:
-				Audio::Start(8);//回復音を鳴らす
-				m_hp += 1; //HPを1回復
-				break;
-
-			case YELLOW_PEACH: //HPを3回復
-				;
-				break;
-
-			case PLUM: //インベントリに追加
-				break;
-
-			case OBJ_CLUB: //移動速度を0.8倍する。
-				Audio::Start(9);//デバフ音を鳴らす
-				m_px *= 0.8;
-				m_py *= 0.8;
-				item_list[4] += 1;
-				break;
-			}*/
 		}
+
+		if (hit->CheckElementHit(ELEMENT_FIELD) == true)
+		{
+			Scene::SetScene(new CScenefloor2());
+		}
+
 	//HPが0になったら破棄
 	if (m_hp <= 0)
 	{

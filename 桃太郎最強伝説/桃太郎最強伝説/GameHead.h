@@ -42,6 +42,7 @@ enum OBJ_NAME
 	OBJ_BULLET,
 	OBJ_HOMING_FIRE,
 	OBJ_SUMMARY,
+	OBJ_STAIR,
 
 };
 //------------------------------------------------
@@ -129,6 +130,7 @@ enum ITEM
 #include "ObjYami.h"
 #include"CObjhomingfire.h"
 #include"ObjSummary.h"
+#include"Objstair.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------
