@@ -19,18 +19,22 @@ using namespace GameL;
 //コンストラクタ
 CScenefloor1::CScenefloor1()
 {
+	Audio::LoadAudio(0, L"DungeonBGM.wav",SOUND_TYPE::BACK_MUSIC);		//ダンジョン用BGM
 
+	
 }
 
 //デストラクタ
 CScenefloor1::~CScenefloor1()
 {
-
+	
 }
 
 //初期化メソッド
 void CScenefloor1::InitScene()
 {
+	//音楽スタート
+	Audio::Start(0);
 	//外部データの読み込み（階層1情報）
 	unique_ptr<wchar_t>p;//ステージ情報ポインター
 	int size;			//ステージ情報の大きさ
