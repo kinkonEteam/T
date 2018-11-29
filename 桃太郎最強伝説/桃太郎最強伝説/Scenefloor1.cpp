@@ -19,6 +19,8 @@ using namespace GameL;
 //コンストラクタ
 CScenefloor1::CScenefloor1()
 {
+	Audio::LoadAudio(0, L"DungeonBGM.wav",SOUND_TYPE::BACK_MUSIC);		//ダンジョン用BGM
+
 	
 }
 
@@ -115,6 +117,7 @@ void CScenefloor1::InitScene()
 	//主人公体力ゲージオブジェクト作成
 	CObjHeroGauge* objg = new CObjHeroGauge();
 	Objs::InsertObj(objg, OBJ_HEROGAUGE, 20);
+
 }
 
 //実行中メソッド

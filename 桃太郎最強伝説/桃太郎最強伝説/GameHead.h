@@ -42,6 +42,7 @@ enum OBJ_NAME
 	OBJ_BULLET,
 	OBJ_HOMING_FIRE,
 	OBJ_SUMMARY,
+	OBJ_STAIR,
 
 };
 //------------------------------------------------
@@ -129,6 +130,7 @@ enum ITEM
 #include "ObjYami.h"
 #include"CObjhomingfire.h"
 #include"ObjSummary.h"
+#include"Objstair.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------
@@ -148,5 +150,5 @@ enum ITEM
 
 //シーンスタートクラス---------------------------
 //ゲーム開始時のシーンクラス登録
-#define SET_GAME_START  CSceneTitle
+#define SET_GAME_START  CScenefloor1
 //-----------------------------------------------
