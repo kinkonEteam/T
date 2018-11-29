@@ -238,6 +238,15 @@ void CObjHero::Action()
 			}
 			else {}//最大値の場合、回復出来ない
 			if (hit->CheckObjNameHit(OBJ_PLUM) != nullptr)
+				;
+			if (hit->CheckObjNameHit(OBJ_CLUB) != nullptr)
+				;
+		}
+
+		if (hit->CheckElementHit(ELEMENT_FIELD) == true)
+		{
+			Scene::SetScene(new CScenefloor2());
+		}
 				Audio::Start(2);//アイテム取得音を鳴らす
 
 			if (hit->CheckObjNameHit(OBJ_HORN) != nullptr)
