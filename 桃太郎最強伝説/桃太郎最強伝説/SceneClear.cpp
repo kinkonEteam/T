@@ -15,6 +15,18 @@ using namespace GameL;
 #include"ScecneClear.h"
 #include"GameHead.h"
 
+//コンストラクタ
+CSceneClear::CSceneClear()
+{
+
+}
+
+//デストラクタ
+CSceneClear::~CSceneClear()
+{
+
+}
+
 //初期化ソメッド
 void CSceneClear::InitScene()
 {
@@ -24,6 +36,8 @@ void CSceneClear::InitScene()
 		//クリアオブジェクト
 		CObjClear*obj = new CObjClear();
 		Objs::InsertObj(obj, OBJ_CLEAR, 10);
+		//外部グラフィックを読み込み19番に登録(512×512ピクセル)
+		Draw::LoadImage(L"ゲームクリア.jpg", 19, TEX_SIZE_512);
 
 		Audio::LoadAudio(0, L"BossBGM.wav", BACK_MUSIC);
 

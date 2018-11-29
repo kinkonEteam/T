@@ -45,7 +45,6 @@ void CObjMap1::Init()
 			}
 		}
 	}
-	
 
 	//敵出現
 	for (int i = 0; i < 56; i++)
@@ -93,12 +92,27 @@ void CObjMap1::Init()
 	}
 
 
+
+
 }
 //アクション
 void CObjMap1::Action()
 {
 	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
-
+	//シーン切り替え
+	for (int i = 0; i < 56; i++)
+	{
+		for (int j = 0; j < 56; j++)
+		{
+			if (m_map[i][j] == 4)
+			{
+				//階段オブジェクト作成
+				CObjstair* s = new CObjstair(j * 50.0f, i * 50.0f);		//オブジェクト作成
+				Objs::InsertObj(s, OBJ_STAIR, 2);	//マネージャに登録
+				m_map[i][j] = 0;
+			}
+		}
+	}
 	if (m_f == 0)
 	{
 		//主人公の位置を取得
@@ -142,7 +156,8 @@ void CObjMap1::Draw()
 			}
 			else if (m_map[i][j] == 4)
 			{
-				BlockDraw(94.0f, 0.0f, &dst, c);
+				//階段
+				//BlockDraw(94.0f, 0.0f, &dst, c);
 			}
 			else if (m_map[i][j] == 1)
 			{

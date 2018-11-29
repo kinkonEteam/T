@@ -19,18 +19,28 @@ using namespace GameL;
 //コンストラクタ
 CScenefloor1::CScenefloor1()
 {
+	Audio::LoadAudio(0, L"DungeonBGM.wav",SOUND_TYPE::BACK_MUSIC);		//ダンジョン用BGM
 
+	
 }
 
 //デストラクタ
 CScenefloor1::~CScenefloor1()
 {
-
+	
 }
 
 //初期化メソッド
 void CScenefloor1::InitScene()
 {
+	//BGMの読み込み
+	Audio::LoadAudio(0, L"DungeonBGM.wav", BACK_MUSIC);		//ダンジョン用BGM
+
+	//ボリュームを1.0に戻す
+	float v = Audio::VolumeMaster(2);
+	v = Audio::VolumeMaster((1.0 - v));
+	//音楽スタート
+	Audio::Start(0);
 	//外部データの読み込み（階層1情報）
 	unique_ptr<wchar_t>p;//ステージ情報ポインター
 	int size;			//ステージ情報の大きさ
@@ -107,6 +117,7 @@ void CScenefloor1::InitScene()
 	//主人公体力ゲージオブジェクト作成
 	CObjHeroGauge* objg = new CObjHeroGauge();
 	Objs::InsertObj(objg, OBJ_HEROGAUGE, 20);
+
 }
 
 //実行中メソッド

@@ -19,13 +19,15 @@ class CObjHero :public CObj
 		float GetVY() { return m_vy; }
 		float GetVX() { return m_vx; }
 		float Gethp() { return m_hp; }
+		int GetBT() { return m_block_type; }
 
 		void SetX(float x) { m_px = x; }
 		void SetY(float y) { m_py = y; }
 		void SetVY(float vy) { m_vy = vy; }
 		void SetVX(float vx) { m_vx = vx; }
+		void SetBT(int t) { m_block_type = t; }
 
-		void SetKf(float f) { m_Kf = f; }
+		void SAVE();//セーブ関数(.cppで定義)
 	private:
 
 	//主人公の位置と移動用
@@ -36,9 +38,10 @@ class CObjHero :public CObj
 		float alpha;
 
 
-		float m_posture; //姿勢
+		int m_posture; //姿勢
 
-		int m_hp;		 //HP
+		int m_hp;			//HP
+		int m_hp_max;		//最大HP
 		int m_map[56][56];//マップ情報
 		int m_time;//無敵時間測定
 		int m_f;//無敵時間

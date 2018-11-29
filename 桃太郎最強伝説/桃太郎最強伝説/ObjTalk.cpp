@@ -8,10 +8,10 @@
 
 void CObjTalk::Init()
 {
-	m_reset = 0;
-	m_page = 0;
-	m_sec = 0;
-	m_line = 0;
+	m_page = 0;		//渡されたページ数
+	m_sec = 0;		//秒数カウント
+	m_line = 0;		//行数カウント
+	m_picture = 9;	//画像番号変更用
 }
 
 void CObjTalk::Action()
@@ -21,18 +21,17 @@ void CObjTalk::Action()
 	}
 
 	//入力判定、押しっぱなし制御
-	if (Input::GetVKey(VK_RETURN) == true)
+	if (Input::GetVKey(VK_RETURN) == true)//エンターキー入力時
 	{
-		if (m_f == true)
-		{
-			m_page += 1;
-			m_line = 0;
-			m_sec = 0;
-			m_f = false;
+		if (m_f == true){//m_fがtrueの場合
+			m_page += 1;	//ページを１加算
+			m_line = 0;		//行数リセット
+			m_sec = 0;		//秒数リセット
+			m_f = false;	//m_fにtrueを代入
 		}
 	}
-	else//放している場合
-		m_f = true;
+	else//エンターキーを放している場合
+		m_f = true;		//true代入
 }
 
 void CObjTalk::Draw()
@@ -54,7 +53,7 @@ void CObjTalk::Draw()
 		dst.m_right = 780.0f;
 		dst.m_bottom = 580.0f;
 		//描画
-		Draw::Draw(8, &src, &dst, c, 0.0f);
+		Draw::Draw(m_picture, &src, &dst, c, 0.0f);
 
 		if (m_p != 1) {//ページ数が1ではない場合
 					   //同じ画像を名前用に上から表示
@@ -64,7 +63,7 @@ void CObjTalk::Draw()
 			dst.m_right = 100.0f;
 			dst.m_bottom = 420.0f;
 			//描画
-			Draw::Draw(8, &src, &dst, c, 0.0f);
+			Draw::Draw(m_picture, &src, &dst, c, 0.0f);
 		}
 		else { ; }
 	}
@@ -96,7 +95,7 @@ void CObjTalk::Draw()
 				dst.m_right = 765.0f;
 				dst.m_bottom = 470.0f;
 				//描画
-				Draw::Draw(8, &src, &dst, c, 0.0f);
+				Draw::Draw(m_picture, &src, &dst, c, 0.0f);
 			}//行が変わると、表示しない
 			else { ; }
 			if (m_line <= 1) {//２行目ーーーーーーーーーーーーーーーーーーーーーーーー
@@ -109,7 +108,7 @@ void CObjTalk::Draw()
 				dst.m_right = 765.0f;
 				dst.m_bottom = 510.0f;
 				//描画
-				Draw::Draw(8, &src, &dst, c, 0.0f);
+				Draw::Draw(m_picture, &src, &dst, c, 0.0f);
 			}//行が変わると、表示しない
 			else { ; }
 			if (m_line <= 2 && m_p != 1) {//３行目ーーーーーーーーーーーーーーーーーー
@@ -122,7 +121,7 @@ void CObjTalk::Draw()
 				dst.m_right = 765.0f;
 				dst.m_bottom = 550.0f;
 				//描画
-				Draw::Draw(8, &src, &dst, c, 0.0f);
+				Draw::Draw(m_picture, &src, &dst, c, 0.0f);
 			}//行が変わると、表示しない
 			else { ; }
 		}
@@ -144,7 +143,7 @@ void CObjTalk::Draw()
 			dst.m_right = 770.0f;
 			dst.m_bottom = 575.0f;
 			//描画
-			Draw::Draw(8, &src, &dst, c, 0.0f);
+			Draw::Draw(m_picture, &src, &dst, c, 0.0f);
 		}
 		else { ; }
 	}
