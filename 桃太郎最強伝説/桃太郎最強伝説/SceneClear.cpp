@@ -15,6 +15,18 @@ using namespace GameL;
 #include"ScecneClear.h"
 #include"GameHead.h"
 
+//コンストラクタ
+CSceneClear::CSceneClear()
+{
+
+}
+
+//デストラクタ
+CSceneClear::~CSceneClear()
+{
+
+}
+
 //初期化ソメッド
 void CSceneClear::InitScene()
 {

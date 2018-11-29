@@ -18,6 +18,8 @@ CObjBoss::CObjBoss(float x, float y)
 //イニシャライズ
 void CObjBoss::Init()
 {
+	m_hp = 13;        //ボスの体力
+	m_time = 0;      //値の初期化
 	m_vx = 0.0f;	//移動ベクトル
 	m_vy = 0.0f;
 	m_posture = 1.0f;//右向き0.0f　左向き1.0f
@@ -43,6 +45,47 @@ void CObjBoss::Init()
 //アクション
 void CObjBoss::Action()
 {
+	m_time++;
+
+	//誘導弾
+	if (m_time % 200 == 0)
+	{
+		//誘導弾作成
+		CObjHomingfire* obj_homing_fire = new CObjHomingfire(m_vx, m_vy);
+		Objs::InsertObj(obj_homing_fire, OBJ_HOMING_FIRE, 1);
+	}
+
+	//m_timeの初期化
+	if (m_time > 1000)
+	{
+		m_time = 0;
+	}
+
+	//移動方向
+	m_vx = -1.0f;
+	m_vy = 0.0f;
+
+	//移動ベクトルの正規化
+	UnitVec(&m_vy, &m_vx);
+
+	//速度
+	m_vx *= 1.5f;
+	m_vy *= 1.5f;
+
+	//移動ベクトル座標に加算
+	m_vx += m_vx;
+	m_vy += m_vy;
+
+	//HitBoxの内容更新
+	CHitBox* hit = Hits::GetHitBox(this);
+	hit->SetPos(m_vx, m_vy);
+
+	//主人公の攻撃が接触しているかどうか確認
+	if (hit->CheckObjNameHit(OBJ_BULLET) != nullptr)
+	{
+		this->SetStatus(false);
+		Hits::DeleteHitBox(this);
+	}
 	//落下
 	if (m_py > 1000.0f)
 	{
@@ -89,7 +132,15 @@ void CObjBoss::Action()
 	}
 
 	//HPが0になったら破棄
+	if (m_hp <= 0)
+	{
+		this->SetStatus(false);
+		Hits::DeleteHitBox(this);
 
+		//消滅でシーンをゲームクリアに移行
+		Scene::SetScene(new CSceneClear());
+
+	}
 }
 
 //ドロー

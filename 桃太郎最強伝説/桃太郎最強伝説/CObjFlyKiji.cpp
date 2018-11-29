@@ -24,11 +24,13 @@ void CObjFlyKiji::Init()
 	m_py = 0;
 	m_vx = 0;    //X方向の速度用変数
 	m_vy = 0;    //Y方向の速度用変数
-	/*
+	
 	m_ani_time = 0;		//アニメーションタイム
 	m_ani_frame = 0;	//フレーム
 	m_s = 1;			//アニメーション緩急*/
 	m_f = false;
+
+
 
 	Hits::SetHitBox(this, m_x, m_y, 50, 50, ELEMENT_MAGIC, OBJ_FLYKIJI, 1);
 }
@@ -68,14 +70,20 @@ void CObjFlyKiji::Action()
 	m_vy += m_py;
 	m_y += m_vy * 5.0f;
 
-	/*
-	m_ani_time += m_s;			//削除されるまで常に足し続ける
+	
+	m_ani_time += 1;			//削除されるまで常に足し続ける
 	if (m_ani_time > 5)		//アニメーション動作間隔(※ここでアニメーション速度変更出来る)
 	{
 		m_ani_frame += 1;
 		m_ani_time = 0;
-		m_s++;
-	}*/
+		
+	}
+
+	if (m_ani_frame==8)
+	{
+		m_ani_frame = 0;
+	}
+
 
 	//HitBoxの内容を更新
 	CHitBox*hit = Hits::GetHitBox(this);
@@ -100,8 +108,14 @@ void CObjFlyKiji::Action()
 }
 
 //ドロー
+
 void CObjFlyKiji::Draw()
 {
+	int aniData[8]=
+	{
+		0,1,2,3,4,5,6,7,
+	};
+
 	//描画カラー情報　R=Red　G=Green　B=Blue　A=alpha(透過情報)
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f, };
 
@@ -122,4 +136,15 @@ void CObjFlyKiji::Draw()
 
 	//描画
 	Draw::Draw(2, &src, &dst, c, 0.0f);
+
+	//切り取り位置の設定　エフェクト用
+	src.m_top = aniData[m_ani_frame]*240.0f;//上*注意：右のfは0にしないことした場合、何をかけても０になる
+	src.m_left = 0.0f;//左
+	src.m_right = 240.0f;//右
+	src.m_bottom = 240 + aniData[m_ani_frame] * 240.0f;//下*説明：一番左の数字は最初の画像の最大の幅でそれをかけて違う数値にする
+
+	Draw::Draw(11, &src, &dst, c, 0.0f);
+
+
+
 }
