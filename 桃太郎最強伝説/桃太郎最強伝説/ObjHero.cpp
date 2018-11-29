@@ -11,10 +11,10 @@
 //使用するネームスペース
 using namespace GameL;
 
-//Date.cpp内で宣言したグローバル変数をextern宣言
+//Date.cpp内で宣言したグローバル変数をextern宣言----------------------保持データ
 extern int HP;				//HP
 extern bool OTOMO[3];		//お供所持情報
-void CObjHero::SAVE() {		//セーブ関数の定義
+void CObjHero::SAVE() {		//セーブ関数の定義----------------------データをセーブ
 	HP = m_hp;
 }
 CObjHero::CObjHero(float x, float y)
@@ -31,9 +31,12 @@ void CObjHero::Init()
 	m_hp_max = 5;		//初期最大HP
 
 	//OTOMO[0犬,1キジ,2猿] == true(ある) or false(ない)
-	if (OTOMO[0] == true) {	//犬が居る場合
+	if (OTOMO[0] == true)		//犬が居る場合
 		m_hp_max += 1;			//最大HPに1加算
-	}
+	if (OTOMO[1] == true)		//キジが居る場合
+		m_Kf = false;			//制御を解除
+	else { m_Kf = true; }		//居ないなら制御
+
 	m_hp = HP;				//メンバhpに初期HPを代入
 	m_time = 70;
 	alpha = 1.0f;
@@ -43,7 +46,6 @@ void CObjHero::Init()
 	m_ani_time = 0;
 	m_ani_frame = 1;	//静止フレーム
 	m_Sf = true;			//攻撃制御
-	m_Kf = true;			//キジ攻撃制御
 	m_key_f = false;		//無敵時間行動制御
 	m_t = false;
 
@@ -92,14 +94,16 @@ void CObjHero::Action()
 		CObjFlyKiji* obj = (CObjFlyKiji*)Objs::GetObj(OBJ_FLYKIJI);
 		if (Input::GetVKey('S') == true)//Sキー入力時
 		{
-			if (obj == nullptr)//キジ情報が無い場合
-			{
-				//遠距離攻撃音を鳴らす
-				Audio::Start(5);
+			if (m_Kf == false) {
+				if (obj == nullptr)//キジ情報が無い場合
+				{
+					//遠距離攻撃音を鳴らす
+					Audio::Start(5);
 
-				//キジオブジェクト作成				キジに座標と向きを渡す
-				CObjFlyKiji* kiji = new CObjFlyKiji(m_px, m_py, m_posture);
-				Objs::InsertObj(kiji, OBJ_FLYKIJI, 3);//マネージャーに登録
+					//キジオブジェクト作成				キジに座標と向きを渡す
+					CObjFlyKiji* kiji = new CObjFlyKiji(m_px, m_py, m_posture);
+					Objs::InsertObj(kiji, OBJ_FLYKIJI, 3);//マネージャーに登録
+				}
 			}
 		}
 		else { ; }//無入力時
