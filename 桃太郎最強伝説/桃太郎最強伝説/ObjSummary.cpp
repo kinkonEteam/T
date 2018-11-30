@@ -22,7 +22,7 @@ void CObjSummary::Init()
 //ƒAƒNƒVƒ‡ƒ“
 void CObjSummary::Action()
 {
-	m_y+= 1.5;
+	m_y+= 1.25;
 	m_time += 1;
 
 
