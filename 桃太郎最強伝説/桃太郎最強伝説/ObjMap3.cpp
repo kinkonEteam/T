@@ -104,10 +104,10 @@ void CObjMap3::Action()
 	{
 		for (int j = 0; j < 56; j++)
 		{
-			if (m_map[i][j] == 4)
+			if (m_map[i][j] == 31)
 			{
 				//階段オブジェクト作成
-				CObjstair* s = new CObjstair(j * 50.0f, i * 50.0f);		//オブジェクト作成
+				CObjstair* s = new CObjstair(j * 50.0f, i * 50.0f, 3);		//オブジェクト作成
 				Objs::InsertObj(s, OBJ_STAIR, 2);	//マネージャに登録
 				m_map[i][j] = 0;
 			}
@@ -131,7 +131,7 @@ void CObjMap3::Action()
 void CObjMap3::Draw()
 {
 	//描画カラー情報
-	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
+	float c[4] = { 1.0f,0.5f,0.5f,1.0f };
 
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置
@@ -154,12 +154,17 @@ void CObjMap3::Draw()
 				//床
 				BlockDraw(0.0f, 0.0f, &dst, c);
 			}
-			else if (m_map[i][j] == 4)
+			else if (m_map[i][j] == 31)
 			{
 				//階段
 				//BlockDraw(94.0f, 0.0f, &dst, c);
 			}
 			else if (m_map[i][j] == 1)
+			{
+				//壁
+				BlockDraw(47.0f, 0.0f, &dst, c);
+			}
+			else
 			{
 				//壁
 				BlockDraw(47.0f, 0.0f, &dst, c);
@@ -306,7 +311,7 @@ void CObjMap3::setstair()
 					stair = rand() % 3;
 					if (stair == 1)
 					{
-						m_map[i][j] = 4;
+						m_map[i][j] = 31;
 						return;
 					}
 				}

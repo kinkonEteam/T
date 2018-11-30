@@ -39,6 +39,7 @@ class CObjHero :public CObj
 
 
 		int m_posture; //épê®
+		int getmap[56][56];
 
 		int m_hp;			//HP
 		int m_hp_max;		//ç≈ëÂHP

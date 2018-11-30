@@ -13,6 +13,12 @@
 //使用するネームスペース
 using namespace GameL;
 
+CObjPheasant::CObjPheasant(float x, float y)
+{//オブジェ作成時に渡されたx,y座標をメンバ変数に代入
+	m_px = x;
+	m_py = y;
+}
+
 //イニシャライズ
 void CObjPheasant::Init()
 {
@@ -27,7 +33,12 @@ void CObjPheasant::Init()
 //アクション
 void CObjPheasant::Action()
 {
+	//ブロック情報を持ってくる
+	CObjMap1*map1 = (CObjMap1*)Objs::GetObj(OBJ_MAP1);
 
+	//HitBoxの内容を更新
+	CHitBox*hit = Hits::GetHitBox(this);
+	hit->SetPos(m_px + map1->GetScrollx(), m_py + map1->GetScrolly());
 }
 
 void CObjPheasant::Draw()

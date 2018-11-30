@@ -11,7 +11,7 @@ using namespace GameL;
 class CObjMonke : public CObj
 {
 public:
-	CObjMonke() {};
+	CObjMonke(float x, float y);
 	~CObjMonke() {};
 	void Init();	//イニシャライズ
 	void Action();	//アクション
@@ -19,6 +19,7 @@ public:
 private:
 	float m_x;	//お供ヒットボックス用
 	float m_y;	//お供ヒットボックス用
-
+	float m_px;		 //位置
+	float m_py;
 };
 

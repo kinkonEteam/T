@@ -27,6 +27,7 @@ void CObjMap2::Init()
 	srand(time(NULL));
 
 	setstair();
+	setdog();
 	setenemy();
 	sethero();
 
@@ -104,10 +105,10 @@ void CObjMap2::Action()
 	{
 		for (int j = 0; j < 56; j++)
 		{
-			if (m_map[i][j] == 4)
+			if (m_map[i][j] == 31)
 			{
 				//階段オブジェクト作成
-				CObjstair* s = new CObjstair(j * 50.0f, i * 50.0f);		//オブジェクト作成
+				CObjstair* s = new CObjstair(j * 50.0f, i * 50.0f,2);		//オブジェクト作成
 				Objs::InsertObj(s, OBJ_STAIR, 2);	//マネージャに登録
 				m_map[i][j] = 0;
 			}
@@ -131,12 +132,12 @@ void CObjMap2::Action()
 void CObjMap2::Draw()
 {
 	//描画カラー情報
-	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
+	float c[4] = { 1.0f,0.5f,0.5f,1.0f };
 
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置
 
-			   //マップチップによるblock配置
+	//マップチップによるblock配置
 	for (int i = 0; i < 56; i++)
 	{
 		for (int j = 0; j < 56; j++)
@@ -154,7 +155,7 @@ void CObjMap2::Draw()
 				//床
 				BlockDraw(0.0f, 0.0f, &dst, c);
 			}
-			else if (m_map[i][j] == 4)
+			else if (m_map[i][j] == 31)
 			{
 				//階段
 				//BlockDraw(94.0f, 0.0f, &dst, c);
@@ -306,7 +307,7 @@ void CObjMap2::setstair()
 					stair = rand() % 3;
 					if (stair == 1)
 					{
-						m_map[i][j] = 4;
+						m_map[i][j] = 31;
 						return;
 					}
 				}
@@ -366,6 +367,28 @@ void CObjMap2::setenemy()
 				{
 				m_map[i][j] = 12;//緑鬼
 				}*/
+			}
+		}
+	}
+}
+
+//犬出現
+void CObjMap2::setdog()
+{
+	for (int i = 0; i < 56; i++)
+	{
+		for (int j = 0; j < 56; j++)
+		{
+			if (m_map[i][j] == 6)
+			{
+				//犬オブジェクト作成
+				CObjDog* objd = new CObjDog(j*50.0f, i*50.0f);//オブジェクト作成
+				Objs::InsertObj(objd, OBJ_DOG, 2);//マネージャに登録
+
+				m_scrollx = -j * 50.0f + 400;
+				m_scrolly = -i * 50.0f + 300;
+
+				return;
 			}
 		}
 	}

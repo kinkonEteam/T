@@ -15,7 +15,7 @@ public:
 	void Action();	//アクション
 	void Draw();	//ドロー
 
-					//左右スクロール用
+	//左右スクロール用
 	void SetScrollx(float s) { m_scrollx = s; }
 	float GetScrollx() { return m_scrollx; }
 	//上下スクロール用

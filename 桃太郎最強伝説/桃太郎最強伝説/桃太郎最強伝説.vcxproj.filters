@@ -189,6 +189,9 @@
     <ClCompile Include="ObjTalk.cpp">
       <Filter>ソース ファイル\Events</Filter>
     </ClCompile>
+    <ClCompile Include="ObjClub.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
     <ClCompile Include="SceneMain.cpp">
       <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
@@ -266,6 +269,12 @@
     </ClCompile>
     <ClCompile Include="Objstair.cpp">
       <Filter>ソース ファイル\Map\floor1</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjSummary.cpp">
+      <Filter>ソース ファイル\Scene\あらすじ</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMain.cpp">
+      <Filter>ソース ファイル\Scene\メイン</Filter>
     </ClCompile>
     <ClCompile Include="ObjClub.cpp">
       <Filter>ソース ファイル\Item</Filter>
@@ -454,6 +463,9 @@
     </ClInclude>
     <ClInclude Include="Objstair.h">
       <Filter>ソース ファイル\Map\floor1</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjSummary.h">
+      <Filter>ソース ファイル\Scene\あらすじ</Filter>
     </ClInclude>
     <ClInclude Include="ObjClub.h">
       <Filter>ソース ファイル\Item</Filter>

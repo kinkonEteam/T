@@ -94,9 +94,9 @@ void CScenefloor3::InitScene()
 	Draw::LoadImage(L"暗闇+2.png", 17, TEX_SIZE_512);
 
 
-	//階層1オブジェクト作成
-	CObjMap2* objb = new CObjMap2(map);
-	Objs::InsertObj(objb, OBJ_MAP1, 1);
+	//階層3オブジェクト作成
+	CObjMap3* objb = new CObjMap3(map);
+	Objs::InsertObj(objb, OBJ_MAP3, 1);
 
 	//暗闇作成
 	ObjYami* Y = new ObjYami(2);
