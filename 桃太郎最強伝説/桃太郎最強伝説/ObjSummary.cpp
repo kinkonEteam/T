@@ -31,7 +31,8 @@ void CObjSummary::Action()
 	{
 		if (m_key_f == true)
 		{
-			Scene::SetScene(new CSceneMain());
+
+			Scene::SetScene(new CScenefloor1());
 			m_key_f = false;
 		}
 	}
@@ -41,7 +42,7 @@ void CObjSummary::Action()
 	}
 	if(m_time==920)
 	{
-		Scene::SetScene(new CSceneMain());
+		Scene::SetScene(new CScenefloor1());
 		m_key_f = false;
 	}
 }

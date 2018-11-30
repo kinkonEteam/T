@@ -8,7 +8,7 @@ using namespace GameL;
 class CObjstair :public CObj
 {
 	public:
-		CObjstair(float x, float y) ;
+		CObjstair(float x, float y,int c) ;
 		~CObjstair() {};
 		void Init();	//イニシャライズ
 		void Action();	//アクション
@@ -18,5 +18,6 @@ class CObjstair :public CObj
 	private:
 		float m_px;		 //位置
 		float m_py;
+		int m_c;		//回数番号
 		bool m_flag_time;//シーン切り替えフラグ
 };

@@ -107,7 +107,7 @@ void CObjMap5::Action()
 			if (m_map[i][j] == 4)
 			{
 				//階段オブジェクト作成
-				CObjstair* s = new CObjstair(j * 50.0f, i * 50.0f);		//オブジェクト作成
+				CObjstair* s = new CObjstair(j * 50.0f, i * 50.0f,5);		//オブジェクト作成
 				Objs::InsertObj(s, OBJ_STAIR, 2);	//マネージャに登録
 				m_map[i][j] = 0;
 			}
@@ -131,7 +131,7 @@ void CObjMap5::Action()
 void CObjMap5::Draw()
 {
 	//描画カラー情報
-	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
+	float c[4] = { 1.0f,0.5f,1.0f,1.0f };
 
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置

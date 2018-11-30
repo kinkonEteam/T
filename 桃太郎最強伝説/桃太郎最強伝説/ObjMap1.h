@@ -15,6 +15,8 @@ class CObjMap1 :public CObj
 		void Action();	//アクション
 		void Draw();	//ドロー
 
+		int Getmap() { return m_map[56][56]; }
+
 		//左右スクロール用
 		void SetScrollx(float s) { m_scrollx = s; }
 		float GetScrollx() { return m_scrollx; }

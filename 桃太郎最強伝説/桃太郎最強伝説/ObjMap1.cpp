@@ -72,6 +72,21 @@ void CObjMap1::Init()
 		}
 	}
 
+	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
+	//シーン切り替え
+	for (int i = 0; i < 56; i++)
+	{
+		for (int j = 0; j < 56; j++)
+		{
+			if (m_map[i][j] == 30)
+			{
+				//階段オブジェクト作成
+				CObjstair* s = new CObjstair(j * 50.0f, i * 50.0f, 1);		//オブジェクト作成,回数番号
+				Objs::InsertObj(s, OBJ_STAIR, 2);	//マネージャに登録
+			}
+		}
+	}
+
 	//主人公出現
 	for (int i = 0; i < 56; i++)
 	{
@@ -99,20 +114,6 @@ void CObjMap1::Init()
 void CObjMap1::Action()
 {
 	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
-	//シーン切り替え
-	for (int i = 0; i < 56; i++)
-	{
-		for (int j = 0; j < 56; j++)
-		{
-			if (m_map[i][j] == 4)
-			{
-				//階段オブジェクト作成
-				CObjstair* s = new CObjstair(j * 50.0f, i * 50.0f);		//オブジェクト作成
-				Objs::InsertObj(s, OBJ_STAIR, 2);	//マネージャに登録
-				m_map[i][j] = 0;
-			}
-		}
-	}
 	if (m_f == 0)
 	{
 		//主人公の位置を取得
@@ -306,7 +307,7 @@ void CObjMap1::setstair()
 					stair = rand() % 3;
 					if (stair == 1)
 					{
-						m_map[i][j] = 4;
+						m_map[i][j] = 30;
 						return;
 					}
 				}

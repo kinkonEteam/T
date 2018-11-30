@@ -72,7 +72,7 @@ void CObjGoldBullion::Draw()
 
 	//•\Ž¦ˆÊ’u‚ÌÝ’è
 	dst.m_top = 0.0f + m_y + m_py + map1->GetScrolly();
-	dst.m_left = 0.0f + m_x + m_px + map1->GetScrollx();;
+	dst.m_left = 0.0f + m_x + m_px + map1->GetScrollx();
 	dst.m_right = 50.0f + m_x + m_px + map1->GetScrollx();
 	dst.m_bottom = 50.0f + m_y + m_py + map1->GetScrolly();
 

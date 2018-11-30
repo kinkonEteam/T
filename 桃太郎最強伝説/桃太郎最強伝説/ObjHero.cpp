@@ -17,6 +17,7 @@ extern bool OTOMO[3];		//お供所持情報
 void CObjHero::SAVE() {		//セーブ関数の定義
 	HP = m_hp;
 }
+
 CObjHero::CObjHero(float x, float y)
 {//オブジェ作成時に渡されたx,y座標をメンバ変数に代入
 	m_px = x;
@@ -185,17 +186,18 @@ void CObjHero::Action()
 						m_vx += -1.0f;//左に移動させる
 					}
 				}
-				if (r > 45 && r < 135)
+				if (r >= 45 && r < 135)
 				{
 					m_vy = 10.0f;//上に移動させる
 				}
-				if (r > 135 && r < 225)
+				if (r >= 135 && r < 225)
 				{
 					m_vx = 10.0f;//右に移動させる
 				}
-				if (r > 225 && r < 315)
+				if (r >= 225 && r < 315)
 				{
 					m_vy = -10.0f;//したに移動させる
+
 				}
 			}
 			m_hp -= 1;
@@ -255,11 +257,6 @@ void CObjHero::Action()
 								//移動速度を0.8倍する
 								//m_px *= 0.8;
 								//m_py *= 0.8;
-		}
-
-		if (hit->CheckElementHit(ELEMENT_FIELD) == true)
-		{
-			Scene::SetScene(new CScenefloor2());
 		}
 
 	//HPが0になったら破棄

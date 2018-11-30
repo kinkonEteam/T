@@ -189,9 +189,6 @@
     <ClCompile Include="ObjClub.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="SceneMain.cpp">
-      <Filter>ソース ファイル\Scene</Filter>
-    </ClCompile>
     <ClCompile Include="CObjEveDog.cpp">
       <Filter>ソース ファイル\Events\Dog</Filter>
     </ClCompile>
@@ -234,9 +231,6 @@
     <ClCompile Include="CObjhomingfire.cpp">
       <Filter>ソース ファイル\Character\BOSS</Filter>
     </ClCompile>
-    <ClCompile Include="ObjSummary.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="CObjEveMnky.cpp">
       <Filter>ソース ファイル\Events\Mnky</Filter>
     </ClCompile>
@@ -272,6 +266,12 @@
     </ClCompile>
     <ClCompile Include="Objstair.cpp">
       <Filter>ソース ファイル\Map\floor1</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjSummary.cpp">
+      <Filter>ソース ファイル\Scene\あらすじ</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMain.cpp">
+      <Filter>ソース ファイル\Scene\メイン</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -425,9 +425,6 @@
     <ClInclude Include="CObjhomingfire.h">
       <Filter>ソース ファイル\Character\BOSS</Filter>
     </ClInclude>
-    <ClInclude Include="ObjSummary.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="CObjEveMnky.h">
       <Filter>ソース ファイル\Events\Mnky</Filter>
     </ClInclude>
@@ -460,6 +457,9 @@
     </ClInclude>
     <ClInclude Include="Objstair.h">
       <Filter>ソース ファイル\Map\floor1</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjSummary.h">
+      <Filter>ソース ファイル\Scene\あらすじ</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
