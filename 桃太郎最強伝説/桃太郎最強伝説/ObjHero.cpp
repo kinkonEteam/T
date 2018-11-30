@@ -265,7 +265,9 @@ void CObjHero::Action()
 
 		if (hit->CheckElementHit(ELEMENT_FIELD) == true)
 		{
+			//ŠK’iSE‚ð–Â‚ç‚·
 			Audio::Start(10);
+			//’x‰„
 			Sleep(1000);
 			Scene::SetScene(new CScenefloor2());
 		}
