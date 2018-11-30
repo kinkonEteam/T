@@ -34,7 +34,7 @@ void CSceneGameOver::InitScene()
 
 	Audio::LoadAudio(2, L"GameOverBGM.wav", SOUND_TYPE::BACK_MUSIC);	//ゲームオーバー用BGM
 
-																		//ボリュームを1.0に戻す																	//ボリュームを1.0に戻す
+	//ボリュームを1.0に戻す																	//ボリュームを1.0に戻す
 	float v = Audio::VolumeMaster(0);
 	v = Audio::VolumeMaster((1.0 - v));
 
