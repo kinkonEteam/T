@@ -82,6 +82,12 @@
     <Filter Include="ソース ファイル\暗闇">
       <UniqueIdentifier>{631c5c67-8da3-40b5-b697-66eb770a6c9c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Scene\換金">
+      <UniqueIdentifier>{c65c7a17-cf70-4c80-a7fc-00b2352b5447}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene\操作説明">
+      <UniqueIdentifier>{8316f4dd-bb87-4cbf-bde2-a39bb747958c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameL\Audio.cpp">
@@ -273,9 +279,6 @@
     <ClCompile Include="ObjClub.cpp">
       <Filter>ソース ファイル\Item</Filter>
     </ClCompile>
-    <ClCompile Include="ObjYami.cpp">
-      <Filter>ソース ファイル\暗闇</Filter>
-    </ClCompile>
     <ClCompile Include="ObjSummary.cpp">
       <Filter>ソース ファイル\Scene\あらすじ</Filter>
     </ClCompile>
@@ -284,6 +287,15 @@
     </ClCompile>
     <ClCompile Include="Objstair.cpp">
       <Filter>ソース ファイル\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneSell.cpp">
+      <Filter>ソース ファイル\Scene\換金</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneKeyUse.cpp">
+      <Filter>ソース ファイル\Scene\操作説明</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjCapture.cpp">
+      <Filter>ソース ファイル\暗闇</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -467,14 +479,20 @@
     <ClInclude Include="ObjClub.h">
       <Filter>ソース ファイル\Item</Filter>
     </ClInclude>
-    <ClInclude Include="ObjYami.h">
-      <Filter>ソース ファイル\暗闇</Filter>
-    </ClInclude>
     <ClInclude Include="ObjSummary.h">
       <Filter>ソース ファイル\Scene\あらすじ</Filter>
     </ClInclude>
     <ClInclude Include="Objstair.h">
       <Filter>ソース ファイル\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneSell.h">
+      <Filter>ソース ファイル\Scene\換金</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneKeyUse.h">
+      <Filter>ソース ファイル\Scene\操作説明</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjCapture.h">
+      <Filter>ソース ファイル\暗闇</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
