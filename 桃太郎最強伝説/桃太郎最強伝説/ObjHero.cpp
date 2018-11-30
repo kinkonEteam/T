@@ -280,7 +280,7 @@ void CObjHero::Action()
 		this->SetStatus(false);	//自身に削除命令を出す
 		Hits::DeleteHitBox(this);//主人公が所有するHitBoxを削除する。
 
-		/*Scene::SetScene(new CSceneGameOver());*/
+		Scene::SetScene(new CSceneGameOver());
 	}
 }
 

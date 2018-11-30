@@ -36,7 +36,7 @@ void CObjTitle::Action()
 //ドロー
 void CObjTitle::Draw()
 {
-	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
+	float c[4] = { 1.0f,1.0f,1.0f,2.5f };
 
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置
@@ -57,7 +57,7 @@ void CObjTitle::Draw()
 	//描画
 	Draw::Draw(20, &src, &dst, c, 0.0f);
 
-	float b[4] = { 0.0f,0.0f,0.0f,1.0f };
+	float b[4] = { 9.0f,0.0f,9.0f,1.0f };
 	Font::StrDraw(L"桃太郎最強伝説", 230, 250, 50, b);
 	Font::StrDraw(L"START", 350, 350, 45, b);
 }
