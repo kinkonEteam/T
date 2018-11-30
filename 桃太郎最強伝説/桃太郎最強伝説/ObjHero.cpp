@@ -48,7 +48,6 @@ void CObjHero::Init()
 	m_ani_frame = 1;	//静止フレーム
 	m_Sf = true;			//攻撃制御
 	m_key_f = false;		//無敵時間行動制御
-	m_t = false;
 
 	//HitBox作成座標とサイズx,y、エレメントとオブジェクトを設定
 	Hits::SetHitBox(this, m_px+5, m_py+3, 40, 47, ELEMENT_PLAYER, OBJ_HERO, 1);
@@ -155,16 +154,51 @@ void CObjHero::Action()
 	//UnitVec(&m_vy, &m_vx);
 
 	//スクロール
-	CObjMap1*b = (CObjMap1*)Objs::GetObj(OBJ_MAP1);
+	CObjMap1*map1 = (CObjMap1*)Objs::GetObj(OBJ_MAP1);
+	CObjMap2*map2 = (CObjMap2*)Objs::GetObj(OBJ_MAP2);
+	CObjMap3*map3 = (CObjMap3*)Objs::GetObj(OBJ_MAP3);
+	CObjMap4*map4 = (CObjMap4*)Objs::GetObj(OBJ_MAP4);
+	CObjMap5*map5 = (CObjMap5*)Objs::GetObj(OBJ_MAP5);
 		m_px = 375;
 		m_py = 275;
 
 	//ブロックとの当たり判定
-	CObjMap1*pb = (CObjMap1*)Objs::GetObj(OBJ_MAP1);
-	pb->Map1Hit(&m_px, &m_py, true,
-		&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
-		&m_block_type
-	);
+		if (map1 != nullptr)
+		{
+			map1->Map1Hit(&m_px, &m_py, true,
+				&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
+				&m_block_type
+			);
+		}
+		if (map2 != nullptr)
+		{
+			map2->Map2Hit(&m_px, &m_py, true,
+				&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
+				&m_block_type
+			);
+		}
+		if (map3 != nullptr)
+		{
+			map3->Map3Hit(&m_px, &m_py, true,
+				&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
+				&m_block_type
+			);
+		}
+		if (map4 != nullptr)
+		{
+			map4->Map4Hit(&m_px, &m_py, true,
+				&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
+				&m_block_type
+			);
+		}
+		if (map5 != nullptr)
+		{
+			map5->Map5Hit(&m_px, &m_py, true,
+				&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
+				&m_block_type
+			);
+		}
+
 
 	//HitBoxの内容を更新
 	CHitBox*hit = Hits::GetHitBox(this);
@@ -179,18 +213,17 @@ void CObjHero::Action()
 
 			for (int i = 0; i < hit->GetCount(); i++)
 			{
+				//敵の左右に当たったら
+				if (hit_data[i] == nullptr)
+					continue;
+
 				//ダメージ音を鳴らす
 				Audio::Start(6);
 
-				//敵の左右に当たったら
 				float r = hit_data[i]->r;
 				if ((r < 45 && r >= 0) || r > 315)
 				{
-					m_t = true;
-					if (m_t == true)
-					{
-						m_vx += -1.0f;//左に移動させる
-					}
+					m_vx = -10.0f;//左に移動させる
 				}
 				if (r >= 45 && r < 135)
 				{
@@ -271,14 +304,11 @@ void CObjHero::Action()
 			Audio::Start(10);
 			//遅延
 			Sleep(1000);
-			Scene::SetScene(new CScenefloor2());
 		}
 
 	//HPが0になったら破棄
 	if (m_hp <= 0)
 	{
-		CObjMap1* map1 = (CObjMap1*)Objs::GetObj(OBJ_MAP1);//外すとエラーが出る
-		map1->Setenemy(1);
 		this->SetStatus(false);	//自身に削除命令を出す
 		Hits::DeleteHitBox(this);//主人公が所有するHitBoxを削除する。
 
