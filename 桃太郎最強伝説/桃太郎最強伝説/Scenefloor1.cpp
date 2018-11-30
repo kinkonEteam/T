@@ -33,6 +33,12 @@ CScenefloor1::~CScenefloor1()
 //初期化メソッド
 void CScenefloor1::InitScene()
 {
+	//BGMの読み込み
+	Audio::LoadAudio(0, L"DungeonBGM.wav", BACK_MUSIC);		//ダンジョン用BGM
+
+	//ボリュームを1.0に戻す
+	float v = Audio::VolumeMaster(0);
+	v = Audio::VolumeMaster((1.0 - v));
 	//音楽スタート
 	Audio::Start(0);
 	//外部データの読み込み（階層1情報）
@@ -105,8 +111,8 @@ void CScenefloor1::InitScene()
 	Objs::InsertObj(objb, OBJ_MAP1, 1);
 
 	//暗闇作成
-	ObjYami* Y = new ObjYami(2);
-	Objs::InsertObj(Y, OBJ_YAMI, 3);
+	/*ObjYami* Y = new ObjYami(2);
+	Objs::InsertObj(Y, OBJ_YAMI, 3);*/
 
 	//主人公体力ゲージオブジェクト作成
 	CObjHeroGauge* objg = new CObjHeroGauge();

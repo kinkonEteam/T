@@ -4,7 +4,7 @@
 #include"GameL\SceneManager.h"
 #include"GameL\DrawFont.h"
 #include "GameL\HitBoxManager.h"
-
+#include "GameL\Audio.h"
 #include"GameHead.h"
 #include"Objstair.h"
 
@@ -21,6 +21,7 @@ CObjstair::CObjstair(float x, float y,int c)
 //イニシャライズ
 void CObjstair::Init()
 {
+	
 
 	//当たり判定用のHitBoxを作成
 	Hits::SetHitBox(this, m_px+20, m_py+20, 10, 10, ELEMENT_FIELD, OBJ_STAIR, 1);

@@ -79,6 +79,9 @@
     <Filter Include="ソース ファイル\Character\敵">
       <UniqueIdentifier>{e13dc496-023b-46a1-be83-b61f9419d7c4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\暗闇">
+      <UniqueIdentifier>{631c5c67-8da3-40b5-b697-66eb770a6c9c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameL\Audio.cpp">
@@ -189,6 +192,9 @@
     <ClCompile Include="ObjClub.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="SceneMain.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
     <ClCompile Include="CObjEveDog.cpp">
       <Filter>ソース ファイル\Events\Dog</Filter>
     </ClCompile>
@@ -197,9 +203,6 @@
     </ClCompile>
     <ClCompile Include="ObjMonke.cpp">
       <Filter>ソース ファイル\Character\おとも</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjYami.cpp">
-      <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="ObjGoldBullion.cpp">
       <Filter>ソース ファイル\Item</Filter>
@@ -272,6 +275,15 @@
     </ClCompile>
     <ClCompile Include="SceneMain.cpp">
       <Filter>ソース ファイル\Scene\メイン</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjClub.cpp">
+      <Filter>ソース ファイル\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjYami.cpp">
+      <Filter>ソース ファイル\暗闇</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjSummary.cpp">
+      <Filter>ソース ファイル\Scene\あらすじ</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -386,17 +398,11 @@
     <ClInclude Include="Inventory.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="ObjClub.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="ObjMonke.h">
       <Filter>ソース ファイル\Character\おとも</Filter>
     </ClInclude>
     <ClInclude Include="ObjPheasant.h">
       <Filter>ソース ファイル\Character\おとも</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjYami.h">
-      <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="ObjSilverBullion.h">
       <Filter>ソース ファイル\Item</Filter>
@@ -457,6 +463,15 @@
     </ClInclude>
     <ClInclude Include="Objstair.h">
       <Filter>ソース ファイル\Map\floor1</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjSummary.h">
+      <Filter>ソース ファイル\Scene\あらすじ</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjClub.h">
+      <Filter>ソース ファイル\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjYami.h">
+      <Filter>ソース ファイル\暗闇</Filter>
     </ClInclude>
     <ClInclude Include="ObjSummary.h">
       <Filter>ソース ファイル\Scene\あらすじ</Filter>

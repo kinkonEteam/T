@@ -31,7 +31,6 @@ void CObjSummary::Action()
 	{
 		if (m_key_f == true)
 		{
-
 			Scene::SetScene(new CScenefloor1());
 			m_key_f = false;
 		}

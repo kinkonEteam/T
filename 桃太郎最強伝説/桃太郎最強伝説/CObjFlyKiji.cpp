@@ -30,8 +30,6 @@ void CObjFlyKiji::Init()
 	m_s = 1;			//アニメーション緩急*/
 	m_f = false;
 
-
-
 	Hits::SetHitBox(this, m_x, m_y, 50, 50, ELEMENT_MAGIC, OBJ_FLYKIJI, 1);
 }
 
@@ -72,7 +70,7 @@ void CObjFlyKiji::Action()
 
 	
 	m_ani_time += 1;			//削除されるまで常に足し続ける
-	if (m_ani_time > 5)		//アニメーション動作間隔(※ここでアニメーション速度変更出来る)
+	if (m_ani_time > 2)		//アニメーション動作間隔(※ここでアニメーション速度変更出来る)
 	{
 		m_ani_frame += 1;
 		m_ani_time = 0;
@@ -135,13 +133,20 @@ void CObjFlyKiji::Draw()
 	//描画
 	Draw::Draw(2, &src, &dst, c, 0.0f);
 
+	float w[4] = { 1.0f,1.0f,1.0f,0.5f, };
 	//切り取り位置の設定　エフェクト用
-	src.m_top = aniData[m_ani_frame]*240.0f;//上*注意：右のfは0にしないことした場合、何をかけても０になる
-	src.m_left = 0.0f;//左
-	src.m_right = 240.0f;//右
-	src.m_bottom = 240 + aniData[m_ani_frame] * 240.0f;//下*説明：一番左の数字は最初の画像の最大の幅でそれをかけて違う数値にする
+	src.m_top = aniData[m_ani_frame]*100.0f;
+	src.m_left = 115.0f - (115.0f * m_px*m_px);
+	src.m_right = 230.0f - (115.0f * m_px*m_px);
+	src.m_bottom = 100+aniData[m_ani_frame]*100.0f;
 
-	Draw::Draw(11, &src, &dst, c, 0.0f);
+    //表示 Heroと同じ位置に向き方向に50.0fずらして、
+	dst.m_top = (0.0f + m_y)  + (50.0f * (m_py + m_py * m_py) / 2);
+	dst.m_left =  (50.0f + m_x) - (50.0f * (m_px + m_px * m_px) / 2);
+	dst.m_right = (0.0f + m_x) + (50.0f * (m_px + m_px * m_px) / 2);
+	dst.m_bottom = (50.0f + m_y)  - (50.0f * (m_py + m_py * m_py) / 2);
+
+	Draw::Draw(11, &src, &dst, w, 0.0f);
 
 
 
