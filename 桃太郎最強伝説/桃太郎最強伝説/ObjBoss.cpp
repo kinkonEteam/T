@@ -11,8 +11,8 @@ using namespace GameL;
 
 CObjBoss::CObjBoss(float x, float y)
 {
-	m_px = x;	//位置
-	m_py = y;
+	m_x = x;	//位置
+	m_y = y;
 }
 
 //イニシャライズ
@@ -28,7 +28,7 @@ void CObjBoss::Init()
 	m_ani_frame = 1;	//静止フレームを初期にする
 
 	m_speed_power = 0.5f;//通常速度
-	m_ani_max_time = 10;	//アニメーション間隔幅
+	m_ani_max_time = 12;	//アニメーション間隔幅
 
 	m_movex = true;	//true=右　false=左
 	m_movey = true; //true=背面　false=正面
@@ -47,7 +47,7 @@ void CObjBoss::Init()
 	m_hit_right = false;
 
 	//当たり判定用のHitBoxを作成
-	Hits::SetHitBox(this, m_px, m_py, 64, 64, ELEMENT_ENEMY, OBJ_BOSS, 1);
+	Hits::SetHitBox(this, m_x, m_y, 64, 64, ELEMENT_ENEMY, OBJ_BOSS, 1);
 }
 
 //アクション
@@ -60,50 +60,6 @@ void CObjBoss::Action()
 
 	m_vx = 0;
 	m_vy = 0;
-
-	//ブロック衝突で向き変更
-	if (m_hit_up == true)
-	{
-		m_movey = true;
-	}
-	if (m_hit_down == true)
-	{
-		m_movey = false;
-	}
-	if (m_hit_left == true)
-	{
-		m_movex = false;
-	}
-	if (m_hit_right == true)
-	{
-		m_movex = true;
-	}
-
-	//方向
-	if (m_movey == true)
-	{
-		m_vy = m_speed_power;
-		m_posture = 0.0f;
-		m_ani_time += 1;
-	}
-	else if (m_movey == false)
-	{
-		m_vy = -m_speed_power;
-		m_posture = 3.0f;
-		m_ani_time += 1;
-	}
-	else if (m_movex == true)
-	{
-		m_vx = m_speed_power;
-		m_posture = 1.0f;
-		m_ani_time += 1;
-	}
-	else if (m_movex == false)
-	{
-		m_vx = -m_speed_power;
-		m_posture = 2.0f;
-		m_ani_time += 1;
-	}
 
 	if (m_ani_time > m_ani_max_time)
 	{
@@ -122,7 +78,7 @@ void CObjBoss::Action()
 	if (m_firetime % 200 == 0)
 	{
 		//誘導弾作成
-		CObjHomingfire* obj_homing_fire = new CObjHomingfire(m_px, m_py);
+		CObjHomingfire* obj_homing_fire = new CObjHomingfire(m_x, m_y);
 		Objs::InsertObj(obj_homing_fire, OBJ_HOMING_FIRE, 10);
 	}
 
@@ -141,14 +97,72 @@ void CObjBoss::Action()
 
 	//ブロックタイプ検知用の変数がないためのダミー
 	int d;
-	//ブロックとの当たり判定
+
 	CObjMap5*map5 = (CObjMap5*)Objs::GetObj(OBJ_MAP5);
 
+	//主人公の位置を取得
+	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
+	float hx = hero->GetX();
+	float hy = hero->GetY();
 
+	//BOSS追従
+	//主人公機が存在する場合、誘導角度の計算する
+	if (hero != nullptr)
+	{
+		float x = 400 - (m_x + map5->GetScrollx());
+		float y = 300 - (m_y + map5->GetScrolly());
+		float ar = GetAtan2Angle(x, y);
+
+		//BOSSの現在の向いている角度を取る
+		float br = GetAtan2Angle(m_vx, m_vy);
+
+		if (ar < 0)
+		{
+			ar = 360 + ar;
+		}
+
+		//角度で上下左右を判定
+		if ((ar < 45 && ar>0) || ar > 315)
+		{
+			//右
+			m_vx += m_speed_power;
+			m_posture = 2.0f;
+			m_ani_time += 1;
+		}
+
+		if (ar > 45 && ar < 135)
+		{
+			//上
+			m_vy += m_speed_power;
+			m_posture = 0.0f;
+			m_ani_time += 1;
+		}
+		if (ar > 135 && ar < 225)
+		{
+			//左
+			m_vy -= m_speed_power;
+			m_posture = 1.0f;
+			m_ani_time += 1;
+		}
+		if (ar > 225 && ar < 315)
+		{
+			//下
+			m_vy -= m_speed_power;
+			m_posture = 3.0f;
+			m_ani_time += 1;
+
+		}
+
+		//主人公機とBOSS角度があんまりにもかけ離れたら
+		m_vx = cos(3.14 / 180 * ar);
+		m_vy = sin(3.14 / 180 * ar);
+
+		UnitVec(&m_vx, &m_vy);
+	}
 
 	//HitBoxの内容を更新
 	CHitBox*hit = Hits::GetHitBox(this);
-	hit->SetPos(m_px + map5->GetScrollx(), m_py + map5->GetScrolly());
+	hit->SetPos(m_x + map5->GetScrollx(), m_y + map5->GetScrolly());
 
 	//ELEMENT_MAGICを持つオブジェクトと接触したら
 	if (hit->CheckElementHit(ELEMENT_MAGIC) == true)
@@ -188,8 +202,8 @@ void CObjBoss::Action()
 	}
 
 	//位置の更新
-	m_px += m_vx;
-	m_py += m_vy;
+	m_x += m_vx;
+	m_y += m_vy;
 
 	if (m_f == true)
 	{
@@ -208,21 +222,14 @@ void CObjBoss::Action()
 		m_time = 70;
 	}
 
-	map5->Map5Hit(&m_px, &m_py, false,
+	//ブロックとの当たり判定
+	map5->Map5Hit(&m_x, &m_y, false,
 		&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
 		&d
 	);
 
-	//主人公の攻撃が接触しているかどうか確認
-	//if (hit->CheckObjNameHit(OBJ_BULLET) != nullptr)
-	//{
-	//	this->SetStatus(false);
-	//	Hits::DeleteHitBox(this);
-	//}
-
 	//通常速度
 	m_speed_power = 0.5f;
-	m_ani_max_time = 4;
 
 	//HPが0になったら破棄
 	if (m_hp <= 0)
@@ -256,10 +263,22 @@ void CObjBoss::Draw()
 	src.m_bottom = src.m_top + 48.0f;
 
 	//表示位置の設定
-	dst.m_top = 0.0f + m_py + map5->GetScrolly();
-	dst.m_left = 0.0f + m_px + map5->GetScrollx();
-	dst.m_right = 64.0f + m_px + map5->GetScrollx();
-	dst.m_bottom = 64.0f + m_py + map5->GetScrolly();
+	dst.m_top = 0.0f + m_y + map5->GetScrolly();
+	dst.m_left = 0.0f + m_x + map5->GetScrollx();
+	dst.m_right = 64.0f + m_x + map5->GetScrollx();
+	dst.m_bottom = 64.0f + m_y + map5->GetScrolly();
+
+	float r = 0.0f;
+	//主人公機とBOSSで角度を取る
+	CObjHero* obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
+	//主人公機が存在する場合、誘導角度の計算する
+	if (obj != nullptr)
+	{
+		float x = 375 - dst.m_top;
+		float y = 275 - dst.m_left;
+		r = GetAtan2Angle(x, y) + 30;
+
+	}
 
 	//描画
 	Draw::Draw(9, &src, &dst, c, 0.0f);

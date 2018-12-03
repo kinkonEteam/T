@@ -52,6 +52,10 @@ void CObjHero::Init()
 	m_Sf = true;			//攻撃制御
 	m_key_f = false;		//無敵時間行動制御
 
+	df = true;
+	mf = true;
+	pf = true;
+
 	//HitBox作成座標とサイズx,y、エレメントとオブジェクトを設定
 	Hits::SetHitBox(this, m_px+5, m_py+3, 40, 47, ELEMENT_PLAYER, OBJ_HERO, 1);
 
@@ -74,10 +78,14 @@ void CObjHero::Action()
 	m_vx = 0.0f;
 	m_vy = 0.0f;
 
+	//HitBoxの内容を更新
+	CHitBox*hit = Hits::GetHitBox(this);
+	hit->SetPos(m_px + 5, m_py + 3);//HitBox主人公座標 + 位置調整
+
 	//通常攻撃処理---------------------------------------------------------------------
 	if (m_key_f==false)
 	{
-		if (Input::GetVKey('A') == true)//Aキー入力時
+		if (Input::GetVKey('A') == true && hit->CheckElementHit(ELEMENT_RED)==false )//Aキー入力時かつおともに当たっていないとき
 		{
 			if (m_Sf == true){//m_fがtrueの場合
 				//近距離攻撃音を鳴らす
@@ -95,7 +103,7 @@ void CObjHero::Action()
 		//キジ攻撃処理------------------------------------------------------------------
 		//キジの情報を取得
 		CObjFlyKiji* obj = (CObjFlyKiji*)Objs::GetObj(OBJ_FLYKIJI);
-		if (Input::GetVKey('S') == true)//Sキー入力時
+		if (Input::GetVKey('S') == true && hit->CheckElementHit(ELEMENT_RED) == false)//Sキー入力時かつおともに当たっていないとき
 		{
 			if (m_Kf == false) {
 				if (obj == nullptr)//キジ情報が無い場合
@@ -202,11 +210,6 @@ void CObjHero::Action()
 			);
 		}
 
-
-	//HitBoxの内容を更新
-	CHitBox*hit = Hits::GetHitBox(this);
-	hit->SetPos(m_px+5, m_py+3);//HitBox主人公座標 + 位置調整
-
 	//ELEMENT_ENEMYを持つオブジェクトと接触したら
 	if (hit->CheckElementHit(ELEMENT_ENEMY) == true)
 		{
@@ -300,13 +303,46 @@ void CObjHero::Action()
 								//m_py *= 0.8;
 		}
 
-		if (hit->CheckElementHit(ELEMENT_FIELD) == true)
+		//おともイベント
+		if (hit->CheckElementHit(ELEMENT_RED) == true)
+		{
+			if (Input::GetVKey('A') == true )//Aキー入力時
+			{
+				if (hit->CheckObjNameHit(OBJ_DOG) && df ==true)
+				{
+					//犬イベント発生
+					CObjEveDog* dog = new CObjEveDog();//オブジェクト作成
+					Objs::InsertObj(dog, OBJ_EVEDOG, 10);//マネージャに登録
+
+					df = false;
+				}
+				else if (hit->CheckObjNameHit(OBJ_MONKE) && mf == true)
+				{
+					//猿イベント発生
+					CObjEveMnky* monky = new CObjEveMnky();//オブジェクト作成
+					Objs::InsertObj(monky, OBJ_EVEMNKY, 10);//マネージャに登録
+
+					mf = false;
+				}
+				else if (hit->CheckObjNameHit(OBJ_PHEASANT) && pf == true)
+				{
+					//雉イベント発生
+					CObjEveKiji* dog = new CObjEveKiji();//オブジェクト作成
+					Objs::InsertObj(dog, OBJ_EVEKIJI, 10);//マネージャに登録
+
+					pf = false;
+				}
+			}
+		}
+
+		if (hit->CheckElementHit(ELEMENT_FIELD) == true && Input::GetVKey('A') == true)
 		{
 			//階段SEを鳴らす
 			Audio::Start(10);
 			//遅延
 			Sleep(1000);
 		}
+
 
 	//HPが0になったら破棄
 	if (m_hp <= 0)

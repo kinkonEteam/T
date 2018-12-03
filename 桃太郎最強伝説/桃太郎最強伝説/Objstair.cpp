@@ -53,15 +53,15 @@ void CObjstair::Action()
 
 	if (hit->CheckObjNameHit(OBJ_HERO) != nullptr)
 	{
-		if (m_c == 1)
+		if (m_c == 1 && Input::GetVKey('A') == true)
 			Scene::SetScene(new CScenefloor2());
-		else if (m_c == 2)
+		else if (m_c == 2 && Input::GetVKey('A') == true)
 			Scene::SetScene(new CScenefloor3());
-		else if(m_c == 3)
+		else if(m_c == 3 && Input::GetVKey('A') == true)
 			Scene::SetScene(new CScenefloor4());
-		else if(m_c == 4)
+		else if(m_c == 4 && Input::GetVKey('A') == true)
 			Scene::SetScene(new CScenefloor5());
-		else if(m_c ==5)
+		else if(m_c ==5 && Input::GetVKey('A') == true)
 			Scene::SetScene(new CSceneClear());
 	}
 }
@@ -99,6 +99,7 @@ void CObjstair::Draw()
 	}
 	if (map2 != nullptr)
 	{	
+		float c[4] = { 1.0f,0.5f,1.0f,1.0f, };
 		dst.m_top = 0.0f + m_py + map2->GetScrolly();
 		dst.m_left = 0.0f + m_px + map2->GetScrollx();
 		dst.m_right = 50.0f + m_px + map2->GetScrollx();
@@ -106,6 +107,7 @@ void CObjstair::Draw()
 	}
 	if (map3 != nullptr)
 	{
+		float c[4] = { 1.0f,1.0f,0.5f,1.0f, };
 		dst.m_top = 0.0f + m_py + map3->GetScrolly();
 		dst.m_left = 0.0f + m_px + map3->GetScrollx();
 		dst.m_right = 50.0f + m_px + map3->GetScrollx();
@@ -113,6 +115,7 @@ void CObjstair::Draw()
 	}
 	if (map4 != nullptr)
 	{
+		float c[4] = { 0.5f,0.5f,1.0f,1.0f, };
 		dst.m_top = 0.0f + m_py + map4->GetScrolly();
 		dst.m_left = 0.0f + m_px + map4->GetScrollx();
 		dst.m_right = 50.0f + m_px + map4->GetScrollx();
@@ -120,6 +123,7 @@ void CObjstair::Draw()
 	}
 	if (map5 != nullptr)
 	{
+		float c[4] = { 1.0f,0.5f,1.0f,1.0f, };
 		dst.m_top = 0.0f + m_py + map5->GetScrolly();
 		dst.m_left = 0.0f + m_px + map5->GetScrollx();
 		dst.m_right = 50.0f + m_px + map5->GetScrollx();

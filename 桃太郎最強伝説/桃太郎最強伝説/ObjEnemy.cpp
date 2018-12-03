@@ -89,55 +89,6 @@ void CObjEnemy::Action()
 		m_ani_frame = 0;
 	}
 
-/*	//主人公の位置を取得
-	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
-	float hx = hero->GetX();
-	float hy = hero->GetY();
-
-	//追尾方向の判定
-	CObjHero*obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
-	float x = obj->GetX() - m_px;
-	float y = obj->GetY() - m_py;
-
-	float ar = atan2(y, x)*180.0f / 3.14;
-
-	if (ar < 0)
-	{
-		ar = 360 + ar;
-	}
-
-	//角度で上下左右を判定
-	if ((ar < 45 && ar>0) || ar > 315)
-	{
-		//右
-		m_vx += m_speed_power;
-		m_posture = 2.0f;
-		m_ani_time += 1;
-	}
-
-	if (ar > 45 && ar < 135)
-	{
-		//上
-		m_vy += m_speed_power;
-		m_posture = 0.0f;
-		m_ani_time += 1;
-	}
-	if (ar > 135 && ar < 225)
-	{
-		//左
-		m_vy -= m_speed_power;
-		m_posture = 1.0f;
-		m_ani_time += 1;
-	}
-	if (ar > 225 && ar < 315)
-	{
-		//下
-		m_vy -= m_speed_power;
-		m_posture = 3.0f;
-		m_ani_time += 1;
-
-	}*/
-
 	//ブロックタイプ検知用の変数がないためのダミー
 	int d;
 	//ブロックとの当たり判定
