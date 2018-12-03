@@ -20,10 +20,9 @@ using namespace GameL;
 //初期化ソメッド
 void CSceneSummary::InitScene()
 {
-	Audio::LoadAudio(0, L"あらす時.wav", BACK_MUSIC);		//ダンジョン用BGM
+	//あらすじ用BGM
+	Audio::LoadAudio(0, L"あらす時.wav", BACK_MUSIC);		
 
-	//音量を0.9下げる
-	float Volume = Audio::VolumeMaster(0.1f);
 	//音楽スタート
 	Audio::Start(0);
 
