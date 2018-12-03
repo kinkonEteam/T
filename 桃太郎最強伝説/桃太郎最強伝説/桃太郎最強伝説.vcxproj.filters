@@ -198,6 +198,9 @@
     <ClCompile Include="ObjClub.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="SceneMain.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
     <ClCompile Include="CObjEveDog.cpp">
       <Filter>ソース ファイル\Events\Dog</Filter>
     </ClCompile>
@@ -270,6 +273,9 @@
     <ClCompile Include="SceneSummary.cpp">
       <Filter>ソース ファイル\Scene\あらすじ</Filter>
     </ClCompile>
+    <ClCompile Include="Objstair.cpp">
+      <Filter>ソース ファイル\Map\floor1</Filter>
+    </ClCompile>
     <ClCompile Include="ObjSummary.cpp">
       <Filter>ソース ファイル\Scene\あらすじ</Filter>
     </ClCompile>
@@ -282,20 +288,14 @@
     <ClCompile Include="ObjSummary.cpp">
       <Filter>ソース ファイル\Scene\あらすじ</Filter>
     </ClCompile>
-    <ClCompile Include="SceneMain.cpp">
-      <Filter>ソース ファイル\Scene\メイン</Filter>
-    </ClCompile>
-    <ClCompile Include="Objstair.cpp">
-      <Filter>ソース ファイル\Map</Filter>
-    </ClCompile>
     <ClCompile Include="SceneSell.cpp">
       <Filter>ソース ファイル\Scene\換金</Filter>
     </ClCompile>
-    <ClCompile Include="SceneKeyUse.cpp">
-      <Filter>ソース ファイル\Scene\操作説明</Filter>
-    </ClCompile>
     <ClCompile Include="ObjCapture.cpp">
       <Filter>ソース ファイル\暗闇</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjKeyUse.cpp">
+      <Filter>ソース ファイル\Scene\操作説明</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -473,6 +473,9 @@
     <ClInclude Include="SceneSummary.h">
       <Filter>ソース ファイル\Scene\あらすじ</Filter>
     </ClInclude>
+    <ClInclude Include="Objstair.h">
+      <Filter>ソース ファイル\Map\floor1</Filter>
+    </ClInclude>
     <ClInclude Include="ObjSummary.h">
       <Filter>ソース ファイル\Scene\あらすじ</Filter>
     </ClInclude>
@@ -482,17 +485,14 @@
     <ClInclude Include="ObjSummary.h">
       <Filter>ソース ファイル\Scene\あらすじ</Filter>
     </ClInclude>
-    <ClInclude Include="Objstair.h">
-      <Filter>ソース ファイル\Map</Filter>
-    </ClInclude>
     <ClInclude Include="SceneSell.h">
       <Filter>ソース ファイル\Scene\換金</Filter>
     </ClInclude>
-    <ClInclude Include="SceneKeyUse.h">
-      <Filter>ソース ファイル\Scene\操作説明</Filter>
-    </ClInclude>
     <ClInclude Include="ObjCapture.h">
       <Filter>ソース ファイル\暗闇</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjKeyUse.h">
+      <Filter>ソース ファイル\Scene\操作説明</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

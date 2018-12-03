@@ -118,6 +118,10 @@ void CScenefloor1::InitScene()
 	CObjHeroGauge* objg = new CObjHeroGauge();
 	Objs::InsertObj(objg, OBJ_HEROGAUGE, 20);
 
+	//操作説明作成
+	ObjKeyUse* K = new ObjKeyUse();
+	Objs::InsertObj(K, OBJ_KEYUSE, 20);
+
 }
 
 //実行中メソッド

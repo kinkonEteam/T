@@ -63,6 +63,9 @@ void CObjstair::Action()
 			Scene::SetScene(new CScenefloor5());
 		else if(m_c ==5)
 			Scene::SetScene(new CSceneClear());
+
+		CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);//主人公データ取得
+		hero->SaveDATA();//主人公のデータをセーブ
 	}
 }
 //ドロー

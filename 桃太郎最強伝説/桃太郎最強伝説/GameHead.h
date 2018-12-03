@@ -40,6 +40,7 @@ enum OBJ_NAME
 					OBJ_HEROGAUGE,
 					OBJ_CAPTURE,			//‰æ–Ê‘S‘Ì‚É‰æ‘œ‚ð•\Ž¦
 					OBJ_STAIR,
+					OBJ_KEYUSE,
 
 };
 //------------------------------------------------
@@ -122,6 +123,7 @@ enum ITEM
 #include "ObjHeroGauge.h"
 #include"ObjCapture.h"
 #include"Objstair.h"
+#include"ObjKeyUse.h"
 
 
 //------------------------------------------------

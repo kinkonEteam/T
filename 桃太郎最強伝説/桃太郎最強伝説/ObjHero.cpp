@@ -14,9 +14,13 @@ using namespace GameL;
 //Date.cpp内で宣言したグローバル変数をextern宣言----------------------保持データ
 extern int HP;				//HP
 extern bool OTOMO[3];		//お供所持情報
-void CObjHero::SAVE() {		//セーブ関数の定義----------------------データをセーブ
+void CObjHero::SaveDATA() {		//セーブ関数の定義----------------------データをセーブ
 	//シーン切り替え時のhpデータを、HPへ格納
 	HP = m_hp;
+}
+void CObjHero::SetDATA() {		//セーブ関数の定義----------------------データをセット
+								//シーン切り替え時のhpデータを、HPへ格納
+	HP = 5;
 }
 
 CObjHero::CObjHero(float x, float y)
@@ -308,9 +312,12 @@ void CObjHero::Action()
 			Sleep(1000);
 		}
 
-	//HPが0になったら破棄
+	//HPが0になったら破棄------死亡判定----------------------------------------------------------------
 	if (m_hp <= 0)
 	{
+		CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);//主人公データ取得
+		hero->SetDATA();//主人公のデータを初期化
+
 		this->SetStatus(false);	//自身に削除命令を出す
 		Hits::DeleteHitBox(this);//主人公が所有するHitBoxを削除する。
 
