@@ -107,9 +107,9 @@ void CScenefloor2::InitScene()
 	CObjMap2* objb = new CObjMap2(map);
 	Objs::InsertObj(objb, OBJ_MAP1, 1);
 
-	//暗闇作成
-	ObjYami* Y = new ObjYami(2);
-	Objs::InsertObj(Y, OBJ_YAMI, 3);
+	//暗闇作成				//暗闇画像番号
+	ObjCapture* Y = new ObjCapture(15);
+	Objs::InsertObj(Y, OBJ_CAPTURE, 3);
 
 	//主人公体力ゲージオブジェクト作成
 	CObjHeroGauge* objg = new CObjHeroGauge();

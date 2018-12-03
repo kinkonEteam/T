@@ -13,30 +13,30 @@
 using namespace GameL;
 
 //使用ヘッダー
-#include "SceneSell.h"
+#include "SceneKeyUse.h"
 #include "GameHead.h"
 
 
 //コンストラクタ
-CSceneSell::CSceneSell()
+SceneKeyUse::SceneKeyUse()
 {
 
 }
 
 //デストラクタ
-CSceneSell::~CSceneSell()
+SceneKeyUse::~SceneKeyUse()
 {
 
 }
 
 //ゲームメイン初期化メソッド
-void CSceneSell::InitScene()
+void SceneKeyUse::InitScene()
 {
 
 }
 
 //ゲームメイン実行中メソッド
-void CSceneSell::Scene()
+void SceneKeyUse::Scene()
 {
 
 }

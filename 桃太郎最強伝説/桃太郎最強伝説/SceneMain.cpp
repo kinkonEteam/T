@@ -146,9 +146,9 @@ void CSceneMain::InitScene()
 	Objs::InsertObj(eve, OBJ_TALK, 3);*/
 
 
-	//暗闇作成
-	ObjYami* Y = new ObjYami(2);
-	Objs::InsertObj(Y, OBJ_YAMI, 3);
+	//暗闇作成				//暗闇画像番号
+	ObjCapture* Y = new ObjCapture(15);
+	Objs::InsertObj(Y, OBJ_CAPTURE, 3);
 
 
 /*	//青鬼オブジェクト作成

@@ -15,6 +15,7 @@ using namespace GameL;
 extern int HP;				//HP
 extern bool OTOMO[3];		//お供所持情報
 void CObjHero::SAVE() {		//セーブ関数の定義----------------------データをセーブ
+	//シーン切り替え時のhpデータを、HPへ格納
 	HP = m_hp;
 }
 
@@ -27,9 +28,11 @@ CObjHero::CObjHero(float x, float y)
 //イニシャライズ
 void CObjHero::Init()
 {
-	m_vx = 0.0f;		//初期移動ベクトル
+	m_vx = 0.0f;		//移動ベクトル
 	m_vy = 0.0f;
 	m_hp_max = 5;		//初期最大HP
+
+	bool m_otm[3];
 
 	//OTOMO[0犬,1キジ,2猿] == true(ある) or false(ない)
 	if (OTOMO[0] == true)		//犬が居る場合
@@ -150,7 +153,7 @@ void CObjHero::Action()
 	if (m_ani_frame == 4)	//フレームが4の場合
 		m_ani_frame = 0;	//フレームに0を代入
 
-	//移動ベクトルの正規化
+	//移動ベクトルの正規化	斜め移動しない為不要
 	//UnitVec(&m_vy, &m_vx);
 
 	//スクロール
@@ -202,17 +205,16 @@ void CObjHero::Action()
 
 	//HitBoxの内容を更新
 	CHitBox*hit = Hits::GetHitBox(this);
-	hit->SetPos(m_px+5, m_py+3);
+	hit->SetPos(m_px+5, m_py+3);//HitBox主人公座標 + 位置調整
 
 	//ELEMENT_ENEMYを持つオブジェクトと接触したら
 	if (hit->CheckElementHit(ELEMENT_ENEMY) == true)
 		{
-			//主人公が敵とどの角度で当たっているかを確認
-			HIT_DATA**hit_data;							//当たった時の細かな情報を入れるための構造体
+			HIT_DATA**hit_data;		//Hit時データ型、hit_dataを宣言
 			hit_data = hit->SearchElementHit(ELEMENT_ENEMY);//hit_dataに主人公と当たっている他全てのHitBoxとの情報を入れる
 
-			for (int i = 0; i < hit->GetCount(); i++)
-			{
+			for (int i = 0; i < hit->GetCount(); i++)//同時に複数のHitBoxに当たった場合、
+			{										 //当たった数だけ処理させる為のループ
 				//敵の左右に当たったら
 				if (hit_data[i] == nullptr)
 					continue;
