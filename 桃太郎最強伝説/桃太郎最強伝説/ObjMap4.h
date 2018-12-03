@@ -44,9 +44,6 @@ private:
 	float m_scrollx;		//左右スクロール用
 	float m_scrolly;	//上下スクロール用
 
-	float Dot(float ax, float ay, float bx, float by);	//内積
-	float Cross(float ax, float ay, float bx, float by);//外積
-
 	void setstair();//階段出現用関数
 	void sethero();//主人公出現用関数
 	void setenemy();//敵出現用関数

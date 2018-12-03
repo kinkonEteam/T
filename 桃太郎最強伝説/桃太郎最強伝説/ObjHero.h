@@ -60,6 +60,10 @@ class CObjHero :public CObj
 		bool m_hit_left;
 		bool m_hit_right;
 
+		bool df;//犬イベントフラグ管理用
+		bool mf;//猿イベントフラグ管理用
+		bool pf;//雉イベントフラグ管理用
+
 		//踏んでいるblockの種類を確認用
 		int m_block_type;
 

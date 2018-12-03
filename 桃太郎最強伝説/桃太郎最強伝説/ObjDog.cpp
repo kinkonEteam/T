@@ -48,6 +48,7 @@ void CObjDog::Action()
 		hit->SetPos(m_px + map4->GetScrollx(), m_py + map4->GetScrolly());
 	if (map5 != nullptr)
 		hit->SetPos(m_px + map5->GetScrollx(), m_py + map5->GetScrolly());
+
 }
 
 void CObjDog::Draw()

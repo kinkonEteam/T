@@ -4,6 +4,7 @@
 #include "GameL\SceneManager.h"
 #include "GameL\DrawFont.h"
 #include "GameL\HitBoxManager.h"
+#include"GameL\UserData.h"
 
 #include <stdlib.h>
 #include <time.h>
@@ -63,6 +64,7 @@ void CObjPlum::Action()
 		this->SetStatus(false);//自身に削除命令を出す
 		Hits::DeleteHitBox(this);//アイテムが所有するHitBoxを削除する
 
+		((UserData*)Save::GetData())->m_point += 1;
 	}
 }
 

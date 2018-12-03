@@ -2,6 +2,7 @@
 #include"GameL\DrawFont.h"
 #include"GameL\WinInputs.h"
 #include"GameL\SceneObjManager.h"
+#include"GameL\UserData.h"
 
 #include"GameHead.h"
 #include"ObjTitle.h"
@@ -12,6 +13,9 @@ using namespace GameL;
 //イニシャライズ
 void CObjTitle::Init()
 {
+	//得点の初期化
+	((UserData*)Save::GetData())->m_point = 0;
+
 	m_key_flag = false;
 }
 //アクション

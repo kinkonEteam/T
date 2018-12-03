@@ -27,6 +27,8 @@ enum OBJ_NAME
 					OBJ_CLEAR,
 					OBJ_TALK,
 					OBJ_EVEDOG,
+					OBJ_EVEMNKY,
+					OBJ_EVEKIJI,
 					OBJ_BULLET,
 					OBJ_HOMING_FIRE,
 					OBJ_SUMMARY,
@@ -69,7 +71,7 @@ enum HIT_ELEMENTS
 struct UserData
 {
 	int mSeveData;	//サンプルセーブデータ
-
+	int m_point;//スコア用変数
 };
 //------------------------------------------------
 
@@ -118,6 +120,8 @@ enum ITEM
 #include"ObjClear.h"
 #include "ObjTalk.h"
 #include "CObjEveDog.h"
+#include "CObjEveKiji.h"
+#include "CObjEveMnky.h"
 #include"CObjhomingfire.h"
 #include"ObjSummary.h"
 #include "ObjHeroGauge.h"
@@ -146,5 +150,5 @@ enum ITEM
 
 //シーンスタートクラス---------------------------
 //ゲーム開始時のシーンクラス登録
-#define SET_GAME_START  CSceneTitle
+#define SET_GAME_START  CScenefloor2
 //-----------------------------------------------
