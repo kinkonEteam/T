@@ -2,6 +2,8 @@
 #include"GameL\DrawFont.h"
 #include"GameL\WinInputs.h"
 #include"GameL\SceneManager.h"
+/*#include"GameL\UserData.h" 
+#include "GameL\DrawFont.h"*/
 
 #include"GameHead.h"
 #include"ObjGameOver.h"
@@ -62,5 +64,11 @@ void CObjGameOver::Draw()
 	//描画
 	Draw::Draw(18, &src, &dst, c, 0.0f);
 	Font::StrDraw(L"GAME OVER", 300, 250, 64, c);
+
+	//スコアの描画
+	/*float se[4] = { 1.0f,1.0f,1.0f,1.0f };
+	wchar_t str[128];
+	swprintf_s(str, L"Score:%d", ((UserData*)Save::GetData())->m_point);//スコアをとって？
+	Font::StrDraw(str, 630, 10, 20, se); //こちらで画面に描画する位置や文字のサイズを変える*/
 
 }

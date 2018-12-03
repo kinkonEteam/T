@@ -3,6 +3,7 @@
 #include"GameL\WinInputs.h"
 #include"GameL\SceneManager.h"
 #include"GameL\HitBoxManager.h"
+#include"GameL\UserData.h" 
 
 #include"GameHead.h"
 #include"ObjEnemy2.h"
@@ -156,6 +157,8 @@ void CObjEnemy2::Action()
 	{
 		this->SetStatus(false);	//自身に削除命令を出す
 		Hits::DeleteHitBox(this);//主人公が所有するHitBoxを削除する。
+
+		//((UserData*)Save::GetData())->m_point += 100;
 	}
 }
 
