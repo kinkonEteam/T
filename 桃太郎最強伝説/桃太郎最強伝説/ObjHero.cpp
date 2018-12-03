@@ -35,17 +35,21 @@ void CObjHero::Init()
 	m_vx = 0.0f;		//移動ベクトル
 	m_vy = 0.0f;
 	m_hp_max = 5;		//初期最大HP
+	m_speed = 1.0f;			//速度
 
 	bool m_otm[3];
+	m_Sf = true;			//ソード制御
+	m_Kf = true;			//  キジ制御
 
 	//OTOMO[0犬,1キジ,2猿] == true(ある) or false(ない)
 	if (OTOMO[0] == true)		//犬が居る場合
 		m_hp_max += 1;			//最大HPに1加算
 	if (OTOMO[1] == true)		//キジが居る場合
 		m_Kf = false;			//制御を解除
-	else { m_Kf = true; }		//居ないなら制御
+	if (OTOMO[2] == true)		//猿が居る場合
+		m_speed = 1.5;			//速度
 
-	m_hp = HP;				//メンバhpに初期HPを代入
+	m_hp = HP;				//メンバhpにHPを代入
 	m_time = 70;
 	alpha = 1.0f;
 	count = 10;
@@ -53,7 +57,6 @@ void CObjHero::Init()
 	m_posture = 0;	//正面(0) 左(1) 右(2) 背面(3)
 	m_ani_time = 0;
 	m_ani_frame = 1;	//静止フレーム
-	m_Sf = true;			//攻撃制御
 	m_key_f = false;		//無敵時間行動制御
 
 	df = true;
@@ -126,25 +129,25 @@ void CObjHero::Action()
 		//主人公移動キー入力判定--------------------------------------------------------
 		if (Input::GetVKey(VK_RIGHT) == true)//→
 		{
-			m_vx += 1.0f;					//移動ベクトル加算
+			m_vx += m_speed;				//移動ベクトル加算(初期値1,お供バフ1.5)
 			m_posture = 2;					//向き情報代入
 			m_ani_time += 1;				//アニメーション時間加算
 		}
 		else if (Input::GetVKey(VK_UP) == true)	//↑
 		{
-			m_vy -= 1.0f;
+			m_vy -= m_speed;
 			m_posture = 3;
 			m_ani_time += 1;
 		}
 		else if (Input::GetVKey(VK_DOWN) == true)//↓
 		{
-			m_vy += 1.0f;
+			m_vy += m_speed;
 			m_posture = 0;
 			m_ani_time += 1;
 		}
 		else if (Input::GetVKey(VK_LEFT) == true)//←
 		{
-			m_vx -= 1.0f;
+			m_vx -= m_speed;
 			m_posture = 1;
 			m_ani_time += 1;
 		}
@@ -312,29 +315,39 @@ void CObjHero::Action()
 		{
 			if (Input::GetVKey('A') == true )//Aキー入力時
 			{
-				if (hit->CheckObjNameHit(OBJ_DOG) && df ==true)
+				if (hit->CheckObjNameHit(OBJ_DOG) && df ==true)//犬に当たった場合
 				{
 					//犬イベント発生
 					CObjEveDog* dog = new CObjEveDog();//オブジェクト作成
 					Objs::InsertObj(dog, OBJ_EVEDOG, 10);//マネージャに登録
 
 					df = false;
+
+					m_hp_max += 1;
+					m_hp += 1;
+					OTOMO[0] = true;
 				}
-				else if (hit->CheckObjNameHit(OBJ_MONKE) && mf == true)
+				else if (hit->CheckObjNameHit(OBJ_MONKE) && mf == true)//猿に当たった場合
 				{
 					//猿イベント発生
 					CObjEveMnky* monky = new CObjEveMnky();//オブジェクト作成
 					Objs::InsertObj(monky, OBJ_EVEMNKY, 10);//マネージャに登録
 
 					mf = false;
+
+					m_speed += 1;
+					OTOMO[1] = true;
 				}
-				else if (hit->CheckObjNameHit(OBJ_PHEASANT) && pf == true)
+				else if (hit->CheckObjNameHit(OBJ_PHEASANT) && pf == true)//キジに当たった場合
 				{
 					//雉イベント発生
 					CObjEveKiji* dog = new CObjEveKiji();//オブジェクト作成
 					Objs::InsertObj(dog, OBJ_EVEKIJI, 10);//マネージャに登録
 
 					pf = false;
+
+					m_Kf = false;
+					OTOMO[2] = true;
 				}
 			}
 		}

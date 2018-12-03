@@ -35,6 +35,7 @@ class CObjHero :public CObj
 		float m_py;			//プレイヤーの座標X
 		float m_vx;			//移動ベクトル(座標xの増分)
 		float m_vy;			//移動ベクトル(座標yの増分)
+		float m_speed;		//移動ベクトルに代入するスピード
 		float alpha;		//(透過情報)
 
 
