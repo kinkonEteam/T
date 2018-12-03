@@ -6,11 +6,11 @@
 using namespace GameL;
 
 //オブジェクト：キャラクターブロック
-class ObjYami : public CObj
+class ObjCapture : public CObj
 {
 public:
-	ObjYami(int n) { m_num = n; }//コンストラクタ
-	~ObjYami() {};
+	ObjCapture(int n) { m_num = n; }//コンストラクタ
+	~ObjCapture() {};
 	void Init();	//イニシャライズ
 	void Action();	//アクション
 	void Draw();	//ドロー

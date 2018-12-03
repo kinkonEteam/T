@@ -26,9 +26,9 @@ void CObjMap5::Init()
 
 	srand(time(NULL));
 
-	setstair();
-	setenemy();
-	sethero();
+//	setstair();
+//	setenemy();
+//	sethero();
 
 
 	//アイテム出現
@@ -46,7 +46,7 @@ void CObjMap5::Init()
 		}
 	}
 
-	//敵出現
+/*	//敵出現
 	for (int i = 0; i < 56; i++)
 	{
 		for (int j = 0; j < 56; j++)
@@ -63,12 +63,26 @@ void CObjMap5::Init()
 				CObjEnemy2* e2 = new CObjEnemy2(j*50.0f, i*50.0f);
 				Objs::InsertObj(e2, OBJ_ENEMY2, 2);
 			}
-			/*		else if (m_map[i][j] == 12)
+					else if (m_map[i][j] == 12)
 			{
 			//緑鬼オブジェクト作成
 			CObjEnemy3* e3 = new CObjEnemy3(j*50.0f, i*50.0f);
 			Objs::InsertObj(e3, OBJ_ENEMY3, 5);
-			}*/
+			}
+		}
+	}*/
+
+	//BOSS出現
+	for (int i = 0; i < 56; i++)
+	{
+		for (int j = 0; j < 56; j++)
+		{
+			if (m_map[i][j] == 13)
+			{
+				//ボスオブジェクト
+				CObjBoss*obj_boss_enemy = new CObjBoss(j*50.0f,i*50.0f);
+				Objs::InsertObj(obj_boss_enemy, OBJ_BOSS, 10); 
+			}
 		}
 	}
 
@@ -85,8 +99,6 @@ void CObjMap5::Init()
 
 				m_scrollx = -j * 50.0f + 400;
 				m_scrolly = -i * 50.0f + 300;
-
-				return;
 			}
 		}
 	}
@@ -160,6 +172,11 @@ void CObjMap5::Draw()
 				//BlockDraw(94.0f, 0.0f, &dst, c);
 			}
 			else if (m_map[i][j] == 1)
+			{
+				//壁
+				BlockDraw(47.0f, 0.0f, &dst, c);
+			}
+			else
 			{
 				//壁
 				BlockDraw(47.0f, 0.0f, &dst, c);
@@ -288,60 +305,7 @@ void CObjMap5::Map5Hit
 	}
 }
 
-void CObjMap5::setstair()
-{
-	//階段出現位置の設定
-	while (1)
-	{
-		for (int i = 0; i < 56; i++)
-		{
-			for (int j = 0; j < 56; j++)
-			{
-				//２を発見
-				if (m_map[i][j] == 2)
-				{
-					//2の中から1つ階段を出現させる
-					int stair = 0;
-
-					stair = rand() % 3;
-					if (stair == 1)
-					{
-						m_map[i][j] = 4;
-						return;
-					}
-				}
-			}
-		}
-	}
-}
-
-void CObjMap5::sethero()
-{
-	//主人公出現位置の設定
-	while (1)
-	{
-		for (int i = 0; i < 56; i++)
-		{
-			for (int j = 0; j < 56; j++)
-			{
-				//9を発見
-				if (m_map[i][j] == 9)
-				{
-					//9の中から出現場所を決定する
-					int herop = 0;
-					herop = rand() % 3;
-					if (herop == 1)
-					{
-						m_map[i][j] = 27;
-						return;
-					}
-				}
-			}
-		}
-	}
-}
-
-void CObjMap5::setenemy()
+/*void CObjMap5::setenemy()
 {
 	//敵出現位置の設定
 	for (int i = 0; i < 56; i++)
@@ -365,8 +329,8 @@ void CObjMap5::setenemy()
 				/*				else if (herop == 2)
 				{
 				m_map[i][j] = 12;//緑鬼
-				}*/
+				}
 			}
 		}
 	}
-}
+}*/

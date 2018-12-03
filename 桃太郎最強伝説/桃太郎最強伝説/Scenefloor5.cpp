@@ -89,23 +89,29 @@ void CScenefloor5::InitScene()
 	//外部グラフィックを読み込み8番に登録(512ピクセル)
 	Draw::LoadImage(L"体力ゲージフル.png", 8, TEX_SIZE_512);
 
-	//外部グラフィックを読み込み4番に登録(512×512ピクセル)
+	//外部グラフィックファイルを読み込み9番に登録
+	Draw::LoadImage(L"鬼原画 赤鬼 新二.png", 9, TEX_SIZE_151_200);
+
+	//外部グラフィックファイルを読み込み10番に登録
+	Draw::LoadImage(L"ファイアボール.png", 10, TEX_SIZE_151_200);
+
+	//外部グラフィックを読み込み15番に登録(512×512ピクセル)
 	Draw::LoadImage(L"暗闇最小.png", 15, TEX_SIZE_512);
 
-	//外部グラフィックを読み込み4番に登録(512×512ピクセル)
+	//外部グラフィックを読み込み16番に登録(512×512ピクセル)
 	Draw::LoadImage(L"暗闇+1.png", 16, TEX_SIZE_512);
 
-	//外部グラフィックを読み込み4番に登録(512×512ピクセル)
+	//外部グラフィックを読み込み17番に登録(512×512ピクセル)
 	Draw::LoadImage(L"暗闇+2.png", 17, TEX_SIZE_512);
 
 
 	//階層5オブジェクト作成
 	CObjMap5* objb = new CObjMap5(map);
-	Objs::InsertObj(objb, OBJ_MAP1, 1);
+	Objs::InsertObj(objb, OBJ_MAP5, 1);
 
-	//暗闇作成
-	ObjYami* Y = new ObjYami(2);
-	Objs::InsertObj(Y, OBJ_YAMI, 3);
+	//暗闇作成				//暗闇画像番号
+	ObjCapture* Y = new ObjCapture(15);
+	Objs::InsertObj(Y, OBJ_CAPTURE, 3);
 
 	//主人公体力ゲージオブジェクト作成
 	CObjHeroGauge* objg = new CObjHeroGauge();

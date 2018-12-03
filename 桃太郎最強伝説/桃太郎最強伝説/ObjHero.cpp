@@ -15,6 +15,7 @@ using namespace GameL;
 extern int HP;				//HP
 extern bool OTOMO[3];		//お供所持情報
 void CObjHero::SAVE() {		//セーブ関数の定義----------------------データをセーブ
+	//シーン切り替え時のhpデータを、HPへ格納
 	HP = m_hp;
 }
 
@@ -27,9 +28,11 @@ CObjHero::CObjHero(float x, float y)
 //イニシャライズ
 void CObjHero::Init()
 {
-	m_vx = 0.0f;		//初期移動ベクトル
+	m_vx = 0.0f;		//移動ベクトル
 	m_vy = 0.0f;
 	m_hp_max = 5;		//初期最大HP
+
+	bool m_otm[3];
 
 	//OTOMO[0犬,1キジ,2猿] == true(ある) or false(ない)
 	if (OTOMO[0] == true)		//犬が居る場合
@@ -48,7 +51,6 @@ void CObjHero::Init()
 	m_ani_frame = 1;	//静止フレーム
 	m_Sf = true;			//攻撃制御
 	m_key_f = false;		//無敵時間行動制御
-	m_t = false;
 
 	//HitBox作成座標とサイズx,y、エレメントとオブジェクトを設定
 	Hits::SetHitBox(this, m_px+5, m_py+3, 40, 47, ELEMENT_PLAYER, OBJ_HERO, 1);
@@ -151,46 +153,79 @@ void CObjHero::Action()
 	if (m_ani_frame == 4)	//フレームが4の場合
 		m_ani_frame = 0;	//フレームに0を代入
 
-	//移動ベクトルの正規化
+	//移動ベクトルの正規化	斜め移動しない為不要
 	//UnitVec(&m_vy, &m_vx);
 
 	//スクロール
-	CObjMap1*b = (CObjMap1*)Objs::GetObj(OBJ_MAP1);
+	CObjMap1*map1 = (CObjMap1*)Objs::GetObj(OBJ_MAP1);
+	CObjMap2*map2 = (CObjMap2*)Objs::GetObj(OBJ_MAP2);
+	CObjMap3*map3 = (CObjMap3*)Objs::GetObj(OBJ_MAP3);
+	CObjMap4*map4 = (CObjMap4*)Objs::GetObj(OBJ_MAP4);
+	CObjMap5*map5 = (CObjMap5*)Objs::GetObj(OBJ_MAP5);
 		m_px = 375;
 		m_py = 275;
 
 	//ブロックとの当たり判定
-	CObjMap1*pb = (CObjMap1*)Objs::GetObj(OBJ_MAP1);
-	pb->Map1Hit(&m_px, &m_py, true,
-		&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
-		&m_block_type
-	);
+		if (map1 != nullptr)
+		{
+			map1->Map1Hit(&m_px, &m_py, true,
+				&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
+				&m_block_type
+			);
+		}
+		if (map2 != nullptr)
+		{
+			map2->Map2Hit(&m_px, &m_py, true,
+				&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
+				&m_block_type
+			);
+		}
+		if (map3 != nullptr)
+		{
+			map3->Map3Hit(&m_px, &m_py, true,
+				&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
+				&m_block_type
+			);
+		}
+		if (map4 != nullptr)
+		{
+			map4->Map4Hit(&m_px, &m_py, true,
+				&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
+				&m_block_type
+			);
+		}
+		if (map5 != nullptr)
+		{
+			map5->Map5Hit(&m_px, &m_py, true,
+				&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
+				&m_block_type
+			);
+		}
+
 
 	//HitBoxの内容を更新
 	CHitBox*hit = Hits::GetHitBox(this);
-	hit->SetPos(m_px+5, m_py+3);
+	hit->SetPos(m_px+5, m_py+3);//HitBox主人公座標 + 位置調整
 
 	//ELEMENT_ENEMYを持つオブジェクトと接触したら
 	if (hit->CheckElementHit(ELEMENT_ENEMY) == true)
 		{
-			//主人公が敵とどの角度で当たっているかを確認
-			HIT_DATA**hit_data;							//当たった時の細かな情報を入れるための構造体
+			HIT_DATA**hit_data;		//Hit時データ型、hit_dataを宣言
 			hit_data = hit->SearchElementHit(ELEMENT_ENEMY);//hit_dataに主人公と当たっている他全てのHitBoxとの情報を入れる
 
-			for (int i = 0; i < hit->GetCount(); i++)
-			{
+			for (int i = 0; i < hit->GetCount(); i++)//同時に複数のHitBoxに当たった場合、
+			{										 //当たった数だけ処理させる為のループ
+				//敵の左右に当たったら
+				if (hit_data[i] == nullptr)
+					continue;
+
 				//ダメージ音を鳴らす
 				Audio::Start(6);
 
-				//敵の左右に当たったら
 				float r = hit_data[i]->r;
 				if ((r < 45 && r >= 0) || r > 315)
 				{
-					m_t = true;
-					if (m_t == true)
-					{
-						m_vx += -1.0f;//左に移動させる
-					}
+					m_vx = -10.0f;//左に移動させる
 				}
 				if (r >= 45 && r < 135)
 				{
@@ -271,14 +306,11 @@ void CObjHero::Action()
 			Audio::Start(10);
 			//遅延
 			Sleep(1000);
-			Scene::SetScene(new CScenefloor2());
 		}
 
 	//HPが0になったら破棄
 	if (m_hp <= 0)
 	{
-		CObjMap1* map1 = (CObjMap1*)Objs::GetObj(OBJ_MAP1);//外すとエラーが出る
-		map1->Setenemy(1);
 		this->SetStatus(false);	//自身に削除命令を出す
 		Hits::DeleteHitBox(this);//主人公が所有するHitBoxを削除する。
 

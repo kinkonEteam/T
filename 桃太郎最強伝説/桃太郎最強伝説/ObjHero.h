@@ -31,15 +31,15 @@ class CObjHero :public CObj
 	private:
 
 	//主人公の位置と移動用
-		float m_px;		 //位置
-		float m_py;
-		float m_vx;		 //移動ベクトル用変数
-		float m_vy;
-		float alpha;
+		float m_px;			//プレイヤーの座標X
+		float m_py;			//プレイヤーの座標X
+		float m_vx;			//移動ベクトル(座標xの増分)
+		float m_vy;			//移動ベクトル(座標yの増分)
+		float alpha;		//(透過情報)
 
 
-		int m_posture; //姿勢
-		int getmap[56][56];
+		int m_posture;		//姿勢
+		int getmap[56][56]; //
 
 		int m_hp;			//HP
 		int m_hp_max;		//最大HP

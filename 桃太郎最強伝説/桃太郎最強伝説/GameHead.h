@@ -38,7 +38,7 @@ enum OBJ_NAME
 					OBJ_GOLD_BULLION,
 					OBJ_SILVER_BULLION,
 					OBJ_HEROGAUGE,
-					OBJ_YAMI,
+					OBJ_CAPTURE,			//‰æ–Ê‘S‘Ì‚É‰æ‘œ‚ð•\Ž¦
 					OBJ_STAIR,
 
 };
@@ -120,7 +120,7 @@ enum ITEM
 #include"CObjhomingfire.h"
 #include"ObjSummary.h"
 #include "ObjHeroGauge.h"
-#include"ObjYami.h"
+#include"ObjCapture.h"
 #include"Objstair.h"
 
 
