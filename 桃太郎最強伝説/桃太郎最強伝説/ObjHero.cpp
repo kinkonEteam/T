@@ -318,14 +318,14 @@ void CObjHero::Action()
 				if (hit->CheckObjNameHit(OBJ_DOG) && df ==true)//犬に当たった場合
 				{
 					//犬イベント発生
-					CObjEveDog* dog = new CObjEveDog();//オブジェクト作成
-					Objs::InsertObj(dog, OBJ_EVEDOG, 10);//マネージャに登録
+					CObjEveDog* evedog = new CObjEveDog();//オブジェクト作成
+					Objs::InsertObj(evedog, OBJ_EVEDOG, 10);//マネージャに登録
 
 					df = false;
 
-					m_hp_max += 1;
-					m_hp += 1;
-					OTOMO[0] = true;
+						m_hp_max += 1;
+						m_hp += 1;
+						OTOMO[0] = true;
 				}
 				else if (hit->CheckObjNameHit(OBJ_MONKE) && mf == true)//猿に当たった場合
 				{

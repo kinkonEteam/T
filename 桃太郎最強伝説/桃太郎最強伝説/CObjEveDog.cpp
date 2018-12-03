@@ -10,6 +10,7 @@ void CObjEveDog::Init()
 {
 	m_f = true;		//初期値
 	m_page = 0;
+	m_df = false;
 
 	//外部グラフィックを読み込み9番に登録(512*512)
 	Draw::LoadImage(L"talk.png", 9, TEX_SIZE_512);
@@ -73,6 +74,8 @@ void CObjEveDog::Draw()
 		Font::StrDraw(L"", 50, 520, 30, c);
 	}
 	else {
+		CObjDog*dog = (CObjDog*)Objs::GetObj(OBJ_DOG);
+		dog->Setdf(true);
 		this->SetStatus(false);		//オブジェクト削除
 	}
 }

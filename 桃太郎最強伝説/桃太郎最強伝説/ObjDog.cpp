@@ -49,6 +49,11 @@ void CObjDog::Action()
 	if (map5 != nullptr)
 		hit->SetPos(m_px + map5->GetScrollx(), m_py + map5->GetScrolly());
 
+	if (m_df == true)
+	{
+		this->SetStatus(false);	//自身に削除命令を出す
+		Hits::DeleteHitBox(this);//主人公が所有するHitBoxを削除する。
+	}
 }
 
 void CObjDog::Draw()
