@@ -6,6 +6,7 @@
 //GameLで使用するヘッダー
 #include"GameL\SceneObjManager.h"
 #include"GameL\DrawFont.h"
+#include "GameL\Audio.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -19,6 +20,12 @@ using namespace GameL;
 //初期化ソメッド
 void CSceneSummary::InitScene()
 {
+	//あらすじ用BGM
+	Audio::LoadAudio(0, L"あらす時.wav", BACK_MUSIC);		
+
+	//音楽スタート
+	Audio::Start(0);
+
 	Font::SetStrTex(L"むかしむかし、あるところに、おじいさんとおばあさんが住んでいました。");
 	Font::SetStrTex(L"おじいさんは山へ芝刈りに、おばあさんは川へ洗濯に行きました");
 

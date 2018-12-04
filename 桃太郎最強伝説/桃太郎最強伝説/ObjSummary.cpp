@@ -22,7 +22,7 @@ void CObjSummary::Init()
 //ƒAƒNƒVƒ‡ƒ“
 void CObjSummary::Action()
 {
-	m_y+= 1.5;
+	m_y+= 1.25;
 	m_time += 1;
 
 
@@ -31,7 +31,7 @@ void CObjSummary::Action()
 	{
 		if (m_key_f == true)
 		{
-			Scene::SetScene(new CSceneMain());
+			Scene::SetScene(new CScenefloor1());
 			m_key_f = false;
 		}
 	}
@@ -41,7 +41,7 @@ void CObjSummary::Action()
 	}
 	if(m_time==920)
 	{
-		Scene::SetScene(new CSceneMain());
+		Scene::SetScene(new CScenefloor1());
 		m_key_f = false;
 	}
 }

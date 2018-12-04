@@ -19,9 +19,4 @@ private:
 	float m_y;  //オブジェクトの位置y
 	float m_vx; //オブジェクトの移動用ベクトルx
 	float m_vy; //オブジェクトの移動用ベクトルy
-
-	int    m_ani;
-	int    m_ani_time;
-	bool   m_del;
-	RECT_F m_eff;
 };

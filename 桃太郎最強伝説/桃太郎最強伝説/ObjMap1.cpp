@@ -6,6 +6,8 @@
 #include <Windows.h>
 #include"GameL\SceneManager.h"
 #include"GameL\SceneObjManager.h"
+#include"GameL\UserData.h" 
+#include "GameL\DrawFont.h"
 
 #include"GameHead.h"
 #include"ObjMap1.h"
@@ -22,6 +24,8 @@ CObjMap1::CObjMap1(int map[56][56])
 //イニシャライズ
 void CObjMap1::Init()
 {
+	
+
 	m_f = 0;
 
 	srand(time(NULL));
@@ -30,22 +34,21 @@ void CObjMap1::Init()
 	setenemy();
 	sethero();
 
-	/*
+	
 	//アイテム出現
-	for (int a = 0; a < 56; a++)
+	for (int i = 0; i < 56; i++)
 	{
-		for (int b = 0; b < 56; b++)
+		for (int j = 0; j < 56; j++)
 		{
-			if (m_map[a][b] == 5)
+			if (m_map[i][j] == 5)
 			{
 				//アイテムオブジェクト作成
-				CObjItem* i = new CObjItem(b * 50.0f, a * 50.0f);		//オブジェクト作成
-				Objs::InsertObj(i, OBJ_ITEM, 5);	//マネージャに登録
+				CObjPeach* p = new CObjPeach(j * 50.0f, i * 50.0f);		//オブジェクト作成
+				Objs::InsertObj(p, OBJ_PEACH, 2);	//マネージャに登録
 
 			}
 		}
 	}
-	*/
 
 	//敵出現
 	for (int i = 0; i < 56; i++)
@@ -73,6 +76,21 @@ void CObjMap1::Init()
 		}
 	}
 
+	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
+	//シーン切り替え
+	for (int i = 0; i < 56; i++)
+	{
+		for (int j = 0; j < 56; j++)
+		{
+			if (m_map[i][j] == 30)
+			{
+				//階段オブジェクト作成
+				CObjstair* s = new CObjstair(j * 50.0f, i * 50.0f, 1);		//オブジェクト作成,回数番号
+				Objs::InsertObj(s, OBJ_STAIR, 2);	//マネージャに登録
+			}
+		}
+	}
+
 	//主人公出現
 	for (int i = 0; i < 56; i++)
 	{
@@ -93,12 +111,12 @@ void CObjMap1::Init()
 	}
 
 
+
 }
 //アクション
 void CObjMap1::Action()
 {
 	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
-
 	if (m_f == 0)
 	{
 		//主人公の位置を取得
@@ -140,10 +158,6 @@ void CObjMap1::Draw()
 				//床
 				BlockDraw(0.0f, 0.0f, &dst, c);
 			}
-			else if (m_map[i][j] == 4)
-			{
-				BlockDraw(94.0f, 0.0f, &dst, c);
-			}
 			else if (m_map[i][j] == 1)
 			{
 				//壁
@@ -151,6 +165,7 @@ void CObjMap1::Draw()
 			}
 		}
 	}
+	
 }
 
 //BlockDrawMethod関数
@@ -291,7 +306,7 @@ void CObjMap1::setstair()
 					stair = rand() % 3;
 					if (stair == 1)
 					{
-						m_map[i][j] = 4;
+						m_map[i][j] = 30;
 						return;
 					}
 				}

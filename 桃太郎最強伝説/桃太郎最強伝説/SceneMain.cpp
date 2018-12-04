@@ -58,24 +58,16 @@ void CSceneMain::InitScene()
 	}
 
 	//BGM・SEの読み込み
-	Audio::LoadAudio(0, L"DungeonBGM.wav", BACK_MUSIC);		//ダンジョン用BGM
-	Audio::LoadAudio(1, L"BossBGM.wav", BACK_MUSIC);		//ボス戦用BGM
-
 	Audio::LoadAudio(2, L"アイテムゲット.wav", EFFECT);		//アイテム取得時SE
 	Audio::LoadAudio(3, L"仲間ゲット.wav", EFFECT);			//お供を増やした時用SE
-	Audio::LoadAudio(4, L"近接攻撃.wav", EFFECT);			//近接攻撃SE
-	Audio::LoadAudio(5, L"kijiSE.wav", EFFECT);				//遠距離攻撃SE
-	Audio::LoadAudio(6, L"damage.wav", EFFECT);				//ダメージSE
-	Audio::LoadAudio(8, L"heal.wav", EFFECT);				//体力回復時SE
-	Audio::LoadAudio(9, L"speeddown.wav", EFFECT);			//棍棒取得時用SE
-	Audio::LoadAudio(10, L"StairsSE.wav", EFFECT);			//階段用SE
-	Audio::LoadAudio(11, L"ButtonSE.wav", EFFECT);			//インベントリ用SE(予定)
 
-															//ボリュームを1.0に戻す
+	Audio::LoadAudio(4, L"StairsSE.wav", EFFECT);			//階段用SE
+	Audio::LoadAudio(5, L"ButtonSE.wav", EFFECT);			//インベントリ用SE(予定)															//ボリュームを1.0に戻す
+	
+	//ボリュームを1.0に戻す
 	float v = Audio::VolumeMaster(0);
 	v = Audio::VolumeMaster((1.0 - v));
 
-	//Audio::Start(0);
 
 
 	//外部グラフィックを読み込み0番に登録(512×512ピクセル)
@@ -116,13 +108,16 @@ void CSceneMain::InitScene()
 
 	//外部グラフィックを読み込み17番に登録(512×512ピクセル)
 	Draw::LoadImage(L"暗闇+2.png", 17, TEX_SIZE_512);
+	
+	
+
 
 	//主人公オブジェクト作成
 //	CObjHero* obj = new CObjHero();		//オブジェクト作成
 	//Objs::InsertObj(obj, OBJ_HERO, 1);	//マネージャに登録
 
-	//アイテムオブジェクト作成
-	CObjPeach* i = new CObjPeach();		//オブジェクト作成
+/*	//アイテムオブジェクト作成
+	CObjPeach* p = new CObjPeach();		//オブジェクト作成
 	Objs::InsertObj(i, OBJ_ITEM, 1);	//マネージャに登録
 
 	CObjYellowPeach* yp = new CObjYellowPeach();		//オブジェクト作成
@@ -148,12 +143,12 @@ void CSceneMain::InitScene()
 
 	//イベントオブジェクト作成
 	CObjEveDog* eve = new CObjEveDog();
-	Objs::InsertObj(eve, OBJ_TALK, 3);
+	Objs::InsertObj(eve, OBJ_TALK, 3);*/
 
 
-	//暗闇作成
-	ObjYami* Y = new ObjYami(2);
-	Objs::InsertObj(Y, OBJ_YAMI, 3);
+	//暗闇作成				//暗闇画像番号
+	ObjCapture* Y = new ObjCapture(15);
+	Objs::InsertObj(Y, OBJ_CAPTURE, 3);
 
 
 /*	//青鬼オブジェクト作成

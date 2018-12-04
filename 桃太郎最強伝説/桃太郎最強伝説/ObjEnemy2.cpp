@@ -3,6 +3,7 @@
 #include"GameL\WinInputs.h"
 #include"GameL\SceneManager.h"
 #include"GameL\HitBoxManager.h"
+#include"GameL\UserData.h" 
 
 #include"GameHead.h"
 #include"ObjEnemy2.h"
@@ -89,80 +90,75 @@ void CObjEnemy2::Action()
 		m_ani_frame = 0;
 	}
 
-	/*	//主人公の位置を取得
-	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
-	float hx = hero->GetX();
-	float hy = hero->GetY();
-
-	//追尾方向の判定
-	CObjHero*obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
-	float x = obj->GetX() - m_px;
-	float y = obj->GetY() - m_py;
-
-	float ar = atan2(y, x)*180.0f / 3.14;
-
-	if (ar < 0)
-	{
-	ar = 360 + ar;
-	}
-
-	//角度で上下左右を判定
-	if ((ar < 45 && ar>0) || ar > 315)
-	{
-	//右
-	m_vx += m_speed_power;
-	m_posture = 2.0f;
-	m_ani_time += 1;
-	}
-
-	if (ar > 45 && ar < 135)
-	{
-	//上
-	m_vy += m_speed_power;
-	m_posture = 0.0f;
-	m_ani_time += 1;
-	}
-	if (ar > 135 && ar < 225)
-	{
-	//左
-	m_vy -= m_speed_power;
-	m_posture = 1.0f;
-	m_ani_time += 1;
-	}
-	if (ar > 225 && ar < 315)
-	{
-	//下
-	m_vy -= m_speed_power;
-	m_posture = 3.0f;
-	m_ani_time += 1;
-
-	}*/
-
 	//ブロックタイプ検知用の変数がないためのダミー
 	int d;
 	//ブロックとの当たり判定
-	CObjMap1*pb = (CObjMap1*)Objs::GetObj(OBJ_MAP1);
-	pb->Map1Hit(&m_px, &m_py, false,
-		&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
-		&d
-	);
+	CObjMap1*map1 = (CObjMap1*)Objs::GetObj(OBJ_MAP1);
+	CObjMap2*map2 = (CObjMap2*)Objs::GetObj(OBJ_MAP2);
+	CObjMap3*map3 = (CObjMap3*)Objs::GetObj(OBJ_MAP3);
+	CObjMap4*map4 = (CObjMap4*)Objs::GetObj(OBJ_MAP4);
+	CObjMap5*map5 = (CObjMap5*)Objs::GetObj(OBJ_MAP5);
+
+	if (map1 != nullptr)
+	{
+		map1->Map1Hit(&m_px, &m_py, false,
+			&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
+			&d
+		);
+	}
+	if (map2 != nullptr)
+	{
+		map2->Map2Hit(&m_px, &m_py, false,
+			&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
+			&d
+		);
+	}
+	if (map3 != nullptr)
+	{
+		map3->Map3Hit(&m_px, &m_py, false,
+			&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
+			&d
+		);
+	}
+	if (map4 != nullptr)
+	{
+		map4->Map4Hit(&m_px, &m_py, false,
+			&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
+			&d
+		);
+	}
+	if (map5 != nullptr)
+	{
+		map5->Map5Hit(&m_px, &m_py, false,
+			&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
+			&d
+		);
+	}
 
 	//位置の更新
 	m_px += m_vx;
 	m_py += m_vy;
 
-	//ブロック情報を持ってくる
-	CObjMap1*map1 = (CObjMap1*)Objs::GetObj(OBJ_MAP1);
-
 	//HitBoxの内容を更新
 	CHitBox*hit = Hits::GetHitBox(this);
-	hit->SetPos(m_px + map1->GetScrollx(), m_py + map1->GetScrolly());
+	if (map1 != nullptr)
+		hit->SetPos(m_px + map1->GetScrollx(), m_py + map1->GetScrolly());
+	if (map2 != nullptr)
+		hit->SetPos(m_px + map2->GetScrollx(), m_py + map2->GetScrolly());
+	if (map3 != nullptr)
+		hit->SetPos(m_px + map3->GetScrollx(), m_py + map3->GetScrolly());
+	if (map4 != nullptr)
+		hit->SetPos(m_px + map4->GetScrollx(), m_py + map4->GetScrolly());
+	if (map5 != nullptr)
+		hit->SetPos(m_px + map5->GetScrollx(), m_py + map5->GetScrolly());
 
 	//主人公の攻撃に当たると消滅
 	if (hit->CheckElementHit(ELEMENT_MAGIC) == true)
 	{
 		this->SetStatus(false);	//自身に削除命令を出す
 		Hits::DeleteHitBox(this);//主人公が所有するHitBoxを削除する。
+
+		//((UserData*)Save::GetData())->m_point += 100;
 	}
 }
 
@@ -180,6 +176,10 @@ void CObjEnemy2::Draw()
 
 	//ブロック情報を持ってくる
 	CObjMap1*map1 = (CObjMap1*)Objs::GetObj(OBJ_MAP1);
+	CObjMap2*map2 = (CObjMap2*)Objs::GetObj(OBJ_MAP2);
+	CObjMap3*map3 = (CObjMap3*)Objs::GetObj(OBJ_MAP3);
+	CObjMap4*map4 = (CObjMap4*)Objs::GetObj(OBJ_MAP4);
+	CObjMap5*map5 = (CObjMap5*)Objs::GetObj(OBJ_MAP5);
 
 	//切り取り位置の設定
 	src.m_top = 48.0f * m_posture;	
@@ -188,11 +188,41 @@ void CObjEnemy2::Draw()
 	src.m_bottom = src.m_top + 48.0f;
 
 	//表示位置の設定
-	dst.m_top = 0.0f + m_py + map1->GetScrolly();
-	dst.m_left = 50.0f + m_px + map1->GetScrollx();
-
-	dst.m_right = 0.0f + m_px + map1->GetScrollx();
-	dst.m_bottom = 50.0f + m_py + map1->GetScrolly();
+	if (map1 != nullptr)
+	{
+		dst.m_top = 0.0f + m_py + map1->GetScrolly();
+		dst.m_left = 50.0f + m_px + map1->GetScrollx();
+		dst.m_right = 0.0f + m_px + map1->GetScrollx();
+		dst.m_bottom = 50.0f + m_py + map1->GetScrolly();
+	}
+	if (map2 != nullptr)
+	{
+		dst.m_top = 0.0f + m_py + map2->GetScrolly();
+		dst.m_left = 50.0f + m_px + map2->GetScrollx();
+		dst.m_right = 0.0f + m_px + map2->GetScrollx();
+		dst.m_bottom = 50.0f + m_py + map2->GetScrolly();
+	}
+	if (map3 != nullptr)
+	{
+		dst.m_top = 0.0f + m_py + map3->GetScrolly();
+		dst.m_left = 50.0f + m_px + map3->GetScrollx();
+		dst.m_right = 0.0f + m_px + map3->GetScrollx();
+		dst.m_bottom = 50.0f + m_py + map3->GetScrolly();
+	}
+	if (map4 != nullptr)
+	{
+		dst.m_top = 0.0f + m_py + map4->GetScrolly();
+		dst.m_left = 50.0f + m_px + map4->GetScrollx();
+		dst.m_right = 0.0f + m_px + map4->GetScrollx();
+		dst.m_bottom = 50.0f + m_py + map4->GetScrolly();
+	}
+	if (map5 != nullptr)
+	{
+		dst.m_top = 0.0f + m_py + map5->GetScrolly();
+		dst.m_left = 50.0f + m_px + map5->GetScrollx();
+		dst.m_right = 0.0f + m_px + map5->GetScrollx();
+		dst.m_bottom = 50.0f + m_py + map5->GetScrolly();
+	}
 
 	//描画
 	Draw::Draw(6, &src, &dst, c, 0.0f);

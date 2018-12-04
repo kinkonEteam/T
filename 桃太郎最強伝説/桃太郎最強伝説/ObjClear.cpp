@@ -2,6 +2,8 @@
 #include"GameL\DrawFont.h"
 #include"GameL\WinInputs.h"
 #include"GameL\SceneManager.h"
+#include"GameL\UserData.h" 
+#include "GameL\DrawFont.h"
 
 #include"GameHead.h"
 #include"ObjClear.h"
@@ -37,8 +39,33 @@ void CObjClear::Draw()
 {
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 
-	Font::StrDraw(L"ゲームクリア", 224, 250, 16, c);
-	Font::StrDraw(L"一つ伝説が刻まれた…", 230, 270, 16, c);
+	RECT_F src;//描画元切り取り位置
+	RECT_F dst;//描画先表示位置
 
-	Font::StrDraw(L"めでたしめでたし", 340, 300, 64, c);
+			   //切り取り位置の設定
+	src.m_top = 0.0f;
+	src.m_left = 0.0f;
+	src.m_right = 800.0f;
+	src.m_bottom = 600.0f;
+
+
+	//表示位置の設定
+	dst.m_top = 0.0f;
+	dst.m_left = 0.0f;
+	dst.m_right = 800.0f;
+	dst.m_bottom = 600.0f;
+
+	//描画
+	Draw::Draw(19, &src, &dst, c, 0.0f);
+
+	float b[4] = { 1.0f,0.0f,0.0f,1.0f };
+	Font::StrDraw(L"ゲームクリア", 224, 200, 50, b);
+	Font::StrDraw(L"一つ伝説が刻まれた…", 230, 250, 50, b);
+    Font::StrDraw(L"めでたしめでたし", 250, 300, 64, b);
+
+	//スコアの描画
+	float se[4] = { 1.0f,1.0f,1.0f,1.0f };
+	wchar_t str[128];
+	swprintf_s(str, L"Score:%d", ((UserData*)Save::GetData())->m_point);//スコアをとって？
+	Font::StrDraw(str, 200, 400, 64, se); //こちらで画面に描画する位置や文字のサイズを変える
 }

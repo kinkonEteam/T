@@ -15,6 +15,8 @@ class CObjMap1 :public CObj
 		void Action();	//アクション
 		void Draw();	//ドロー
 
+		int Getmap() { return m_map[56][56]; }
+
 		//左右スクロール用
 		void SetScrollx(float s) { m_scrollx = s; }
 		float GetScrollx() { return m_scrollx; }
@@ -43,9 +45,6 @@ class CObjMap1 :public CObj
 
 		float m_scrollx;		//左右スクロール用
 		float m_scrolly;	//上下スクロール用
-
-		float Dot(float ax, float ay, float bx, float by);	//内積
-		float Cross(float ax, float ay, float bx, float by);//外積
 
 		void setstair();//階段出現用関数
 		void sethero();//主人公出現用関数

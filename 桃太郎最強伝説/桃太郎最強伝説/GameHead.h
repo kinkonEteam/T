@@ -51,18 +51,18 @@ enum OBJ_NAME
 enum HIT_ELEMENTS
 {
 	ELEMENT_NULL,//属性無し 全ての属性と当たり判定が実行される
-	//以下　同じ属性同士では当たり判定は実行されない
-	//属性は追加可能だが、デバック時の色は初期設定分しか無い
-	ELEMENT_PLAYER,
-	ELEMENT_ENEMY,
-	ELEMENT_ITEM,
-	ELEMENT_MAGIC,
-	ELEMENT_FIELD,
-	ELEMENT_RED,
-	ELEMENT_GREEN,
-	ELEMENT_BLUE,
-	ELEMENT_BLACK,
-	ELEMENT_WHITE,
+				 //以下　同じ属性同士では当たり判定は実行されない
+				 //属性は追加可能だが、デバック時の色は初期設定分しか無い
+				 ELEMENT_PLAYER,
+				 ELEMENT_ENEMY,
+				 ELEMENT_ITEM,
+				 ELEMENT_MAGIC,
+				 ELEMENT_FIELD,
+				 ELEMENT_RED,
+				 ELEMENT_GREEN,
+				 ELEMENT_BLUE,
+				 ELEMENT_BLACK,
+				 ELEMENT_WHITE,
 };
 //------------------------------------------------
 
@@ -71,7 +71,7 @@ enum HIT_ELEMENTS
 struct UserData
 {
 	int mSeveData;	//サンプルセーブデータ
-	
+	int m_point;//スコア用変数
 };
 //------------------------------------------------
 
@@ -105,7 +105,7 @@ enum ITEM
 #include"ObjPeach.h"
 #include "ObjYellowPeach.h"
 #include "ObjPlum.h"
-#include "ObjHorn.h"
+#include "ObjHone.h"
 #include"ObjDog.h"
 #include"ObjMonke.h"
 #include"ObjPheasant.h"
@@ -120,13 +120,16 @@ enum ITEM
 #include"ObjClear.h"
 #include "ObjTalk.h"
 #include "CObjEveDog.h"
-#include "ObjHeroGauge.h"
 #include "CObjEveKiji.h"
 #include "CObjEveMnky.h"
-#include "ObjItemEffe.h"
-#include "ObjYami.h"
 #include"CObjhomingfire.h"
 #include"ObjSummary.h"
+#include "ObjHeroGauge.h"
+#include"ObjCapture.h"
+#include"Objstair.h"
+#include"ObjKeyUse.h"
+
+
 #include"ObjPose.h"
 
 //------------------------------------------------
@@ -138,6 +141,7 @@ enum ITEM
 #include "Scenefloor3.h"
 #include "Scenefloor4.h"
 #include "Scenefloor5.h"
+
 
 #include "SceneMain.h"
 #include "SceneTitle.h"
@@ -151,5 +155,5 @@ enum ITEM
 
 //シーンスタートクラス---------------------------
 //ゲーム開始時のシーンクラス登録
-#define SET_GAME_START  CScenefloor1
+#define SET_GAME_START  CScenefloor2
 //-----------------------------------------------

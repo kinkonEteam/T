@@ -13,6 +13,12 @@
 //使用するネームスペース
 using namespace GameL;
 
+CObjPheasant::CObjPheasant(float x, float y)
+{//オブジェ作成時に渡されたx,y座標をメンバ変数に代入
+	m_px = x;
+	m_py = y;
+}
+
 //イニシャライズ
 void CObjPheasant::Init()
 {
@@ -27,7 +33,25 @@ void CObjPheasant::Init()
 //アクション
 void CObjPheasant::Action()
 {
+	//ブロック情報を持ってくる
+	CObjMap1*map1 = (CObjMap1*)Objs::GetObj(OBJ_MAP1);
+	CObjMap2*map2 = (CObjMap2*)Objs::GetObj(OBJ_MAP2);
+	CObjMap3*map3 = (CObjMap3*)Objs::GetObj(OBJ_MAP3);
+	CObjMap4*map4 = (CObjMap4*)Objs::GetObj(OBJ_MAP4);
+	CObjMap5*map5 = (CObjMap5*)Objs::GetObj(OBJ_MAP5);
 
+	//HitBoxの内容を更新
+	CHitBox*hit = Hits::GetHitBox(this);
+	if (map1 != nullptr)
+		hit->SetPos(m_px + map1->GetScrollx(), m_py + map1->GetScrolly());
+	if (map2 != nullptr)
+		hit->SetPos(m_px + map2->GetScrollx(), m_py + map2->GetScrolly());
+	if (map3 != nullptr)
+		hit->SetPos(m_px + map3->GetScrollx(), m_py + map3->GetScrolly());
+	if (map4 != nullptr)
+		hit->SetPos(m_px + map4->GetScrollx(), m_py + map4->GetScrolly());
+	if (map5 != nullptr)
+		hit->SetPos(m_px + map5->GetScrollx(), m_py + map5->GetScrolly());
 }
 
 void CObjPheasant::Draw()

@@ -19,26 +19,31 @@ class CObjHero :public CObj
 		float GetVY() { return m_vy; }
 		float GetVX() { return m_vx; }
 		float Gethp() { return m_hp; }
+		int GetBT() { return m_block_type; }
 
 		void SetX(float x) { m_px = x; }
 		void SetY(float y) { m_py = y; }
 		void SetVY(float vy) { m_vy = vy; }
 		void SetVX(float vx) { m_vx = vx; }
-
-		void SetKf(float f) { m_Kf = f; }
+		void SetBT(int t) { m_block_type = t; }
+		void SaveDATA();//セーブ関数
+		void SetDATA();//リセット関数
 	private:
 
 	//主人公の位置と移動用
-		float m_px;		 //位置
-		float m_py;
-		float m_vx;		 //移動ベクトル用変数
-		float m_vy;
-		float alpha;
+		float m_px;			//プレイヤーの座標X
+		float m_py;			//プレイヤーの座標X
+		float m_vx;			//移動ベクトル(座標xの増分)
+		float m_vy;			//移動ベクトル(座標yの増分)
+		float m_speed;		//移動ベクトルに代入するスピード
+		float alpha;		//(透過情報)
 
 
-		float m_posture; //姿勢
+		int m_posture;		//姿勢
+		int getmap[56][56]; //
 
-		int m_hp;		 //HP
+		int m_hp;			//HP
+		int m_hp_max;		//最大HP
 		int m_map[56][56];//マップ情報
 		int m_time;//無敵時間測定
 		int m_f;//無敵時間
@@ -55,8 +60,11 @@ class CObjHero :public CObj
 		bool m_hit_down;
 		bool m_hit_left;
 		bool m_hit_right;
-		bool m_key_flag;//キーフラグ
-		int item_num[5];	//アイテムの所持数確認用
+
+		bool df;//犬イベントフラグ管理用
+		bool mf;//猿イベントフラグ管理用
+		bool pf;//雉イベントフラグ管理用
+
 		//踏んでいるblockの種類を確認用
 		int m_block_type;
 

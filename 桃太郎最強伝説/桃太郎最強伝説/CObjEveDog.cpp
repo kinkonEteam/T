@@ -10,21 +10,22 @@ void CObjEveDog::Init()
 {
 	m_f = true;		//初期値
 	m_page = 0;
+	m_df = false;
 
-	//外部グラフィックを読み込み8番に登録(512*512)
-	Draw::LoadImage(L"talk.png", 8, TEX_SIZE_512);
+	//外部グラフィックを読み込み9番に登録(512*512)
+	Draw::LoadImage(L"talk.png", 9, TEX_SIZE_512);
 	//外部グラフィックを読み込み4番に登録(512×512ピクセル)
 	Draw::LoadImage(L"inu.png", 19, TEX_SIZE_1024);
 
 	//トークオブジェクト作成
 	CObjTalk* talk = new CObjTalk(0, 4);	//オブジェクト作成
-	Objs::InsertObj(talk, OBJ_TALK, 4);//優先度4(高)に設定し登録
-									   //コメントの上に黒い画像表示
+	Objs::InsertObj(talk, OBJ_TALK, 4);		//優先度4(高)に設定し登録
+	//コメントの上に黒い画像表示
 	CObjTalk* black = new CObjTalk(1, 4);	//オブジェクト作成
-	Objs::InsertObj(black, OBJ_TALK, 5);//優先度5(高)に設定し登録
-										//立ち絵表示
-	CObjTalk* dog = new CObjTalk(3, 4);	//オブジェクト作成
-	Objs::InsertObj(dog, OBJ_TALK, 4);//優先度5(高)に設定し登録
+	Objs::InsertObj(black, OBJ_TALK, 5);	//優先度5(高)に設定し登録
+	//立ち絵表示
+	CObjTalk* dog = new CObjTalk(3, 4);		//オブジェクト作成
+	Objs::InsertObj(dog, OBJ_TALK, 4);		//優先度5(高)に設定し登録
 }
 
 void CObjEveDog::Action()
@@ -63,16 +64,18 @@ void CObjEveDog::Draw()
 		Font::StrDraw(L"", 50, 520, 30, c);
 	}
 	else if (m_page == 2) {					//3ページ
-		Font::StrDraw(L"「ありがとう！", 50, 440, 30, c);
-		Font::StrDraw(L"桃太郎さんを守るのは僕に任せて！」", 50, 480, 30, c);
+		Font::StrDraw(L"「ありがとう！桃太郎さんを守るのは僕に任せて！」", 50, 440, 30, c);
+		Font::StrDraw(L"", 50, 480, 30, c);
 		Font::StrDraw(L"", 50, 520, 30, c);
 	}
 	else if (m_page == 3) {					//3ページ
-		Font::StrDraw(L"犬が仲間になった！", 50, 440, 30, c);
-		Font::StrDraw(L"体力が１増えた！", 50, 480, 30, c);
+		Font::StrDraw(L"犬が仲間になった！体力が１増えた！", 50, 440, 30, c);
+		Font::StrDraw(L"", 50, 480, 30, c);
 		Font::StrDraw(L"", 50, 520, 30, c);
 	}
 	else {
+		CObjDog*dog = (CObjDog*)Objs::GetObj(OBJ_DOG);
+		dog->Setdf(true);
 		this->SetStatus(false);		//オブジェクト削除
 	}
 }
