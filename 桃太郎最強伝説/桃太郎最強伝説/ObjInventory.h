@@ -5,8 +5,6 @@
 //使用するネームスペース
 using namespace GameL;
 
-#define ITEM_KIND (2)
-#define ITEM_NUM (6)
 
 #define RANKING_POS_X		(600)
 #define RANKING_POS_Y		(0)
@@ -29,10 +27,11 @@ public:
 	void Init();	//イニシャライズ
 	void Action();	//アクション
 	void Draw();	//ドロー
+	void SetEf(bool ef) { m_Ef = ef; }
 private:
 
-	bool item_id[ITEM_KIND][ITEM_NUM];//アイテム保存用:[種類][個数]
-
+	int peach;//アイテム保存用
+	bool m_Ef; //フラグ
 
 };
 
