@@ -117,7 +117,6 @@ void CScenefloor1::InitScene()
 	//主人公体力ゲージオブジェクト作成
 	CObjHeroGauge* objg = new CObjHeroGauge();
 	Objs::InsertObj(objg, OBJ_HEROGAUGE, 20);
-
 }
 
 //実行中メソッド
