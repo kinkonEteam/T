@@ -44,8 +44,9 @@ enum OBJ_NAME
 	OBJ_SUMMARY,
 	OBJ_POSE,
 	OBJ_SOSASETSUMEI,
-	OBJ_CAPTURE,			//画面全体に画像を表示
 	OBJ_STAIR,
+	OBJ_CAPTURE,		//画面全体に画像を表示
+	OBJ_KEYUSE,	
 	OBJ_INVENTORY,
 };
 //------------------------------------------------
@@ -115,7 +116,7 @@ enum ITEM
 #include"ObjMonke.h"
 #include"ObjPheasant.h"
 #include"CObjSword.h"
-#include "CObjFlyKiji.h"
+#include"CObjFlyKiji.h"
 #include"ObjEnemy.h"
 #include"ObjEnemy2.h"
 #include"ObjEnemy3.h"
@@ -123,19 +124,18 @@ enum ITEM
 #include"ObjInventory.h"
 #include"ObjGameOver.h"
 #include"ObjClear.h"
-#include "ObjTalk.h"
-#include "CObjEveDog.h"
-#include "CObjEveKiji.h"
-#include "CObjEveMnky.h"
+#include"ObjTalk.h"
+#include"CObjEveDog.h"
+#include"CObjEveKiji.h"
+#include"CObjEveMnky.h"
 #include"CObjhomingfire.h"
 #include"ObjSummary.h"
-#include "ObjHeroGauge.h"
+#include"ObjHeroGauge.h"
 #include"ObjCapture.h"
 #include"Objstair.h"
 #include"ObjKeyUse.h"
-
-
 #include"ObjPose.h"
+#include"ObjSosasetsumei.h"
 
 //------------------------------------------------
 
@@ -160,5 +160,5 @@ enum ITEM
 
 //シーンスタートクラス---------------------------
 //ゲーム開始時のシーンクラス登録
-#define SET_GAME_START  CSceneTitle
+#define SET_GAME_START  CScenefloor3
 //-----------------------------------------------

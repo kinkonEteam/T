@@ -21,7 +21,7 @@ void CObjEveKiji::Init()
 	Objs::InsertObj(talk, OBJ_TALK, 4);		//優先度4(高)に設定し登録
 	//コメントの上に黒い画像表示
 	CObjTalk* black = new CObjTalk(1, 4);	//オブジェクト作成
-	Objs::InsertObj(black, OBJ_TALK, 5);	//優先度5(高)に設定し登録
+	Objs::InsertObj(black, OBJ_TALK, 10);	//優先度5(高)に設定し登録
 	//立ち絵表示
 	CObjTalk* dog = new CObjTalk(4, 4);		//オブジェクト作成
 	Objs::InsertObj(dog, OBJ_TALK, 4);		//優先度5(高)に設定し登録
@@ -72,6 +72,8 @@ void CObjEveKiji::Draw()
 		Font::StrDraw(L"", 50, 520, 30, c);
 	}
 	else {
+		CObjPheasant*kiji = (CObjPheasant*)Objs::GetObj(OBJ_PHEASANT);
+		kiji->Setdf(true);
 		this->SetStatus(false);		//オブジェクト削除
 	}
 }

@@ -17,4 +17,5 @@ public:
 private:
 	bool m_f;		//押しっぱ制御
 	int m_page;		//コメントのページ
+	bool m_df;	//雉削除用
 };
