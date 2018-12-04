@@ -119,8 +119,8 @@ void CScenefloor1::InitScene()
 	Objs::InsertObj(objg, OBJ_HEROGAUGE, 20);
 
 	//ëÄçÏê‡ñæçÏê¨
-	ObjKeyUse* K = new ObjKeyUse();
-	Objs::InsertObj(K, OBJ_KEYUSE, 20);
+	//ObjKeyUse* K = new ObjKeyUse();
+	//Objs::InsertObj(K, OBJ_KEYUSE, 20);
 
 }
 

@@ -68,7 +68,7 @@ void CObjHero::Init()
 	//HitBox作成座標とサイズx,y、エレメントとオブジェクトを設定
 	Hits::SetHitBox(this, m_px+5, m_py+3, 40, 47, ELEMENT_PLAYER, OBJ_HERO, 1);
 
-	
+	Audio::LoadAudio(2, L"アイテムゲット.wav", EFFECT);		//アイテム取得時SE
 	Audio::LoadAudio(4, L"近接攻撃.wav", EFFECT);			//近接攻撃SE
 	Audio::LoadAudio(5, L"kijiSE.wav", EFFECT);				//遠距離攻撃SE
 	Audio::LoadAudio(6, L"damage.wav", EFFECT);				//ダメージSE

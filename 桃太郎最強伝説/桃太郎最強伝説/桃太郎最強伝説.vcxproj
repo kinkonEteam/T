@@ -121,8 +121,6 @@
     <ClCompile Include="ObjInventory.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="SceneKeyUse.cpp" />
-    <ClCompile Include="Itemlist.cpp" />
     <ClCompile Include="ObjKeyUse.cpp" />
     <ClCompile Include="ObjBoss.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
