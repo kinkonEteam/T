@@ -42,7 +42,8 @@ enum OBJ_NAME
 	OBJ_BULLET,
 	OBJ_HOMING_FIRE,
 	OBJ_SUMMARY,
-
+	OBJ_POSE,
+	OBJ_SOSASETSUMEI,
 };
 //------------------------------------------------
 
@@ -126,6 +127,8 @@ enum ITEM
 #include "ObjYami.h"
 #include"CObjhomingfire.h"
 #include"ObjSummary.h"
+#include"ObjPose.h"
+
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------
@@ -141,6 +144,9 @@ enum ITEM
 #include"SceneGameOver.h"
 #include"ScecneClear.h"
 #include"SceneSummary.h"
+#include"ScenePose.h"
+#include"SceneSosasetsumei.h"
+
 //-----------------------------------------------
 
 //シーンスタートクラス---------------------------

@@ -230,6 +230,14 @@ void CObjHero::Action()
 
 		/*Scene::SetScene(new CSceneGameOver());*/
 	}
+	//Dを押してポーズに移行する
+	if (Input::GetVKey('D') == true)
+	{
+		Scene::SetScene(new CScenePose());
+	}
+	else{}
+
+
 }
 
 //ドロー
