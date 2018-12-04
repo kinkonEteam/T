@@ -18,7 +18,9 @@ using namespace GameL;
 //初期化メソッド
 void CSceneSosasetsumei::InitScene()
 {
-	
+	//タイトルオブジェクト作成
+	CObjSosasetsumei* obj = new CObjSosasetsumei();//タイトルオブジェクト作成
+	Objs::InsertObj(obj, OBJ_SOSASETSUMEI, 10);    //主人公オブジェクト登録
 	
 }
 

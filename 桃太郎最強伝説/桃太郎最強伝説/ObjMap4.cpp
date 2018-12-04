@@ -27,6 +27,7 @@ void CObjMap4::Init()
 	srand(time(NULL));
 
 	setstair();
+	setkiji();
 	setenemy();
 	sethero();
 
@@ -361,6 +362,28 @@ void CObjMap4::setenemy()
 				{
 				m_map[i][j] = 12;//緑鬼
 				}*/
+			}
+		}
+	}
+}
+
+//猿出現
+void CObjMap4::setkiji()
+{
+	for (int i = 0; i < 56; i++)
+	{
+		for (int j = 0; j < 56; j++)
+		{
+			if (m_map[i][j] == 8)
+			{
+				//雉オブジェクト作成
+				CObjPheasant* objd = new CObjPheasant(j*50.0f, i*50.0f);//オブジェクト作成
+				Objs::InsertObj(objd, OBJ_PHEASANT, 2);//マネージャに登録
+
+				m_scrollx = -j * 50.0f + 400;
+				m_scrolly = -i * 50.0f + 300;
+
+				return;
 			}
 		}
 	}

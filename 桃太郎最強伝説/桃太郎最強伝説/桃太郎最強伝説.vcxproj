@@ -117,7 +117,7 @@
     <ClCompile Include="CObjhomingfire.cpp" />
     <ClCompile Include="CObjSword.cpp" />
     <ClCompile Include="CObjEveDog.cpp" />
-    <ClCompile Include="Date.cpp" />
+    <ClCompile Include="Data.cpp" />
     <ClCompile Include="ObjInventory.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
@@ -153,6 +153,7 @@
     <ClCompile Include="ObjSilverBullion.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="ObjSosasetsumei.cpp" />
     <ClCompile Include="Objstair.cpp" />
     <ClCompile Include="ObjSummary.cpp" />
     <ClCompile Include="ObjTitle.cpp">
@@ -257,6 +258,7 @@
     <ClInclude Include="ObjSilverBullion.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="ObjSosasetsumei.h" />
     <ClInclude Include="Objstair.h" />
     <ClInclude Include="ObjSummary.h" />
     <ClInclude Include="ObjTitle.h">

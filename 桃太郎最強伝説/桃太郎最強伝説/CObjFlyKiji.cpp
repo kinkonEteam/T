@@ -38,6 +38,7 @@ void CObjFlyKiji::Action()
 {
 	//ålŒö‚Ìî•ñ‚ğæ“¾
 	CObjHero* obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
+
 	if (obj != nullptr)//ålŒöî•ñ‚ª‘¶İ‚·‚éê‡
 	{
 		m_x = obj->GetX();
