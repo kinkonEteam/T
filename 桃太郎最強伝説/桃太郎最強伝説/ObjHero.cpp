@@ -47,7 +47,7 @@ void CObjHero::Init()
 	if (OTOMO[1] == true)		//キジが居る場合
 		m_Kf = false;			//制御を解除
 	if (OTOMO[2] == true)		//猿が居る場合
-		m_speed = 1.5;			//速度
+		m_speed = 1.2f;			//速度
 
 	m_hp = HP;				//メンバhpにHPを代入
 	m_time = 70;
@@ -64,7 +64,7 @@ void CObjHero::Init()
 	pf = true;
 
 	//HitBox作成座標とサイズx,y、エレメントとオブジェクトを設定
-	Hits::SetHitBox(this, m_px+5, m_py+3, 40, 47, ELEMENT_PLAYER, OBJ_HERO, 1);
+	Hits::SetHitBox(this, m_px + 5, m_py + 3, 40, 47, ELEMENT_PLAYER, OBJ_HERO, 1);
 
 	
 	Audio::LoadAudio(4, L"近接攻撃.wav", EFFECT);			//近接攻撃SE
@@ -310,10 +310,42 @@ void CObjHero::Action()
 								//m_py *= 0.8;
 		}
 
+
+		//おともの当たり判定
+		HIT_DATA**hit_data;		//Hit時データ型、hit_dataを宣言
+		hit_data = hit->SearchElementHit(ELEMENT_RED);//hit_dataに主人公と当たっている他全てのHitBoxとの情報を入れる
+
+		for (int i = 0; i < hit->GetCount(); i++)//同時に複数のHitBoxに当たった場合、
+		{										 //当たった数だけ処理させる為のループ
+			if (hit_data[i] == nullptr)
+				continue;
+			float r = hit_data[i]->r;
+			if ((r < 45 && r >= 0) || r > 315)
+			{
+				if (Input::GetVKey(VK_RIGHT) == true) //→
+					m_vx = 0.0f;
+			}
+			if (r >= 45 && r < 135)
+			{
+				if (Input::GetVKey(VK_UP) == true)//↑
+					m_vy = 0.0f;
+			}
+			if (r >= 135 && r < 225)
+			{
+				if (Input::GetVKey(VK_LEFT) == true)//←
+					m_vx = 0.0f;
+			}
+			if (r >= 225 && r < 315)
+			{
+				if (Input::GetVKey(VK_DOWN) == true)//↓
+					m_vy = 0.0f;
+			}
+		}
+
 		//おともイベント
 		if (hit->CheckElementHit(ELEMENT_RED) == true)
 		{
-			if (Input::GetVKey('A') == true )//Aキー入力時
+			if (Input::GetVKey('F') == true )//Fキー入力時
 			{
 				if (hit->CheckObjNameHit(OBJ_DOG) && df ==true)//犬に当たった場合
 				{
@@ -330,19 +362,19 @@ void CObjHero::Action()
 				else if (hit->CheckObjNameHit(OBJ_MONKE) && mf == true)//猿に当たった場合
 				{
 					//猿イベント発生
-					CObjEveMnky* monky = new CObjEveMnky();//オブジェクト作成
-					Objs::InsertObj(monky, OBJ_EVEMNKY, 10);//マネージャに登録
+					CObjEveMnky* evemonky = new CObjEveMnky();//オブジェクト作成
+					Objs::InsertObj(evemonky, OBJ_EVEMNKY, 10);//マネージャに登録
 
 					mf = false;
 
-					m_speed += 1;
+					m_speed = 1.2f;
 					OTOMO[1] = true;
 				}
 				else if (hit->CheckObjNameHit(OBJ_PHEASANT) && pf == true)//キジに当たった場合
 				{
 					//雉イベント発生
-					CObjEveKiji* dog = new CObjEveKiji();//オブジェクト作成
-					Objs::InsertObj(dog, OBJ_EVEKIJI, 10);//マネージャに登録
+					CObjEveKiji* kiji = new CObjEveKiji();//オブジェクト作成
+					Objs::InsertObj(kiji, OBJ_EVEKIJI, 10);//マネージャに登録
 
 					pf = false;
 
@@ -352,7 +384,7 @@ void CObjHero::Action()
 			}
 		}
 
-		if (hit->CheckElementHit(ELEMENT_FIELD) == true && Input::GetVKey('A') == true)
+		if (hit->CheckElementHit(ELEMENT_FIELD) == true && Input::GetVKey('F') == true)
 		{
 			//階段SEを鳴らす
 			Audio::Start(10);

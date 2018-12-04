@@ -273,9 +273,6 @@
     <ClCompile Include="SceneSummary.cpp">
       <Filter>ソース ファイル\Scene\あらすじ</Filter>
     </ClCompile>
-    <ClCompile Include="Objstair.cpp">
-      <Filter>ソース ファイル\Map\floor1</Filter>
-    </ClCompile>
     <ClCompile Include="ObjSummary.cpp">
       <Filter>ソース ファイル\Scene\あらすじ</Filter>
     </ClCompile>
@@ -296,6 +293,9 @@
     </ClCompile>
     <ClCompile Include="ObjKeyUse.cpp">
       <Filter>ソース ファイル\Scene\操作説明</Filter>
+    </ClCompile>
+    <ClCompile Include="Objstair.cpp">
+      <Filter>ソース ファイル\Map</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -473,9 +473,6 @@
     <ClInclude Include="SceneSummary.h">
       <Filter>ソース ファイル\Scene\あらすじ</Filter>
     </ClInclude>
-    <ClInclude Include="Objstair.h">
-      <Filter>ソース ファイル\Map\floor1</Filter>
-    </ClInclude>
     <ClInclude Include="ObjSummary.h">
       <Filter>ソース ファイル\Scene\あらすじ</Filter>
     </ClInclude>
@@ -493,6 +490,9 @@
     </ClInclude>
     <ClInclude Include="ObjKeyUse.h">
       <Filter>ソース ファイル\Scene\操作説明</Filter>
+    </ClInclude>
+    <ClInclude Include="Objstair.h">
+      <Filter>ソース ファイル\Map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
