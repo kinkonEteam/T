@@ -1,6 +1,7 @@
 //使用するヘッダー
 #include"GameL\DrawTexture.h"
 #include"GameL\HitBoxManager.h"
+#include"GameL\UserData.h" 
 
 #include"GameHead.h"
 #include"ObjEnemy3.h"
@@ -49,6 +50,15 @@ void CObjEnemy3::Action()
 
 	CHitBox* hit = Hits::GetHitBox(this);
 	hit->SetPos(m_x, m_y);
+
+	//主人公の攻撃に当たると消滅
+	if (hit->CheckElementHit(ELEMENT_MAGIC) == true)
+	{
+		this->SetStatus(false);	//自身に削除命令を出す
+		Hits::DeleteHitBox(this);//主人公が所有するHitBoxを削除する。
+
+		//((UserData*)Save::GetData())->m_point += 100;
+	}
 
 }
 //ドロー

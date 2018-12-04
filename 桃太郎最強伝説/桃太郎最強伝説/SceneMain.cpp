@@ -7,7 +7,7 @@
 #include "GameL\Audio.h"
 #include "GameL\SceneObjManager.h"
 #include"GameL\UserData.h"
-
+#include "GameL\WinInputs.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -174,6 +174,10 @@ void CSceneMain::InitScene()
 	//ボス敵機オブジェクト
 	CObjBoss*obj_boss_enemy = new CObjBoss(300, 300);
 	Objs::InsertObj(obj_boss_enemy, OBJ_BOSS,2);*/
+
+	
+
+
 }
 
 //ゲームメイン実行中メソッド

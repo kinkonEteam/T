@@ -6,6 +6,8 @@
 #include <Windows.h>
 #include"GameL\SceneManager.h"
 #include"GameL\SceneObjManager.h"
+#include"GameL\UserData.h" 
+#include "GameL\DrawFont.h"
 
 #include"GameHead.h"
 #include"ObjMap1.h"
@@ -22,6 +24,8 @@ CObjMap1::CObjMap1(int map[56][56])
 //イニシャライズ
 void CObjMap1::Init()
 {
+	
+
 	m_f = 0;
 
 	srand(time(NULL));
@@ -108,7 +112,6 @@ void CObjMap1::Init()
 
 
 
-
 }
 //アクション
 void CObjMap1::Action()
@@ -157,11 +160,6 @@ void CObjMap1::Draw()
 				//床
 				BlockDraw(0.0f, 0.0f, &dst, c);
 			}
-			else if (m_map[i][j] == 4)
-			{
-				//階段
-				//BlockDraw(94.0f, 0.0f, &dst, c);
-			}
 			else if (m_map[i][j] == 1)
 			{
 				//壁
@@ -169,6 +167,7 @@ void CObjMap1::Draw()
 			}
 		}
 	}
+	
 }
 
 //BlockDrawMethod関数
