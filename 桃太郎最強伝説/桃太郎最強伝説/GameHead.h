@@ -47,6 +47,9 @@ enum OBJ_NAME
 	OBJ_STAIR,
 	OBJ_CAPTURE,
 	OBJ_KEYUSE,
+	OBJ_CAPTURE,			//画面全体に画像を表示
+	OBJ_STAIR,
+	OBJ_INVENTORY,
 };
 //------------------------------------------------
 
@@ -74,7 +77,9 @@ enum HIT_ELEMENTS
 struct UserData
 {
 	int mSeveData;	//サンプルセーブデータ
-	int m_point;//スコア用変数
+	int m_point;	//GameMainで得たポイント
+	int m_ranking[16];//ランキング情報
+
 };
 //------------------------------------------------
 
@@ -118,7 +123,7 @@ enum ITEM
 #include"ObjEnemy2.h"
 #include"ObjEnemy3.h"
 #include"ObjTitle.h"
-#include"Inventory.h"
+#include"ObjInventory.h"
 #include"ObjGameOver.h"
 #include"ObjClear.h"
 #include"ObjTalk.h"
@@ -157,5 +162,5 @@ enum ITEM
 
 //シーンスタートクラス---------------------------
 //ゲーム開始時のシーンクラス登録
-#define SET_GAME_START  CScenefloor2
+#define SET_GAME_START  CSceneTitle
 //-----------------------------------------------
