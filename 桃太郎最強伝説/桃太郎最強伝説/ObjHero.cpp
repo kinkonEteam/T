@@ -14,7 +14,7 @@ using namespace GameL;
 extern int HP;				//HP
 extern bool OTOMO[3];		//お供所持情報
 extern int item_list[5];	//
-void CObjHero::SAVE() {		//セーブ関数の定義----------------------データをセーブ
+void CObjHero::SaveDATA() {		//セーブ関数の定義----------------------データをセーブ
 	//シーン切り替え時のhpデータを、HPへ格納
 	HP = m_hp;
 }
