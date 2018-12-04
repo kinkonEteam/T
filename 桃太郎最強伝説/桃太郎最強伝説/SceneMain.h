@@ -18,5 +18,6 @@ class CSceneMain :public CScene
 	private:
 		int m_time;
 		float m_scroll;		//左右スクロール用
+		
 };
 

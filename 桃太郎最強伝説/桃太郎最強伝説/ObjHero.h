@@ -55,6 +55,9 @@ class CObjHero :public CObj
 		int m_ani_frame;	//描画フレーム
 		bool m_Sf;			//ソード攻撃制御
 		bool m_Kf;			//キジ攻撃制御
+		bool  m_If;		//持ち物リスト制御用
+		bool m_Mf;		//持ち物リスト表示フラグ用
+
 		//blockとの衝突状態確認用
 		bool m_hit_up;
 		bool m_hit_down;

@@ -5,15 +5,15 @@
 #include "UtilityModule.h"
 #include "GameL\WinInputs.h"
 #include "GameL\HitBoxManager.h"
-#include "Inventory.h"
+#include "ObjInventory.h"
 #include "GameL\Audio.h"
-#include "Itemlist.cpp"
 //使用するネームスペース
 using namespace GameL;
 
 //Date.cpp内で宣言したグローバル変数をextern宣言----------------------保持データ
 extern int HP;				//HP
 extern bool OTOMO[3];		//お供所持情報
+extern int item_list[5];	//
 void CObjHero::SaveDATA() {		//セーブ関数の定義----------------------データをセーブ
 	//シーン切り替え時のhpデータを、HPへ格納
 	HP = m_hp;
@@ -58,6 +58,8 @@ void CObjHero::Init()
 	m_ani_time = 0;
 	m_ani_frame = 1;	//静止フレーム
 	m_key_f = false;		//無敵時間行動制御
+	m_If = true;			//持ち物リスト制御
+	m_Mf = false;			//持ち物リスト表示フラグ管理
 
 	df = true;
 	mf = true;
@@ -66,7 +68,7 @@ void CObjHero::Init()
 	//HitBox作成座標とサイズx,y、エレメントとオブジェクトを設定
 	Hits::SetHitBox(this, m_px + 5, m_py + 3, 40, 47, ELEMENT_PLAYER, OBJ_HERO, 1);
 
-	
+	Audio::LoadAudio(2, L"アイテムゲット.wav", EFFECT);		//アイテム取得時SE
 	Audio::LoadAudio(4, L"近接攻撃.wav", EFFECT);			//近接攻撃SE
 	Audio::LoadAudio(5, L"kijiSE.wav", EFFECT);				//遠距離攻撃SE
 	Audio::LoadAudio(6, L"damage.wav", EFFECT);				//ダメージSE
@@ -121,10 +123,45 @@ void CObjHero::Action()
 					//キジオブジェクト作成				キジに座標と向きを渡す
 					CObjFlyKiji* kiji = new CObjFlyKiji(m_px, m_py, m_posture);
 					Objs::InsertObj(kiji, OBJ_FLYKIJI, 3);//マネージャーに登録
+
 				}
 			}
 		}
-		else { ; }//無入力時
+
+//持ち物リスト------------------------------------------------------------------------------
+		//
+		CObjInventory* iob = (CObjInventory*)Objs::GetObj(OBJ_INVENTORY);
+		if (iob == nullptr)
+			m_Mf = false;
+		if (Input::GetVKey('I') == true)//Iキー入力時
+		{
+			
+			if (m_If == true)
+			{
+				//持ち物リストが表示されていたら持ち物リストを非表示にする
+				if (m_Mf == true) {
+					CObjInventory* iob = (CObjInventory*)Objs::GetObj(OBJ_INVENTORY);
+					if (iob != nullptr)
+						iob->SetEf(true);
+				}
+				
+				if (m_Mf == false)
+				{
+					//持ち物リスト表示
+					CObjInventory* it = new CObjInventory();       //持ち物オブジェクト作成
+					Objs::InsertObj(it, OBJ_INVENTORY, 50);    //持ち物オブジェクト登録
+					//非表示フラグを立てる
+					m_Mf = true;
+				}
+				m_If = false;
+			}
+		}
+		else //無入力時
+		{
+				m_If = true;
+
+		}
+		
 
 		//主人公移動キー入力判定--------------------------------------------------------
 		if (Input::GetVKey(VK_RIGHT) == true)//→
@@ -280,34 +317,56 @@ void CObjHero::Action()
 			if (m_hp != m_hp_max) {//HPが最大値でない場合のみ回復
 				if (hit->CheckObjNameHit(OBJ_PEACH) != nullptr)
 				{
-					m_hp += 1;
+					m_hp += 1; //HPを1回復
 					Audio::Start(8);//回復音を鳴らす
 				}
-				if (hit->CheckObjNameHit(OBJ_YELLOW_PEACH) != nullptr)
+				else if (hit->CheckObjNameHit(OBJ_YELLOW_PEACH) != nullptr)
 				{
-					Audio::Start(8);//回復音を鳴らす
-					m_hp += 3;
+					m_hp += 3;	//HPを3回復
+					Audio::Start(8);//回復音を鳴らす			
+				}
+				else if (hit->CheckObjNameHit(OBJ_PLUM) != nullptr)
+				{
+					item_list[2] += 1;
+					Audio::Start(2);//アイテム取得音を鳴らす
+				}
+				else if (hit->CheckObjNameHit(OBJ_HORN) != nullptr)
+				{
+					item_list[3] += 1;
+					Audio::Start(2);//アイテム取得音を鳴らす
+				}
+				else if (hit->CheckObjNameHit(OBJ_GOLD_BULLION) != nullptr)
+				{
+					item_list[4] += 1;
+					Audio::Start(2);//アイテム取得音を鳴らす
+				}
+				else if (hit->CheckObjNameHit(OBJ_SILVER_BULLION) != nullptr)
+				{
+					item_list[5] += 1;
+					Audio::Start(2);//アイテム取得音を鳴らす
+				}
+				else if (hit->CheckObjNameHit(OBJ_CLUB) != nullptr)
+				{
+					item_list[6] += 1;
+					Audio::Start(9);//デバフ音を鳴らす
+									//移動速度を0.8倍する
+									//m_px *= 0.8;
+									//m_py *= 0.8;
 				}
 			}
-			else {}//最大値の場合、回復出来ない
-			if (hit->CheckObjNameHit(OBJ_PLUM) != nullptr)
-				Audio::Start(2);//アイテム取得音を鳴らす
-			if (hit->CheckObjNameHit(OBJ_CLUB) != nullptr)
-				Audio::Start(2);//アイテム取得音を鳴らす
-			if (hit->CheckObjNameHit(OBJ_HORN) != nullptr)
-				Audio::Start(2);//アイテム取得音を鳴らす
-
-			if (hit->CheckObjNameHit(OBJ_GOLD_BULLION) != nullptr)
-				Audio::Start(2);//アイテム取得音を鳴らす
-
-			if (hit->CheckObjNameHit(OBJ_SILVER_BULLION) != nullptr)
-				Audio::Start(2);//アイテム取得音を鳴らす
-
-			if (hit->CheckObjNameHit(OBJ_CLUB) != nullptr)
-				Audio::Start(9);//デバフ音を鳴らす
-								//移動速度を0.8倍する
-								//m_px *= 0.8;
-								//m_py *= 0.8;
+			else //最大値の場合、回復出来ない
+			{
+				if (hit->CheckObjNameHit(OBJ_PEACH) != nullptr)
+				{
+					item_list[0] += 1;
+					Audio::Start(2);//回復音を鳴らす
+				}
+				else if (hit->CheckObjNameHit(OBJ_YELLOW_PEACH) != nullptr)
+				{
+					item_list[1] += 1;
+					Audio::Start(2);//回復音を鳴らす			
+				}
+			}
 		}
 
 
@@ -389,7 +448,7 @@ void CObjHero::Action()
 			//階段SEを鳴らす
 			Audio::Start(10);
 			//遅延
-			Sleep(1000);
+			Sleep(900);
 		}
 
 	//HPが0になったら破棄------死亡判定----------------------------------------------------------------
@@ -403,6 +462,14 @@ void CObjHero::Action()
 
 		Scene::SetScene(new CSceneGameOver());
 	}
+	//Dを押してポーズに移行する
+	if (Input::GetVKey('D') == true)
+	{
+		Scene::SetScene(new CScenePose());
+	}
+	else{}
+
+
 }
 
 //ドロー

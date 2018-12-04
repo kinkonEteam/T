@@ -46,11 +46,17 @@
     <Filter Include="ソース ファイル\Scene">
       <UniqueIdentifier>{086c3e0e-0525-4fa1-bd7f-749e0deac220}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\GameTitle">
+      <UniqueIdentifier>{08d31525-e54a-4624-8ff2-92956de210f5}</UniqueIdentifier>
+    </Filter>
     <Filter Include="ソース ファイル\Events">
       <UniqueIdentifier>{df7492ec-fcd7-4943-a957-95358be37316}</UniqueIdentifier>
     </Filter>
     <Filter Include="ソース ファイル\Events\Dog">
       <UniqueIdentifier>{f52a0652-4129-45ab-9531-dd62e1d3a741}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Map\floor1\敵">
+      <UniqueIdentifier>{e13dc496-023b-46a1-be83-b61f9419d7c4}</UniqueIdentifier>
     </Filter>
     <Filter Include="ソース ファイル\Item">
       <UniqueIdentifier>{c9cdef14-d63b-41dc-a4a5-38f9271d1605}</UniqueIdentifier>
@@ -85,8 +91,11 @@
     <Filter Include="ソース ファイル\Scene\換金">
       <UniqueIdentifier>{c65c7a17-cf70-4c80-a7fc-00b2352b5447}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\Scene\操作説明">
+    <Filter Include="ソース ファイル\操作説明">
       <UniqueIdentifier>{8316f4dd-bb87-4cbf-bde2-a39bb747958c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\インベントリ">
+      <UniqueIdentifier>{db040fd7-3ab3-491c-ab60-96f2d5d833b9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -175,21 +184,18 @@
       <Filter>ソース ファイル\Character\おとも</Filter>
     </ClCompile>
     <ClCompile Include="ObjEnemy.cpp">
-      <Filter>ソース ファイル\Character\敵</Filter>
+      <Filter>ソース ファイル\Map\floor1\敵</Filter>
     </ClCompile>
     <ClCompile Include="ObjEnemy2.cpp">
-      <Filter>ソース ファイル\Character\敵</Filter>
+      <Filter>ソース ファイル\Map\floor1\敵</Filter>
     </ClCompile>
     <ClCompile Include="ObjEnemy3.cpp">
-      <Filter>ソース ファイル\Character\敵</Filter>
+      <Filter>ソース ファイル\Map\floor1\敵</Filter>
     </ClCompile>
     <ClCompile Include="ObjHero.cpp">
       <Filter>ソース ファイル\Character\主人公</Filter>
     </ClCompile>
     <ClCompile Include="CObjFlyKiji.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Inventory.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="ObjTalk.cpp">
@@ -199,6 +205,12 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="SceneMain.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneClear.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGameOver.cpp">
       <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
     <ClCompile Include="CObjEveDog.cpp">
@@ -231,41 +243,40 @@
     <ClCompile Include="ObjHorn.cpp">
       <Filter>ソース ファイル\Item</Filter>
     </ClCompile>
-    <ClCompile Include="Itemlist.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="CObjBullet.cpp">
       <Filter>ソース ファイル\Character\BOSS</Filter>
     </ClCompile>
     <ClCompile Include="CObjhomingfire.cpp">
       <Filter>ソース ファイル\Character\BOSS</Filter>
     </ClCompile>
-    <ClCompile Include="CObjEveMnky.cpp">
-      <Filter>ソース ファイル\Events\Mnky</Filter>
-    </ClCompile>
-    <ClCompile Include="CObjEveKiji.cpp">
-      <Filter>ソース ファイル\Events\Kiji</Filter>
-    </ClCompile>
-    <ClCompile Include="Date.cpp">
+    <ClCompile Include="ObjSummary.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="ObjGameOver.cpp">
-      <Filter>ソース ファイル\Scene\ゲームオーバー</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneGameOver.cpp">
-      <Filter>ソース ファイル\Scene\ゲームオーバー</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjTitle.cpp">
-      <Filter>ソース ファイル\Scene\タイトル</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneTitle.cpp">
-      <Filter>ソース ファイル\Scene\タイトル</Filter>
+    <ClCompile Include="SceneSummary.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
     <ClCompile Include="ObjClear.cpp">
-      <Filter>ソース ファイル\Scene\ゲームクリア</Filter>
+      <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="SceneClear.cpp">
-      <Filter>ソース ファイル\Scene\ゲームクリア</Filter>
+    <ClCompile Include="ObjGameOver.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjPose.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneSosasetsumei.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="ScenePose.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    <ClCompile Include="ObjSummary.cpp">
+      <Filter>ソース ファイル\Scene\あらすじ</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMain.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjEveKiji.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="SceneMain.cpp">
       <Filter>ソース ファイル\Scene\メイン</Filter>
@@ -275,24 +286,34 @@
     </ClCompile>
     <ClCompile Include="ObjSummary.cpp">
       <Filter>ソース ファイル\Scene\あらすじ</Filter>
+    <ClCompile Include="Objstair.cpp">
+      <Filter>ソース ファイル\Map</Filter>
+    <ClCompile Include="CObjEveMnky.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="SceneMain.cpp">
-      <Filter>ソース ファイル\Scene\メイン</Filter>
+    <ClCompile Include="Date.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="ObjClub.cpp">
-      <Filter>ソース ファイル\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjSummary.cpp">
-      <Filter>ソース ファイル\Scene\あらすじ</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneSell.cpp">
-      <Filter>ソース ファイル\Scene\換金</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjCapture.cpp">
-      <Filter>ソース ファイル\暗闇</Filter>
+    <ClCompile Include="ObjInventory.cpp">
+      <Filter>ソース ファイル\インベントリ</Filter>
     </ClCompile>
     <ClCompile Include="ObjKeyUse.cpp">
-      <Filter>ソース ファイル\Scene\操作説明</Filter>
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Objstair.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ScenePose.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneSosasetsumei.cpp">
+      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\操作説明</Filter>
+    <ClCompile Include="ObjCapture.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjSosasetsumei.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Objstair.cpp">
       <Filter>ソース ファイル\Map</Filter>
@@ -387,19 +408,34 @@
       <Filter>ソース ファイル\Character\おとも</Filter>
     </ClInclude>
     <ClInclude Include="ObjEnemy.h">
-      <Filter>ソース ファイル\Character\敵</Filter>
+      <Filter>ソース ファイル\Map\floor1\敵</Filter>
     </ClInclude>
     <ClInclude Include="ObjEnemy2.h">
-      <Filter>ソース ファイル\Character\敵</Filter>
+      <Filter>ソース ファイル\Map\floor1\敵</Filter>
     </ClInclude>
     <ClInclude Include="ObjEnemy3.h">
-      <Filter>ソース ファイル\Character\敵</Filter>
+      <Filter>ソース ファイル\Map\floor1\敵</Filter>
     </ClInclude>
     <ClInclude Include="ObjHero.h">
       <Filter>ソース ファイル\Character\主人公</Filter>
     </ClInclude>
+    <ClInclude Include="SceneTitle.h">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjTitle.h">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClInclude>
     <ClInclude Include="ObjTalk.h">
       <Filter>ソース ファイル\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMain.h">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGameOver.h">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ScecneClear.h">
+      <Filter>ソース ファイル\Scene</Filter>
     </ClInclude>
     <ClInclude Include="CObjEveDog.h">
       <Filter>ソース ファイル\Events\Dog</Filter>
@@ -408,6 +444,9 @@
       <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Inventory.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjClub.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="ObjMonke.h">
@@ -443,32 +482,35 @@
     <ClInclude Include="CObjhomingfire.h">
       <Filter>ソース ファイル\Character\BOSS</Filter>
     </ClInclude>
-    <ClInclude Include="CObjEveMnky.h">
-      <Filter>ソース ファイル\Events\Mnky</Filter>
+    <ClInclude Include="ObjSummary.h">
+      <Filter>ソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="CObjEveKiji.h">
-      <Filter>ソース ファイル\Events\Kiji</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjGameOver.h">
-      <Filter>ソース ファイル\Scene\ゲームオーバー</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneGameOver.h">
-      <Filter>ソース ファイル\Scene\ゲームオーバー</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjTitle.h">
-      <Filter>ソース ファイル\Scene\タイトル</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneTitle.h">
-      <Filter>ソース ファイル\Scene\タイトル</Filter>
+    <ClInclude Include="SceneSummary.h">
+      <Filter>ソース ファイル\Scene</Filter>
     </ClInclude>
     <ClInclude Include="ObjClear.h">
-      <Filter>ソース ファイル\Scene\ゲームクリア</Filter>
+      <Filter>ソース ファイル\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="ScecneClear.h">
-      <Filter>ソース ファイル\Scene\ゲームクリア</Filter>
+    <ClInclude Include="ObjGameOver.h">
+      <Filter>ソース ファイル\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="SceneMain.h">
-      <Filter>ソース ファイル\Scene\メイン</Filter>
+    <ClInclude Include="ObjPose.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneSosasetsumei.h">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ScenePose.h">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjEveKiji.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjEveMnky.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjKeyUse.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="SceneSummary.h">
       <Filter>ソース ファイル\Scene\あらすじ</Filter>
@@ -482,14 +524,29 @@
     <ClInclude Include="ObjSummary.h">
       <Filter>ソース ファイル\Scene\あらすじ</Filter>
     </ClInclude>
-    <ClInclude Include="SceneSell.h">
-      <Filter>ソース ファイル\Scene\換金</Filter>
+    <ClInclude Include="Objstair.h">
+      <Filter>ソース ファイル\Map</Filter>
     </ClInclude>
     <ClInclude Include="ObjCapture.h">
       <Filter>ソース ファイル\暗闇</Filter>
     </ClInclude>
+    <ClInclude Include="ObjInventory.h">
+      <Filter>ソース ファイル\インベントリ</Filter>
+    </ClInclude>
     <ClInclude Include="ObjKeyUse.h">
-      <Filter>ソース ファイル\Scene\操作説明</Filter>
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjPose.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ScenePose.h">
+      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="ObjSosasetsumei.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneSosasetsumei.h">
+      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ソース ファイル\操作説明</Filter>
     </ClInclude>
     <ClInclude Include="Objstair.h">
       <Filter>ソース ファイル\Map</Filter>
