@@ -45,10 +45,8 @@ enum OBJ_NAME
 	OBJ_POSE,
 	OBJ_SOSASETSUMEI,
 	OBJ_STAIR,
-	OBJ_CAPTURE,
-	OBJ_KEYUSE,
-	OBJ_CAPTURE,			//画面全体に画像を表示
-	OBJ_STAIR,
+	OBJ_CAPTURE,		//画面全体に画像を表示
+	OBJ_KEYUSE,	
 	OBJ_INVENTORY,
 };
 //------------------------------------------------
