@@ -85,7 +85,7 @@
     <Filter Include="ソース ファイル\Scene\換金">
       <UniqueIdentifier>{c65c7a17-cf70-4c80-a7fc-00b2352b5447}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\操作説明">
+    <Filter Include="ソース ファイル\Scene\操作説明">
       <UniqueIdentifier>{8316f4dd-bb87-4cbf-bde2-a39bb747958c}</UniqueIdentifier>
     </Filter>
     <Filter Include="ソース ファイル\インベントリ">
@@ -240,9 +240,6 @@
     <ClCompile Include="CObjEveKiji.cpp">
       <Filter>ソース ファイル\Events\Kiji</Filter>
     </ClCompile>
-    <ClCompile Include="Date.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="ObjGameOver.cpp">
       <Filter>ソース ファイル\Scene\ゲームオーバー</Filter>
     </ClCompile>
@@ -302,7 +299,9 @@
     </ClCompile>
     <ClCompile Include="SceneSosasetsumei.cpp">
       <Filter>ソース ファイル</Filter>
-      <Filter>ソース ファイル\操作説明</Filter>
+    </ClCompile>
+    <ClCompile Include="Data.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -506,7 +505,6 @@
     </ClInclude>
     <ClInclude Include="SceneSosasetsumei.h">
       <Filter>ヘッダー ファイル</Filter>
-      <Filter>ソース ファイル\操作説明</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
