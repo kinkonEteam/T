@@ -16,7 +16,7 @@ void CObjInventory::Init()
 {
 	m_Ef = false;
 
-	Draw::LoadImage(L"item_window.png", 19, TEX_SIZE_512);
+	Draw::LoadImage(L"item_window.png", 25, TEX_SIZE_512);
 }
 
 void CObjInventory::Action()
@@ -27,13 +27,14 @@ void CObjInventory::Action()
 
 void CObjInventory::Draw()
 {
+	int wa = 0;
 	if (m_Ef == true)
 	{
 		this->SetStatus(false);	//自身に削除命令を出す
 	}
 	float c[4] = { 1.0f,1.0f,1.0f,1 };
 
-	float wc[4] = { 1.0f,1.0f,1.0f,1 };
+	float wc[4] = { 1.0f,1.0f,1.0f,0.7 };
 
 	RECT_F src; //描画元切り取り位置
 	RECT_F dst; //描画先表示位置
@@ -51,7 +52,9 @@ void CObjInventory::Draw()
 	dst.m_bottom = 600.0f;
 
 
-	Draw::Draw(19, &src, &dst, wc, 0.0f);
+
+	
+	Draw::Draw(25, &src, &dst, wc, 0.0f);
 
 	Font::StrDraw(L"もちもの", RANKING_POS_X, RANKING_POS_Y, RANKING_FONT_SIZE, c);
 	for (int i = 0; i < RANKING_SCORE_MAX; i++)
