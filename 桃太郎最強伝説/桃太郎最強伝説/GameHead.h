@@ -47,7 +47,6 @@ enum OBJ_NAME
 	OBJ_STAIR,
 	OBJ_CAPTURE,		//‰æ–Ê‘S‘Ì‚É‰æ‘œ‚ð•\Ž¦
 	OBJ_KEYUSE,	
-	OBJ_CAPTURE,
 	OBJ_INVENTORY,
 
 };

@@ -55,7 +55,7 @@ void  CObjPose::Draw()
 
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 
-	Font::StrDraw(L"ポーズ", 350, 120, 45, c);
+	Font::StrDraw(L"メニュー", 350, 120, 45, c);
 	Font::StrDraw(L"ゲームに戻る(Z)", 300, 200, 30, c);
 	Font::StrDraw(L"操作説明(X)", 300, 250, 30, c);
 	Font::StrDraw(L"アイテム説明(C)", 300, 300, 30, c);
