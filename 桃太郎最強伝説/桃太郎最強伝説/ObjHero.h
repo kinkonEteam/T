@@ -26,8 +26,8 @@ class CObjHero :public CObj
 		void SetVY(float vy) { m_vy = vy; }
 		void SetVX(float vx) { m_vx = vx; }
 		void SetBT(int t) { m_block_type = t; }
-
-		void SAVE();//セーブ関数(.cppで定義)
+		void SaveDATA();//セーブ関数
+		void SetDATA();//リセット関数
 	private:
 
 	//主人公の位置と移動用
@@ -35,6 +35,7 @@ class CObjHero :public CObj
 		float m_py;			//プレイヤーの座標X
 		float m_vx;			//移動ベクトル(座標xの増分)
 		float m_vy;			//移動ベクトル(座標yの増分)
+		float m_speed;		//移動ベクトルに代入するスピード
 		float alpha;		//(透過情報)
 
 
@@ -54,11 +55,18 @@ class CObjHero :public CObj
 		int m_ani_frame;	//描画フレーム
 		bool m_Sf;			//ソード攻撃制御
 		bool m_Kf;			//キジ攻撃制御
+		bool  m_If;		//持ち物リスト制御用
+		bool m_Mf;		//持ち物リスト表示フラグ用
+
 		//blockとの衝突状態確認用
 		bool m_hit_up;
 		bool m_hit_down;
 		bool m_hit_left;
 		bool m_hit_right;
+
+		bool df;//犬イベントフラグ管理用
+		bool mf;//猿イベントフラグ管理用
+		bool pf;//雉イベントフラグ管理用
 
 		//踏んでいるblockの種類を確認用
 		int m_block_type;

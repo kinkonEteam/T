@@ -105,7 +105,7 @@ void CScenefloor2::InitScene()
 
 	//階層2オブジェクト作成
 	CObjMap2* objb = new CObjMap2(map);
-	Objs::InsertObj(objb, OBJ_MAP1, 1);
+	Objs::InsertObj(objb, OBJ_MAP2, 1);
 
 	/*//暗闇作成				//暗闇画像番号
 	ObjCapture* Y = new ObjCapture(15);

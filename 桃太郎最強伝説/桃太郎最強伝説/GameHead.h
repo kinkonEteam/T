@@ -4,43 +4,50 @@
 enum OBJ_NAME
 {
 	OBJ_NO_NAME,	//オブジェクト名無し(禁止)
-					//ゲームで使うオブジェクトの名前
-					//OBJ_○○と表記
-					OBJ_MAP1,
-					OBJ_MAP2,
-					OBJ_MAP3,
-					OBJ_MAP4,
-					OBJ_MAP5,
-					OBJ_BOSS,
-					OBJ_HERO,
-					OBJ_SWORD,
-					OBJ_FLYKIJI,
-					OBJ_ITEM,
-					OBJ_ENEMY,
-					OBJ_ENEMY2,
-					OBJ_ENEMY3,
-					OBJ_DOG,
-					OBJ_MONKE,
-					OBJ_PHEASANT,
-					OBJ_TITLE,
-					OBJ_GAME_OVER,
-					OBJ_CLEAR,
-					OBJ_SCORE,
-					OBJ_TALK,
-					OBJ_EVEDOG,
-					OBJ_BULLET,
-					OBJ_HOMING_FIRE,
-					OBJ_SUMMARY,
-					OBJ_PEACH,
-					OBJ_YELLOW_PEACH,
-					OBJ_PLUM,
-					OBJ_CLUB,
-					OBJ_HORN,
-					OBJ_GOLD_BULLION,
-					OBJ_SILVER_BULLION,
-					OBJ_HEROGAUGE,
-					OBJ_CAPTURE,			//画面全体に画像を表示
-					OBJ_STAIR,
+	//ゲームで使うオブジェクトの名前
+	//OBJ_○○と表記
+	OBJ_MAP1,
+	OBJ_MAP2,
+	OBJ_MAP3,
+	OBJ_MAP4,
+	OBJ_MAP5,
+	OBJ_BOSS,
+	OBJ_HERO,
+	OBJ_SWORD,
+	OBJ_FLYKIJI,
+	OBJ_ITEM,
+	OBJ_PEACH,
+	OBJ_YELLOW_PEACH,
+	OBJ_PLUM,
+	OBJ_HORN,
+	OBJ_GOLD_BULLION,
+	OBJ_SILVER_BULLION,
+	OBJ_CLUB,
+	OBJ_ENEMY,
+	OBJ_ENEMY2,
+	OBJ_ENEMY3,
+	OBJ_DOG,
+	OBJ_MONKE,
+	OBJ_PHEASANT,
+	OBJ_TITLE,
+	OBJ_GAME_OVER,
+	OBJ_CLEAR,
+	OBJ_TALK,
+	OBJ_EVEDOG,
+	OBJ_HEROGAUGE,
+	OBJ_EVEKIJI,
+	OBJ_EVEMNKY,
+	OBJ_ITEMEFFE,
+	OBJ_YAMI,
+	OBJ_BULLET,
+	OBJ_HOMING_FIRE,
+	OBJ_SUMMARY,
+	OBJ_POSE,
+	OBJ_SOSASETSUMEI,
+	OBJ_STAIR,
+	OBJ_CAPTURE,		//画面全体に画像を表示
+	OBJ_KEYUSE,	
+	OBJ_INVENTORY,
 
 };
 //------------------------------------------------
@@ -69,8 +76,9 @@ enum HIT_ELEMENTS
 struct UserData
 {
 	int mSeveData;	//サンプルセーブデータ
-	int m_point;//スコア用変数
+	int m_point;	//GameMainで得たポイント
 	int m_ranking[16];//ランキング情報
+
 };
 //------------------------------------------------
 
@@ -109,22 +117,26 @@ enum ITEM
 #include"ObjMonke.h"
 #include"ObjPheasant.h"
 #include"CObjSword.h"
-#include "CObjFlyKiji.h"
+#include"CObjFlyKiji.h"
 #include"ObjEnemy.h"
 #include"ObjEnemy2.h"
 #include"ObjEnemy3.h"
 #include"ObjTitle.h"
-#include"Inventory.h"
+#include"ObjInventory.h"
 #include"ObjGameOver.h"
 #include"ObjClear.h"
-#include "ObjTalk.h"
-#include "CObjEveDog.h"
+#include"ObjTalk.h"
+#include"CObjEveDog.h"
+#include"CObjEveKiji.h"
+#include"CObjEveMnky.h"
 #include"CObjhomingfire.h"
 #include"ObjSummary.h"
-#include "ObjHeroGauge.h"
+#include"ObjHeroGauge.h"
 #include"ObjCapture.h"
 #include"Objstair.h"
-
+#include"ObjKeyUse.h"
+#include"ObjPose.h"
+#include"ObjSosasetsumei.h"
 
 //------------------------------------------------
 
@@ -142,6 +154,9 @@ enum ITEM
 #include"SceneGameOver.h"
 #include"ScecneClear.h"
 #include"SceneSummary.h"
+#include"ScenePose.h"
+#include"SceneSosasetsumei.h"
+
 #include"SceneScore.h"
 //-----------------------------------------------
 

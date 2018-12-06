@@ -7,7 +7,7 @@
 #include "GameL\Audio.h"
 #include "GameL\SceneObjManager.h"
 #include"GameL\UserData.h"
-
+#include "GameL\WinInputs.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -58,7 +58,7 @@ void CSceneMain::InitScene()
 	}
 
 	//BGM・SEの読み込み
-	Audio::LoadAudio(2, L"アイテムゲット.wav", EFFECT);		//アイテム取得時SE
+	
 	Audio::LoadAudio(3, L"仲間ゲット.wav", EFFECT);			//お供を増やした時用SE
 
 	Audio::LoadAudio(4, L"StairsSE.wav", EFFECT);			//階段用SE
@@ -174,6 +174,10 @@ void CSceneMain::InitScene()
 	//ボス敵機オブジェクト
 	CObjBoss*obj_boss_enemy = new CObjBoss(300, 300);
 	Objs::InsertObj(obj_boss_enemy, OBJ_BOSS,2);*/
+
+	
+
+
 }
 
 //ゲームメイン実行中メソッド

@@ -27,6 +27,7 @@ void CObjMap3::Init()
 	srand(time(NULL));
 
 	setstair();
+	setmonke();
 	setenemy();
 	sethero();
 
@@ -131,7 +132,7 @@ void CObjMap3::Action()
 void CObjMap3::Draw()
 {
 	//描画カラー情報
-	float c[4] = { 1.0f,0.5f,0.5f,1.0f };
+	float c[4] = { 1.0f,1.0f,0.5f,1.0f };
 
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置
@@ -153,11 +154,6 @@ void CObjMap3::Draw()
 			{
 				//床
 				BlockDraw(0.0f, 0.0f, &dst, c);
-			}
-			else if (m_map[i][j] == 31)
-			{
-				//階段
-				//BlockDraw(94.0f, 0.0f, &dst, c);
 			}
 			else if (m_map[i][j] == 1)
 			{
@@ -371,6 +367,28 @@ void CObjMap3::setenemy()
 				{
 				m_map[i][j] = 12;//緑鬼
 				}*/
+			}
+		}
+	}
+}
+
+//猿出現
+void CObjMap3::setmonke()
+{
+	for (int i = 0; i < 56; i++)
+	{
+		for (int j = 0; j < 56; j++)
+		{
+			if (m_map[i][j] == 7)
+			{
+				//犬オブジェクト作成
+				CObjMonke* objd = new CObjMonke(j*50.0f, i*50.0f);//オブジェクト作成
+				Objs::InsertObj(objd, OBJ_MONKE, 2);//マネージャに登録
+
+				m_scrollx = -j * 50.0f + 400;
+				m_scrolly = -i * 50.0f + 300;
+
+				return;
 			}
 		}
 	}

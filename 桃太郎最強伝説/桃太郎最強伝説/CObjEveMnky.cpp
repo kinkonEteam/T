@@ -13,7 +13,7 @@ void CObjEveMnky::Init()
 
 	//外部グラフィックを読み込み9番に登録(512*512)
 	Draw::LoadImage(L"talk.png", 9, TEX_SIZE_512);
-	//外部グラフィックを読み込み4番に登録(512×512ピクセル)
+	//外部グラフィックを読み込み18番に登録(512×512ピクセル)
 	Draw::LoadImage(L"mnky.png", 18, TEX_SIZE_1024);
 
 	//トークオブジェクト作成
@@ -21,11 +21,12 @@ void CObjEveMnky::Init()
 	Objs::InsertObj(talk, OBJ_TALK, 4);		//優先度4(高)に設定し登録
 	//コメントの上に黒い画像表示
 	CObjTalk* black = new CObjTalk(1, 4);	//オブジェクト作成
-	Objs::InsertObj(black, OBJ_TALK, 5);	//優先度5(高)に設定し登録
+	Objs::InsertObj(black, OBJ_TALK, 10);	//優先度5(高)に設定し登録
 	//立ち絵表示
-	CObjTalk* dog = new CObjTalk(2, 4);	//オブジェクト作成
-	Objs::InsertObj(dog, OBJ_TALK, 3);	//優先度5(高)に設定し登録
+	CObjTalk* mnky = new CObjTalk(2, 4);	//オブジェクト作成
+	Objs::InsertObj(mnky, OBJ_TALK, 4);	//優先度4(高)に設定し登録
 }
+
 
 void CObjEveMnky::Action()
 {
@@ -72,6 +73,8 @@ void CObjEveMnky::Draw()
 		Font::StrDraw(L"", 50, 520, 30, c);
 	}
 	else {
+		CObjMonke*monke = (CObjMonke*)Objs::GetObj(OBJ_MONKE);
+		monke->Setdf(true);
 		this->SetStatus(false);		//オブジェクト削除
 	}
 }

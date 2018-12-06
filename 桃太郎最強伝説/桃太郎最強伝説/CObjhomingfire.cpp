@@ -22,7 +22,7 @@ void CObjHomingfire::Init()
 	//移動ベクトルの正規化
 	UnitVec(&m_vy, &m_vx);
 	//当たり判定用Hitboxを作成
-	Hits::SetHitBox(this, m_x, m_y, 32, 32, ELEMENT_ENEMY, OBJ_BULLET, 1);
+	Hits::SetHitBox(this, m_x, m_y, 50, 50, ELEMENT_ENEMY, OBJ_BULLET, 1);
 }
 
 //アクション
@@ -79,14 +79,14 @@ void CObjHomingfire::Draw()
 	//切り取り位置の設定
 	src.m_top = 0.0f;
 	src.m_left = 0.0f;
-	src.m_right = 50.0f;
-	src.m_bottom = 59.0f;
+	src.m_right = 300.0f;
+	src.m_bottom = 300.0f;
 
 	//表示位置の設定
 	dst.m_top = 0.0f + m_y + map5->GetScrolly();
 	dst.m_left = 0.0f + m_x + map5->GetScrollx();
-	dst.m_right = 32.0f + m_x + map5->GetScrollx();
-	dst.m_bottom = 32.0f + m_y + map5->GetScrolly();
+	dst.m_right = 50.0f + m_x + map5->GetScrollx();
+	dst.m_bottom = 50.0f + m_y + map5->GetScrolly();
 
 	float r = 0.0f;
 	//主人公機と誘導弾丸で角度を取る
@@ -94,9 +94,9 @@ void CObjHomingfire::Draw()
 	//主人公機が存在する場合、誘導角度の計算する
 	if (obj != nullptr)
 	{
-		float x = 400 - dst.m_top;
-		float y = 300 - dst.m_left;
-		r = GetAtan2Angle(x, y)-180;
+		float x = 375 - dst.m_top;
+		float y = 275 - dst.m_left;
+		r = GetAtan2Angle(x, y)+30;
 
 	}
 	//8番目に登録したグラフィックをsrc・dst・cの元に描画

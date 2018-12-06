@@ -5,18 +5,22 @@
 #include "UtilityModule.h"
 #include "GameL\WinInputs.h"
 #include "GameL\HitBoxManager.h"
-#include "Inventory.h"
+#include "ObjInventory.h"
 #include "GameL\Audio.h"
-#include "Itemlist.cpp"
 //使用するネームスペース
 using namespace GameL;
 
 //Date.cpp内で宣言したグローバル変数をextern宣言----------------------保持データ
 extern int HP;				//HP
 extern bool OTOMO[3];		//お供所持情報
-void CObjHero::SAVE() {		//セーブ関数の定義----------------------データをセーブ
+extern int item_list[5];	//
+void CObjHero::SaveDATA() {		//セーブ関数の定義----------------------データをセーブ
 	//シーン切り替え時のhpデータを、HPへ格納
 	HP = m_hp;
+}
+void CObjHero::SetDATA() {		//セーブ関数の定義----------------------データをセット
+								//シーン切り替え時のhpデータを、HPへ格納
+	HP = 5;
 }
 
 CObjHero::CObjHero(float x, float y)
@@ -31,17 +35,21 @@ void CObjHero::Init()
 	m_vx = 0.0f;		//移動ベクトル
 	m_vy = 0.0f;
 	m_hp_max = 5;		//初期最大HP
+	m_speed = 1.0f;			//速度
 
 	bool m_otm[3];
+	m_Sf = true;			//ソード制御
+	m_Kf = true;			//  キジ制御
 
 	//OTOMO[0犬,1キジ,2猿] == true(ある) or false(ない)
 	if (OTOMO[0] == true)		//犬が居る場合
 		m_hp_max += 1;			//最大HPに1加算
 	if (OTOMO[1] == true)		//キジが居る場合
 		m_Kf = false;			//制御を解除
-	else { m_Kf = true; }		//居ないなら制御
+	if (OTOMO[2] == true)		//猿が居る場合
+		m_speed = 1.2f;			//速度
 
-	m_hp = HP;				//メンバhpに初期HPを代入
+	m_hp = HP;				//メンバhpにHPを代入
 	m_time = 70;
 	alpha = 1.0f;
 	count = 10;
@@ -49,13 +57,18 @@ void CObjHero::Init()
 	m_posture = 0;	//正面(0) 左(1) 右(2) 背面(3)
 	m_ani_time = 0;
 	m_ani_frame = 1;	//静止フレーム
-	m_Sf = true;			//攻撃制御
 	m_key_f = false;		//無敵時間行動制御
+	m_If = true;			//持ち物リスト制御
+	m_Mf = false;			//持ち物リスト表示フラグ管理
+
+	df = true;
+	mf = true;
+	pf = true;
 
 	//HitBox作成座標とサイズx,y、エレメントとオブジェクトを設定
-	Hits::SetHitBox(this, m_px+5, m_py+3, 40, 47, ELEMENT_PLAYER, OBJ_HERO, 1);
+	Hits::SetHitBox(this, m_px + 5, m_py + 3, 40, 47, ELEMENT_PLAYER, OBJ_HERO, 1);
 
-	
+	Audio::LoadAudio(2, L"アイテムゲット.wav", EFFECT);		//アイテム取得時SE
 	Audio::LoadAudio(4, L"近接攻撃.wav", EFFECT);			//近接攻撃SE
 	Audio::LoadAudio(5, L"kijiSE.wav", EFFECT);				//遠距離攻撃SE
 	Audio::LoadAudio(6, L"damage.wav", EFFECT);				//ダメージSE
@@ -74,10 +87,14 @@ void CObjHero::Action()
 	m_vx = 0.0f;
 	m_vy = 0.0f;
 
+	//HitBoxの内容を更新
+	CHitBox*hit = Hits::GetHitBox(this);
+	hit->SetPos(m_px + 5, m_py + 3);//HitBox主人公座標 + 位置調整
+
 	//通常攻撃処理---------------------------------------------------------------------
 	if (m_key_f==false)
 	{
-		if (Input::GetVKey('A') == true)//Aキー入力時
+		if (Input::GetVKey('A') == true && hit->CheckElementHit(ELEMENT_RED)==false )//Aキー入力時かつおともに当たっていないとき
 		{
 			if (m_Sf == true){//m_fがtrueの場合
 				//近距離攻撃音を鳴らす
@@ -95,7 +112,7 @@ void CObjHero::Action()
 		//キジ攻撃処理------------------------------------------------------------------
 		//キジの情報を取得
 		CObjFlyKiji* obj = (CObjFlyKiji*)Objs::GetObj(OBJ_FLYKIJI);
-		if (Input::GetVKey('S') == true)//Sキー入力時
+		if (Input::GetVKey('S') == true && hit->CheckElementHit(ELEMENT_RED) == false)//Sキー入力時かつおともに当たっていないとき
 		{
 			if (m_Kf == false) {
 				if (obj == nullptr)//キジ情報が無い場合
@@ -106,33 +123,68 @@ void CObjHero::Action()
 					//キジオブジェクト作成				キジに座標と向きを渡す
 					CObjFlyKiji* kiji = new CObjFlyKiji(m_px, m_py, m_posture);
 					Objs::InsertObj(kiji, OBJ_FLYKIJI, 3);//マネージャーに登録
+
 				}
 			}
 		}
-		else { ; }//無入力時
+
+//持ち物リスト------------------------------------------------------------------------------
+		//
+		CObjInventory* iob = (CObjInventory*)Objs::GetObj(OBJ_INVENTORY);
+		if (iob == nullptr)
+			m_Mf = false;
+		if (Input::GetVKey('I') == true)//Iキー入力時
+		{
+			
+			if (m_If == true)
+			{
+				//持ち物リストが表示されていたら持ち物リストを非表示にする
+				if (m_Mf == true) {
+					CObjInventory* iob = (CObjInventory*)Objs::GetObj(OBJ_INVENTORY);
+					if (iob != nullptr)
+						iob->SetEf(true);
+				}
+				
+				if (m_Mf == false)
+				{
+					//持ち物リスト表示
+					CObjInventory* it = new CObjInventory();       //持ち物オブジェクト作成
+					Objs::InsertObj(it, OBJ_INVENTORY, 50);    //持ち物オブジェクト登録
+					//非表示フラグを立てる
+					m_Mf = true;
+				}
+				m_If = false;
+			}
+		}
+		else //無入力時
+		{
+				m_If = true;
+
+		}
+		
 
 		//主人公移動キー入力判定--------------------------------------------------------
 		if (Input::GetVKey(VK_RIGHT) == true)//→
 		{
-			m_vx += 1.0f;					//移動ベクトル加算
+			m_vx += m_speed;				//移動ベクトル加算(初期値1,お供バフ1.5)
 			m_posture = 2;					//向き情報代入
 			m_ani_time += 1;				//アニメーション時間加算
 		}
 		else if (Input::GetVKey(VK_UP) == true)	//↑
 		{
-			m_vy -= 1.0f;
+			m_vy -= m_speed;
 			m_posture = 3;
 			m_ani_time += 1;
 		}
 		else if (Input::GetVKey(VK_DOWN) == true)//↓
 		{
-			m_vy += 1.0f;
+			m_vy += m_speed;
 			m_posture = 0;
 			m_ani_time += 1;
 		}
 		else if (Input::GetVKey(VK_LEFT) == true)//←
 		{
-			m_vx -= 1.0f;
+			m_vx -= m_speed;
 			m_posture = 1;
 			m_ani_time += 1;
 		}
@@ -202,11 +254,6 @@ void CObjHero::Action()
 			);
 		}
 
-
-	//HitBoxの内容を更新
-	CHitBox*hit = Hits::GetHitBox(this);
-	hit->SetPos(m_px+5, m_py+3);//HitBox主人公座標 + 位置調整
-
 	//ELEMENT_ENEMYを持つオブジェクトと接触したら
 	if (hit->CheckElementHit(ELEMENT_ENEMY) == true)
 		{
@@ -270,52 +317,159 @@ void CObjHero::Action()
 			if (m_hp != m_hp_max) {//HPが最大値でない場合のみ回復
 				if (hit->CheckObjNameHit(OBJ_PEACH) != nullptr)
 				{
-					m_hp += 1;
+					m_hp += 1; //HPを1回復
 					Audio::Start(8);//回復音を鳴らす
 				}
-				if (hit->CheckObjNameHit(OBJ_YELLOW_PEACH) != nullptr)
+				else if (hit->CheckObjNameHit(OBJ_YELLOW_PEACH) != nullptr)
 				{
-					Audio::Start(8);//回復音を鳴らす
-					m_hp += 3;
+					m_hp += 3;	//HPを3回復
+					Audio::Start(8);//回復音を鳴らす			
+				}
+				else if (hit->CheckObjNameHit(OBJ_PLUM) != nullptr)
+				{
+					item_list[2] += 1;
+					Audio::Start(2);//アイテム取得音を鳴らす
+				}
+				else if (hit->CheckObjNameHit(OBJ_HORN) != nullptr)
+				{
+					item_list[3] += 1;
+					Audio::Start(2);//アイテム取得音を鳴らす
+				}
+				else if (hit->CheckObjNameHit(OBJ_GOLD_BULLION) != nullptr)
+				{
+					item_list[4] += 1;
+					Audio::Start(2);//アイテム取得音を鳴らす
+				}
+				else if (hit->CheckObjNameHit(OBJ_SILVER_BULLION) != nullptr)
+				{
+					item_list[5] += 1;
+					Audio::Start(2);//アイテム取得音を鳴らす
+				}
+				else if (hit->CheckObjNameHit(OBJ_CLUB) != nullptr)
+				{
+					item_list[6] += 1;
+					Audio::Start(9);//デバフ音を鳴らす
+									//移動速度を0.8倍する
+									//m_px *= 0.8;
+									//m_py *= 0.8;
 				}
 			}
-			else {}//最大値の場合、回復出来ない
-			if (hit->CheckObjNameHit(OBJ_PLUM) != nullptr)
-				Audio::Start(2);//アイテム取得音を鳴らす
-			if (hit->CheckObjNameHit(OBJ_CLUB) != nullptr)
-				Audio::Start(2);//アイテム取得音を鳴らす
-			if (hit->CheckObjNameHit(OBJ_HORN) != nullptr)
-				Audio::Start(2);//アイテム取得音を鳴らす
-
-			if (hit->CheckObjNameHit(OBJ_GOLD_BULLION) != nullptr)
-				Audio::Start(2);//アイテム取得音を鳴らす
-
-			if (hit->CheckObjNameHit(OBJ_SILVER_BULLION) != nullptr)
-				Audio::Start(2);//アイテム取得音を鳴らす
-
-			if (hit->CheckObjNameHit(OBJ_CLUB) != nullptr)
-				Audio::Start(9);//デバフ音を鳴らす
-								//移動速度を0.8倍する
-								//m_px *= 0.8;
-								//m_py *= 0.8;
+			else //最大値の場合、回復出来ない
+			{
+				if (hit->CheckObjNameHit(OBJ_PEACH) != nullptr)
+				{
+					item_list[0] += 1;
+					Audio::Start(2);//回復音を鳴らす
+				}
+				else if (hit->CheckObjNameHit(OBJ_YELLOW_PEACH) != nullptr)
+				{
+					item_list[1] += 1;
+					Audio::Start(2);//回復音を鳴らす			
+				}
+			}
 		}
 
-		if (hit->CheckElementHit(ELEMENT_FIELD) == true)
+
+		//おともの当たり判定
+		HIT_DATA**hit_data;		//Hit時データ型、hit_dataを宣言
+		hit_data = hit->SearchElementHit(ELEMENT_RED);//hit_dataに主人公と当たっている他全てのHitBoxとの情報を入れる
+
+		for (int i = 0; i < hit->GetCount(); i++)//同時に複数のHitBoxに当たった場合、
+		{										 //当たった数だけ処理させる為のループ
+			if (hit_data[i] == nullptr)
+				continue;
+			float r = hit_data[i]->r;
+			if ((r < 45 && r >= 0) || r > 315)
+			{
+				if (Input::GetVKey(VK_RIGHT) == true) //→
+					m_vx = 0.0f;
+			}
+			if (r >= 45 && r < 135)
+			{
+				if (Input::GetVKey(VK_UP) == true)//↑
+					m_vy = 0.0f;
+			}
+			if (r >= 135 && r < 225)
+			{
+				if (Input::GetVKey(VK_LEFT) == true)//←
+					m_vx = 0.0f;
+			}
+			if (r >= 225 && r < 315)
+			{
+				if (Input::GetVKey(VK_DOWN) == true)//↓
+					m_vy = 0.0f;
+			}
+		}
+
+		//おともイベント
+		if (hit->CheckElementHit(ELEMENT_RED) == true)
+		{
+			if (Input::GetVKey('F') == true )//Fキー入力時
+			{
+				if (hit->CheckObjNameHit(OBJ_DOG) && df ==true)//犬に当たった場合
+				{
+					//犬イベント発生
+					CObjEveDog* evedog = new CObjEveDog();//オブジェクト作成
+					Objs::InsertObj(evedog, OBJ_EVEDOG, 10);//マネージャに登録
+
+					df = false;
+
+						m_hp_max += 1;
+						m_hp += 1;
+						OTOMO[0] = true;
+				}
+				else if (hit->CheckObjNameHit(OBJ_MONKE) && mf == true)//猿に当たった場合
+				{
+					//猿イベント発生
+					CObjEveMnky* evemonky = new CObjEveMnky();//オブジェクト作成
+					Objs::InsertObj(evemonky, OBJ_EVEMNKY, 10);//マネージャに登録
+
+					mf = false;
+
+					m_speed = 1.2f;
+					OTOMO[1] = true;
+				}
+				else if (hit->CheckObjNameHit(OBJ_PHEASANT) && pf == true)//キジに当たった場合
+				{
+					//雉イベント発生
+					CObjEveKiji* kiji = new CObjEveKiji();//オブジェクト作成
+					Objs::InsertObj(kiji, OBJ_EVEKIJI, 10);//マネージャに登録
+
+					pf = false;
+
+					m_Kf = false;
+					OTOMO[2] = true;
+				}
+			}
+		}
+
+		if (hit->CheckElementHit(ELEMENT_FIELD) == true && Input::GetVKey('F') == true)
 		{
 			//階段SEを鳴らす
 			Audio::Start(10);
 			//遅延
-			Sleep(1000);
+			Sleep(900);
 		}
 
-	//HPが0になったら破棄
+	//HPが0になったら破棄------死亡判定----------------------------------------------------------------
 	if (m_hp <= 0)
 	{
+		CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);//主人公データ取得
+		hero->SetDATA();//主人公のデータを初期化
+
 		this->SetStatus(false);	//自身に削除命令を出す
 		Hits::DeleteHitBox(this);//主人公が所有するHitBoxを削除する。
 
 		Scene::SetScene(new CSceneGameOver());
 	}
+	//Dを押してポーズに移行する
+	if (Input::GetVKey('D') == true)
+	{
+		Scene::SetScene(new CScenePose());
+	}
+	else{}
+
+
 }
 
 //ドロー
