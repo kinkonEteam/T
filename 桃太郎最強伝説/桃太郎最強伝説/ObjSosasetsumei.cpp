@@ -20,7 +20,7 @@ void CObjSosasetsumei::Init()
 void CObjSosasetsumei::Action()
 {
 
-	//Zを押してポーズに移行する
+	//Zを押してポーズに移行する 
 	if (Input::GetVKey('Z') == true)
 	{
 		Scene::SetScene(new CScenePose());
@@ -38,6 +38,6 @@ void CObjSosasetsumei::Draw()
 	Font::StrDraw(L"Aで剣攻撃だ", 300, 200, 30, c);
 	Font::StrDraw(L"Sで雉攻撃だ", 300, 250, 30, c);
 	Font::StrDraw(L"（雉入手後可能）", 300, 300, 30, c);
-	Font::StrDraw(L"Mで戻るんじゃ", 300, 350, 30, c);
+	Font::StrDraw(L"Zで戻るんじゃ", 300, 350, 30, c);
 
 }
