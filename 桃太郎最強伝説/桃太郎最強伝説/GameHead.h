@@ -25,6 +25,7 @@ enum OBJ_NAME
 					OBJ_TITLE,
 					OBJ_GAME_OVER,
 					OBJ_CLEAR,
+					OBJ_SCORE,
 					OBJ_TALK,
 					OBJ_EVEDOG,
 					OBJ_BULLET,
@@ -69,6 +70,7 @@ struct UserData
 {
 	int mSeveData;	//サンプルセーブデータ
 	int m_point;//スコア用変数
+	int m_ranking[16];//ランキング情報
 };
 //------------------------------------------------
 
@@ -140,6 +142,7 @@ enum ITEM
 #include"SceneGameOver.h"
 #include"ScecneClear.h"
 #include"SceneSummary.h"
+#include"SceneScore.h"
 //-----------------------------------------------
 
 //シーンスタートクラス---------------------------

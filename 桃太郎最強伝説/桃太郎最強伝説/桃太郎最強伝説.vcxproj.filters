@@ -88,6 +88,9 @@
     <Filter Include="ソース ファイル\Scene\操作説明">
       <UniqueIdentifier>{8316f4dd-bb87-4cbf-bde2-a39bb747958c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Scene\スコアランキング">
+      <UniqueIdentifier>{8d54fc59-673e-4067-b9ee-44b02f685762}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameL\Audio.cpp">
@@ -297,6 +300,12 @@
     <ClCompile Include="ObjCapture.cpp">
       <Filter>ソース ファイル\暗闇</Filter>
     </ClCompile>
+    <ClCompile Include="ObjScore.cpp">
+      <Filter>ソース ファイル\Scene\スコアランキング</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneScore.cpp">
+      <Filter>ソース ファイル\Scene\スコアランキング</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameL\Audio.h">
@@ -493,6 +502,12 @@
     </ClInclude>
     <ClInclude Include="ObjCapture.h">
       <Filter>ソース ファイル\暗闇</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjScore.h">
+      <Filter>ソース ファイル\Scene\スコアランキング</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneScore.h">
+      <Filter>ソース ファイル\Scene\スコアランキング</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
