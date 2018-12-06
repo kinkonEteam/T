@@ -121,10 +121,10 @@
     <ClCompile Include="ObjInventory.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="Itemlist.cpp" />
-    <ClCompile Include="ObjScore.cpp" />
-    <ClCompile Include="SceneKeyUse.cpp" />
-    <ClCompile Include="ObjKeyUse.cpp" />
+    <ClCompile Include="ObjKeyUse.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="ObjBoss.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -208,7 +208,6 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="SceneMain.cpp" />
-    <ClCompile Include="SceneScore.cpp" />
     <ClCompile Include="ScenePose.cpp" />
     <ClCompile Include="SceneSell.cpp" />
     <ClCompile Include="SceneSosasetsumei.cpp" />
@@ -231,8 +230,6 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="ObjKeyUse.h" />
-    <ClInclude Include="ObjScore.h" />
-    <ClInclude Include="SceneKeyUse.h" />
     <ClInclude Include="ObjBoss.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
@@ -314,7 +311,6 @@
     <ClInclude Include="SceneGameOver.h" />
     <ClInclude Include="SceneMain.h" />
     <ClInclude Include="ScenePose.h" />
-    <ClInclude Include="SceneScore.h" />
     <ClInclude Include="SceneSell.h" />
     <ClInclude Include="SceneSosasetsumei.h" />
     <ClInclude Include="SceneSummary.h" />
