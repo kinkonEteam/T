@@ -121,9 +121,7 @@
     <ClCompile Include="ObjInventory.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="Itemlist.cpp" />
     <ClCompile Include="ObjScore.cpp" />
-    <ClCompile Include="SceneKeyUse.cpp" />
     <ClCompile Include="ObjKeyUse.cpp" />
     <ClCompile Include="ObjBoss.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -232,7 +230,6 @@
     </ClInclude>
     <ClInclude Include="ObjKeyUse.h" />
     <ClInclude Include="ObjScore.h" />
-    <ClInclude Include="SceneKeyUse.h" />
     <ClInclude Include="ObjBoss.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
