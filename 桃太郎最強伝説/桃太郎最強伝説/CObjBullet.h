@@ -6,7 +6,7 @@
 //使用するネームスペース
 using namespace GameL;
 
-//オブジェクト：弾丸
+//オブジェクト：弾丸4
 class CObjBullet : public CObj
 {
 public:
