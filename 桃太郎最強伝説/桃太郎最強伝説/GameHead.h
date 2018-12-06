@@ -48,7 +48,7 @@ enum OBJ_NAME
 	OBJ_CAPTURE,		//画面全体に画像を表示
 	OBJ_KEYUSE,	
 	OBJ_INVENTORY,
-
+	OBJ_SCORE,
 };
 //------------------------------------------------
 
@@ -135,7 +135,7 @@ enum ITEM
 #include"ObjKeyUse.h"
 #include"ObjPose.h"
 #include"ObjSosasetsumei.h"
-
+#include"ObjScore.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------
@@ -154,7 +154,7 @@ enum ITEM
 #include"SceneSummary.h"
 #include"ScenePose.h"
 #include"SceneSosasetsumei.h"
-
+#include"SceneScore.h"
 //-----------------------------------------------
 
 //シーンスタートクラス---------------------------
