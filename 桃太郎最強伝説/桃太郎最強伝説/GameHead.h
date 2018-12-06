@@ -48,7 +48,6 @@ enum OBJ_NAME
 	OBJ_CAPTURE,		//画面全体に画像を表示
 	OBJ_KEYUSE,	
 	OBJ_INVENTORY,
-	OBJ_KEYUSE,
 
 };
 //------------------------------------------------
@@ -162,5 +161,5 @@ enum ITEM
 
 //シーンスタートクラス---------------------------
 //ゲーム開始時のシーンクラス登録
-#define SET_GAME_START  CScenefloor3
+#define SET_GAME_START  CSceneTitle
 //-----------------------------------------------

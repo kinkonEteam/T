@@ -46,6 +46,10 @@ void CScenefloor1::InitScene()
 	int size;			//ステージ情報の大きさ
 	p = Save::ExternalDataOpen(L"Book1.csv", &size);//外部データ読み込み
 
+	unique_ptr<wchar_t>pID;//アイテム情報ポインター
+	int size;			//アイテム情報の大きさ
+	pID = Save::ExternalDataOpen(L"ItemData.csv", &size);//外部データ読み込み
+
 	int map[56][56];
 	int count = 1;
 	for (int i = 0; i < 56; i++)
