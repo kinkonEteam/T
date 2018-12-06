@@ -9,10 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="リソース ファイル">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="ソース ファイル\Map">
       <UniqueIdentifier>{a761d459-e9b1-4cd4-b11e-6a275c958389}</UniqueIdentifier>
     </Filter>
@@ -223,9 +219,6 @@
     <ClCompile Include="SceneSell.cpp">
       <Filter>ソース ファイル\Scene\換金</Filter>
     </ClCompile>
-    <ClCompile Include="SceneKeyUse.cpp">
-      <Filter>ソース ファイル\Scene\操作説明</Filter>
-    </ClCompile>
     <ClCompile Include="ObjCapture.cpp">
       <Filter>ソース ファイル\暗闇</Filter>
     </ClCompile>
@@ -400,9 +393,6 @@
     <ClInclude Include="CObjFlyKiji.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Inventory.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="ObjMonke.h">
       <Filter>ソース ファイル\Character\おとも</Filter>
     </ClInclude>
@@ -480,9 +470,6 @@
     </ClInclude>
     <ClInclude Include="SceneSell.h">
       <Filter>ソース ファイル\Scene\換金</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneKeyUse.h">
-      <Filter>ソース ファイル\Scene\操作説明</Filter>
     </ClInclude>
     <ClInclude Include="ObjCapture.h">
       <Filter>ソース ファイル\暗闇</Filter>
