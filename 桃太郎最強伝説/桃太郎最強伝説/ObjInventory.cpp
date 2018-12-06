@@ -27,7 +27,6 @@ void CObjInventory::Action()
 
 void CObjInventory::Draw()
 {
-	int wa = 0;
 	if (m_Ef == true)
 	{
 		this->SetStatus(false);	//©g‚Éíœ–½—ß‚ğo‚·
