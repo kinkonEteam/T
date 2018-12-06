@@ -140,6 +140,7 @@ void CObjHero::Action()
 			{
 				//持ち物リストが表示されていたら持ち物リストを非表示にする
 				if (m_Mf == true) {
+					
 					CObjInventory* iob = (CObjInventory*)Objs::GetObj(OBJ_INVENTORY);
 					if (iob != nullptr)
 						iob->SetEf(true);
@@ -406,6 +407,11 @@ void CObjHero::Action()
 		{
 			if (Input::GetVKey('F') == true )//Fキー入力時
 			{
+				//持ち物リストが開いていたら閉じる
+				CObjInventory* iob = (CObjInventory*)Objs::GetObj(OBJ_INVENTORY);
+				if (iob != nullptr)
+					iob->SetEf(true);
+
 				if (hit->CheckObjNameHit(OBJ_DOG) && df ==true)//犬に当たった場合
 				{
 					//犬イベント発生

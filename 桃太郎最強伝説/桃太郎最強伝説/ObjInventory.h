@@ -15,7 +15,7 @@ using namespace GameL;
 #define SCORE_POS_X			(600)
 #define SCORE_POS_Y			(72)
 #define SCORE_POINT_MAX		(100)
-#define SCORE_INTERVAL		(32)
+#define SCORE_INTERVAL		(48)
 #define SCORE_FONT_SIZE		(24)
 
 //オブジェクト：キャラクターブロック
