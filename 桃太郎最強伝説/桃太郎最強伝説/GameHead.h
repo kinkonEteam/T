@@ -44,12 +44,6 @@ enum OBJ_NAME
 	OBJ_SUMMARY,
 	OBJ_POSE,
 	OBJ_SOSASETSUMEI,
-	OBJ_STAIR,
-	OBJ_CAPTURE,
-	OBJ_KEYUSE,
-	OBJ_CAPTURE,			//‰æ–Ê‘S‘Ì‚É‰æ‘œ‚ð•\Ž¦
-	OBJ_STAIR,
-	OBJ_INVENTORY,
 };
 //------------------------------------------------
 
