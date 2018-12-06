@@ -16,7 +16,6 @@ using namespace GameL;
 #include "SceneSell.h"
 #include "GameHead.h"
 
-
 //コンストラクタ
 CSceneSell::CSceneSell()
 {

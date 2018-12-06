@@ -47,12 +47,13 @@ void CObjDog::Action()
 	if (map4 != nullptr)
 		hit->SetPos(m_px + map4->GetScrollx(), m_py + map4->GetScrolly());
 	if (map5 != nullptr)
-		hit->SetPos(m_px + map5->GetScrollx(), m_py + map5->GetScrolly());
+		hit->SetPos(m_px + map5->GetScrollx(), m_py + map5->GetScrolly());;
 
+	//イベントが終わると犬を削除
 	if (m_df == true)
 	{
 		this->SetStatus(false);	//自身に削除命令を出す
-		Hits::DeleteHitBox(this);//主人公が所有するHitBoxを削除する。
+		Hits::DeleteHitBox(this);//犬が所有するHitBoxを削除する。
 	}
 }
 
@@ -64,7 +65,7 @@ void CObjDog::Draw()
 	RECT_F src; //描画元切り取り位置
 	RECT_F dst; //描画先表示位置
 
-	//ブロック情報を持ってくる
+				//ブロック情報を持ってくる
 	CObjMap1*map1 = (CObjMap1*)Objs::GetObj(OBJ_MAP1);
 	CObjMap2*map2 = (CObjMap2*)Objs::GetObj(OBJ_MAP2);
 	CObjMap3*map3 = (CObjMap3*)Objs::GetObj(OBJ_MAP3);
@@ -113,6 +114,7 @@ void CObjDog::Draw()
 		dst.m_right = 50.0f + m_px + map5->GetScrollx();
 		dst.m_bottom = 50.0f + m_py + map5->GetScrolly();
 	}
+
 
 	//描画
 	Draw::Draw(2, &src, &dst, c, 0.0f);

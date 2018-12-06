@@ -53,15 +53,15 @@ void CObjstair::Action()
 
 	if (hit->CheckObjNameHit(OBJ_HERO) != nullptr)
 	{
-		if (m_c == 1 && Input::GetVKey('A') == true)
+		if (m_c == 1 && Input::GetVKey('F') == true)
 			Scene::SetScene(new CScenefloor2());
-		else if (m_c == 2 && Input::GetVKey('A') == true)
+		else if (m_c == 2 && Input::GetVKey('F') == true)
 			Scene::SetScene(new CScenefloor3());
-		else if(m_c == 3 && Input::GetVKey('A') == true)
+		else if(m_c == 3 && Input::GetVKey('F') == true)
 			Scene::SetScene(new CScenefloor4());
-		else if(m_c == 4 && Input::GetVKey('A') == true)
+		else if(m_c == 4 && Input::GetVKey('F') == true)
 			Scene::SetScene(new CScenefloor5());
-		else if(m_c ==5 && Input::GetVKey('A') == true)
+		else if(m_c ==5 && Input::GetVKey('F') == true)
 			Scene::SetScene(new CSceneClear());
 
 		CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);//主人公データ取得
