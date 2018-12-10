@@ -14,8 +14,6 @@ using namespace GameL;
 #include"SceneTitle.h"
 #include"GameHead.h"
 
-
-
 //ゲームメイン初期化メソッド
 void CSceneTitle::InitScene()
 {

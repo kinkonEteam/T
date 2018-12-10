@@ -1,44 +1,49 @@
 //使用するヘッダーファイル
 #include"GameL\DrawFont.h"
 #include"GameL\WinInputs.h"
-#include"GameL\SceneObjManager.h"
-#include"GameL\UserData.h"
+#include"GameL\SceneManager.h"
+/*#include"GameL\UserData.h"
+#include "GameL\DrawFont.h"*/
 
 #include"GameHead.h"
-#include"ObjTitle.h"
+#include"ObjScore.h"
 
 //使用するネームスペース
 using namespace GameL;
 
 //イニシャライズ
-void CObjTitle::Init()
+void CObjScore::Init()
 {
-	
-	m_key_flag = false;
+	m_key_flag = false;//キーフラグ
 }
 
 //アクション
-void CObjTitle::Action()
+void CObjScore::Action()
 {
-	//エンターキーを押してシーン：ゲームメインに移行する
+	//エンターキーを押してシーン：ゲームタイトルに移行する
 	if (Input::GetVKey(VK_RETURN) == true)
 	{
 		if (m_key_flag == true)
 		{
-			Scene::SetScene(new CSceneSummary());
+			Scene::SetScene(new CSceneTitle());
 			m_key_flag = false;
 		}
+
 	}
 	else
 	{
 		m_key_flag = true;
 	}
 
+
 }
+
 //ドロー
-void CObjTitle::Draw()
+void CObjScore::Draw()
 {
-	float c[4] = { 1.0f,1.0f,1.0f,2.5f };
+
+	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
+
 
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置
@@ -57,9 +62,6 @@ void CObjTitle::Draw()
 	dst.m_bottom = 600.0f;
 
 	//描画
-	Draw::Draw(20, &src, &dst, c, 0.0f);
-
-	float b[4] = { 1.0f,0.0f,0.0f,1.0f };
-	Font::StrDraw(L"桃太郎最強伝説", 230, 250, 50, b);
-	Font::StrDraw(L"START", 350, 350, 45, b);
+	Draw::Draw(18, &src, &dst, c, 0.0f);
+	Font::StrDraw(L"SCORe", 300, 250, 64, c);
 }
