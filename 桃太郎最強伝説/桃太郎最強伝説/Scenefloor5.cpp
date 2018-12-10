@@ -32,7 +32,7 @@ CScenefloor5::~CScenefloor5()
 void CScenefloor5::InitScene()
 {
 	//ボス戦用BGM読み込み
-	Audio::LoadAudio(1, L"BossBGM.wav", BACK_MUSIC);
+	Audio::LoadAudio(1, L"ボス.wav", BACK_MUSIC);
 
 	Audio::Start(1);//ボス用BGMをスタート
 
