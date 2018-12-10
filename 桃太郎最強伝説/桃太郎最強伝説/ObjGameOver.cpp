@@ -63,7 +63,7 @@ void CObjGameOver::Draw()
 
 	//•`‰æ
 	Draw::Draw(18, &src, &dst, c, 0.0f);
-	Font::StrDraw(L"GAME OVER", 300, 250, 64, c);
+	
 
 	//ƒXƒRƒA‚Ì•`‰æ
 	/*float se[4] = { 1.0f,1.0f,1.0f,1.0f };

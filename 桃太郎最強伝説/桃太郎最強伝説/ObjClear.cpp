@@ -58,11 +58,6 @@ void CObjClear::Draw()
 	//描画
 	Draw::Draw(19, &src, &dst, c, 0.0f);
 
-	float b[4] = { 1.0f,0.0f,0.0f,1.0f };
-	Font::StrDraw(L"ゲームクリア", 224, 200, 50, b);
-	Font::StrDraw(L"一つ伝説が刻まれた…", 230, 250, 50, b);
-    Font::StrDraw(L"めでたしめでたし", 250, 300, 64, b);
-
 	//スコアの描画
 	float se[4] = { 1.0f,1.0f,1.0f,1.0f };
 	wchar_t str[128];

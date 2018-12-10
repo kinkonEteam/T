@@ -61,7 +61,5 @@ void CObjTitle::Draw()
 	//ï`âÊ
 	Draw::Draw(20, &src, &dst, c, 0.0f);
 
-	float b[4] = { 1.0f,0.0f,0.0f,1.0f };
-	Font::StrDraw(L"ìçëæòYç≈ã≠ì`ê‡", 230, 250, 50, b);
-	Font::StrDraw(L"START", 350, 350, 45, b);
+	
 }

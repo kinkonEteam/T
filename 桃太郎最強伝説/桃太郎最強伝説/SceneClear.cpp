@@ -37,7 +37,7 @@ void CSceneClear::InitScene()
 		CObjClear*obj = new CObjClear();
 		Objs::InsertObj(obj, OBJ_CLEAR, 10);
 		//外部グラフィックを読み込み19番に登録(512×512ピクセル)
-		Draw::LoadImage(L"ゲームクリア.jpg", 19, TEX_SIZE_512);
+		Draw::LoadImage(L"ゲームクリア.png", 19, TEX_SIZE_512);
 
 		Audio::LoadAudio(0, L"BossBGM.wav", BACK_MUSIC);
 

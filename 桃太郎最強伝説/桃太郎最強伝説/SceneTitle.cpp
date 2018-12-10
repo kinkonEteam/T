@@ -19,8 +19,7 @@ using namespace GameL;
 //ゲームメイン初期化メソッド
 void CSceneTitle::InitScene()
 {
-	//出力させる文字のグラフィックを作成
-	Font::SetStrTex(L"桃太郎最強伝説");
+	
 	//外部グラフィックを読み込み19番に登録(512×512ピクセル)
 	Draw::LoadImage(L"ゲームタイトル.png", 20, TEX_SIZE_512);
 
