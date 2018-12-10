@@ -19,33 +19,33 @@ void CObjPose::Init()
 //アクション
 void  CObjPose::Action()
 {
-
 	//Zを押してゲーム画面に移行する
 	if (Input::GetVKey('Z') == true)
 	{
 		Scene::SetScene(new CScenefloor1());
 	}
-	else {}
+	else{}
+
 	//Xを押して操作説明画面に移行する
 	if (Input::GetVKey('X') == true)
 	{
 		Scene::SetScene(new CSceneSosasetsumei());
 	}
-	else {}
+	else{}
 
 	//Cを押してアイテム説明画面に移行する
 	if (Input::GetVKey('C') == true)
 	{
-		Scene::SetScene(new CScenefloor1());
+		Scene::SetScene(new CSceneItemsetsumei());
 	}
-	else {}
+	else{}
 
 	//Vを押してTitleに移行する
 	if (Input::GetVKey('V') == true)
 	{
 		Scene::SetScene(new CSceneTitle());
 	}
-	else {}
+	else{}
 	
 }
 

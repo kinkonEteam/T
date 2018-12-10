@@ -467,9 +467,7 @@ void CObjHero::Action()
 	{
 		Scene::SetScene(new CScenePose());
 	}
-	else{}
-
-
+	else{}	
 }
 
 //ÉhÉçÅ[

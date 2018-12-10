@@ -4,20 +4,20 @@
 #include"GameL\SceneManager.h"
 
 #include"GameHead.h"
-#include"ObjSosasetsumei.h"
+#include"ObjItemsetsumei.h"
 
 //使用するネームスペース
 using namespace GameL;
 
 //イニシャライズ
-void CObjSosasetsumei::Init()
+void CObjItemsetsumei::Init()
 {
 
 
 }
 
 //アクション
-void CObjSosasetsumei::Action()
+void CObjItemsetsumei::Action()
 {
 
 	//Dを押してポーズに移行する 
@@ -29,14 +29,11 @@ void CObjSosasetsumei::Action()
 }
 
 //ドロー
-void CObjSosasetsumei::Draw()
+void CObjItemsetsumei::Draw()
 {
 
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 
-	Font::StrDraw(L"操作説明", 300, 80, 50, c);
-	Font::StrDraw(L"↑↓←→で移動だ", 250, 150, 30, c);
-	Font::StrDraw(L"Aで剣攻撃だ", 250, 200, 30, c);
-	Font::StrDraw(L"Dで戻るんじゃ", 250, 250, 30, c);
+	
 
 }
