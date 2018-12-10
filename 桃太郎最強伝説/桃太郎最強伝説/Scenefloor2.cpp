@@ -32,13 +32,9 @@ CScenefloor2::~CScenefloor2()
 void CScenefloor2::InitScene()
 {
 	//BGMの読み込み
-	Audio::LoadAudio(0, L"DungeonBGM.wav", BACK_MUSIC);		//ダンジョン用BGM
-
-															//ボリュームを1.0に戻す
-	float v = Audio::VolumeMaster(2);
-	v = Audio::VolumeMaster((1.0 - v));
+	Audio::LoadAudio(1, L"ダンジョン.wav", BACK_MUSIC);		//ダンジョン用BGM
 	//音楽スタート
-	Audio::Start(0);
+	Audio::Start(1);
 
 	//外部データの読み込み（階層1情報）
 	unique_ptr<wchar_t>p;//ステージ情報ポインター

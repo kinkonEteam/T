@@ -74,10 +74,9 @@ void CObjHero::Init()
 	Audio::LoadAudio(6, L"damage.wav", EFFECT);				//ƒ_ƒ[ƒWSE
 	Audio::LoadAudio(8, L"heal.wav", EFFECT);				//‘Ì—Í‰ñ•œŽžSE
 	Audio::LoadAudio(9, L"speeddown.wav", EFFECT);			//žž–_Žæ“¾Žž—pSE
-	Audio::LoadAudio(10, L"StairsSE.wav", EFFECT);			//‹ßÚUŒ‚SE
+	//Audio::LoadAudio(10, L"StairsSE.wav", EFFECT);			//‹ßÚUŒ‚SE
 
-	//‰¹—Ê‚ð0.9‰º‚°‚é
-	float Volume = Audio::VolumeMaster(-0.9f);
+
 }
 
 //ƒAƒNƒVƒ‡ƒ“
@@ -452,7 +451,7 @@ void CObjHero::Action()
 		if (hit->CheckElementHit(ELEMENT_FIELD) == true && Input::GetVKey('F') == true)
 		{
 			//ŠK’iSE‚ð–Â‚ç‚·
-			Audio::Start(10);
+
 			//’x‰„
 			Sleep(900);
 		}

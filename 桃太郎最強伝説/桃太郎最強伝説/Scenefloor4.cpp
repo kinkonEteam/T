@@ -31,6 +31,11 @@ CScenefloor4::~CScenefloor4()
 //初期化メソッド
 void CScenefloor4::InitScene()
 {
+	//BGMの読み込み
+	Audio::LoadAudio(1, L"ダンジョン.wav", BACK_MUSIC);		//ダンジョン用BGM
+	//音楽スタート
+	Audio::Start(1);
+
 	//外部データの読み込み（階層1情報）
 	unique_ptr<wchar_t>p;//ステージ情報ポインター
 	int size;			//ステージ情報の大きさ
