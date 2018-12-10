@@ -20,8 +20,8 @@ void CObjSosasetsumei::Init()
 void CObjSosasetsumei::Action()
 {
 
-	//Dを押してポーズに移行する
-	if (Input::GetVKey('D') == true)
+	//Zを押してポーズに移行する 
+	if (Input::GetVKey('Z') == true)
 	{
 		Scene::SetScene(new CScenePose());
 	}

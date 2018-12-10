@@ -13,11 +13,10 @@ using namespace GameL;
 //イニシャライズ
 void CObjTitle::Init()
 {
-	//得点の初期化
-	((UserData*)Save::GetData())->m_point = 0;
-
+	
 	m_key_flag = false;
 }
+
 //アクション
 void CObjTitle::Action()
 {
@@ -29,7 +28,6 @@ void CObjTitle::Action()
 			Scene::SetScene(new CSceneSummary());
 			m_key_flag = false;
 		}
-		
 	}
 	else
 	{
