@@ -76,6 +76,9 @@ void CObjEveDog::Draw()
 	else {
 		CObjDog*dog = (CObjDog*)Objs::GetObj(OBJ_DOG);
 		dog->Setdf(true);
-		this->SetStatus(false);		//オブジェクト削除
+		CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
+		hero -> PHP(1);					//プレイヤのhpに1加算
+		hero -> SetYAMI(false);			//falseで暗闇更新
+		this->SetStatus(false);			//オブジェクト削除
 	}
 }
