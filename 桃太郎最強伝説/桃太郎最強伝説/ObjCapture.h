@@ -14,6 +14,8 @@ public:
 	void Init();	//イニシャライズ
 	void Action();	//アクション
 	void Draw();	//ドロー
+
+	void SetImage(int n) { m_num = n; }
 private:
 	int m_num;
 };
