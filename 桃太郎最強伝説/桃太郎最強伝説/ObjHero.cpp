@@ -14,13 +14,26 @@ using namespace GameL;
 extern int HP;				//HP
 extern bool OTOMO[3];		//お供所持情報
 extern int item_list[5];	//
-void CObjHero::SaveDATA() {		//セーブ関数の定義----------------------データをセーブ
-	//シーン切り替え時のhpデータを、HPへ格納
-	HP = m_hp;
+void CObjHero::SaveDATA() {		//セーブ関数----------------------データをセーブ
+	HP = m_hp;					//シーン切り替え時のhpデータを、HPへ格納
 }
-void CObjHero::SetDATA() {		//セーブ関数の定義----------------------データをセット
-								//シーン切り替え時のhpデータを、HPへ格納
-	HP = 5;
+void CObjHero::SetDATA() {		//セット関数----------------------データをセット
+	HP = 5;						//ゲームオーバー後、HPを初期値に戻す
+}
+//シーン表示時の暗闇作成()又は、イベントから関数を使って暗闇を開放していく時(false)
+void CObjHero::SetYAMI(bool tipe) {//暗闇セット関数-----------------------暗闇
+	for (int nam = 0; nam < 3; nam++) {//お供の数を確認して画像番号代入
+		if (OTOMO[nam] == true)	//各お供が居るなら
+			m_image += 1;		//画像番号+1
+	}
+	if (tipe == true){	//SetYAMI(true or 空白)
+		ObjCapture* yami = new ObjCapture(m_image);	//暗闇作成
+		Objs::InsertObj(yami, OBJ_CAPTURE, 3);		//登録
+	}
+	else{				//SetYami(false)
+		ObjCapture* yami = (ObjCapture*)Objs::GetObj(OBJ_CAPTURE);
+		yami->SetImage(m_image);
+	}
 }
 
 CObjHero::CObjHero(float x, float y)
@@ -38,16 +51,25 @@ void CObjHero::Init()
 	m_speed = 1.0f;			//速度
 
 	bool m_otm[3];
-	m_Sf = true;			//ソード制御
-	m_Kf = true;			//  キジ制御
+	m_Sf = true;		//ソード制御
+	m_Kf = true;		//  キジ制御
 
 	//OTOMO[0犬,1キジ,2猿] == true(ある) or false(ない)
 	if (OTOMO[0] == true)		//犬が居る場合
+	{
 		m_hp_max += 1;			//最大HPに1加算
+	}
 	if (OTOMO[1] == true)		//キジが居る場合
+	{
 		m_Kf = false;			//制御を解除
+	}
 	if (OTOMO[2] == true)		//猿が居る場合
+	{
 		m_speed = 1.2f;			//速度
+	}
+	m_image = 15;		//初期化
+	SetYAMI();					//暗闇作成
+	
 
 	m_hp = HP;				//メンバhpにHPを代入
 	m_time = 70;
@@ -74,10 +96,12 @@ void CObjHero::Init()
 	Audio::LoadAudio(6, L"damage.wav", EFFECT);				//ダメージSE
 	Audio::LoadAudio(8, L"heal.wav", EFFECT);				//体力回復時SE
 	Audio::LoadAudio(9, L"speeddown.wav", EFFECT);			//棍棒取得時用SE
-	Audio::LoadAudio(10, L"StairsSE.wav", EFFECT);			//近接攻撃SE
+	//Audio::LoadAudio(10, L"StairsSE.wav", EFFECT);			//近接攻撃SE
 
 	//音量を0.9下げる
 	float Volume = Audio::VolumeMaster(-0.9f);
+
+	
 }
 
 //アクション
@@ -140,6 +164,7 @@ void CObjHero::Action()
 			{
 				//持ち物リストが表示されていたら持ち物リストを非表示にする
 				if (m_Mf == true) {
+					
 					CObjInventory* iob = (CObjInventory*)Objs::GetObj(OBJ_INVENTORY);
 					if (iob != nullptr)
 						iob->SetEf(true);
@@ -406,6 +431,11 @@ void CObjHero::Action()
 		{
 			if (Input::GetVKey('F') == true )//Fキー入力時
 			{
+				//持ち物リストが開いていたら閉じる
+				CObjInventory* iob = (CObjInventory*)Objs::GetObj(OBJ_INVENTORY);
+				if (iob != nullptr)
+					iob->SetEf(true);
+
 				if (hit->CheckObjNameHit(OBJ_DOG) && df ==true)//犬に当たった場合
 				{
 					//犬イベント発生
@@ -414,9 +444,8 @@ void CObjHero::Action()
 
 					df = false;
 
-						m_hp_max += 1;
-						m_hp += 1;
-						OTOMO[0] = true;
+					m_hp_max += 1;
+					OTOMO[0] = true;
 				}
 				else if (hit->CheckObjNameHit(OBJ_MONKE) && mf == true)//猿に当たった場合
 				{
@@ -446,7 +475,7 @@ void CObjHero::Action()
 		if (hit->CheckElementHit(ELEMENT_FIELD) == true && Input::GetVKey('F') == true)
 		{
 			//階段SEを鳴らす
-			Audio::Start(10);
+
 			//遅延
 			Sleep(900);
 		}

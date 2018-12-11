@@ -19,7 +19,8 @@ using namespace GameL;
 //コンストラクタ
 CSceneSell::CSceneSell()
 {
-
+	//外部グラフィックを読み込み29番に登録(512×512ピクセル)
+	Draw::LoadImage(L".png", 29, TEX_SIZE_512);
 }
 
 //デストラクタ

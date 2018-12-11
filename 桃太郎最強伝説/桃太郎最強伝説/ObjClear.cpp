@@ -20,12 +20,17 @@ void CObjClear::Init()
 //アクション
 void CObjClear::Action()
 {
+	//得点情報をランキング最下位に登録
+	((UserData*)Save::GetData())->m_ranking[15] = ((UserData*)Save::GetData())->m_point;
+	
+	//得点が高い順に並び変えする
+	
 	//エンターキーを押してシーン：タイトル移行する
 	if (Input::GetVKey(VK_RETURN) == true)
 	{
 		if (m_key_flag == true)
 		{
-			Scene::SetScene(new CSceneTitle());
+			Scene::SetScene(new CSceneScore());
 			m_key_flag = false;
 		}
 	}
@@ -42,7 +47,7 @@ void CObjClear::Draw()
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置
 
-			   //切り取り位置の設定
+	//切り取り位置の設定
 	src.m_top = 0.0f;
 	src.m_left = 0.0f;
 	src.m_right = 800.0f;
@@ -57,11 +62,6 @@ void CObjClear::Draw()
 
 	//描画
 	Draw::Draw(19, &src, &dst, c, 0.0f);
-
-	float b[4] = { 1.0f,0.0f,0.0f,1.0f };
-	Font::StrDraw(L"ゲームクリア", 224, 200, 50, b);
-	Font::StrDraw(L"一つ伝説が刻まれた…", 230, 250, 50, b);
-    Font::StrDraw(L"めでたしめでたし", 250, 300, 64, b);
 
 	//スコアの描画
 	float se[4] = { 1.0f,1.0f,1.0f,1.0f };

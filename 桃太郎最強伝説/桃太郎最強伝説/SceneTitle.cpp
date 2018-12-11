@@ -17,8 +17,7 @@ using namespace GameL;
 //ゲームメイン初期化メソッド
 void CSceneTitle::InitScene()
 {
-	//出力させる文字のグラフィックを作成
-	Font::SetStrTex(L"桃太郎最強伝説");
+	
 	//外部グラフィックを読み込み19番に登録(512×512ピクセル)
 	Draw::LoadImage(L"ゲームタイトル.png", 20, TEX_SIZE_512);
 
@@ -27,12 +26,16 @@ void CSceneTitle::InitScene()
 	Objs::InsertObj(obj, OBJ_TITLE, 10);    //主人公オブジェクト登録
 
 	//BGMの読み込み
-//	Audio::LoadAudio(0, L"TitleBGM.wav", SOUND_TYPE::BACK_MUSIC);		//タイトル用BGM
+	Audio::LoadAudio(0, L"タイトル.wav", BACK_MUSIC);		//タイトル用BGM
 
-	//BGMボリュームを0.9下げる
-//	float Volume = Audio::VolumeMaster(-0.9f);
+	//ボリュームを1.0に戻す
+	float v = Audio::VolumeMaster(0);
+	v = Audio::VolumeMaster((1.0 - v));
+
+	//BGMボリュームを0.5下げる
+	float Volume = Audio::VolumeMaster(-0.5f);
 	//音楽スタート
-//	Audio::Start(0);
+	Audio::Start(0);
 }
 
 //ゲームメイン実行中メソッド
