@@ -19,7 +19,6 @@ using namespace GameL;
 //コンストラクタ
 CScenefloor1::CScenefloor1()
 {
-	Audio::LoadAudio(0, L"DungeonBGM.wav",SOUND_TYPE::BACK_MUSIC);		//ダンジョン用BGM
 
 	
 }

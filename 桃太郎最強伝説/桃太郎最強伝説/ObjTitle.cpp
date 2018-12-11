@@ -14,6 +14,20 @@ using namespace GameL;
 void CObjTitle::Init()
 {
 	
+	//ゲームスコアの初期化
+	static bool init_point = false;
+	if (init_point == false)
+	{
+		((UserData*)Save::GetData())->m_point = 0;//点数を初期化する
+		init_point = true;
+		//ランキングも初期化する
+		for (int i = 0; i < 16; i++)
+		{
+			((UserData*)Save::GetData())->m_ranking[i] = 0;
+		}
+		init_point = true;
+	}
+
 	m_key_flag = false;
 }
 
@@ -25,7 +39,7 @@ void CObjTitle::Action()
 	{
 		if (m_key_flag == true)
 		{
-			Scene::SetScene(new CSceneSummary());
+			Scene::SetScene(new CSceneTitle());
 			m_key_flag = false;
 		}
 	}

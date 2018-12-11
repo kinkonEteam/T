@@ -18,8 +18,8 @@ void CObjTalk::Action()
 {
 	if (m_page == m_p) {//渡されたページ数と現在のページ数が同じになったら
 		
-		CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
-		hero -> SetYAMI();					//暗闇作成
+		/*CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
+		hero -> SetYAMI();					//暗闇作成*/
 		this->SetStatus(false);		//オブジェクト削除
 	}
 

@@ -10,6 +10,7 @@
 
 //使用するネームスペース
 using namespace GameL;
+extern int item_list[5];
 
 //イニシャライズ
 void CObjClear::Init()
@@ -20,6 +21,46 @@ void CObjClear::Init()
 //アクション
 void CObjClear::Action()
 {
+	int p = 0;
+	for (int i = 0; i<7;i++) 
+	{
+		if (i == 0)
+		{
+			p+=item_list[0] * 100;
+		}
+		/*else if (i)
+		{
+
+		}
+		else if ()
+		{
+
+		}
+		else if ()
+		{
+
+		}
+		else if ()
+		{
+
+		}
+		else if ()
+		{
+
+
+		}
+		else if ()
+		{
+
+		}
+		else if ()
+		{
+
+		}*/
+	}
+
+	((UserData*)Save::GetData())->m_point = p;
+
 	//エンターキーを押してシーン：タイトル移行する
 	if (Input::GetVKey(VK_RETURN) == true)
 	{
@@ -42,7 +83,7 @@ void CObjClear::Draw()
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置
 
-			   //切り取り位置の設定
+	//切り取り位置の設定
 	src.m_top = 0.0f;
 	src.m_left = 0.0f;
 	src.m_right = 800.0f;
