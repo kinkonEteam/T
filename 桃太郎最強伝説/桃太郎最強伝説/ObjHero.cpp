@@ -16,6 +16,8 @@ extern bool OTOMO[3];		//お供所持情報
 extern int item_list[5];	//
 void CObjHero::SaveDATA() {		//セーブ関数----------------------データをセーブ
 	HP = m_hp;					//シーン切り替え時のhpデータを、HPへ格納
+	ObjCharView* cv = (ObjCharView*)Objs::GetObj(OBJ_CV);//文字表示のデータ
+	cv->SaveSM();//セーブ、セコンドミニッツ
 }
 void CObjHero::SetDATA() {		//セット関数----------------------データをセット
 	HP = 5;						//ゲームオーバー後、HPを初期値に戻す
@@ -98,7 +100,6 @@ void CObjHero::Init()
 	Audio::LoadAudio(7, L"speeddown.wav", EFFECT);			//棍棒取得時用SE
 	Audio::LoadAudio(8, L"ButtonSE.wav", EFFECT);				//コマンドSE
 
-	
 }
 
 //アクション
