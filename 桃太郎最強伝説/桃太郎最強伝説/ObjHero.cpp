@@ -468,7 +468,7 @@ void CObjHero::Action()
 
 		Scene::SetScene(new CSceneGameOver());
 	}
-	//Mを押してポーズに移行する
+	//Mを押してポーズに移行する------------------------------------------------------------------------
 	if (Input::GetVKey('M') == true)
 	{
 		Scene::SetScene(new CScenePose());
