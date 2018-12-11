@@ -20,6 +20,11 @@ void CObjClear::Init()
 //アクション
 void CObjClear::Action()
 {
+	//得点情報をランキング最下位に登録
+	((UserData*)Save::GetData())->m_ranking[15] = ((UserData*)Save::GetData())->m_point;
+	
+	//得点が高い順に並び変えする
+	
 	//エンターキーを押してシーン：タイトル移行する
 	if (Input::GetVKey(VK_RETURN) == true)
 	{
@@ -42,7 +47,7 @@ void CObjClear::Draw()
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置
 
-			   //切り取り位置の設定
+	//切り取り位置の設定
 	src.m_top = 0.0f;
 	src.m_left = 0.0f;
 	src.m_right = 800.0f;

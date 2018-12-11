@@ -59,12 +59,8 @@ void CSceneMain::InitScene()
 
 	//BGM・SEの読み込み
 	
-	Audio::LoadAudio(3, L"仲間ゲット.wav", EFFECT);			//お供を増やした時用SE
-
-	Audio::LoadAudio(5, L"ButtonSE.wav", EFFECT);			//インベントリ用SE(予定)															//ボリュームを1.0に戻す
+	//Audio::LoadAudio(3, L"仲間ゲット.wav", EFFECT);			//お供を増やした時用SE
 	
-
-
 
 
 	//外部グラフィックを読み込み0番に登録(512×512ピクセル)
