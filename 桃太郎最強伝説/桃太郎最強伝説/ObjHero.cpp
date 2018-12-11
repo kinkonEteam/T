@@ -22,15 +22,16 @@ void CObjHero::SetDATA() {		//セット関数----------------------データをセット
 }
 //シーン表示時の暗闇作成()又は、イベントから関数を使って暗闇を開放していく時(false)
 void CObjHero::SetYAMI(bool tipe) {//暗闇セット関数-----------------------暗闇
+	m_image = 15;				//初期化
 	for (int nam = 0; nam < 3; nam++) {//お供の数を確認して画像番号代入
 		if (OTOMO[nam] == true)	//各お供が居るなら
 			m_image += 1;		//画像番号+1
 	}
-	if (tipe == true){	//SetYAMI(true or 空白)
+	if (tipe == true){			//SetYAMI(true or 空白)
 		ObjCapture* yami = new ObjCapture(m_image);	//暗闇作成
 		Objs::InsertObj(yami, OBJ_CAPTURE, 3);		//登録
 	}
-	else{				//SetYami(false)
+	else{						//SetYami(false)
 		ObjCapture* yami = (ObjCapture*)Objs::GetObj(OBJ_CAPTURE);
 		yami->SetImage(m_image);
 	}
@@ -67,7 +68,6 @@ void CObjHero::Init()
 	{
 		m_speed = 1.2f;			//速度
 	}
-	m_image = 15;		//初期化
 	SetYAMI();					//暗闇作成
 	
 
