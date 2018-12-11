@@ -10,15 +10,18 @@
 
 //使用するネームスペース
 using namespace GameL;
+extern int item_list[5];
 
 //イニシャライズ
 void CObjScore::Init()
 {
+	
 	//得点情報をランキング最下位に登録
 	((UserData*)Save::GetData())->m_ranking[15] = ((UserData*)Save::GetData())->m_point;
 
 	//得点が高い順に並び変えする
 	RankingSort(((UserData*)Save::GetData())->m_ranking);
+
 	m_key_flag = false;//キーフラグ
 }
 
@@ -56,10 +59,11 @@ void CObjScore::Draw()
 	Draw::Draw(18, &src, &dst, c, 0.0f);
 	wchar_t atk[128];
 
-	
+	//描画
 	swprintf_s(atk, L"ゲームランキング");
 	Font::StrDraw(atk, 0, 0 , 30, c);
 
+	//ここでスコアを描画してる
 	for (int i = 0; i < 15;i++)
 	{
 		swprintf_s(atk, L"%d位:Score・%d",rank=rank+1, ((UserData*)Save::GetData())->m_ranking[i]);//スコアをとって？
