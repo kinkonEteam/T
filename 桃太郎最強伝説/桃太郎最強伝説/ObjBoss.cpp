@@ -234,6 +234,8 @@ void CObjBoss::Action()
 	//HP‚ª0‚É‚È‚Á‚½‚ç”jŠü
 	if (m_hp <= 0)
 	{
+		CObjMap5* map5 = (CObjMap5*)Objs::GetObj(OBJ_MAP5);
+		map5->Setwall(true);
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
 

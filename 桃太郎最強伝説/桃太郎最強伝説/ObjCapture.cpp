@@ -12,7 +12,7 @@ using namespace GameL;
 //イニシャライズ
 void ObjCapture::Init()
 {
-
+	m_alpha = 1.0f;
 }
 
 //アクション
@@ -24,7 +24,7 @@ void ObjCapture::Action()
 void ObjCapture::Draw()
 {
 	//描画カラー情報　R=Red　G=Green　B=Blue　A=alpha(透過情報)
-	float c[4] = { 1.0f,1.0f,1.0f,1.0f, };
+	float c[4] = { 1.0f,1.0f,1.0f,m_alpha, };
 
 	RECT_F src; //描画元切り取り位置
 	RECT_F dst; //描画先表示位置
@@ -41,13 +41,8 @@ void ObjCapture::Draw()
 	dst.m_right = 800.0f;
 	dst.m_bottom = 600.0f;
 
-	if ((15 <= m_num) && (m_num <= 17)) {//登録数字内なら
-		//作成時受け取ったm_numの数をそのまま画像番号に入れる
-		//描画
-		Draw::Draw(m_num, &src, &dst, c, 0.0f);
-	}
-	else//登録外なら
-	{
-		this->SetStatus(false);	 //表示せずオブジェクト削除
-	}
+
+	//作成時受け取ったm_numの数をそのまま画像番号に入れる
+	//描画
+	Draw::Draw(m_num, &src, &dst, c, 0.0f);
 }

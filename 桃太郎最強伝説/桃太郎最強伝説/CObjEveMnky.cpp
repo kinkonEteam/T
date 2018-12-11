@@ -78,5 +78,7 @@ void CObjEveMnky::Draw()
 		CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
 		hero->SetYAMI(false);			//falseで暗闇更新
 		this->SetStatus(false);			//オブジェクト削除
+		CObjMap3* map3 = (CObjMap3*)Objs::GetObj(OBJ_MAP3);
+		map3->Setwall(true);
 	}
 }

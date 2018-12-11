@@ -19,6 +19,19 @@ CObjMap5::CObjMap5(int map[56][56])
 	memcpy(m_map, map, sizeof(int)*(56 * 56));
 }
 
+void CObjMap5::Setwall(bool type)
+{
+	if (type == true)
+		for (int i = 0; i < 56; i++)
+		{
+			for (int j = 0; j < 56; j++)
+			{
+				if (m_map[i][j] == 3)
+					m_map[i][j] = 13;
+			}
+		}
+}
+
 //イニシャライズ
 void CObjMap5::Init()
 {
@@ -81,7 +94,7 @@ void CObjMap5::Init()
 			{
 				//ボスオブジェクト
 				CObjBoss*obj_boss_enemy = new CObjBoss(j*50.0f,i*50.0f);
-				Objs::InsertObj(obj_boss_enemy, OBJ_BOSS, 10); 
+				Objs::InsertObj(obj_boss_enemy, OBJ_BOSS, 2); 
 			}
 		}
 	}
@@ -161,20 +174,15 @@ void CObjMap5::Draw()
 				dst.m_right = dst.m_left + 50.0f;
 				dst.m_bottom = dst.m_top + 50.0f;
 			}
-			if (m_map[i][j] == 0 || m_map[i][j] == 2 || m_map[i][j] >= 5)
-			{
-				//床
-				BlockDraw(0.0f, 0.0f, &dst, c);
-			}
-			else if (m_map[i][j] == 4)
-			{
-				//階段
-				//BlockDraw(94.0f, 0.0f, &dst, c);
-			}
-			else if (m_map[i][j] == 1)
+			if (m_map[i][j] == 1 || m_map[i][j] == 13)
 			{
 				//壁
 				BlockDraw(47.0f, 0.0f, &dst, c);
+			}
+			else if (m_map[i][j] == 0 || m_map[i][j] == 2 || m_map[i][j] >= 5)
+			{
+				//床
+				BlockDraw(0.0f, 0.0f, &dst, c);
 			}
 			else
 			{
@@ -237,7 +245,7 @@ void CObjMap5::Map5Hit
 	{
 		for (int j = 0; j < 56; j++)
 		{
-			if (m_map[i][j] == 1)
+			if (m_map[i][j] == 1 || m_map[i][j] == 3)
 			{
 				//要素番号を座標に変更
 				float bx = j*50.0f;

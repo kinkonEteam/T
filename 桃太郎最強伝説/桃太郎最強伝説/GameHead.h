@@ -45,8 +45,8 @@ enum OBJ_NAME
 	OBJ_POSE,
 	OBJ_SOSASETSUMEI,
 	OBJ_STAIR,
-	OBJ_CAPTURE,		//画面全体に画像を表示
-	OBJ_KEYUSE,	
+	OBJ_CAPTURE,		
+	OBJ_CV,	
 	OBJ_INVENTORY,
 	OBJ_SCORE,
 };
@@ -133,7 +133,7 @@ enum ITEM
 #include"ObjHeroGauge.h"
 #include"ObjCapture.h"
 #include"Objstair.h"
-#include"ObjKeyUse.h"
+#include"ObjCharView.h"
 #include"ObjPose.h"
 #include"ObjSosasetsumei.h"
 #include"ObjScore.h"
@@ -160,5 +160,5 @@ enum ITEM
 
 //シーンスタートクラス---------------------------
 //ゲーム開始時のシーンクラス登録
-#define SET_GAME_START  CSceneTitle
+#define SET_GAME_START  CScenefloor1
 //-----------------------------------------------

@@ -107,6 +107,10 @@ void CScenefloor4::InitScene()
 	CObjHeroGauge* objg = new CObjHeroGauge();
 	Objs::InsertObj(objg, OBJ_HEROGAUGE, 20);
 
+	//文字表示作成
+	ObjCharView* c = new ObjCharView();
+	Objs::InsertObj(c, OBJ_CV, 20);
+
 }
 
 //実行中メソッド
