@@ -77,6 +77,7 @@ struct UserData
 {
 	int mSeveData;	//サンプルセーブデータ
 	int m_point;	//GameMainで得たポイント
+	int m_ranking[16];//ランキング情報
 };
 //------------------------------------------------
 

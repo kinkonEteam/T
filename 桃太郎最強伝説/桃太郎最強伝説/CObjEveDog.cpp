@@ -75,7 +75,7 @@ void CObjEveDog::Draw()
 	}
 	else {
 		CObjDog*dog = (CObjDog*)Objs::GetObj(OBJ_DOG);
-		dog->Setdf(true);
+		dog->Setdf(true);				//オブジェクト削除フラグ
 		CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
 		hero -> PHP(1);					//プレイヤのhpに1加算
 		hero -> SetYAMI(false);			//falseで暗闇更新
