@@ -39,7 +39,7 @@ void CObjTitle::Action()
 	{
 		if (m_key_flag == true)
 		{
-			Scene::SetScene(new CSceneScore());
+			Scene::SetScene(new CSceneSummary());
 			m_key_flag = false;
 		}
 	}
