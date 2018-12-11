@@ -148,6 +148,127 @@ void CObjEnemy2::Action()
 		);
 	}
 
+	//主人公の位置を取得
+	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
+	float hx = hero->GetX();
+	float hy = hero->GetY();
+
+	//UtilityModuleのチェック関数に場所と領域を渡し、領域外か判定
+	bool check;
+	if (map1 != nullptr)
+	{
+		check = CheckWindow(m_px + map1->GetScrollx(), m_py + map1->GetScrolly(), 0.0f, 0.0f, 800.0f, 600.0f);
+	}
+	if (map2 != nullptr)
+	{
+		check = CheckWindow(m_px + map2->GetScrollx(), m_py + map2->GetScrolly(), 0.0f, 0.0f, 800.0f, 600.0f);
+	}
+	if (map3 != nullptr)
+	{
+		check = CheckWindow(m_px + map3->GetScrollx(), m_py + map3->GetScrolly(), 0.0f, 0.0f, 800.0f, 600.0f);
+	}
+	if (map4 != nullptr)
+	{
+		check = CheckWindow(m_px + map4->GetScrollx(), m_py + map4->GetScrolly(), 0.0f, 0.0f, 800.0f, 600.0f);
+	}
+	if (map5 != nullptr)
+	{
+		check = CheckWindow(m_px + map5->GetScrollx(), m_py + map5->GetScrolly(), 0.0f, 0.0f, 800.0f, 600.0f);
+	}
+
+	if (check == true)
+	{
+		//主人公機が存在する場合、誘導角度の計算する
+		if (hero != nullptr)
+		{
+
+			float x = 0;
+			float y = 0;
+			float ar = 0;
+
+			if (map1 != nullptr)
+			{
+				x = 400 - (m_px + map1->GetScrollx());
+				y = 300 - (m_py + map1->GetScrolly());
+				ar = GetAtan2Angle(x, y);
+			}
+			if (map2 != nullptr)
+			{
+				x = 400 - (m_px + map2->GetScrollx());
+				y = 300 - (m_py + map2->GetScrolly());
+				ar = GetAtan2Angle(x, y);
+			}
+			if (map3 != nullptr)
+			{
+				x = 400 - (m_px + map3->GetScrollx());
+				y = 300 - (m_py + map3->GetScrolly());
+				ar = GetAtan2Angle(x, y);
+			}
+			if (map4 != nullptr)
+			{
+				x = 400 - (m_px + map4->GetScrollx());
+				y = 300 - (m_py + map4->GetScrolly());
+				ar = GetAtan2Angle(x, y);
+			}
+			if (map5 != nullptr)
+			{
+				x = 400 - (m_px + map5->GetScrollx());
+				y = 300 - (m_py + map5->GetScrolly());
+				ar = GetAtan2Angle(x, y);
+			}
+
+			//敵の現在の向いている角度を取る
+			float br = GetAtan2Angle(m_vx, m_vy);
+
+			if (ar < 0)
+			{
+				ar = 360 + ar;
+			}
+
+			//角度で上下左右を判定
+			if ((ar < 45 && ar>0) || ar > 315)
+			{
+				//右
+				m_vx -= m_speed_power;
+				m_posture = 1.0f;
+				m_ani_time += 1;
+			}
+
+			if (ar > 45 && ar < 135)
+			{
+				//上
+				m_vy += m_speed_power;
+				m_posture = 0.0f;
+				m_ani_time += 1;
+			}
+			if (ar > 135 && ar < 225)
+			{
+				//左
+				m_vx += m_speed_power;
+				m_posture = 2.0f;
+				m_ani_time += 1;
+			}
+			if (ar > 225 && ar < 315)
+			{
+				//下
+				m_vy -= m_speed_power;
+				m_posture = 3.0f;
+				m_ani_time += 1;
+
+			}
+
+			//主人公機と敵角度があんまりにもかけ離れたら
+			m_vx = cos(3.14 / 180 * ar);
+			m_vy = sin(3.14 / 180 * ar);
+
+			UnitVec(&m_vx, &m_vy);
+		}
+	}
+	else
+	{
+		m_vx = 0;
+	}
+
 	//位置の更新
 	m_px += m_vx;
 	m_py += m_vy;
