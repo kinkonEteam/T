@@ -31,7 +31,6 @@ void CObjEnemy2::Init()
 	m_ani_max_time = 10;	//アニメーション間隔幅
 
 	m_movex = true;	//true=右　false=左
-	m_movey = true; //true=背面　false=正面
 
 	//blockとの衝突状態確認用
 	m_hit_up = false;
@@ -48,14 +47,6 @@ void CObjEnemy2::Action()
 {
 
 	//ブロック衝突で向き変更
-	if (m_hit_up == true)
-	{
-		m_movey = true;
-	}
-	if (m_hit_down == true)
-	{
-		m_movey = false;
-	}
 	if (m_hit_left == true)
 	{
 		m_movex = false;
