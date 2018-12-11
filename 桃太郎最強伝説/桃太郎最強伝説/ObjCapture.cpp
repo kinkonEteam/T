@@ -41,8 +41,13 @@ void ObjCapture::Draw()
 	dst.m_right = 800.0f;
 	dst.m_bottom = 600.0f;
 
-	//作成時受け取ったm_numの数をそのまま画像番号に入れる
-	//描画
-	Draw::Draw(m_num, &src, &dst, c, 0.0f);
-
+	if ((15 <= m_num) && (m_num <= 17)) {//登録数字内なら
+		//作成時受け取ったm_numの数をそのまま画像番号に入れる
+		//描画
+		Draw::Draw(m_num, &src, &dst, c, 0.0f);
+	}
+	else//登録外なら
+	{
+		this->SetStatus(false);	 //表示せずオブジェクト削除
+	}
 }

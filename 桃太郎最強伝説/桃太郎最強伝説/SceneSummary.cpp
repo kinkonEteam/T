@@ -21,7 +21,10 @@ using namespace GameL;
 void CSceneSummary::InitScene()
 {
 	//あらすじ用BGM
-	Audio::LoadAudio(0, L"あらす時.wav", BACK_MUSIC);		
+	Audio::LoadAudio(0, L"あらすじ.wav", BACK_MUSIC);		
+
+	//BGMボリュームを0.4下げ、元の1/10の音量にする。
+	float Volume = Audio::VolumeMaster(-0.4f);
 
 	//音楽スタート
 	Audio::Start(0);

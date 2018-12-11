@@ -73,7 +73,9 @@ void CObjEveKiji::Draw()
 	}
 	else {
 		CObjPheasant*kiji = (CObjPheasant*)Objs::GetObj(OBJ_PHEASANT);
-		kiji->Setdf(true);
-		this->SetStatus(false);		//オブジェクト削除
+		kiji->Setdf(true);				//オブジェクト削除フラグ
+		CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
+		hero->SetYAMI(false);			//falseで暗闇更新
+		this->SetStatus(false);			//オブジェクト削除
 	}
 }
