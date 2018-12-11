@@ -16,4 +16,6 @@ public:
 private:
 	bool m_key_flag;//キーフラグ
 
+	//ランキングソートメソッド
+	void RankingSort(int rank[16]);
 };

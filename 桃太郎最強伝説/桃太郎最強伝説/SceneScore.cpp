@@ -26,6 +26,7 @@ CSceneScore::~CSceneScore()
 
 }
 
+
 //‰Šú‰»ƒƒ\ƒbƒh
 void CSceneScore::InitScene()
 {
