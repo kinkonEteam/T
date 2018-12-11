@@ -48,6 +48,7 @@ enum OBJ_NAME
 	OBJ_CAPTURE,		//‰æ–Ê‘S‘Ì‚É‰æ‘œ‚ð•\Ž¦
 	OBJ_KEYUSE,	
 	OBJ_INVENTORY,
+	OBJ_SCORE,
 	OBJ_ITEMSETSUMEI,
 };
 //------------------------------------------------
@@ -135,6 +136,7 @@ enum ITEM
 #include"ObjKeyUse.h"
 #include"ObjPose.h"
 #include"ObjSosasetsumei.h"
+#include"ObjScore.h"
 #include"ObjItemsetsumei.h"
 //------------------------------------------------
 
@@ -154,6 +156,7 @@ enum ITEM
 #include"SceneSummary.h"
 #include"ScenePose.h"
 #include"SceneSosasetsumei.h"
+#include"SceneScore.h"
 #include"SceneItemsetsumei.h"
 //-----------------------------------------------
 

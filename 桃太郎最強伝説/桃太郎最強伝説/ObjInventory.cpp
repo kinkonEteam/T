@@ -16,7 +16,7 @@ void CObjInventory::Init()
 {
 	m_Ef = false;
 
-	Draw::LoadImage(L"item_window.png", 19, TEX_SIZE_512);
+	Draw::LoadImage(L"item_window.png", 25, TEX_SIZE_512);
 }
 
 void CObjInventory::Action()
@@ -33,7 +33,7 @@ void CObjInventory::Draw()
 	}
 	float c[4] = { 1.0f,1.0f,1.0f,1 };
 
-	float wc[4] = { 1.0f,1.0f,1.0f,1 };
+	float wc[4] = { 1.0f,1.0f,1.0f,0.7 };
 
 	RECT_F src; //ï`âÊå≥êÿÇËéÊÇËà íu
 	RECT_F dst; //ï`âÊêÊï\é¶à íu
@@ -51,7 +51,9 @@ void CObjInventory::Draw()
 	dst.m_bottom = 600.0f;
 
 
-	Draw::Draw(19, &src, &dst, wc, 0.0f);
+
+	
+	Draw::Draw(25, &src, &dst, wc, 0.0f);
 
 	Font::StrDraw(L"Ç‡ÇøÇ‡ÇÃ", RANKING_POS_X, RANKING_POS_Y, RANKING_FONT_SIZE, c);
 	for (int i = 0; i < RANKING_SCORE_MAX; i++)

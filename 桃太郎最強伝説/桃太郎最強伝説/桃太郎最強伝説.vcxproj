@@ -153,6 +153,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="ObjPose.cpp" />
+    <ClCompile Include="ObjScore.cpp" />
     <ClCompile Include="ObjSell.cpp" />
     <ClCompile Include="ObjSilverBullion.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -211,6 +212,7 @@
     <ClCompile Include="SceneItemsetsumei.cpp" />
     <ClCompile Include="SceneMain.cpp" />
     <ClCompile Include="ScenePose.cpp" />
+    <ClCompile Include="SceneScore.cpp" />
     <ClCompile Include="SceneSell.cpp" />
     <ClCompile Include="SceneSosasetsumei.cpp" />
     <ClCompile Include="SceneSummary.cpp" />
@@ -260,6 +262,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="ObjPose.h" />
+    <ClInclude Include="ObjScore.h" />
     <ClInclude Include="ObjSell.h" />
     <ClInclude Include="ObjSilverBullion.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -315,6 +318,7 @@
     <ClInclude Include="SceneItemsetsumei.h" />
     <ClInclude Include="SceneMain.h" />
     <ClInclude Include="ScenePose.h" />
+    <ClInclude Include="SceneScore.h" />
     <ClInclude Include="SceneSell.h" />
     <ClInclude Include="SceneSosasetsumei.h" />
     <ClInclude Include="SceneSummary.h" />
