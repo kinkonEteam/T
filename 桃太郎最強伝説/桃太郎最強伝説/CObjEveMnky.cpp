@@ -74,7 +74,9 @@ void CObjEveMnky::Draw()
 	}
 	else {
 		CObjMonke*monke = (CObjMonke*)Objs::GetObj(OBJ_MONKE);
-		monke->Setdf(true);
-		this->SetStatus(false);		//オブジェクト削除
+		monke->Setdf(true);				//オブジェクト削除フラグ
+		CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
+		hero->SetYAMI(false);			//falseで暗闇更新
+		this->SetStatus(false);			//オブジェクト削除
 	}
 }
