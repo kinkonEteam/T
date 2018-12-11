@@ -7,6 +7,7 @@
 
 #include"GameHead.h"
 #include"ObjEnemy2.h"
+#include "UtilityModule.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -30,6 +31,7 @@ void CObjEnemy2::Init()
 	m_speed_power = 4.6f;//通常速度
 	m_ani_max_time = 10;	//アニメーション間隔幅
 
+	m_movey = true; //true=背面　false=正面
 	m_movex = true;	//true=右　false=左
 
 	//blockとの衝突状態確認用
@@ -47,6 +49,14 @@ void CObjEnemy2::Action()
 {
 
 	//ブロック衝突で向き変更
+	if (m_hit_up == true)
+	{
+		m_movey = true;
+	}
+	if (m_hit_down == true)
+	{
+		m_movey = false;
+	}
 	if (m_hit_left == true)
 	{
 		m_movex = false;
@@ -57,7 +67,19 @@ void CObjEnemy2::Action()
 	}
 
 	//方向
-	if (m_movex == true)
+	if (m_movey == true)
+	{
+		m_vy = m_speed_power;
+		m_posture = 0.0f;
+		m_ani_time += 1;
+	}
+	else if (m_movey == false)
+	{
+		m_vy = -m_speed_power;
+		m_posture = 3.0f;
+		m_ani_time += 1;
+	}
+	else if (m_movex == true)
 	{
 		m_vx = m_speed_power;
 		m_posture = 1.0f;
