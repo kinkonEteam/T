@@ -363,6 +363,7 @@ void CObjHero::Action()
 				}
 				else if (hit->CheckObjNameHit(OBJ_GOLD_BULLION) != nullptr)
 				{
+					
 					item_list[4] += 1;
 					Audio::Start(2);//ƒAƒCƒeƒ€Žæ“¾‰¹‚ð–Â‚ç‚·
 				}

@@ -29,8 +29,6 @@ CSceneClear::~CSceneClear()
 //初期化ソメッド
 void CSceneClear::InitScene()
 {
-	Font::SetStrTex(L"ゲームクリア。");
-		Font::SetStrTex(L"一つ伝説が刻まれた…");
 
 		//クリアオブジェクト
 		CObjClear*obj = new CObjClear();

@@ -23,6 +23,7 @@ public:
 	float GetScrolly() { return m_scrolly; }
 
 	void Setenemy(int f) { m_f = f; }
+	void Setwall(bool type = true);//‰B‚µ’Ê˜HƒZƒbƒgŠÖ”
 
 	int blocksize = 50.0f;
 

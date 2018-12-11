@@ -7,6 +7,7 @@
 
 #include"GameHead.h"
 #include"ObjEnemy.h"
+#include "UtilityModule.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -31,6 +32,7 @@ void CObjEnemy::Init()
 	m_ani_max_time = 10;	//アニメーション間隔幅
 
 	m_movey = true; //true=背面　false=正面
+	m_movex = true;	//true=右　false=左
 
 	//blockとの衝突状態確認用
 	m_hit_up = false;
@@ -55,6 +57,14 @@ void CObjEnemy::Action()
 	{
 		m_movey = false;
 	}
+	if (m_hit_left == true)
+	{
+		m_movex = false;
+	}
+	if (m_hit_right == true)
+	{
+		m_movex = true;
+	}
 
 	//方向
 	if (m_movey == true)
@@ -63,10 +73,22 @@ void CObjEnemy::Action()
 		m_posture = 0.0f;
 		m_ani_time += 1;
 	}
-	else if (m_movey == false)
+	if (m_movey == false)
 	{
 		m_vy = -m_speed_power;
 		m_posture = 3.0f;
+		m_ani_time += 1;
+	}
+	if (m_movex == true)
+	{
+		m_vx = m_speed_power;
+		m_posture = 1.0f;
+		m_ani_time += 1;
+	}
+	if (m_movex == false)
+	{
+		m_vx = -m_speed_power;
+		m_posture = 2.0f;
 		m_ani_time += 1;
 	}
 
@@ -124,6 +146,102 @@ void CObjEnemy::Action()
 			&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
 			&d
 		);
+	}
+
+	//主人公の位置を取得
+	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
+	float hx = hero->GetX();
+	float hy = hero->GetY();
+
+	//UtilityModuleのチェック関数に場所と領域を渡し、領域外か判定
+	bool check = CheckWindow(m_px, m_py, 0.0f, 0.0f, 800.0f, 600.0f);
+	if (check == false)
+	{
+		//主人公機が存在する場合、誘導角度の計算する
+		if (hero != nullptr)
+		{
+
+			float x = 0;
+			float y = 0;
+			float ar = 0;
+
+			if (map1 != nullptr)
+			{
+				x = 400 - (m_px + map1->GetScrollx());
+				y = 300 - (m_py + map1->GetScrolly());
+				ar = GetAtan2Angle(x, y);
+			}
+			if (map2 != nullptr)
+			{
+				x = 400 - (m_px + map2->GetScrollx());
+				y = 300 - (m_py + map2->GetScrolly());
+				ar = GetAtan2Angle(x, y);
+			}
+			if (map3 != nullptr)
+			{
+				x = 400 - (m_px + map3->GetScrollx());
+				y = 300 - (m_py + map3->GetScrolly());
+				ar = GetAtan2Angle(x, y);
+			}
+			if (map4 != nullptr)
+			{
+				x = 400 - (m_px + map4->GetScrollx());
+				y = 300 - (m_py + map4->GetScrolly());
+				ar = GetAtan2Angle(x, y);
+			}
+			if (map5 != nullptr)
+			{
+				x = 400 - (m_px + map5->GetScrollx());
+				y = 300 - (m_py + map5->GetScrolly());
+				ar = GetAtan2Angle(x, y);
+			}
+
+			//敵の現在の向いている角度を取る
+			float br = GetAtan2Angle(m_vx, m_vy);
+
+			if (ar < 0)
+			{
+				ar = 360 + ar;
+			}
+
+			//角度で上下左右を判定
+			if ((ar < 45 && ar>0) || ar > 315)
+			{
+				//右
+				m_vx -= m_speed_power;
+				m_posture = 1.0f;
+				m_ani_time += 1;
+			}
+
+			if (ar > 45 && ar < 135)
+			{
+				//上
+				m_vy += m_speed_power;
+				m_posture = 0.0f;
+				m_ani_time += 1;
+			}
+			if (ar > 135 && ar < 225)
+			{
+				//左
+				m_vx += m_speed_power;
+				m_posture = 2.0f;
+				m_ani_time += 1;
+			}
+			if (ar > 225 && ar < 315)
+			{
+				//下
+				m_vy -= m_speed_power;
+				m_posture = 3.0f;
+				m_ani_time += 1;
+
+			}
+
+			//主人公機と敵角度があんまりにもかけ離れたら
+			m_vx = cos(3.14 / 180 * ar);
+			m_vy = sin(3.14 / 180 * ar);
+
+			UnitVec(&m_vx, &m_vy);
+		}
 	}
 
 	//位置の更新
@@ -212,6 +330,18 @@ void CObjEnemy::Draw()
 		dst.m_left = 50.0f + m_px + map5->GetScrollx();
 		dst.m_right = 0.0f + m_px + map5->GetScrollx();
 		dst.m_bottom = 50.0f + m_py + map5->GetScrolly();
+	}
+
+	float r = 0.0f;
+	//主人公機とBOSSで角度を取る
+	CObjHero* obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
+	//主人公機が存在する場合、誘導角度の計算する
+	if (obj != nullptr)
+	{
+		float x = 375 - dst.m_top;
+		float y = 275 - dst.m_left;
+		r = GetAtan2Angle(x, y) + 30;
+
 	}
 
 	//描画

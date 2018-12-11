@@ -10,6 +10,7 @@
 
 //使用するネームスペース
 using namespace GameL;
+extern int item_list[5];
 
 //イニシャライズ
 void CObjClear::Init()
@@ -20,11 +21,46 @@ void CObjClear::Init()
 //アクション
 void CObjClear::Action()
 {
-	//得点情報をランキング最下位に登録
-	((UserData*)Save::GetData())->m_ranking[15] = ((UserData*)Save::GetData())->m_point;
-	
-	//得点が高い順に並び変えする
-	
+	int p = 0;
+	for (int i = 0; i<7;i++) 
+	{
+		if (i == 0)
+		{
+			p+=item_list[0] * 100;
+		}
+		/*else if (i)
+		{
+
+		}
+		else if ()
+		{
+
+		}
+		else if ()
+		{
+
+		}
+		else if ()
+		{
+
+		}
+		else if ()
+		{
+
+
+		}
+		else if ()
+		{
+
+		}
+		else if ()
+		{
+
+		}*/
+	}
+
+	((UserData*)Save::GetData())->m_point = p;
+
 	//エンターキーを押してシーン：タイトル移行する
 	if (Input::GetVKey(VK_RETURN) == true)
 	{

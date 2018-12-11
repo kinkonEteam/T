@@ -49,4 +49,5 @@ class CObjMap1 :public CObj
 		void setstair();//階段出現用関数
 		void sethero();//主人公出現用関数
 		void setenemy();//敵出現用関数
+		void setdog();//犬出現用
 };

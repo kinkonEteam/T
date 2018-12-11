@@ -33,6 +33,7 @@ void CObjMap1::Init()
 	setstair();
 	setenemy();
 	sethero();
+	setdog();
 
 	
 	//アイテム出現
@@ -160,7 +161,7 @@ void CObjMap1::Draw()
 				//床
 				BlockDraw(0.0f, 0.0f, &dst, c);
 			}
-			else if (m_map[i][j] == 1)
+			else
 			{
 				//壁
 				BlockDraw(47.0f, 0.0f, &dst, c);
@@ -368,6 +369,28 @@ void CObjMap1::setenemy()
 				{
 					m_map[i][j] = 12;//緑鬼
 				}*/
+			}
+		}
+	}
+}
+
+//犬出現
+void CObjMap1::setdog()
+{
+	for (int i = 0; i < 56; i++)
+	{
+		for (int j = 0; j < 56; j++)
+		{
+			if (m_map[i][j] == 6)
+			{
+				//犬オブジェクト作成
+				CObjDog* objd = new CObjDog(j*50.0f, i*50.0f);//オブジェクト作成
+				Objs::InsertObj(objd, OBJ_DOG, 2);//マネージャに登録
+
+				m_scrollx = -j * 50.0f + 400;
+				m_scrolly = -i * 50.0f + 300;
+
+				return;
 			}
 		}
 	}
