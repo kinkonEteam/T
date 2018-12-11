@@ -2,7 +2,7 @@
 #include"GameL\DrawFont.h"
 #include"GameL\WinInputs.h"
 #include"GameL\SceneManager.h"
-
+#include"GameL\Audio.h"
 #include"GameHead.h"
 #include"ObjSosasetsumei.h"
 
@@ -13,16 +13,19 @@ using namespace GameL;
 void CObjSosasetsumei::Init()
 {
 
-
 }
 
 //アクション
 void CObjSosasetsumei::Action()
 {
+	Audio::LoadAudio(0, L"ButtonSE.wav", EFFECT);	//コマンドSE
 
 	//Zを押してポーズに移行する 
-	if (Input::GetVKey('Z') == true)
+	if (Input::GetVKey('D') == true)
 	{
+		//コマンド用SEを鳴らす
+		Audio::Start(0);
+		Sleep(100);
 		Scene::SetScene(new CScenePose());
 	}
 	else {}
@@ -38,6 +41,6 @@ void CObjSosasetsumei::Draw()
 	Font::StrDraw(L"Aで剣攻撃だ", 300, 200, 30, c);
 	Font::StrDraw(L"Sで雉攻撃だ", 300, 250, 30, c);
 	Font::StrDraw(L"（雉入手後可能）", 300, 300, 30, c);
-	Font::StrDraw(L"Zで戻るんじゃ", 300, 350, 30, c);
+	Font::StrDraw(L"Dで戻る", 300, 350, 30, c);
 
 }
