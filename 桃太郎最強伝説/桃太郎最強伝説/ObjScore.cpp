@@ -20,10 +20,10 @@ void CObjScore::Init()
 	
 	
 	//“¾“_î•ñ‚ğƒ‰ƒ“ƒLƒ“ƒOÅ‰ºˆÊ‚É“o˜^
-	((UserData*)Save::GetData())->m_ranking[15] = ((UserData*)Save::GetData())->m_point;
+	((UserData*)Save::GetData())->m_ranking[14] = ((UserData*)Save::GetData())->m_point;
 
 	//“¾“_‚ª‚‚¢‡‚É•À‚Ñ•Ï‚¦‚·‚é
-	RankingSort(((UserData*)Save::GetData())->m_ranking);
+	//RankingSort(((UserData*)Save::GetData())->m_ranking);
 	
 	/*if (save_point == true)
 	{

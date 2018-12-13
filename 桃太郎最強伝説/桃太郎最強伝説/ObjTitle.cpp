@@ -20,7 +20,7 @@ void CObjTitle::Init()
 	{
 
 		//ƒ‰ƒ“ƒLƒ“ƒO‚à‰Šú‰»‚·‚é
-		for (int i = 0; i < 16; i++)
+		for (int i = 0; i < 15; i++)
 		{
 			((UserData*)Save::GetData())->m_ranking[i] = 0;
 		}
