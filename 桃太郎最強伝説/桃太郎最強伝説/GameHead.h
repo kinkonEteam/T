@@ -49,6 +49,7 @@ enum OBJ_NAME
 	OBJ_CV,	
 	OBJ_INVENTORY,
 	OBJ_SCORE,
+	OBJ_ITEMSETSUMEI,
 };
 //------------------------------------------------
 
@@ -137,6 +138,7 @@ enum ITEM
 #include"ObjPose.h"
 #include"ObjSosasetsumei.h"
 #include"ObjScore.h"
+#include"ObjItemsetsumei.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------
@@ -156,6 +158,7 @@ enum ITEM
 #include"ScenePose.h"
 #include"SceneSosasetsumei.h"
 #include"SceneScore.h"
+#include"SceneItemsetsumei.h"
 //-----------------------------------------------
 
 //シーンスタートクラス---------------------------

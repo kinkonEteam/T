@@ -12,6 +12,8 @@
 //使用するネームスペース
 using namespace GameL;
 
+extern int HP;				//HP
+
 //イニシャライズ
 void CObjHeroGauge::Init()
 {

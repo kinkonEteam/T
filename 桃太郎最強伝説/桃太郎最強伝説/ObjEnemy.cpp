@@ -27,7 +27,7 @@ void CObjEnemy::Init()
 
 	m_ani_time = 0;
 	m_ani_frame = 1;	//静止フレームを初期にする
-
+	
 	m_speed_power = 4.0f;//通常速度
 	m_ani_max_time = 10;	//アニメーション間隔幅
 
@@ -159,23 +159,23 @@ void CObjEnemy::Action()
 	bool check;
 	if (map1 != nullptr)
 	{
-		check = CheckWindow(m_px + map1->GetScrollx(), m_py + map1->GetScrolly(), 0.0f, 0.0f, 800.0f, 600.0f);
+		check = CheckWindow(m_px + map1->GetScrollx(), m_py + map1->GetScrolly(), -50.0f, -50.0f, 850.0f, 650.0f);
 	}
 	if (map2 != nullptr)
 	{
-		check = CheckWindow(m_px + map2->GetScrollx(), m_py + map2->GetScrolly(), 0.0f, 0.0f, 800.0f, 600.0f);
+		check = CheckWindow(m_px + map2->GetScrollx(), m_py + map2->GetScrolly(), -50.0f, -50.0f, 850.0f, 650.0f);
 	}
 	if (map3 != nullptr)
 	{
-		check = CheckWindow(m_px + map3->GetScrollx(), m_py + map3->GetScrolly(), 0.0f, 0.0f, 800.0f, 600.0f);
+		check = CheckWindow(m_px + map3->GetScrollx(), m_py + map3->GetScrolly(), -50.0f, -50.0f, 850.0f, 650.0f);
 	}
 	if (map4 != nullptr)
 	{
-		check = CheckWindow(m_px + map4->GetScrollx(), m_py + map4->GetScrolly(), 0.0f, 0.0f, 800.0f, 600.0f);
+		check = CheckWindow(m_px + map4->GetScrollx(), m_py + map4->GetScrolly(), -50.0f, -50.0f, 850.0f, 650.0f);
 	}
 	if (map5 != nullptr)
 	{
-		check = CheckWindow(m_px + map5->GetScrollx(), m_py + map5->GetScrolly(), 0.0f, 0.0f, 800.0f, 600.0f);
+		check = CheckWindow(m_px + map5->GetScrollx(), m_py + map5->GetScrolly(), -50.0f, -50.0f, 850.0f, 650.0f);
 	}
 
 	if (check == true)
@@ -184,9 +184,9 @@ void CObjEnemy::Action()
 		if (hero != nullptr)
 		{
 
-			float x = 0;
-			float y = 0;
-			float ar = 0;
+			float x;
+			float y;
+			float ar;
 
 			if (map1 != nullptr)
 			{
