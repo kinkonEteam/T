@@ -507,7 +507,7 @@ void CObjHero::Action()
 
 		Scene::SetScene(new CSceneGameOver());
 	}
-	//Mを押してポーズに移行する
+	//Mを押してポーズに移行する------------------------------------------------------------------------
 	if (Input::GetVKey('M') == true)
 	{
 		//コマンド用SEを鳴らす
@@ -517,9 +517,7 @@ void CObjHero::Action()
 		//鳴ってから移行
 		Scene::SetScene(new CScenePose());
 	}
-	else{}
-
-
+	else{}	
 }
 
 //ドロー

@@ -278,6 +278,9 @@
     <ClCompile Include="ObjCapture.cpp">
       <Filter>ソース ファイル\暗闇</Filter>
     </ClCompile>
+    <ClCompile Include="CObjFlyKiji.cpp">
+      <Filter>ソース ファイル\Character\おとも</Filter>
+    </ClCompile>
     <ClCompile Include="CObjSword.cpp">
       <Filter>ソース ファイル\Character\主人公</Filter>
     </ClCompile>
@@ -327,22 +330,9 @@
       <Filter>ソース ファイル\Scene\メイン</Filter>
     </ClCompile>
     <ClCompile Include="Data.cpp" />
-    <ClCompile Include="ObjKeyUse.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="ObjSosasetsumei.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="CObjFlyKiji.cpp">
-      <Filter>ソース ファイル\Character\主人公</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjSosasetsumei.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjCharView.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameL\Audio.h">
@@ -413,6 +403,9 @@
     <ClInclude Include="ObjClub.h">
       <Filter>ソース ファイル\Item</Filter>
     </ClInclude>
+    <ClInclude Include="ObjDog.h">
+      <Filter>ソース ファイル\Events\Dog</Filter>
+    </ClInclude>
     <ClInclude Include="ObjEnemy.h">
       <Filter>ソース ファイル\Character\敵</Filter>
     </ClInclude>
@@ -452,8 +445,14 @@
     <ClInclude Include="ObjMap5.h">
       <Filter>ソース ファイル\Map\floor5</Filter>
     </ClInclude>
+    <ClInclude Include="ObjMonke.h">
+      <Filter>ソース ファイル\Item</Filter>
+    </ClInclude>
     <ClInclude Include="ObjPeach.h">
       <Filter>ソース ファイル\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjPheasant.h">
+      <Filter>ソース ファイル\Events\Kiji</Filter>
     </ClInclude>
     <ClInclude Include="ObjPlum.h">
       <Filter>ソース ファイル\Item</Filter>
@@ -571,6 +570,9 @@
     </ClInclude>
     <ClInclude Include="GameL\SetWindow.h">
       <Filter>リソースファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjKeyUse.h">
+      <Filter>ソース ファイル\Scene\メイン</Filter>
     </ClInclude>
     <ClInclude Include="ObjSosasetsumei.h">
       <Filter>ソース ファイル\Scene\操作説明</Filter>
