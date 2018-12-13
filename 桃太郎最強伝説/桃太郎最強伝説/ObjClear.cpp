@@ -22,6 +22,7 @@ void CObjClear::Init()
 void CObjClear::Action()
 {
 	int p = 0;
+	//ここではアイテムごとにスコアを計算し'ｐ'にスコアの数値を渡している
 	for (int i = 0; i<7;i++) 
 	{
 		if (i == 0)
@@ -58,7 +59,8 @@ void CObjClear::Action()
 
 		}*/
 	}
-
+	
+	//ここでスコアを決定する
 	((UserData*)Save::GetData())->m_point = p;
 
 	//エンターキーを押してシーン：タイトル移行する

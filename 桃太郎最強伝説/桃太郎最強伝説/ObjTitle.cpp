@@ -18,16 +18,20 @@ void CObjTitle::Init()
 	static bool init_point = false;
 	if (init_point == false)
 	{
-		((UserData*)Save::GetData())->m_point = 0;//点数を初期化する
-		init_point = true;
+
 		//ランキングも初期化する
 		for (int i = 0; i < 16; i++)
 		{
 			((UserData*)Save::GetData())->m_ranking[i] = 0;
 		}
+
+		/*//ロード
+		Save::Open();//同フォルダ「UserData」からデータ取得。*/
+
+		((UserData*)Save::GetData())->m_point = 0;//点数を初期化する
 		init_point = true;
 	}
-
+	
 	m_key_flag = false;
 }
 
