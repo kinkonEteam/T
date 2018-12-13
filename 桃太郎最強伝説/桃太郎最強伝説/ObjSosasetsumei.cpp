@@ -2,7 +2,7 @@
 #include"GameL\DrawFont.h"
 #include"GameL\WinInputs.h"
 #include"GameL\SceneManager.h"
-
+#include"GameL\Audio.h"
 #include"GameHead.h"
 #include"ObjSosasetsumei.h"
 
@@ -13,16 +13,19 @@ using namespace GameL;
 void CObjSosasetsumei::Init()
 {
 
-
 }
 
 //アクション
 void CObjSosasetsumei::Action()
 {
+	Audio::LoadAudio(0, L"ButtonSE.wav", EFFECT);	//コマンドSE
 
 	//Dを押してポーズに移行する 
 	if (Input::GetVKey('D') == true)
 	{
+		//コマンド用SEを鳴らす
+		Audio::Start(0);
+		Sleep(100);
 		Scene::SetScene(new CScenePose());
 	}
 	else {}

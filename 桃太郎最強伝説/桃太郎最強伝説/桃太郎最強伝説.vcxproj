@@ -123,6 +123,7 @@
     </ClCompile>
     <ClCompile Include="ObjItemsetsumei.cpp" />
     <ClCompile Include="ObjKeyUse.cpp">
+    <ClCompile Include="ObjCharView.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
@@ -235,6 +236,7 @@
     </ClInclude>
     <ClInclude Include="ObjItemsetsumei.h" />
     <ClInclude Include="ObjKeyUse.h" />
+    <ClInclude Include="ObjCharView.h" />
     <ClInclude Include="ObjBoss.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>

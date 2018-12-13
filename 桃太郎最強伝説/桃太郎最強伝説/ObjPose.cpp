@@ -2,7 +2,7 @@
 #include"GameL\DrawFont.h"
 #include"GameL\WinInputs.h"
 #include"GameL\SceneManager.h"
-
+#include"GameL\Audio.h"
 #include"GameHead.h"
 #include"ObjPose.h"
 
@@ -12,16 +12,21 @@ using namespace GameL;
 //イニシャライズ
 void CObjPose::Init()
 {
-
+	
 	
 }
 
 //アクション
 void  CObjPose::Action()
 {
+	Audio::LoadAudio(0, L"ButtonSE.wav", EFFECT);	//コマンドSE
+
 	//Zを押してゲーム画面に移行する
 	if (Input::GetVKey('Z') == true)
 	{
+		//コマンド用SEを鳴らす
+		Audio::Start(0);
+		Sleep(100);
 		Scene::SetScene(new CScenefloor1());
 	}
 	else{}
@@ -29,6 +34,9 @@ void  CObjPose::Action()
 	//Xを押して操作説明画面に移行する
 	if (Input::GetVKey('X') == true)
 	{
+		//コマンド用SEを鳴らす
+		Audio::Start(0);
+		Sleep(100);
 		Scene::SetScene(new CSceneSosasetsumei());
 	}
 	else{}
@@ -36,13 +44,19 @@ void  CObjPose::Action()
 	//Cを押してアイテム説明画面に移行する
 	if (Input::GetVKey('C') == true)
 	{
-		Scene::SetScene(new CSceneItemsetsumei());
+		//コマンド用SEを鳴らす
+		Audio::Start(0);
+		Sleep(100);
+		Scene::SetScene(new CScenefloor1());
 	}
 	else{}
 
 	//Vを押してTitleに移行する
 	if (Input::GetVKey('V') == true)
 	{
+		//コマンド用SEを鳴らす
+		Audio::Start(0);
+		Sleep(100);
 		Scene::SetScene(new CSceneTitle());
 	}
 	else{}

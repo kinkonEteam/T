@@ -14,13 +14,29 @@ using namespace GameL;
 extern int HP;				//HP
 extern bool OTOMO[3];		//お供所持情報
 extern int item_list[5];	//
-void CObjHero::SaveDATA() {		//セーブ関数の定義----------------------データをセーブ
-	//シーン切り替え時のhpデータを、HPへ格納
-	HP = m_hp;
+void CObjHero::SaveDATA() {		//セーブ関数----------------------データをセーブ
+	HP = m_hp;					//シーン切り替え時のhpデータを、HPへ格納
+	ObjCharView* cv = (ObjCharView*)Objs::GetObj(OBJ_CV);//文字表示のデータ
+	cv->SaveSM();//セーブ、セコンドミニッツ
 }
-void CObjHero::SetDATA() {		//セーブ関数の定義----------------------データをセット
-								//シーン切り替え時のhpデータを、HPへ格納
-	HP = 5;
+void CObjHero::SetDATA() {		//セット関数----------------------データをセット
+	HP = 5;						//ゲームオーバー後、HPを初期値に戻す
+}
+//シーン表示時の暗闇作成()又は、イベントから関数を使って暗闇を開放していく時(false)
+void CObjHero::SetYAMI(bool tipe) {//暗闇セット関数-----------------------暗闇
+	m_image = 15;				//初期化
+	for (int nam = 0; nam < 3; nam++) {//お供の数を確認して画像番号代入
+		if (OTOMO[nam] == true)	//各お供が居るなら
+			m_image += 1;		//画像番号+1
+	}
+	if (tipe == true){			//SetYAMI(true or 空白)
+		ObjCapture* yami = new ObjCapture(m_image);	//暗闇作成
+		Objs::InsertObj(yami, OBJ_CAPTURE, 3);		//登録
+	}
+	else{						//SetYami(false)
+		ObjCapture* yami = (ObjCapture*)Objs::GetObj(OBJ_CAPTURE);
+		yami->SetImage(m_image);
+	}
 }
 
 CObjHero::CObjHero(float x, float y)
@@ -38,16 +54,24 @@ void CObjHero::Init()
 	m_speed = 1.0f;			//速度
 
 	bool m_otm[3];
-	m_Sf = true;			//ソード制御
-	m_Kf = true;			//  キジ制御
+	m_Sf = true;		//ソード制御
+	m_Kf = true;		//  キジ制御
 
 	//OTOMO[0犬,1キジ,2猿] == true(ある) or false(ない)
 	if (OTOMO[0] == true)		//犬が居る場合
+	{
 		m_hp_max += 1;			//最大HPに1加算
+	}
 	if (OTOMO[1] == true)		//キジが居る場合
+	{
 		m_Kf = false;			//制御を解除
+	}
 	if (OTOMO[2] == true)		//猿が居る場合
+	{
 		m_speed = 1.2f;			//速度
+	}
+	SetYAMI();					//暗闇作成
+	
 
 	m_hp = HP;				//メンバhpにHPを代入
 	m_time = 70;
@@ -69,15 +93,13 @@ void CObjHero::Init()
 	Hits::SetHitBox(this, m_px + 5, m_py + 3, 40, 47, ELEMENT_PLAYER, OBJ_HERO, 1);
 
 	Audio::LoadAudio(2, L"アイテムゲット.wav", EFFECT);		//アイテム取得時SE
-	Audio::LoadAudio(4, L"近接攻撃.wav", EFFECT);			//近接攻撃SE
-	Audio::LoadAudio(5, L"kijiSE.wav", EFFECT);				//遠距離攻撃SE
-	Audio::LoadAudio(6, L"damage.wav", EFFECT);				//ダメージSE
-	Audio::LoadAudio(8, L"heal.wav", EFFECT);				//体力回復時SE
-	Audio::LoadAudio(9, L"speeddown.wav", EFFECT);			//棍棒取得時用SE
-	Audio::LoadAudio(10, L"StairsSE.wav", EFFECT);			//近接攻撃SE
+	Audio::LoadAudio(3, L"近接攻撃.wav", EFFECT);			//近接攻撃SE
+	Audio::LoadAudio(4, L"kijiSE.wav", EFFECT);				//遠距離攻撃SE
+	Audio::LoadAudio(5, L"damage.wav", EFFECT);				//ダメージSE
+	Audio::LoadAudio(6, L"heal.wav", EFFECT);				//体力回復時SE
+	Audio::LoadAudio(7, L"speeddown.wav", EFFECT);			//棍棒取得時用SE
+	Audio::LoadAudio(8, L"ButtonSE.wav", EFFECT);				//コマンドSE
 
-	//音量を0.9下げる
-	float Volume = Audio::VolumeMaster(-0.9f);
 }
 
 //アクション
@@ -98,7 +120,7 @@ void CObjHero::Action()
 		{
 			if (m_Sf == true){//m_fがtrueの場合
 				//近距離攻撃音を鳴らす
-				Audio::Start(4);
+				Audio::Start(3);
 				//剣オブジェクト作成			剣に座標と向きを渡す
 				CObjSword* swd = new CObjSword(m_px, m_py, m_posture);
 				Objs::InsertObj(swd, OBJ_SWORD, 3);//マネージャーに登録
@@ -118,7 +140,7 @@ void CObjHero::Action()
 				if (obj == nullptr)//キジ情報が無い場合
 				{
 					//遠距離攻撃音を鳴らす
-					Audio::Start(5);
+					Audio::Start(4);
 
 					//キジオブジェクト作成				キジに座標と向きを渡す
 					CObjFlyKiji* kiji = new CObjFlyKiji(m_px, m_py, m_posture);
@@ -135,12 +157,15 @@ void CObjHero::Action()
 			m_Mf = false;
 		if (Input::GetVKey('I') == true)//Iキー入力時
 		{
-			
+
 			if (m_If == true)
 			{
+				//コマンド用SEを鳴らす
+				Audio::Start(8);
 				//持ち物リストが表示されていたら持ち物リストを非表示にする
 				if (m_Mf == true) {
 					
+
 					CObjInventory* iob = (CObjInventory*)Objs::GetObj(OBJ_INVENTORY);
 					if (iob != nullptr)
 						iob->SetEf(true);
@@ -268,7 +293,7 @@ void CObjHero::Action()
 					continue;
 
 				//ダメージ音を鳴らす
-				Audio::Start(6);
+				Audio::Start(5);
 
 				float r = hit_data[i]->r;
 				if ((r < 45 && r >= 0) || r > 315)
@@ -308,6 +333,13 @@ void CObjHero::Action()
 		{
 			m_f = false;
 			hit->SetInvincibility(false);//無敵オフ
+			CObjEveDog* evedog1 = (CObjEveDog*)Objs::GetObj(OBJ_EVEDOG);
+			CObjEveKiji* evekiji1 = (CObjEveKiji*)Objs::GetObj(OBJ_EVEKIJI);
+			CObjEveMnky* evemnky1 = (CObjEveMnky*)Objs::GetObj(OBJ_EVEMNKY);
+			if (evedog1 != nullptr || evekiji1 != nullptr || evemnky1 != nullptr)//主人公情報が存在する場合
+			{
+				hit->SetInvincibility(true);//無敵オン
+			}
 			alpha = 1.0f;
 			m_time = 70;
 		}
@@ -319,12 +351,12 @@ void CObjHero::Action()
 				if (hit->CheckObjNameHit(OBJ_PEACH) != nullptr)
 				{
 					m_hp += 1; //HPを1回復
-					Audio::Start(8);//回復音を鳴らす
+					Audio::Start(6);//回復音を鳴らす
 				}
 				else if (hit->CheckObjNameHit(OBJ_YELLOW_PEACH) != nullptr)
 				{
 					m_hp += 3;	//HPを3回復
-					Audio::Start(8);//回復音を鳴らす			
+					Audio::Start(6);//回復音を鳴らす			
 				}
 				else if (hit->CheckObjNameHit(OBJ_PLUM) != nullptr)
 				{
@@ -338,6 +370,7 @@ void CObjHero::Action()
 				}
 				else if (hit->CheckObjNameHit(OBJ_GOLD_BULLION) != nullptr)
 				{
+					
 					item_list[4] += 1;
 					Audio::Start(2);//アイテム取得音を鳴らす
 				}
@@ -349,7 +382,7 @@ void CObjHero::Action()
 				else if (hit->CheckObjNameHit(OBJ_CLUB) != nullptr)
 				{
 					item_list[6] += 1;
-					Audio::Start(9);//デバフ音を鳴らす
+					Audio::Start(7);//デバフ音を鳴らす
 									//移動速度を0.8倍する
 									//m_px *= 0.8;
 									//m_py *= 0.8;
@@ -360,12 +393,12 @@ void CObjHero::Action()
 				if (hit->CheckObjNameHit(OBJ_PEACH) != nullptr)
 				{
 					item_list[0] += 1;
-					Audio::Start(2);//回復音を鳴らす
+					Audio::Start(2);//アイテム取得音を鳴らす
 				}
 				else if (hit->CheckObjNameHit(OBJ_YELLOW_PEACH) != nullptr)
 				{
 					item_list[1] += 1;
-					Audio::Start(2);//回復音を鳴らす			
+					Audio::Start(2);//アイテム取得音を鳴らす			
 				}
 			}
 		}
@@ -420,9 +453,8 @@ void CObjHero::Action()
 
 					df = false;
 
-						m_hp_max += 1;
-						m_hp += 1;
-						OTOMO[0] = true;
+					m_hp_max += 1;
+					OTOMO[0] = true;
 				}
 				else if (hit->CheckObjNameHit(OBJ_MONKE) && mf == true)//猿に当たった場合
 				{
@@ -449,10 +481,17 @@ void CObjHero::Action()
 			}
 		}
 
+		//主人公の情報を取得
+		CObjEveDog* evedog = (CObjEveDog*)Objs::GetObj(OBJ_EVEDOG);
+		CObjEveKiji* evekiji = (CObjEveKiji*)Objs::GetObj(OBJ_EVEKIJI);
+		CObjEveMnky* evemnky = (CObjEveMnky*)Objs::GetObj(OBJ_EVEMNKY);
+		if (evedog != nullptr || evekiji != nullptr || evemnky != nullptr)
+		{
+			m_f = true;
+		}
+
 		if (hit->CheckElementHit(ELEMENT_FIELD) == true && Input::GetVKey('F') == true)
 		{
-			//階段SEを鳴らす
-			Audio::Start(10);
 			//遅延
 			Sleep(900);
 		}
@@ -471,6 +510,11 @@ void CObjHero::Action()
 	//Mを押してポーズに移行する------------------------------------------------------------------------
 	if (Input::GetVKey('M') == true)
 	{
+		//コマンド用SEを鳴らす
+		Audio::Start(8);
+		//音が鳴る時間をつくる
+		Sleep(100);
+		//鳴ってから移行
 		Scene::SetScene(new CScenePose());
 	}
 	else{}	

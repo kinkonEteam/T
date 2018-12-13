@@ -14,6 +14,20 @@ using namespace GameL;
 void CObjTitle::Init()
 {
 	
+	//ゲームスコアの初期化
+	static bool init_point = false;
+	if (init_point == false)
+	{
+		((UserData*)Save::GetData())->m_point = 0;//点数を初期化する
+		init_point = true;
+		//ランキングも初期化する
+		for (int i = 0; i < 16; i++)
+		{
+			((UserData*)Save::GetData())->m_ranking[i] = 0;
+		}
+		init_point = true;
+	}
+
 	m_key_flag = false;
 }
 
@@ -38,7 +52,7 @@ void CObjTitle::Action()
 //ドロー
 void CObjTitle::Draw()
 {
-	float c[4] = { 1.0f,1.0f,1.0f,2.5f };
+	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置
@@ -59,7 +73,5 @@ void CObjTitle::Draw()
 	//描画
 	Draw::Draw(20, &src, &dst, c, 0.0f);
 
-	float b[4] = { 1.0f,0.0f,0.0f,1.0f };
-	Font::StrDraw(L"桃太郎最強伝説", 230, 250, 50, b);
-	Font::StrDraw(L"START", 350, 350, 45, b);
+	
 }

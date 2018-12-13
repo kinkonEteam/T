@@ -522,9 +522,6 @@
     <ClInclude Include="ObjClub.h">
       <Filter>ソース ファイル\Item</Filter>
     </ClInclude>
-    <ClInclude Include="ObjDog.h">
-      <Filter>ソース ファイル\Events\Dog</Filter>
-    </ClInclude>
     <ClInclude Include="ObjEnemy.h">
       <Filter>ソース ファイル\Character\敵</Filter>
     </ClInclude>
@@ -564,14 +561,8 @@
     <ClInclude Include="ObjMap5.h">
       <Filter>ソース ファイル\Map\floor5</Filter>
     </ClInclude>
-    <ClInclude Include="ObjMonke.h">
-      <Filter>ソース ファイル\Item</Filter>
-    </ClInclude>
     <ClInclude Include="ObjPeach.h">
       <Filter>ソース ファイル\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjPheasant.h">
-      <Filter>ソース ファイル\Events\Kiji</Filter>
     </ClInclude>
     <ClInclude Include="ObjPlum.h">
       <Filter>ソース ファイル\Item</Filter>
@@ -707,6 +698,8 @@
     </ClInclude>
     <ClInclude Include="SceneScore.h">
       <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="ObjSosasetsumei.h">
+      <Filter>ソース ファイル\Scene\操作説明</Filter>
     </ClInclude>
     <ClInclude Include="SceneItemsetsumei.h">
       <Filter>ソース ファイル\Scene</Filter>

@@ -19,6 +19,20 @@ CObjMap3::CObjMap3(int map[56][56])
 	memcpy(m_map, map, sizeof(int)*(56 * 56));
 }
 
+//猿を仲間にすることで通行可能にする
+void CObjMap3::Setwall(bool type)
+{
+	if (type == true)
+		for (int i = 0; i < 56; i++)
+		{
+			for (int j = 0; j < 56; j++)
+			{
+				if (m_map[i][j] == 3)
+					m_map[i][j] = 13;
+			}
+		}
+}
+
 //イニシャライズ
 void CObjMap3::Init()
 {
@@ -93,8 +107,6 @@ void CObjMap3::Init()
 	}
 
 
-
-
 }
 //アクション
 void CObjMap3::Action()
@@ -150,15 +162,15 @@ void CObjMap3::Draw()
 				dst.m_right = dst.m_left + 50.0f;
 				dst.m_bottom = dst.m_top + 50.0f;
 			}
-			if (m_map[i][j] == 0 || m_map[i][j] == 2 || m_map[i][j] >= 5)
-			{
-				//床
-				BlockDraw(0.0f, 0.0f, &dst, c);
-			}
-			else if (m_map[i][j] == 1)
+			if (m_map[i][j] == 1 || m_map[i][j] == 13)
 			{
 				//壁
 				BlockDraw(47.0f, 0.0f, &dst, c);
+			}
+			else if (m_map[i][j] == 0 || m_map[i][j] == 2 || m_map[i][j] >= 5)
+			{
+				//床
+				BlockDraw(0.0f, 0.0f, &dst, c);
 			}
 			else
 			{
@@ -221,7 +233,7 @@ void CObjMap3::Map3Hit
 	{
 		for (int j = 0; j < 56; j++)
 		{
-			if (m_map[i][j] == 1)
+			if (m_map[i][j] == 1 || m_map[i][j] == 3)
 			{
 				//要素番号を座標に変更
 				float bx = j*50.0f;

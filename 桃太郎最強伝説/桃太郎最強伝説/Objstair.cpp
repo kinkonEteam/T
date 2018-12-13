@@ -21,7 +21,7 @@ CObjstair::CObjstair(float x, float y,int c)
 //イニシャライズ
 void CObjstair::Init()
 {
-	
+	Audio::LoadAudio(0, L"StairsSE.wav", EFFECT);			//階段用SEセット
 
 	//当たり判定用のHitBoxを作成
 	Hits::SetHitBox(this, m_px+20, m_py+20, 10, 10, ELEMENT_FIELD, OBJ_STAIR, 1);
@@ -54,15 +54,35 @@ void CObjstair::Action()
 	if (hit->CheckObjNameHit(OBJ_HERO) != nullptr)
 	{
 		if (m_c == 1 && Input::GetVKey('F') == true)
+		{
+			Audio::Start(0);
+			Sleep(900);
 			Scene::SetScene(new CScenefloor2());
+		}
 		else if (m_c == 2 && Input::GetVKey('F') == true)
+		{
+			Audio::Start(0);
+			Sleep(900);
 			Scene::SetScene(new CScenefloor3());
-		else if(m_c == 3 && Input::GetVKey('F') == true)
+		}
+		else if (m_c == 3 && Input::GetVKey('F') == true)
+		{
+			Audio::Start(0);
+			Sleep(900);
 			Scene::SetScene(new CScenefloor4());
-		else if(m_c == 4 && Input::GetVKey('F') == true)
+		}
+		else if (m_c == 4 && Input::GetVKey('F') == true)
+		{
+			Audio::Start(0);
+			Sleep(900);
 			Scene::SetScene(new CScenefloor5());
-		else if(m_c ==5 && Input::GetVKey('F') == true)
+		}
+		else if (m_c == 5 && Input::GetVKey('F') == true)
+		{
+			Audio::Start(0);
+			Sleep(900);
 			Scene::SetScene(new CSceneClear());
+		}
 
 		CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);//主人公データ取得
 		hero->SaveDATA();//主人公のデータをセーブ

@@ -31,6 +31,11 @@ CScenefloor3::~CScenefloor3()
 //初期化メソッド
 void CScenefloor3::InitScene()
 {
+	//BGMの読み込み
+	Audio::LoadAudio(1, L"ダンジョン.wav", BACK_MUSIC);		//ダンジョン用BGM
+	//音楽スタート
+	Audio::Start(1);
+
 	//外部データの読み込み（階層1情報）
 	unique_ptr<wchar_t>p;//ステージ情報ポインター
 	int size;			//ステージ情報の大きさ
@@ -98,13 +103,13 @@ void CScenefloor3::InitScene()
 	CObjMap3* objb = new CObjMap3(map);
 	Objs::InsertObj(objb, OBJ_MAP3, 1);
 
-	//暗闇作成				//暗闇画像番号
-	ObjCapture* Y = new ObjCapture(15);
-	Objs::InsertObj(Y, OBJ_CAPTURE, 3);
-
 	//主人公体力ゲージオブジェクト作成
 	CObjHeroGauge* objg = new CObjHeroGauge();
 	Objs::InsertObj(objg, OBJ_HEROGAUGE, 20);
+
+	//文字表示作成
+	ObjCharView* c = new ObjCharView();
+	Objs::InsertObj(c, OBJ_CV, 20);
 
 }
 

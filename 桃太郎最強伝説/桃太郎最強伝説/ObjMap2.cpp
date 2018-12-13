@@ -27,7 +27,7 @@ void CObjMap2::Init()
 	srand(time(NULL));
 
 	setstair();
-	setdog();
+
 	setenemy();
 	sethero();
 
@@ -367,24 +367,3 @@ void CObjMap2::setenemy()
 	}
 }
 
-//犬出現
-void CObjMap2::setdog()
-{
-	for (int i = 0; i < 56; i++)
-	{
-		for (int j = 0; j < 56; j++)
-		{
-			if (m_map[i][j] == 6)
-			{
-				//犬オブジェクト作成
-				CObjDog* objd = new CObjDog(j*50.0f, i*50.0f);//オブジェクト作成
-				Objs::InsertObj(objd, OBJ_DOG, 2);//マネージャに登録
-
-				m_scrollx = -j * 50.0f + 400;
-				m_scrolly = -i * 50.0f + 300;
-
-				return;
-			}
-		}
-	}
-}
