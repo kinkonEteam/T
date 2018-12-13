@@ -153,17 +153,40 @@ void CObjEnemy::Action()
 	float hx = hero->GetX();
 	float hy = hero->GetY();
 
+
+
 	//UtilityModuleのチェック関数に場所と領域を渡し、領域外か判定
-	bool check = CheckWindow(m_px, m_py, 0.0f, 0.0f, 800.0f, 600.0f);
-	if (check == false)
+	bool check;
+	if (map1 != nullptr)
+	{
+		check = CheckWindow(m_px + map1->GetScrollx(), m_py + map1->GetScrolly(), -50.0f, -50.0f, 850.0f, 650.0f);
+	}
+	if (map2 != nullptr)
+	{
+		check = CheckWindow(m_px + map2->GetScrollx(), m_py + map2->GetScrolly(), -50.0f, -50.0f, 850.0f, 650.0f);
+	}
+	if (map3 != nullptr)
+	{
+		check = CheckWindow(m_px + map3->GetScrollx(), m_py + map3->GetScrolly(), -50.0f, -50.0f, 850.0f, 650.0f);
+	}
+	if (map4 != nullptr)
+	{
+		check = CheckWindow(m_px + map4->GetScrollx(), m_py + map4->GetScrolly(), -50.0f, -50.0f, 850.0f, 650.0f);
+	}
+	if (map5 != nullptr)
+	{
+		check = CheckWindow(m_px + map5->GetScrollx(), m_py + map5->GetScrolly(), -50.0f, -50.0f, 850.0f, 650.0f);
+	}
+
+	if (check == true)
 	{
 		//主人公機が存在する場合、誘導角度の計算する
 		if (hero != nullptr)
 		{
 
-			float x = 0;
-			float y = 0;
-			float ar = 0;
+			float x;
+			float y;
+			float ar;
 
 			if (map1 != nullptr)
 			{
@@ -242,6 +265,10 @@ void CObjEnemy::Action()
 
 			UnitVec(&m_vx, &m_vy);
 		}
+	}
+	else
+	{
+		m_vy = 0;
 	}
 
 	//位置の更新
@@ -330,18 +357,6 @@ void CObjEnemy::Draw()
 		dst.m_left = 50.0f + m_px + map5->GetScrollx();
 		dst.m_right = 0.0f + m_px + map5->GetScrollx();
 		dst.m_bottom = 50.0f + m_py + map5->GetScrolly();
-	}
-
-	float r = 0.0f;
-	//主人公機とBOSSで角度を取る
-	CObjHero* obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
-	//主人公機が存在する場合、誘導角度の計算する
-	if (obj != nullptr)
-	{
-		float x = 375 - dst.m_top;
-		float y = 275 - dst.m_left;
-		r = GetAtan2Angle(x, y) + 30;
-
 	}
 
 	//描画
