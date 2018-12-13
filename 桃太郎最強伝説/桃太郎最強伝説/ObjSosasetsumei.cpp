@@ -33,11 +33,8 @@ void CObjSosasetsumei::Draw()
 {
 
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
-
 	Font::StrDraw(L"‘€ìà–¾", 300, 80, 50, c);
-	Font::StrDraw(L"ª«©¨:ˆÚ“®", 250, 150, 30, c);
-	Font::StrDraw(L"A:Œ•UŒ‚", 250, 200, 30, c);
-	Font::StrDraw(L"F:", 250, 250, 30, c);
+	
 	Font::StrDraw(L"D:–ß‚é", 250, 300, 30, c);
 
 }
