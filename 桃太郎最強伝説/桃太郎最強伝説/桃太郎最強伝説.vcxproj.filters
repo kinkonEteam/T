@@ -9,6 +9,10 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
     <Filter Include="ソース ファイル\Map">
       <UniqueIdentifier>{a761d459-e9b1-4cd4-b11e-6a275c958389}</UniqueIdentifier>
     </Filter>
@@ -84,9 +88,55 @@
     <Filter Include="ソース ファイル\Scene\スコアランキング">
       <UniqueIdentifier>{8d54fc59-673e-4067-b9ee-44b02f685762}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Scene\操作説明">
+      <UniqueIdentifier>{9224c897-fa9f-4a25-8ad3-f4d48e714ec4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="SceneMain.cpp" />
     <ClCompile Include="UtilityModule.cpp" />
+    <ClCompile Include="GameL\Audio.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GameL\DirectXDevice.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GameL\Draw2DTex_Source.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GameL\DrawFont.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GameL\DrawTexture.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GameL\GameL_Main.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GameL\HitBoxManager.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GameL\MultiThread.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GameL\SceneManager.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GameL\SceneObjManager.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GameL\SetWindow.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GameL\UserData.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GameL\WICTextureLoader.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GameL\WinInputs.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
     <ClCompile Include="ObjMap1.cpp">
       <Filter>ソース ファイル\Map\floor1</Filter>
     </ClCompile>
@@ -141,9 +191,6 @@
     <ClCompile Include="ObjTalk.cpp">
       <Filter>ソース ファイル\Events</Filter>
     </ClCompile>
-    <ClCompile Include="ObjClub.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="CObjEveDog.cpp">
       <Filter>ソース ファイル\Events\Dog</Filter>
     </ClCompile>
@@ -231,24 +278,6 @@
     <ClCompile Include="ObjCapture.cpp">
       <Filter>ソース ファイル\暗闇</Filter>
     </ClCompile>
-    <ClCompile Include="Data.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjInventory.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjKeyUse.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjPose.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjSell.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjSosasetsumei.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="CObjFlyKiji.cpp">
       <Filter>ソース ファイル\Character\おとも</Filter>
     </ClCompile>
@@ -258,134 +287,11 @@
     <ClCompile Include="ObjHeroGauge.cpp">
       <Filter>ソース ファイル\Character\主人公</Filter>
     </ClCompile>
-    <ClCompile Include="CObjBullet.cpp">
-      <Filter>ソース ファイル\Character\BOSS</Filter>
+    <ClCompile Include="ObjScore.cpp">
+      <Filter>ソース ファイル\Scene\スコアランキング</Filter>
     </ClCompile>
-    <ClCompile Include="CObjEveDog.cpp">
-      <Filter>ソース ファイル\Events\Dog</Filter>
-    </ClCompile>
-    <ClCompile Include="CObjEveKiji.cpp">
-      <Filter>ソース ファイル\Events\Kiji</Filter>
-    </ClCompile>
-    <ClCompile Include="CObjEveMnky.cpp">
-      <Filter>ソース ファイル\Events\Mnky</Filter>
-    </ClCompile>
-    <ClCompile Include="CObjFlyKiji.cpp">
-      <Filter>ソース ファイル\Character\主人公</Filter>
-    </ClCompile>
-    <ClCompile Include="CObjhomingfire.cpp">
-      <Filter>ソース ファイル\Character\BOSS</Filter>
-    </ClCompile>
-    <ClCompile Include="CObjSword.cpp">
-      <Filter>ソース ファイル\Character\主人公</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjBoss.cpp">
-      <Filter>ソース ファイル\Character\BOSS</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjClear.cpp">
-      <Filter>ソース ファイル\Scene\ゲームクリア</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjClub.cpp">
-      <Filter>ソース ファイル\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjDog.cpp">
-      <Filter>ソース ファイル\Events\Dog</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjEnemy.cpp">
-      <Filter>ソース ファイル\Character\敵</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjEnemy2.cpp">
-      <Filter>ソース ファイル\Character\敵</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjEnemy3.cpp">
-      <Filter>ソース ファイル\Character\敵</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjGameOver.cpp">
-      <Filter>ソース ファイル\Scene\ゲームオーバー</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjGoldBullion.cpp">
-      <Filter>ソース ファイル\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjHero.cpp">
-      <Filter>ソース ファイル\Character\主人公</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjHeroGauge.cpp">
-      <Filter>ソース ファイル\Character\主人公</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjHorn.cpp">
-      <Filter>ソース ファイル\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjMap1.cpp">
-      <Filter>ソース ファイル\Map\floor1</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjMap2.cpp">
-      <Filter>ソース ファイル\Map\floor2</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjMap3.cpp">
-      <Filter>ソース ファイル\Map\floor3</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjMap4.cpp">
-      <Filter>ソース ファイル\Map\floor4</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjMap5.cpp">
-      <Filter>ソース ファイル\Map\floor5</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjMonke.cpp">
-      <Filter>ソース ファイル\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjPeach.cpp">
-      <Filter>ソース ファイル\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjPheasant.cpp">
-      <Filter>ソース ファイル\Events\Kiji</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjPlum.cpp">
-      <Filter>ソース ファイル\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjSilverBullion.cpp">
-      <Filter>ソース ファイル\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="Objstair.cpp">
-      <Filter>ソース ファイル\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjSummary.cpp">
-      <Filter>ソース ファイル\Scene\あらすじ</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjTitle.cpp">
-      <Filter>ソース ファイル\Scene\タイトル</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneClear.cpp">
-      <Filter>ソース ファイル\Scene\ゲームクリア</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjSosasetsumei.cpp">
-      <Filter>ソース ファイル\Scene\操作説明</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjKeyUse.cpp">
-      <Filter>ソース ファイル\Scene\操作説明</Filter>
-    </ClCompile>
-    <ClCompile Include="Scenefloor1.cpp">
-      <Filter>ソース ファイル\Map\floor1</Filter>
-    </ClCompile>
-    <ClCompile Include="Scenefloor2.cpp">
-      <Filter>ソース ファイル\Map\floor2</Filter>
-    </ClCompile>
-    <ClCompile Include="Scenefloor3.cpp">
-      <Filter>ソース ファイル\Map\floor3</Filter>
-    </ClCompile>
-    <ClCompile Include="Scenefloor4.cpp">
-      <Filter>ソース ファイル\Map\floor4</Filter>
-    </ClCompile>
-    <ClCompile Include="Scenefloor5.cpp">
-      <Filter>ソース ファイル\Map\floor5</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjYellowPeach.cpp">
-      <Filter>ソース ファイル\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneGameOver.cpp">
-      <Filter>ソース ファイル\Scene\ゲームオーバー</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneTitle.cpp">
-      <Filter>ソース ファイル\Scene\タイトル</Filter>
+    <ClCompile Include="SceneScore.cpp">
+      <Filter>ソース ファイル\Scene\スコアランキング</Filter>
     </ClCompile>
     <ClCompile Include="ObjCapture.cpp">
       <Filter>ソース ファイル\暗闇</Filter>
@@ -424,76 +330,48 @@
       <Filter>ソース ファイル\Scene\メイン</Filter>
     </ClCompile>
     <ClCompile Include="Data.cpp" />
-    <ClCompile Include="GameL\Audio.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="GameL\DirectXDevice.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="GameL\Draw2DTex_Source.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="GameL\DrawFont.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="GameL\DrawTexture.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="GameL\GameL_Main.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="GameL\HitBoxManager.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="GameL\MultiThread.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="GameL\SceneManager.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="GameL\SceneObjManager.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="GameL\SetWindow.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="GameL\UserData.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="GameL\WICTextureLoader.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="GameL\WinInputs.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjItemsetsumei.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjScore.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneItemsetsumei.cpp">
-      <Filter>ソース ファイル\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="ScenePose.cpp">
-      <Filter>ソース ファイル\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneScore.cpp">
-      <Filter>ソース ファイル\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneSosasetsumei.cpp">
-      <Filter>ソース ファイル\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GameL\Audio.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\DirectXDevice.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\DirectXTex.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\DrawFont.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\DrawTexture.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\HitBoxManager.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\MultiThread.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\SceneManager.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\SceneObjManager.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\SetWindow.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\UserData.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\WICTextureLoader.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
     <ClInclude Include="SceneMain.h" />
     <ClInclude Include="UtilityModule.h" />
     <ClInclude Include="GameL\WinInputs.h">
-      <Filter>リソースファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="CObjBullet.h">
-      <Filter>ソース ファイル\Character\BOSS</Filter>
+      <Filter>リソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="CObjEveDog.h">
       <Filter>ソース ファイル\Events\Dog</Filter>
@@ -521,6 +399,9 @@
     </ClInclude>
     <ClInclude Include="ObjClub.h">
       <Filter>ソース ファイル\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjDog.h">
+      <Filter>ソース ファイル\Events\Dog</Filter>
     </ClInclude>
     <ClInclude Include="ObjEnemy.h">
       <Filter>ソース ファイル\Character\敵</Filter>
@@ -561,8 +442,14 @@
     <ClInclude Include="ObjMap5.h">
       <Filter>ソース ファイル\Map\floor5</Filter>
     </ClInclude>
+    <ClInclude Include="ObjMonke.h">
+      <Filter>ソース ファイル\Item</Filter>
+    </ClInclude>
     <ClInclude Include="ObjPeach.h">
       <Filter>ソース ファイル\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjPheasant.h">
+      <Filter>ソース ファイル\Events\Kiji</Filter>
     </ClInclude>
     <ClInclude Include="ObjPlum.h">
       <Filter>ソース ファイル\Item</Filter>
@@ -645,64 +532,50 @@
     <ClInclude Include="ObjInventory.h">
       <Filter>ソース ファイル\Scene\メイン</Filter>
     </ClInclude>
-    <ClInclude Include="ObjKeyUse.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjSosasetsumei.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="GameL\DrawTexture.h">
+      <Filter>リソースファイル</Filter>
     </ClInclude>
     <ClInclude Include="GameL\Audio.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>リソースファイル</Filter>
     </ClInclude>
     <ClInclude Include="GameL\DirectXDevice.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>リソースファイル</Filter>
     </ClInclude>
     <ClInclude Include="GameL\DirectXTex.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>リソースファイル</Filter>
     </ClInclude>
     <ClInclude Include="GameL\DrawFont.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="GameL\DrawTexture.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>リソースファイル</Filter>
     </ClInclude>
     <ClInclude Include="GameL\HitBoxManager.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="GameL\MultiThread.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="GameL\SceneManager.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>リソースファイル</Filter>
     </ClInclude>
     <ClInclude Include="GameL\SceneObjManager.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>リソースファイル</Filter>
     </ClInclude>
-    <ClInclude Include="GameL\SetWindow.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="GameL\SceneManager.h">
+      <Filter>リソースファイル</Filter>
     </ClInclude>
     <ClInclude Include="GameL\UserData.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>リソースファイル</Filter>
     </ClInclude>
     <ClInclude Include="GameL\WICTextureLoader.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>リソースファイル</Filter>
     </ClInclude>
-    <ClInclude Include="SceneSosasetsumei.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="GameL\MultiThread.h">
+      <Filter>リソースファイル</Filter>
     </ClInclude>
-    <ClInclude Include="ObjItemsetsumei.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="GameL\SetWindow.h">
+      <Filter>リソースファイル</Filter>
     </ClInclude>
-    <ClInclude Include="ObjScore.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="ObjKeyUse.h">
+      <Filter>ソース ファイル\Scene\メイン</Filter>
     </ClInclude>
-    <ClInclude Include="SceneScore.h">
-      <Filter>ヘッダー ファイル</Filter>
     <ClInclude Include="ObjSosasetsumei.h">
       <Filter>ソース ファイル\Scene\操作説明</Filter>
     </ClInclude>
-    <ClInclude Include="SceneItemsetsumei.h">
-      <Filter>ソース ファイル\Scene</Filter>
+    <ClInclude Include="SceneSosasetsumei.h">
+      <Filter>ソース ファイル\Scene\操作説明</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -771,9 +644,6 @@
     </ClInclude>
     <ClInclude Include="CObjEveDog.h">
       <Filter>ソース ファイル\Events\Dog</Filter>
-    </ClInclude>
-    <ClInclude Include="CObjFlyKiji.h">
-      <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="ObjMonke.h">
       <Filter>ソース ファイル\Character\おとも</Filter>
@@ -883,13 +753,19 @@
     <ClInclude Include="ObjHeroGauge.h">
       <Filter>ソース ファイル\Character\主人公</Filter>
     </ClInclude>
+    <ClInclude Include="ObjScore.h">
+      <Filter>ソース ファイル\Scene\スコアランキング</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneScore.h">
+      <Filter>ソース ファイル\Scene\スコアランキング</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="GameL\DirectXTex.lib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GameL\DirectXTex.inl">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>リソースファイル</Filter>
     </None>
   </ItemGroup>
 </Project>
