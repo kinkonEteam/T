@@ -25,8 +25,8 @@ void CObjTitle::Init()
 			((UserData*)Save::GetData())->m_ranking[i] = 0;
 		}
 
-		/*//ロード
-		Save::Open();//同フォルダ「UserData」からデータ取得。*/
+		//ロード
+	Save::Open();//同フォルダ「UserData」からデータ取得。
 
 		((UserData*)Save::GetData())->m_point = 0;//点数を初期化する
 		init_point = true;

@@ -15,21 +15,16 @@ extern int item_list[5];
 //イニシャライズ
 void CObjScore::Init()
 {
-	/*static bool save_point = true;*/
-
-	
 	
 	//得点情報をランキング最下位に登録
 	((UserData*)Save::GetData())->m_ranking[14] = ((UserData*)Save::GetData())->m_point;
 
 	//得点が高い順に並び変えする
-	//RankingSort(((UserData*)Save::GetData())->m_ranking);
+	RankingSort(((UserData*)Save::GetData())->m_ranking);
 	
-	/*if (save_point == true)
-	{
-		//セーブデータ？
-		Save::Seve();
-	}*/
+	//セーブデータ？
+	Save::Seve();
+	
 	m_key_flag = false;//キーフラグ
 }
 
