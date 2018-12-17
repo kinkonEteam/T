@@ -17,16 +17,16 @@ extern int HP;				//HP
 //イニシャライズ
 void CObjHeroGauge::Init()
 {
-	change = 1;
-	ad = 4;
-	ac = 6;
+	change = 6 - HP;
+	ad = HP - 1;
+	ac = HP + 1;
 }
 
 //アクション
 void CObjHeroGauge::Action()
 {
 	CObjHero* obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
-	CObjPeach* objp = (CObjPeach*)Objs::GetObj(OBJ_PEACH);
+	//CObjPeach* objp = (CObjPeach*)Objs::GetObj(OBJ_PEACH);
 	if (obj != nullptr)
 	{
 		gethp = obj->Gethp();
