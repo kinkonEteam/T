@@ -29,7 +29,8 @@ void  CObjPose::Action()
 		Sleep(100);
 		Scene::SetScene(new CScenefloor1());
 	}
-	else {}
+	else{}
+
 	//Xを押して操作説明画面に移行する
 	if (Input::GetVKey('X') == true)
 	{
@@ -38,7 +39,7 @@ void  CObjPose::Action()
 		Sleep(100);
 		Scene::SetScene(new CSceneSosasetsumei());
 	}
-	else {}
+	else{}
 
 	/*Cを押してアイテム説明画面に移行する
 	if (Input::GetVKey('C') == true)
@@ -58,7 +59,7 @@ void  CObjPose::Action()
 		Sleep(100);
 		Scene::SetScene(new CSceneTitle());
 	}
-	else {}
+	else{}
 	
 }
 
@@ -68,7 +69,7 @@ void  CObjPose::Draw()
 
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 
-	Font::StrDraw(L"ポーズ", 350, 120, 45, c);
+	Font::StrDraw(L"ポーズメニュー", 350, 120, 45, c);
 	Font::StrDraw(L"ゲームに戻る(Z)", 300, 200, 30, c);
 	Font::StrDraw(L"操作説明(X)", 300, 250, 30, c);
 

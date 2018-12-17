@@ -13,10 +13,16 @@ using namespace GameL;
 #include"SceneTitle.h"
 #include"GameHead.h"
 
+//アイテム初期化用
+extern int item_list[7];
+
 //ゲームメイン初期化メソッド
 void CSceneTitle::InitScene()
 {
-	
+	//アイテム所持数初期化
+	for (int i = 0; i < 7; i++)
+		item_list[i] = 0;
+
 	//外部グラフィックを読み込み19番に登録(512×512ピクセル)
 	Draw::LoadImage(L"ゲームタイトル.png", 20, TEX_SIZE_512);
 

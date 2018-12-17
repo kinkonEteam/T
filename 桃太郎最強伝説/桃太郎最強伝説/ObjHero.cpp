@@ -21,6 +21,8 @@ void CObjHero::SaveDATA() {		//セーブ関数----------------------データをセーブ
 }
 void CObjHero::SetDATA() {		//セット関数----------------------データをセット
 	HP = 5;						//ゲームオーバー後、HPを初期値に戻す
+	for (int n = 0; n < 2; n++)
+		OTOMO[n] = false;
 }
 //シーン表示時の暗闇作成()又は、イベントから関数を使って暗闇を開放していく時(false)
 void CObjHero::SetYAMI(bool tipe) {//暗闇セット関数-----------------------暗闇
@@ -333,6 +335,13 @@ void CObjHero::Action()
 		{
 			m_f = false;
 			hit->SetInvincibility(false);//無敵オフ
+			CObjEveDog* evedog1 = (CObjEveDog*)Objs::GetObj(OBJ_EVEDOG);
+			CObjEveKiji* evekiji1 = (CObjEveKiji*)Objs::GetObj(OBJ_EVEKIJI);
+			CObjEveMnky* evemnky1 = (CObjEveMnky*)Objs::GetObj(OBJ_EVEMNKY);
+			if (evedog1 != nullptr || evekiji1 != nullptr || evemnky1 != nullptr)//主人公情報が存在する場合
+			{
+				hit->SetInvincibility(true);//無敵オン
+			}
 			alpha = 1.0f;
 			m_time = 70;
 		}
@@ -474,6 +483,15 @@ void CObjHero::Action()
 			}
 		}
 
+		//主人公の情報を取得
+		CObjEveDog* evedog = (CObjEveDog*)Objs::GetObj(OBJ_EVEDOG);
+		CObjEveKiji* evekiji = (CObjEveKiji*)Objs::GetObj(OBJ_EVEKIJI);
+		CObjEveMnky* evemnky = (CObjEveMnky*)Objs::GetObj(OBJ_EVEMNKY);
+		if (evedog != nullptr || evekiji != nullptr || evemnky != nullptr)
+		{
+			m_f = true;
+		}
+
 		if (hit->CheckElementHit(ELEMENT_FIELD) == true && Input::GetVKey('F') == true)
 		{
 			//遅延
@@ -491,7 +509,7 @@ void CObjHero::Action()
 
 		Scene::SetScene(new CSceneGameOver());
 	}
-	//Mを押してポーズに移行する
+	//Mを押してポーズに移行する------------------------------------------------------------------------
 	if (Input::GetVKey('M') == true)
 	{
 		//コマンド用SEを鳴らす
@@ -501,9 +519,7 @@ void CObjHero::Action()
 		//鳴ってから移行
 		Scene::SetScene(new CScenePose());
 	}
-	else{}
-
-
+	else{}	
 }
 
 //ドロー

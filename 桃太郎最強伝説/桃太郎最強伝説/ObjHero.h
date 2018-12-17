@@ -27,7 +27,7 @@ class CObjHero :public CObj
 		void SetVX(float vx) { m_vx = vx; }
 		void SetBT(int t) { m_block_type = t; }
 		void SaveDATA();//セーブ関数
-		void SetDATA();//リセット関数(ゲームオーバー後、HPを初期値に戻す)
+		void SetDATA();//リセット関数(HPを初期値に戻す)
 		void SetYAMI(bool tipe = true);//暗闇セット関数
 		void PHP(int hp) { m_hp += hp; }//プラスHP関数(値をメンバhpに加算)
 	private:
