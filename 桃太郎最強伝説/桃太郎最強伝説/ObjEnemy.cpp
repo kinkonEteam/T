@@ -21,13 +21,14 @@ CObjEnemy::CObjEnemy(float x, float y)
 //イニシャライズ
 void CObjEnemy::Init()
 {
+	m_hp = 3;        //体力
 	m_vx = 0.0f;	//移動ベクトル
 	m_vy = 0.0f;
 	m_posture = 0.0f;//正面(0.0f) 左(1.0f) 右(2.0f) 背面(3.0f)
 
 	m_ani_time = 0;
 	m_ani_frame = 1;	//静止フレームを初期にする
-
+	
 	m_speed_power = 4.0f;//通常速度
 	m_ani_max_time = 10;	//アニメーション間隔幅
 
@@ -39,6 +40,11 @@ void CObjEnemy::Init()
 	m_hit_down = false;
 	m_hit_left = false;
 	m_hit_right = false;
+
+	m_key_f = false;		//無敵時間行動制御
+	m_t = false;
+
+	knock = false;
 
 	//当たり判定用のHitBoxを作成
 	Hits::SetHitBox(this, m_px, m_py, 50, 50, ELEMENT_ENEMY, OBJ_ENEMY, 1);
@@ -69,25 +75,25 @@ void CObjEnemy::Action()
 	//方向
 	if (m_movey == true)
 	{
-		m_vy = m_speed_power;
+		m_vy = 1;
 		m_posture = 0.0f;
 		m_ani_time += 1;
 	}
 	if (m_movey == false)
 	{
-		m_vy = -m_speed_power;
+		m_vy = -1;
 		m_posture = 3.0f;
 		m_ani_time += 1;
 	}
 	if (m_movex == true)
 	{
-		m_vx = m_speed_power;
+		m_vx = 1;
 		m_posture = 1.0f;
 		m_ani_time += 1;
 	}
 	if (m_movex == false)
 	{
-		m_vx = -m_speed_power;
+		m_vx = -1;
 		m_posture = 2.0f;
 		m_ani_time += 1;
 	}
@@ -159,23 +165,23 @@ void CObjEnemy::Action()
 	bool check;
 	if (map1 != nullptr)
 	{
-		check = CheckWindow(m_px + map1->GetScrollx(), m_py + map1->GetScrolly(), -50.0f, -50.0f, 850.0f, 650.0f);
+		check = CheckWindow(m_px + map1->GetScrollx(), m_py + map1->GetScrolly(), 50.0f, 50.0f, 750.0f, 550.0f);
 	}
 	if (map2 != nullptr)
 	{
-		check = CheckWindow(m_px + map2->GetScrollx(), m_py + map2->GetScrolly(), -50.0f, -50.0f, 850.0f, 650.0f);
+		check = CheckWindow(m_px + map2->GetScrollx(), m_py + map2->GetScrolly(), 50.0f, 50.0f, 750.0f, 550.0f);
 	}
 	if (map3 != nullptr)
 	{
-		check = CheckWindow(m_px + map3->GetScrollx(), m_py + map3->GetScrolly(), -50.0f, -50.0f, 850.0f, 650.0f);
+		check = CheckWindow(m_px + map3->GetScrollx(), m_py + map3->GetScrolly(), 50.0f, 50.0f, 750.0f, 550.0f);
 	}
 	if (map4 != nullptr)
 	{
-		check = CheckWindow(m_px + map4->GetScrollx(), m_py + map4->GetScrolly(), -50.0f, -50.0f, 850.0f, 650.0f);
+		check = CheckWindow(m_px + map4->GetScrollx(), m_py + map4->GetScrolly(), 50.0f, 50.0f, 750.0f, 550.0f);
 	}
 	if (map5 != nullptr)
 	{
-		check = CheckWindow(m_px + map5->GetScrollx(), m_py + map5->GetScrolly(), -50.0f, -50.0f, 850.0f, 650.0f);
+		check = CheckWindow(m_px + map5->GetScrollx(), m_py + map5->GetScrolly(), 50.0f, 50.0f, 750.0f, 550.0f);
 	}
 
 	if (check == true)
@@ -186,52 +192,42 @@ void CObjEnemy::Action()
 
 			float x;
 			float y;
-			float ar;
 
 			if (map1 != nullptr)
 			{
 				x = 400 - (m_px + map1->GetScrollx());
 				y = 300 - (m_py + map1->GetScrolly());
-				ar = GetAtan2Angle(x, y);
 			}
 			if (map2 != nullptr)
 			{
 				x = 400 - (m_px + map2->GetScrollx());
 				y = 300 - (m_py + map2->GetScrolly());
-				ar = GetAtan2Angle(x, y);
 			}
 			if (map3 != nullptr)
 			{
 				x = 400 - (m_px + map3->GetScrollx());
 				y = 300 - (m_py + map3->GetScrolly());
-				ar = GetAtan2Angle(x, y);
 			}
 			if (map4 != nullptr)
 			{
 				x = 400 - (m_px + map4->GetScrollx());
 				y = 300 - (m_py + map4->GetScrolly());
-				ar = GetAtan2Angle(x, y);
 			}
 			if (map5 != nullptr)
 			{
 				x = 400 - (m_px + map5->GetScrollx());
 				y = 300 - (m_py + map5->GetScrolly());
-				ar = GetAtan2Angle(x, y);
 			}
+
+			float ar = GetAtan2Angle(x, y);
 
 			//敵の現在の向いている角度を取る
 			float br = GetAtan2Angle(m_vx, m_vy);
-
-			if (ar < 0)
-			{
-				ar = 360 + ar;
-			}
 
 			//角度で上下左右を判定
 			if ((ar < 45 && ar>0) || ar > 315)
 			{
 				//右
-				m_vx -= m_speed_power;
 				m_posture = 1.0f;
 				m_ani_time += 1;
 			}
@@ -239,31 +235,28 @@ void CObjEnemy::Action()
 			if (ar > 45 && ar < 135)
 			{
 				//上
-				m_vy += m_speed_power;
 				m_posture = 0.0f;
 				m_ani_time += 1;
 			}
 			if (ar > 135 && ar < 225)
 			{
 				//左
-				m_vx += m_speed_power;
 				m_posture = 2.0f;
 				m_ani_time += 1;
 			}
 			if (ar > 225 && ar < 315)
 			{
 				//下
-				m_vy -= m_speed_power;
 				m_posture = 3.0f;
 				m_ani_time += 1;
 
 			}
 
 			//主人公機と敵角度があんまりにもかけ離れたら
-			m_vx = cos(3.14 / 180 * ar);
-			m_vy = sin(3.14 / 180 * ar);
+			m_vx = cos(3.14 / 180 * ar) * 2;
+			m_vy = sin(3.14 / 180 * ar) * 2;
 
-			UnitVec(&m_vx, &m_vy);
+
 		}
 	}
 	else
@@ -271,14 +264,10 @@ void CObjEnemy::Action()
 		m_vy = 0;
 	}
 
-	//位置の更新
-	m_px += m_vx;
-	m_py += m_vy;
-
 	//HitBoxの内容を更新
 	CHitBox*hit = Hits::GetHitBox(this);
 	if (map1 != nullptr)
-	hit->SetPos(m_px + map1->GetScrollx(), m_py + map1->GetScrolly());
+		hit->SetPos(m_px + map1->GetScrollx(), m_py + map1->GetScrolly());
 	if (map2 != nullptr)
 		hit->SetPos(m_px + map2->GetScrollx(), m_py + map2->GetScrolly());
 	if (map3 != nullptr)
@@ -288,13 +277,69 @@ void CObjEnemy::Action()
 	if (map5 != nullptr)
 		hit->SetPos(m_px + map5->GetScrollx(), m_py + map5->GetScrolly());
 
-	//主人公の攻撃に当たると消滅
+	//ELEMENT_MAGICを持つオブジェクトと接触したら
 	if (hit->CheckElementHit(ELEMENT_MAGIC) == true)
 	{
-		this->SetStatus(false);	//自身に削除命令を出す
-		Hits::DeleteHitBox(this);//主人公が所有するHitBoxを削除する。
+		//敵が主人公とどの角度で当たっているかを確認
+		HIT_DATA**hit_data;							//当たった時の細かな情報を入れるための構造体
+		hit_data = hit->SearchElementHit(ELEMENT_MAGIC);//hit_dataに主人公と当たっている他全てのHitBoxとの情報を入れる
 
-		//((UserData*)Save::GetData())->m_point += 100;
+		for (int i = 0; i < hit->GetCount(); i++)
+		{
+			//攻撃の左右に当たったら
+			if (hit_data[i] == nullptr)
+				continue;
+
+			float r = hit_data[i]->r;
+			if ((r < 45 && r >= 0) || r > 315)
+			{
+				m_vx = -20.0f;//左に移動させる
+			}
+			if (r >= 45 && r < 135)
+			{
+				m_vy = 20.0f;//上に移動させる
+			}
+			if (r >= 135 && r < 225)
+			{
+				m_vx = 20.0f;//右に移動させる
+			}
+			if (r >= 225 && r < 315)
+			{
+				m_vy = -20.0f;//したに移動させる
+			}
+		}
+		m_hp -= 1;
+		m_f = true;
+		m_key_f = true;
+		hit->SetInvincibility(true);//無敵オン
+	}
+
+	//位置の更新
+	m_px += m_vx;
+	m_py += m_vy;
+
+	if (m_f == true)
+	{
+		m_time--;//無敵時間開始
+
+		if (m_time == 10)
+			m_key_f = false;
+
+		alpha = 0.5f;
+	}
+	if (m_time <= 0)
+	{
+		m_f = false;
+		hit->SetInvincibility(false);//無敵オフ
+		alpha = 1.0f;
+		m_time = 30;
+	}
+
+	//HPが0になったら破棄
+	if (m_hp <= 0)
+	{
+		this->SetStatus(false);
+		Hits::DeleteHitBox(this);
 	}
 }
 

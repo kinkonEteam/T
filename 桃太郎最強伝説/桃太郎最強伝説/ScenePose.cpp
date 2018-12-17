@@ -19,8 +19,8 @@ using namespace GameL;
 void CScenePose::InitScene()
 {
 	//タイトルオブジェクト作成
-	CObjPose* obj = new CObjPose();       //タイトルオブジェクト作成
-	Objs::InsertObj(obj, OBJ_POSE, 10);    //主人公オブジェクト登録
+	CObjPose* obj = new CObjPose();       //ポーズオブジェクト作成
+	Objs::InsertObj(obj, OBJ_POSE, 10);    //ポーズオブジェクト登録
 }
 
 //ゲームメイン実行中メソッド
