@@ -10,21 +10,22 @@
 using namespace GameL;
 
 //使用ヘッダー
-#include"ScenePose.h"
+#include"SceneItemsetsumei.h"
 #include"GameHead.h"
 
 
 
 //ゲームメイン初期化メソッド
-void CScenePose::InitScene()
+void CSceneItemsetsumei::InitScene()
 {
 	//タイトルオブジェクト作成
-	CObjPose* obj = new CObjPose();       //ポーズオブジェクト作成
-	Objs::InsertObj(obj, OBJ_POSE, 10);    //ポーズオブジェクト登録
+	CObjItemsetsumei* obj = new CObjItemsetsumei(); //アイテム説明オブジェクト作成
+	Objs::InsertObj(obj, OBJ_ITEMSETSUMEI, 10);    //アイテム説明登録
+	
 }
 
 //ゲームメイン実行中メソッド
-void CScenePose::Scene()
+void CSceneItemsetsumei::Scene()
 {
 
 }

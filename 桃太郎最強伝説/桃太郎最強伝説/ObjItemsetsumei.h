@@ -5,17 +5,17 @@
 using namespace GameL;
 
 //オブジェクト：タイトルに戻る
-class CObjPose : public CObj
+class CObjItemsetsumei : public CObj
 {
 public:
-	CObjPose() {};
-	~CObjPose() {};
+	CObjItemsetsumei() {};
+	~CObjItemsetsumei() {};
 	void Init();     //イニシャライズ
 	void Action();   //アクション
 	void Draw();     //ドロー
 private:
-	bool m_CSceneposeFlag;
 
 
 };
+
 

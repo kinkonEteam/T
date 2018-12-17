@@ -116,9 +116,13 @@ void CScenefloor1::InitScene()
 	CObjHeroGauge* objg = new CObjHeroGauge();
 	Objs::InsertObj(objg, OBJ_HEROGAUGE, 20);
 
-	//KeyUse作成
-	ObjKeyUse* K = new ObjKeyUse();
-	Objs::InsertObj(K, OBJ_KEYUSE, 20);
+	//文字表示作成
+	ObjCharView* c = new ObjCharView();
+	Objs::InsertObj(c, OBJ_CV, 20);
+
+	//暗闇の透明度をセット
+	ObjCapture* yami = (ObjCapture*)Objs::GetObj(OBJ_CAPTURE);
+	yami->SetAlpha(0.6f);
 
 }
 

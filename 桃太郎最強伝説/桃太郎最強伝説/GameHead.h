@@ -45,10 +45,11 @@ enum OBJ_NAME
 	OBJ_POSE,
 	OBJ_SOSASETSUMEI,
 	OBJ_STAIR,
-	OBJ_CAPTURE,		//画面全体に画像を表示
-	OBJ_KEYUSE,	
+	OBJ_CAPTURE,		
+	OBJ_CV,	
 	OBJ_INVENTORY,
 	OBJ_SCORE,
+	OBJ_ITEMSETSUMEI,
 };
 //------------------------------------------------
 
@@ -133,10 +134,11 @@ enum ITEM
 #include"ObjHeroGauge.h"
 #include"ObjCapture.h"
 #include"Objstair.h"
-#include"ObjKeyUse.h"
+#include"ObjCharView.h"
 #include"ObjPose.h"
 #include"ObjSosasetsumei.h"
 #include"ObjScore.h"
+#include"ObjItemsetsumei.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------
@@ -156,6 +158,7 @@ enum ITEM
 #include"ScenePose.h"
 #include"SceneSosasetsumei.h"
 #include"SceneScore.h"
+#include"SceneItemsetsumei.h"
 //-----------------------------------------------
 
 //シーンスタートクラス---------------------------

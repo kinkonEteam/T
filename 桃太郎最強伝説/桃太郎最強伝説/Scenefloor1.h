@@ -18,4 +18,5 @@ class CScenefloor1 :public CScene
 	private:
 
 		float m_scroll;		//左右スクロール用
+
 };
