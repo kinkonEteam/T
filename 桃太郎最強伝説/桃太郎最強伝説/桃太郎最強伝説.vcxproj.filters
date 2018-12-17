@@ -327,12 +327,6 @@
       <Filter>ソース ファイル\Scene\メイン</Filter>
     </ClCompile>
     <ClCompile Include="Data.cpp" />
-    <ClCompile Include="ObjKeyUse.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjSosasetsumei.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="CObjFlyKiji.cpp">
       <Filter>ソース ファイル\Character\主人公</Filter>
     </ClCompile>
@@ -342,7 +336,9 @@
     <ClCompile Include="ObjCharView.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    
+    <ClCompile Include="ObjSosasetsumei.cpp">
+      <Filter>ソース ファイル\Scene\操作説明</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameL\Audio.h">
@@ -578,6 +574,9 @@
     <ClInclude Include="SceneSosasetsumei.h">
       <Filter>ソース ファイル\Scene\操作説明</Filter>
     </ClInclude>
+    <ClInclude Include="ObjCharView.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="リソースファイル">
@@ -725,9 +724,6 @@
       <Filter>ソース ファイル\暗闇</Filter>
     </ClInclude>
     <ClInclude Include="ObjInventory.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjKeyUse.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="ObjPose.h">
