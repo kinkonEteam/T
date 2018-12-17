@@ -324,7 +324,7 @@ void CObjHero::Action()
 		{
 			m_time--;//–³“GŽžŠÔŠJŽn
 
-			if (m_time == 30)
+			if (m_time == 60)
 				m_key_f = false;
 
 			alpha = 0.5f;
