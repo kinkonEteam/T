@@ -118,11 +118,8 @@
     <ClCompile Include="CObjSword.cpp" />
     <ClCompile Include="CObjEveDog.cpp" />
     <ClCompile Include="Data.cpp" />
+    <ClCompile Include="ObjCharView.cpp" />
     <ClCompile Include="ObjInventory.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="ObjCharView.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="ObjBoss.cpp">
@@ -228,10 +225,11 @@
     <ClInclude Include="CObjhomingfire.h" />
     <ClInclude Include="CObjSword.h" />
     <ClInclude Include="CObjEveDog.h" />
+    <ClInclude Include="ObjCharView.h" />
     <ClInclude Include="ObjInventory.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="ObjCharView.h" />
+    <ClInclude Include="ObjKeyUse.h" />
     <ClInclude Include="ObjBoss.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>

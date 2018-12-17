@@ -13,4 +13,5 @@ public:
 	void InitScene(); //操作説明の初期化メソッド
 	void Scene();     //操作説明の実行中メソッド
 private:
+
 }; 

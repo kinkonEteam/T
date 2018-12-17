@@ -20,7 +20,7 @@ void CObjSosasetsumei::Action()
 {
 	Audio::LoadAudio(0, L"ButtonSE.wav", EFFECT);	//コマンドSE
 
-	//Zを押してポーズに移行する 
+	//Dを押してポーズに移行する 
 	if (Input::GetVKey('D') == true)
 	{
 		//コマンド用SEを鳴らす
@@ -36,11 +36,8 @@ void CObjSosasetsumei::Draw()
 {
 
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
-
-	Font::StrDraw(L"↑↓←→で移動だ", 300, 150, 30, c);
-	Font::StrDraw(L"Aで剣攻撃だ", 300, 200, 30, c);
-	Font::StrDraw(L"Sで雉攻撃だ", 300, 250, 30, c);
-	Font::StrDraw(L"（雉入手後可能）", 300, 300, 30, c);
-	Font::StrDraw(L"Dで戻る", 300, 350, 30, c);
+	Font::StrDraw(L"操作説明", 300, 80, 50, c);
+	
+	Font::StrDraw(L"D:戻る", 250, 300, 30, c);
 
 }
