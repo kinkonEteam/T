@@ -24,6 +24,7 @@ void CObjBoss::Init()
 	m_vy = 0.0f;
 	m_posture = 0.0f;
 
+	m_dotime = 0;
 	m_ani_time = 0;
 	m_ani_frame = 1;	//静止フレームを初期にする
 
@@ -35,6 +36,7 @@ void CObjBoss::Init()
 
 	m_key_f = false;		//無敵時間行動制御
 	m_t = false;
+	m_do_f = false;//突進フラグ
 
 	knock = false;
 
@@ -73,6 +75,7 @@ void CObjBoss::Action()
 	}
 
 	m_firetime++;
+	
 
 	//誘導弾
 	if (m_firetime % 200 == 0)
@@ -80,6 +83,12 @@ void CObjBoss::Action()
 		//誘導弾作成
 		CObjHomingfire* obj_homing_fire = new CObjHomingfire(m_x, m_y);
 		Objs::InsertObj(obj_homing_fire, OBJ_HOMING_FIRE, 10);
+	}
+
+	//突進
+	if (m_firetime % 450 == 0)
+	{
+		m_do_f = true;
 	}
 
 	//m_timeの初期化
@@ -201,10 +210,32 @@ void CObjBoss::Action()
 		hit->SetInvincibility(true);//無敵オン
 	}
 
+	if (m_do_f==true)
+	{
+		m_dotime++;
+		if (m_dotime > 40)
+		{
+			m_vx *= 5;
+			m_vy *= 5;
+			if (m_dotime == 100)
+			{
+				m_do_f = false;
+				m_dotime=0;
+			}
+		}
+		else 
+		{
+			m_vx = 0;
+			m_vy = 0;
+		}
+	}
+
 	//位置の更新
 	m_x += m_vx;
 	m_y += m_vy;
-
+	
+	
+	
 	if (m_f == true)
 	{
 		m_time--;//無敵時間開始
