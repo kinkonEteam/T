@@ -13,7 +13,7 @@ using namespace GameL;
 #define STR_MAX				(256)
 #define SCORE_INIT			(1)
 #define SCORE_POS_X			(600)
-#define SCORE_POS_Y			(72)
+#define SCORE_POS_Y			(84)
 #define SCORE_POINT_MAX		(100)
 #define SCORE_INTERVAL		(48)
 #define SCORE_FONT_SIZE		(24)

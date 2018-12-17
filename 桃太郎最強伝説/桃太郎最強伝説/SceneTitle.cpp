@@ -6,7 +6,6 @@
 #include"GameL\SceneObjManager.h"
 #include"GameL\DrawFont.h"
 #include"GameL\Audio.h"
-
 //使用するネームスペース
 using namespace GameL;
 
@@ -22,8 +21,10 @@ void CSceneTitle::InitScene()
 {
 	//アイテム所持数初期化
 	for (int i = 0; i < 7; i++)
+	{
 		item_list[i] = 0;
-
+		
+	}
 	//外部グラフィックを読み込み19番に登録(512×512ピクセル)
 	Draw::LoadImage(L"ゲームタイトル.png", 20, TEX_SIZE_512);
 

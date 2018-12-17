@@ -21,6 +21,8 @@ void CObjHero::SaveDATA() {		//セーブ関数----------------------データをセーブ
 }
 void CObjHero::SetDATA() {		//セット関数----------------------データをセット
 	HP = 5;						//ゲームオーバー後、HPを初期値に戻す
+	for (int n = 0; n < 2; n++)
+		OTOMO[n] = false;
 }
 //シーン表示時の暗闇作成()又は、イベントから関数を使って暗闇を開放していく時(false)
 void CObjHero::SetYAMI(bool tipe) {//暗闇セット関数-----------------------暗闇

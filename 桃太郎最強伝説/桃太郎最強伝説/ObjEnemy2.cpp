@@ -309,9 +309,12 @@ void CObjEnemy2::Action()
 		hit->SetInvincibility(true);//無敵オン
 	}
 
-	//位置の更新
-	m_px += m_vx;
-	m_py += m_vy;
+	if (m_f == false)
+	{
+		//位置の更新
+		m_px += m_vx;
+		m_py += m_vy;
+	}
 
 	if (m_f == true)
 	{
