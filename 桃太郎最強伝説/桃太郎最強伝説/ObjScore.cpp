@@ -17,11 +17,14 @@ void CObjScore::Init()
 {
 	
 	//得点情報をランキング最下位に登録
-	((UserData*)Save::GetData())->m_ranking[15] = ((UserData*)Save::GetData())->m_point;
+	((UserData*)Save::GetData())->m_ranking[14] = ((UserData*)Save::GetData())->m_point;
 
 	//得点が高い順に並び変えする
 	RankingSort(((UserData*)Save::GetData())->m_ranking);
-
+	
+	//セーブデータ？
+	Save::Seve();
+	
 	m_key_flag = false;//キーフラグ
 }
 

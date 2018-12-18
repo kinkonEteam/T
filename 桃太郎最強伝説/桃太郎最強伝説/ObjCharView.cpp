@@ -57,5 +57,8 @@ void ObjCharView::Draw()
 	
 	Font::StrDraw(str, 100, 100, SCORE_FONT_SIZE, c);
 	
-	Font::StrDraw(L"'H'ヘルプ 'M'メニュー", 10, 560, 25, c);
+
+	CObjTalk* obj = (CObjTalk*)Objs::GetObj(OBJ_TALK);//イベント取得
+	if (obj == nullptr)//存在しない場合のみ表示
+		Font::StrDraw(L"'M'メニュー", 10, 560, 25, c);
 }
