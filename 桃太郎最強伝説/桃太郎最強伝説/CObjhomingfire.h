@@ -19,4 +19,6 @@ private:
 	float m_y;  //オブジェクトの位置y
 	float m_vx; //オブジェクトの移動用ベクトルx
 	float m_vy; //オブジェクトの移動用ベクトルy
+
+	int m_time;//消滅までの時間測定
 };
