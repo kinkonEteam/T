@@ -333,6 +333,9 @@
     <ClCompile Include="ObjSosasetsumei.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="ObjCharView.cpp">
+      <Filter>ソース ファイル\Scene\スコアランキング</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameL\Audio.h">
@@ -579,6 +582,9 @@
     </ClInclude>
     <ClInclude Include="SceneSosasetsumei.h">
       <Filter>ソース ファイル\Scene\操作説明</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjCharView.h">
+      <Filter>ソース ファイル\Scene\スコアランキング</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

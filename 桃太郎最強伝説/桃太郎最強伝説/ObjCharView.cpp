@@ -14,8 +14,8 @@ using namespace GameL;
 void ObjCharView::Init()
 {
 	count = 0;
-	sec = s;
-	min = m;
+	sec = 0;
+	min = 0;
 }
 //ƒAƒNƒVƒ‡ƒ“
 void ObjCharView::Action()
