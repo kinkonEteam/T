@@ -174,7 +174,7 @@ void CObjMap5::Draw()
 				dst.m_right = dst.m_left + 50.0f;
 				dst.m_bottom = dst.m_top + 50.0f;
 			}
-			if (m_map[i][j] == 1 || m_map[i][j] == 13)
+			if (m_map[i][j] == 1)
 			{
 				//•Ç
 				BlockDraw(47.0f, 0.0f, &dst, c);

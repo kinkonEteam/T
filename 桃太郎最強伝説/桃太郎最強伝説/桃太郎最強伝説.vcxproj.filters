@@ -326,15 +326,24 @@
     <ClCompile Include="ScenePose.cpp">
       <Filter>ソース ファイル\Scene\メイン</Filter>
     </ClCompile>
-    <ClCompile Include="ObjInventory.cpp">
-      <Filter>ソース ファイル\Scene\メイン</Filter>
-    </ClCompile>
     <ClCompile Include="Data.cpp" />
+    <ClCompile Include="CObjFlyKiji.cpp">
+      <Filter>ソース ファイル\Character\主人公</Filter>
+    </ClCompile>
     <ClCompile Include="ObjSosasetsumei.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="ObjCharView.cpp">
       <Filter>ソース ファイル\暗闇</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjInventory.cpp">
+      <Filter>ソース ファイル\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjSosasetsumei.cpp">
+      <Filter>ソース ファイル\Scene\操作説明</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjCharView.cpp">
+      <Filter>ソース ファイル\Scene\スコアランキング</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -535,9 +544,6 @@
     <ClInclude Include="ScenePose.h">
       <Filter>ソース ファイル\Scene\メイン</Filter>
     </ClInclude>
-    <ClInclude Include="ObjInventory.h">
-      <Filter>ソース ファイル\Scene\メイン</Filter>
-    </ClInclude>
     <ClInclude Include="GameL\DrawTexture.h">
       <Filter>リソースファイル</Filter>
     </ClInclude>
@@ -584,7 +590,13 @@
       <Filter>ソース ファイル\Scene\操作説明</Filter>
     </ClInclude>
     <ClInclude Include="ObjCharView.h">
-      <Filter>ソース ファイル\暗闇</Filter>
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjInventory.h">
+      <Filter>ソース ファイル\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjCharView.h">
+      <Filter>ソース ファイル\Scene\スコアランキング</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -733,9 +745,6 @@
       <Filter>ソース ファイル\暗闇</Filter>
     </ClInclude>
     <ClInclude Include="ObjInventory.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjKeyUse.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="ObjPose.h">

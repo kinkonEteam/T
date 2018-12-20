@@ -41,15 +41,15 @@ void  CObjPose::Action()
 	}
 	else{}
 
-	//Cを押してアイテム説明画面に移行する
+	/*Cを押してアイテム説明画面に移行する
 	if (Input::GetVKey('C') == true)
 	{
 		//コマンド用SEを鳴らす
 		Audio::Start(0);
 		Sleep(100);
-		Scene::SetScene(new CScenefloor1());
+		Scene::SetScene(new CScene());
 	}
-	else{}
+	else {}*/
 
 	//Vを押してTitleに移行する
 	if (Input::GetVKey('V') == true)
@@ -72,6 +72,28 @@ void  CObjPose::Draw()
 	Font::StrDraw(L"ポーズメニュー", 350, 120, 45, c);
 	Font::StrDraw(L"ゲームに戻る(Z)", 300, 200, 30, c);
 	Font::StrDraw(L"操作説明(X)", 300, 250, 30, c);
-	Font::StrDraw(L"アイテム説明(C)", 300, 300, 30, c);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/*Font::StrDraw(L"アイテム説明(C)", 300, 300, 30, c);*/
 	Font::StrDraw(L"タイトルに戻る(V)", 300, 350, 30, c);
 }

@@ -19,6 +19,8 @@ void CObjHomingfire::Init()
 {
 	m_vx = -1.0f;
 	m_vy = 0.0f;
+
+	m_time = 250;
 	//移動ベクトルの正規化
 	UnitVec(&m_vy, &m_vx);
 	//当たり判定用Hitboxを作成
@@ -52,6 +54,8 @@ void CObjHomingfire::Action()
 	m_x += m_vx * 3.0f;
 	m_y += m_vy * 3.0f;
 
+	m_time--;//消滅までの時間測定
+
 	CObjMap5*map5 = (CObjMap5*)Objs::GetObj(OBJ_MAP5);
 
 	//HitBoxの内容を更新
@@ -59,7 +63,7 @@ void CObjHomingfire::Action()
 		hit->SetPos(m_x + map5->GetScrollx(), m_y + map5->GetScrolly());
 
 	//主人公オブジェクトと接触したら敵機弾丸削除
-	if (hit->CheckObjNameHit(OBJ_HERO) != nullptr || hit->CheckElementHit(ELEMENT_MAGIC) == true)
+	if (m_time == 0 || hit->CheckObjNameHit(OBJ_HERO) != nullptr || hit->CheckElementHit(ELEMENT_MAGIC) == true)
 	{
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);

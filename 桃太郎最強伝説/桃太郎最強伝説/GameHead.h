@@ -101,7 +101,6 @@ enum ITEM
 //------------------------------------------------
 
 //ゲームシーンオブジェクトヘッダ------------------
-#include "SceneTitle.h"
 #include "ObjMap1.h"
 #include "ObjMap2.h"
 #include "ObjMap3.h"
@@ -163,5 +162,5 @@ enum ITEM
 
 //シーンスタートクラス---------------------------
 //ゲーム開始時のシーンクラス登録
-#define SET_GAME_START  CSceneTitle
+#define SET_GAME_START  CScenefloor5
 //-----------------------------------------------

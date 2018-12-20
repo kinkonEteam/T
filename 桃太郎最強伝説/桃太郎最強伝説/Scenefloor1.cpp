@@ -103,11 +103,6 @@ void CScenefloor1::InitScene()
 	//外部グラフィックを読み込み4番に登録(512×512ピクセル)
 	Draw::LoadImage(L"暗闇+2.png", 17, TEX_SIZE_512);
 
-	//外部グラフィックを読み込み11番に登録(512×512ピクセル)
-	Draw::LoadImage(L"風エフェクト.png", 11, TEX_SIZE_512);
-
-
-
 	//階層1オブジェクト作成
 	CObjMap1* objb = new CObjMap1(map);
 	Objs::InsertObj(objb, OBJ_MAP1, 1);

@@ -45,36 +45,35 @@ void CObjClear::Action()
 	{
 		if (i == 0)
 		{
-			p+=item_list[0] * 100;
+			p+=item_list[i] * 100;
 		}
-		/*else if (i)
+		else if (i==1)
 		{
-
+			p += item_list[i] * 1000;
 		}
-		else if ()
+		else if (i==2)
 		{
-
+			p += item_list[i] * 1;
 		}
-		else if ()
+		else if (i==3)
 		{
-
+			p += item_list[i] * 3000;
 		}
-		else if ()
+		else if (i==4)
 		{
-
+			p += item_list[i] * 10000;
 		}
-		else if ()
+		else if (i==5)
 		{
-
-
+			p += item_list[i] * 5000;
 		}
-		else if ()
+		else if (i==6)
 		{
-
+			p += item_list[i] * 500;
 		}
-		else if ()
+		/*else if (i==7)
 		{
-
+			
 		}*/
 	}
 	
