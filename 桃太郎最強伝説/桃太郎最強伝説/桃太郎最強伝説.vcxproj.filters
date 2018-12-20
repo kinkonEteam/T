@@ -278,9 +278,6 @@
     <ClCompile Include="ObjCapture.cpp">
       <Filter>ソース ファイル\暗闇</Filter>
     </ClCompile>
-    <ClCompile Include="CObjFlyKiji.cpp">
-      <Filter>ソース ファイル\Character\おとも</Filter>
-    </ClCompile>
     <ClCompile Include="CObjSword.cpp">
       <Filter>ソース ファイル\Character\主人公</Filter>
     </ClCompile>
@@ -344,6 +341,15 @@
     </ClCompile>
     <ClCompile Include="ObjCharView.cpp">
       <Filter>ソース ファイル\Scene\スコアランキング</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjCharView.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjFlyKiji.cpp">
+      <Filter>ソース ファイル\Character\主人公</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjText.cpp">
+      <Filter>ソース ファイル\Map\floor1</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -597,6 +603,9 @@
     </ClInclude>
     <ClInclude Include="ObjCharView.h">
       <Filter>ソース ファイル\Scene\スコアランキング</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjText.h">
+      <Filter>ソース ファイル\Map\floor1</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

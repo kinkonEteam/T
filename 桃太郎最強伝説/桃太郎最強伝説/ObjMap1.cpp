@@ -28,6 +28,8 @@ void CObjMap1::Init()
 
 	m_f = 0;
 
+	m_ftime = 0;
+
 	srand(time(NULL));
 
 	setstair();
@@ -117,6 +119,15 @@ void CObjMap1::Init()
 //アクション
 void CObjMap1::Action()
 {
+	m_ftime++;
+
+	if (m_ftime == 40)
+	{
+		//テキスト作成
+		CObjText* text = new CObjText();
+		Objs::InsertObj(text, OBJ_TEXT, 20);
+	}
+
 	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
 	if (m_f == 0)
 	{
