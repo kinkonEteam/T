@@ -21,6 +21,24 @@ void CObjClear::Init()
 //アクション
 void CObjClear::Action()
 {
+	//ゲームスコアの初期化
+	static bool init_point = false;
+	if (init_point == false)
+	{
+
+		//ランキングも初期化する
+		for (int i = 0; i < 15; i++)
+		{
+			((UserData*)Save::GetData())->m_ranking[i] = 0;
+		}
+
+		//ロード
+		Save::Open();//同フォルダ「UserData」からデータ取得。
+
+		((UserData*)Save::GetData())->m_point = 0;//点数を初期化する
+		init_point = true;
+	}
+
 	int p = 0;
 	//ここではアイテムごとにスコアを計算し'ｐ'にスコアの数値を渡している
 	for (int i = 0; i<7;i++) 
