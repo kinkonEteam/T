@@ -7,10 +7,10 @@ using namespace GameL;
 //オブジェクト：タイトル
 class CSceneTitle : public CScene
 {
-public:
-	CSceneTitle() {};
-	~CSceneTitle() {};
-	void InitScene(); //ゲームタイトルの初期化メソッド
-	void Scene();     //ゲームタイトルの実行中メソッド
-private:
+	public:
+		CSceneTitle() {};
+		~CSceneTitle() {};
+		void InitScene(); //ゲームタイトルの初期化メソッド
+		void Scene();     //ゲームタイトルの実行中メソッド
+	private:
 };

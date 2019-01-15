@@ -50,6 +50,7 @@ enum OBJ_NAME
 	OBJ_INVENTORY,
 	OBJ_SCORE,
 	OBJ_ITEMSETSUMEI,
+	OBJ_TEXT,
 };
 //------------------------------------------------
 
@@ -138,6 +139,7 @@ enum ITEM
 #include"ObjSosasetsumei.h"
 #include"ObjScore.h"
 #include"ObjItemsetsumei.h"
+#include"CObjText.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------

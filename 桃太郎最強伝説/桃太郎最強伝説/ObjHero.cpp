@@ -331,17 +331,21 @@ void CObjHero::Action()
 
 			alpha = 0.5f;
 		}
+
 		if (m_time <= 0)
 		{
 			m_f = false;
 			hit->SetInvincibility(false);//無敵オフ
+
 			CObjEveDog* evedog1 = (CObjEveDog*)Objs::GetObj(OBJ_EVEDOG);
 			CObjEveKiji* evekiji1 = (CObjEveKiji*)Objs::GetObj(OBJ_EVEKIJI);
 			CObjEveMnky* evemnky1 = (CObjEveMnky*)Objs::GetObj(OBJ_EVEMNKY);
-			if (evedog1 != nullptr || evekiji1 != nullptr || evemnky1 != nullptr)//主人公情報が存在する場合
+			CObjText* text = (CObjText*)Objs::GetObj(OBJ_TEXT);
+			if (text != nullptr || evedog1 != nullptr || evekiji1 != nullptr || evemnky1 != nullptr)//主人公情報が存在する場合
 			{
 				hit->SetInvincibility(true);//無敵オン
 			}
+
 			alpha = 1.0f;
 			m_time = 70;
 		}
@@ -447,6 +451,7 @@ void CObjHero::Action()
 				if (iob != nullptr)
 					iob->SetEf(true);
 
+
 				if (hit->CheckObjNameHit(OBJ_DOG) && df ==true)//犬に当たった場合
 				{
 					//犬イベント発生
@@ -487,10 +492,17 @@ void CObjHero::Action()
 		CObjEveDog* evedog = (CObjEveDog*)Objs::GetObj(OBJ_EVEDOG);
 		CObjEveKiji* evekiji = (CObjEveKiji*)Objs::GetObj(OBJ_EVEKIJI);
 		CObjEveMnky* evemnky = (CObjEveMnky*)Objs::GetObj(OBJ_EVEMNKY);
-		if (evedog != nullptr || evekiji != nullptr || evemnky != nullptr)
+		CObjText* text = (CObjText*)Objs::GetObj(OBJ_TEXT);
+		if (text != nullptr || evedog != nullptr || evekiji != nullptr || evemnky != nullptr)
 		{
 			m_f = true;
+			m_key_f = true;
 		}
+		else
+			m_key_f = false;
+
+
+
 
 		if (hit->CheckElementHit(ELEMENT_FIELD) == true && Input::GetVKey('F') == true)
 		{

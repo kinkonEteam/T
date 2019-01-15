@@ -36,6 +36,8 @@ private:
 	int e_time;//敵行動時間
 	int enemy_move;//敵移動
 
+	int m_ftime;//階層突入後の時間測定
+
 	float m_speed_power;	//通常速度
 	float m_ani_max_time;	//アニメーション動作間隔最大値
 
