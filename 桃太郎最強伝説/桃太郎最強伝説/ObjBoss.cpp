@@ -21,7 +21,7 @@ CObjBoss::CObjBoss(float x, float y)
 //イニシャライズ
 void CObjBoss::Init()
 {
-	m_hp = 13;        //ボスの体力
+	m_hp = 10;        //ボスの体力
 	m_patterntime = 0;      //値の初期化
 	m_vx = 0.0f;	//移動ベクトル
 	m_vy = 0.0f;
@@ -65,9 +65,6 @@ void CObjBoss::Action()
 	{
 
 	}
-
-	m_vx = 0;
-	m_vy = 0;
 
 	if (m_ani_time > m_ani_max_time)
 	{
@@ -208,6 +205,7 @@ void CObjBoss::Action()
 		hit->SetInvincibility(true);//無敵オン
 	}
 
+	//突進行動
 	if (m_do_f==true)
 	{
 		m_dotime++;

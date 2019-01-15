@@ -41,9 +41,8 @@ enum OBJ_NAME
 	OBJ_YAMI,
 	OBJ_BULLET,
 	OBJ_HOMING_FIRE,
-	OBJ_SUMMARY,
 	OBJ_POSE,
-	OBJ_SOSASETSUMEI,
+	OBJ_OD,
 	OBJ_STAIR,
 	OBJ_CAPTURE,		
 	OBJ_CV,	
@@ -51,6 +50,7 @@ enum OBJ_NAME
 	OBJ_SCORE,
 	OBJ_ITEMSETSUMEI,
 	OBJ_TEXT,
+	OBJ_SUMMARY,
 	OBJ_SELL,
 
 };
@@ -81,7 +81,7 @@ struct UserData
 {
 	int mSeveData;	//サンプルセーブデータ
 	int m_point;	//GameMainで得たポイント
-	int m_ranking[15];//ランキング情報
+	int m_ranking[10];//ランキング情報
 };
 //------------------------------------------------
 
@@ -132,13 +132,13 @@ enum ITEM
 #include"CObjEveKiji.h"
 #include"CObjEveMnky.h"
 #include"CObjhomingfire.h"
-#include"ObjSummary.h"
+#include"CObjSummary.h"
 #include"ObjHeroGauge.h"
 #include"ObjCapture.h"
 #include"Objstair.h"
 #include"ObjCharView.h"
 #include"ObjPose.h"
-#include"ObjSosasetsumei.h"
+#include"ObjOD.h"
 #include"ObjScore.h"
 #include"ObjItemsetsumei.h"
 #include"CObjText.h"
@@ -159,8 +159,7 @@ enum ITEM
 #include"SceneGameOver.h"
 #include"ScecneClear.h"
 #include"SceneSummary.h"
-#include"ScenePose.h"
-#include"SceneSosasetsumei.h"
+#include"SceneOD.h"
 #include"SceneScore.h"
 #include"SceneItemsetsumei.h"
 #include"SceneSell.h"

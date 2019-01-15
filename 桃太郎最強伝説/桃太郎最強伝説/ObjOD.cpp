@@ -4,20 +4,22 @@
 #include"GameL\SceneManager.h"
 #include"GameL\Audio.h"
 #include"GameHead.h"
-#include"ObjSosasetsumei.h"
+#include"ObjOD.h"
 
 //使用するネームスペース
 using namespace GameL;
 
 //イニシャライズ
-void CObjSosasetsumei::Init()
+void CObjOD::Init()
 {
-
+	m_Af = false;
 }
 
 //アクション
-void CObjSosasetsumei::Action()
+void CObjOD::Action()
 {
+
+
 	Audio::LoadAudio(0, L"ButtonSE.wav", EFFECT);	//コマンドSE
 
 	//Dを押してポーズに移行する 
@@ -26,13 +28,28 @@ void CObjSosasetsumei::Action()
 		//コマンド用SEを鳴らす
 		Audio::Start(0);
 		Sleep(100);
-		Scene::SetScene(new CScenePose());
+		
 	}
 	else {}
+	//エンターキーを押してシーン：メイン移行する
+	if (Input::GetVKey(VK_RETURN) == true)
+	{
+		if (m_key_f == true)
+		{
+			Scene::SetScene(new CScenefloor1());
+			m_key_f = false;
+		}
+	}
+	else
+	{
+		m_key_f = true;
+	}
+
 }
 
+
 //ドロー
-void CObjSosasetsumei::Draw()
+void CObjOD::Draw()
 {
 
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };

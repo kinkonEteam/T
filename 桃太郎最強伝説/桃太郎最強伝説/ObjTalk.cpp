@@ -17,9 +17,6 @@ void CObjTalk::Init()
 void CObjTalk::Action()
 {
 	if (m_page == m_p) {//渡されたページ数と現在のページ数が同じになったら
-		
-		/*CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
-		hero -> SetYAMI();					//暗闇作成*/
 		this->SetStatus(false);		//オブジェクト削除
 	}
 
@@ -61,7 +58,8 @@ void CObjTalk::Draw()
 		if (m_p != 1) {//ページ数が1ではない場合
 					   //同じ画像を名前用に上から表示
 			CObjText* text = (CObjText*)Objs::GetObj(OBJ_TEXT);
-			if (text != nullptr)
+			CObjSummary* summary = (CObjSummary*)Objs::GetObj(OBJ_SUMMARY);
+			if (text != nullptr || summary != nullptr)
 			{
 				//表示位置の設定
 				dst.m_top = 380.0f;
