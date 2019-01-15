@@ -21,6 +21,8 @@ CObjEnemy::CObjEnemy(float x, float y)
 //ƒCƒjƒVƒƒƒ‰ƒCƒY
 void CObjEnemy::Init()
 {
+	enemy_move = 0;//“GˆÚ“®ŠÔ
+	e_time=0;//“Gs“®ŠÔ
 	m_hp = 3;        //‘Ì—Í
 	m_vx = 0.0f;	//ˆÚ“®ƒxƒNƒgƒ‹
 	m_vy = 0.0f;
@@ -45,6 +47,7 @@ void CObjEnemy::Init()
 	m_t = false;
 
 	knock = false;
+	m_do_f=false;//“GUŒ‚ƒtƒ‰ƒO
 
 	//“–‚½‚è”»’è—p‚ÌHitBox‚ğì¬
 	Hits::SetHitBox(this, m_px, m_py, 50, 50, ELEMENT_ENEMY, OBJ_ENEMY, 1);
@@ -153,6 +156,23 @@ void CObjEnemy::Action()
 			&d
 		);
 	}
+
+	//“G‚ª“®‚­ŠÔQQQQQQQQQQQQQQQQQQ
+	
+	enemy_move++;//‘«‚µ‘±‚¯‚é
+
+	//“GˆÚ“®ŠÔ‚ª250‚ÅŠ„‚èØ‚ê‚éê‡m_do_f‚ğtrue‚É‚·‚é
+	if (enemy_move % 250 == 0)
+	{
+		m_do_f = true;
+	}
+
+	//e_time‚Ì‰Šú‰»
+	if (enemy_move > 500)
+	{
+		enemy_move = 0;
+	}
+	//QQQQQQQQQQQQQQQQQQQQQQQQ
 
 	//ålŒö‚ÌˆÊ’u‚ğæ“¾
 	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
@@ -312,6 +332,33 @@ void CObjEnemy::Action()
 		m_f = true;
 		m_key_f = true;
 		hit->SetInvincibility(true);//–³“GƒIƒ“
+	}
+
+	//“GUŒ‚
+	if (m_do_f == true)
+	{
+
+		e_time++;//‘«‚µ‘±‚¯‚é
+
+		//e_time‚ª40ˆÈã‚È‚ç“ü‚è‘±‚¯‚é
+		if (e_time >= 40)
+		{
+			m_vx *= 3;
+			m_vy *= 3;
+		//e_time‚ª60‚È‚çm_do_f‚ğfalse‚ÉAe_time‚ğ‰Šú‰»‚·‚é
+		if (e_time == 60)
+		{
+		m_do_f = false;
+		e_time = 0;
+		}
+		
+		}
+		//e_time‚ª40ˆÈã‚É‚È‚é‚Ü‚Å~‚Ü‚éF“Ëi‚·‚é‚Ü‚Å‚Ì—Í‚ğ‚½‚ß‚éƒ‚[ƒVƒ‡ƒ““I‚ÈH
+		else
+		{
+			m_vx = 0;
+			m_vy = 0;
+		}
 	}
 
 	if (m_f == false)

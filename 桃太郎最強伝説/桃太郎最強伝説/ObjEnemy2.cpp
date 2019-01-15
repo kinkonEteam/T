@@ -52,6 +52,7 @@ void CObjEnemy2::Init()
 //アクション
 void CObjEnemy2::Action()
 {
+	
 
 	//ブロック衝突で向き変更
 	if (m_hit_up == true)

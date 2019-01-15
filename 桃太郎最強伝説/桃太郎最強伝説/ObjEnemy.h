@@ -33,7 +33,8 @@ private:
 	int m_key_f;//無敵時間行動制御
 	int m_t;
 	int count;
-
+	int e_time;//敵行動時間
+	int enemy_move;//敵移動
 
 	float m_speed_power;	//通常速度
 	float m_ani_max_time;	//アニメーション動作間隔最大値
@@ -49,4 +50,5 @@ private:
 	bool m_movey;//上下
 
 	bool knock;
+	bool m_do_f;//敵攻撃フラグ
 };
