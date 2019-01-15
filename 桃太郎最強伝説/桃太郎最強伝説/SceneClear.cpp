@@ -40,6 +40,9 @@ void CSceneClear::InitScene()
 
 		Audio::LoadAudio(1, L"エンディング.wav", BACK_MUSIC);
 
+
+		//BGMボリュームを0.5下げる
+		float Volume = Audio::VolumeMaster(-0.9f);
 		Audio::Start(1);
 }
 

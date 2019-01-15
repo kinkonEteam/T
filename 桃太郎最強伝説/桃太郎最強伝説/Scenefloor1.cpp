@@ -34,7 +34,14 @@ void CScenefloor1::InitScene()
 {
 	//BGMの読み込み
 	Audio::LoadAudio(1, L"ダンジョン.wav", BACK_MUSIC);		//ダンジョン用BGM
-	//音楽スタート
+	
+														//ボリュームを1.0に戻す
+	float v = Audio::VolumeMaster(0);
+	v = Audio::VolumeMaster((1.0 - v));
+						
+	//BGMボリュームを下げる
+	float Volume = Audio::VolumeMaster(-0.98f);
+														//音楽スタート
 	Audio::Start(1);
 
 	//外部データの読み込み（階層1情報）

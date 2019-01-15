@@ -563,15 +563,6 @@ void CObjHero::Action()
 		else
 			m_key_f = false;
 
-
-
-
-	if (hit->CheckElementHit(ELEMENT_FIELD) == true && Input::GetVKey('F') == true)
-	{
-		//’x‰„
-		Sleep(900);
-	}
-
 	//HP‚ª0‚É‚È‚Á‚½‚ç”jŠü------Ž€–S”»’è----------------------------------------------------------------
 	if (m_hp <= 0)
 	{

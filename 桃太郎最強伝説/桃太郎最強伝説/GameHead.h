@@ -79,7 +79,7 @@ struct UserData
 {
 	int mSeveData;	//サンプルセーブデータ
 	int m_point;	//GameMainで得たポイント
-	int m_ranking[15];//ランキング情報
+	int m_ranking[10];//ランキング情報
 };
 //------------------------------------------------
 
@@ -163,5 +163,5 @@ enum ITEM
 
 //シーンスタートクラス---------------------------
 //ゲーム開始時のシーンクラス登録
-#define SET_GAME_START  CSceneTitle
+#define SET_GAME_START  CSceneClear
 //-----------------------------------------------

@@ -27,7 +27,7 @@ void CObjClear::Action()
 	{
 
 		//ƒ‰ƒ“ƒLƒ“ƒO‚à‰Šú‰»‚·‚é
-		for (int i = 0; i < 15; i++)
+		for (int i = 0; i < 10; i++)
 		{
 			((UserData*)Save::GetData())->m_ranking[i] = 0;
 		}

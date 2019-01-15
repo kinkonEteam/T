@@ -24,8 +24,12 @@ void CSceneSummary::InitScene()
 	//あらすじ用BGM
 	Audio::LoadAudio(0, L"あらすじ.wav", BACK_MUSIC);		
 
-	//BGMボリュームを0.4下げ、元の1/10の音量にする。
-	float Volume = Audio::VolumeMaster(-0.4f);
+	//ボリュームを1.0に戻す
+	float v = Audio::VolumeMaster(0);
+	v = Audio::VolumeMaster((1.0 - v));
+
+	//BGMボリュームを0.4下げる
+	float Volume = Audio::VolumeMaster(-0.99f);
 
 	//音楽スタート
 	Audio::Start(0);
