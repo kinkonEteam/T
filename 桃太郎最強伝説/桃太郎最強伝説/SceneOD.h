@@ -5,11 +5,11 @@
 using namespace GameL;
 
 //オブジェクト：タイトル
-class CSceneSosasetsumei : public CScene
+class CSceneOD : public CScene
 {
 public:
-	CSceneSosasetsumei() {};
-	~CSceneSosasetsumei() {};
+	CSceneOD() {};
+	~CSceneOD() {};
 	void InitScene(); //操作説明の初期化メソッド
 	void Scene();     //操作説明の実行中メソッド
 private:
