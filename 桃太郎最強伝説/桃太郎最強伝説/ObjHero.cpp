@@ -444,7 +444,7 @@ void CObjHero::Action()
 		//おともイベント
 		if (hit->CheckElementHit(ELEMENT_RED) == true)
 		{
-			if (Input::GetVKey('F') == true )//Fキー入力時
+			if (Input::GetVKey(VK_RETURN) == true)//Enterキー入力時
 			{
 				//持ち物リストが開いていたら閉じる
 				CObjInventory* iob = (CObjInventory*)Objs::GetObj(OBJ_INVENTORY);
