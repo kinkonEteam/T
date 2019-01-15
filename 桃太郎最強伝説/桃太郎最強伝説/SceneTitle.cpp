@@ -39,7 +39,7 @@ void CSceneTitle::InitScene()
 	float v = Audio::VolumeMaster(0);
 	v = Audio::VolumeMaster((1.0 - v));
 
-	//BGMボリュームを0.5下げる
+	//BGMボリュームを下げる
 	float Volume = Audio::VolumeMaster(-0.95f);
 	//音楽スタート
 	Audio::Start(0);
