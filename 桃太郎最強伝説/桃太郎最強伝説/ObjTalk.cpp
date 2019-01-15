@@ -161,6 +161,8 @@ void CObjTalk::Draw()
 		else { ; }
 	}
 
+
+		//-----------------各タイプ、立ち絵表示用------------------
 	else if (m_tipe == 2) {
 		//描画カラー情報　R=Red　G=Green　B=Blue　A=alpha(透過情報)
 		float c[4] = { 1.0f,1.0f,1.0f,1.0f, };
