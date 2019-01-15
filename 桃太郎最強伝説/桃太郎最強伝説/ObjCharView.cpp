@@ -14,8 +14,8 @@ using namespace GameL;
 void ObjCharView::Init()
 {
 	count = 0;
-	sec = s;
-	min = m;
+	sec = 0;
+	min = 0;
 }
 //アクション
 void ObjCharView::Action()
@@ -57,5 +57,8 @@ void ObjCharView::Draw()
 	
 	Font::StrDraw(str, 100, 100, SCORE_FONT_SIZE, c);
 	
-	Font::StrDraw(L"'H'ヘルプ 'M'メニュー", 10, 560, 25, c);
+
+	CObjTalk* obj = (CObjTalk*)Objs::GetObj(OBJ_TALK);//イベント取得
+	if (obj == nullptr)//存在しない場合のみ表示
+		Font::StrDraw(L"'M'メニュー", 10, 560, 25, c);
 }

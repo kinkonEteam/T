@@ -13,6 +13,7 @@ public:
 	void Init();	//イニシャライズ
 	void Action();	//アクション
 	void Draw();	//ドロー
+	void pattern();
 
 	float GetVY() { return m_vy; }
 	float GetVX() { return m_vx; }
@@ -28,13 +29,16 @@ private:
 	int m_ani_time;	//アニメーションフレーム動作間隔
 	int m_ani_frame;//描画フレーム
 	int m_hp;       //ボスのヒットポイント
-	int m_firetime;     //ファイア間隔
+	int m_patterntime;     //ファイア間隔
 
 	int m_time;//無敵時間測定
 	int m_f;//無敵時間
 	int m_key_f;//無敵時間行動制御
 	int m_t;
 	int count;
+	int m_dotime;
+
+	int m_rand;//行動パターン選択用
 
 	float m_speed_power;	//通常速度
 	float m_ani_max_time;	//アニメーション動作間隔最大値
@@ -50,4 +54,5 @@ private:
 	bool m_movey;//上下
 
 	bool knock;
+	bool m_do_f;//突進フラグ
 };

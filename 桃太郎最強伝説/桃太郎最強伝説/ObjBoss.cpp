@@ -1,6 +1,9 @@
 //使用するヘッダーファイル
 #include"GameL\DrawTexture.h"
 #include"GameL\HitBoxManager.h"
+#include<stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 #include"GameHead.h"
 #include"ObjBoss.h"
@@ -19,11 +22,12 @@ CObjBoss::CObjBoss(float x, float y)
 void CObjBoss::Init()
 {
 	m_hp = 13;        //ボスの体力
-	m_firetime = 0;      //値の初期化
+	m_patterntime = 0;      //値の初期化
 	m_vx = 0.0f;	//移動ベクトル
 	m_vy = 0.0f;
 	m_posture = 0.0f;
 
+	m_dotime = 0;
 	m_ani_time = 0;
 	m_ani_frame = 1;	//静止フレームを初期にする
 
@@ -35,6 +39,10 @@ void CObjBoss::Init()
 
 	m_key_f = false;		//無敵時間行動制御
 	m_t = false;
+	m_do_f = false;//突進フラグ
+
+	m_rand = 0;//行動パターン選択用
+	srand(time(NULL));
 
 	knock = false;
 
@@ -58,9 +66,6 @@ void CObjBoss::Action()
 
 	}
 
-	m_vx = 0;
-	m_vy = 0;
-
 	if (m_ani_time > m_ani_max_time)
 	{
 		m_ani_frame += 1;
@@ -72,20 +77,19 @@ void CObjBoss::Action()
 		m_ani_frame = 0;
 	}
 
-	m_firetime++;
+	m_patterntime++;
+	
 
-	//誘導弾
-	if (m_firetime % 200 == 0)
+	//時間経過によるボスの行動決定
+	if (m_patterntime % 200 == 0)
 	{
-		//誘導弾作成
-		CObjHomingfire* obj_homing_fire = new CObjHomingfire(m_x, m_y);
-		Objs::InsertObj(obj_homing_fire, OBJ_HOMING_FIRE, 10);
+		pattern();
 	}
 
-	//m_timeの初期化
-	if (m_firetime > 1000)
+	//m_patterntimeの初期化
+	if (m_patterntime > 1000)
 	{
-		m_firetime = 0;
+		m_patterntime = 0;
 	}
 
 	//移動ベクトルの正規化
@@ -201,10 +205,33 @@ void CObjBoss::Action()
 		hit->SetInvincibility(true);//無敵オン
 	}
 
+	//突進行動
+	if (m_do_f==true)
+	{
+		m_dotime++;
+		if (m_dotime > 40)
+		{
+			m_vx *= 5;
+			m_vy *= 5;
+			if (m_dotime == 100)
+			{
+				m_do_f = false;
+				m_dotime=0;
+			}
+		}
+		else 
+		{
+			m_vx = 0;
+			m_vy = 0;
+		}
+	}
+
 	//位置の更新
 	m_x += m_vx;
 	m_y += m_vy;
-
+	
+	
+	
 	if (m_f == true)
 	{
 		m_time--;//無敵時間開始
@@ -286,3 +313,16 @@ void CObjBoss::Draw()
 	Draw::Draw(9, &src, &dst, c, 0.0f);
 }
 
+void CObjBoss::pattern()
+{
+	m_rand = rand() % 2;
+
+	if (m_rand == 0)//1の時ホーミング弾発射
+	{
+		//誘導弾作成
+		CObjHomingfire* obj_homing_fire = new CObjHomingfire(m_x, m_y);
+		Objs::InsertObj(obj_homing_fire, OBJ_HOMING_FIRE, 10);
+	}
+	else //2の時突進
+		m_do_f = true;
+}

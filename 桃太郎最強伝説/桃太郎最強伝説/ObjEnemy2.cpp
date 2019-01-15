@@ -29,7 +29,7 @@ void CObjEnemy2::Init()
 	m_ani_time = 0;
 	m_ani_frame = 1;	//静止フレームを初期にする
 
-	m_speed_power = 4.0f;//通常速度
+	m_speed_power = 2.0f;//通常速度
 	m_ani_max_time = 10;	//アニメーション間隔幅
 
 	m_movey = true; //true=背面　false=正面
@@ -44,6 +44,8 @@ void CObjEnemy2::Init()
 	m_key_f = false;		//無敵時間行動制御
 	m_t = false;
 
+	m_ftime = 0;
+
 	knock = false;
 	//当たり判定用のHitBoxを作成
 	Hits::SetHitBox(this, m_px, m_py, 50, 50, ELEMENT_ENEMY, OBJ_ENEMY, 1);
@@ -52,6 +54,7 @@ void CObjEnemy2::Init()
 //アクション
 void CObjEnemy2::Action()
 {
+	m_ftime++;
 
 	//ブロック衝突で向き変更
 	if (m_hit_up == true)
@@ -181,7 +184,9 @@ void CObjEnemy2::Action()
 		check = CheckWindow(m_px + map5->GetScrollx(), m_py + map5->GetScrolly(), 50.0f, 0.0f, 750.0f, 550.0f);
 	}
 
-	if (check == true)
+	CObjText* text = (CObjText*)Objs::GetObj(OBJ_TEXT);
+
+	if (check == true && text == nullptr && m_ftime >= 100)
 	{
 		//主人公機が存在する場合、誘導角度の計算する
 		if (hero != nullptr)
@@ -250,8 +255,8 @@ void CObjEnemy2::Action()
 			}
 
 			//主人公機と敵角度があんまりにもかけ離れたら
-			m_vx = cos(3.14 / 180 * ar) * 2.3;
-			m_vy = sin(3.14 / 180 * ar) * 2.3;
+			m_vx = cos(3.14 / 180 * ar) * 2.5;
+			m_vy = sin(3.14 / 180 * ar) * 2.5;
 		}
 	}
 	else
@@ -288,19 +293,19 @@ void CObjEnemy2::Action()
 			float r = hit_data[i]->r;
 			if ((r < 45 && r >= 0) || r > 315)
 			{
-				m_vx = -20.0f;//左に移動させる
+				m_vx = -10.0f;//左に移動させる
 			}
 			if (r >= 45 && r < 135)
 			{
-				m_vy = 20.0f;//上に移動させる
+				m_vy = 10.0f;//上に移動させる
 			}
 			if (r >= 135 && r < 225)
 			{
-				m_vx = 20.0f;//右に移動させる
+				m_vx = 10.0f;//右に移動させる
 			}
 			if (r >= 225 && r < 315)
 			{
-				m_vy = -20.0f;//したに移動させる
+				m_vy = -10.0f;//したに移動させる
 			}
 		}
 		m_hp -= 1;
@@ -348,7 +353,7 @@ void CObjEnemy2::Draw()
 	{ 1,0,2,0, };
 
 	//描画カラー情報
-	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
+	float c[4] = { 1.0f,1.0f,1.0f,alpha };
 
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置

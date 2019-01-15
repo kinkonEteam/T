@@ -43,13 +43,14 @@ enum OBJ_NAME
 	OBJ_HOMING_FIRE,
 	OBJ_SUMMARY,
 	OBJ_POSE,
-	OBJ_SOSASETSUMEI,
+	OBJ_OD,
 	OBJ_STAIR,
 	OBJ_CAPTURE,		
 	OBJ_CV,	
 	OBJ_INVENTORY,
 	OBJ_SCORE,
 	OBJ_ITEMSETSUMEI,
+	OBJ_TEXT,
 };
 //------------------------------------------------
 
@@ -78,7 +79,7 @@ struct UserData
 {
 	int mSeveData;	//サンプルセーブデータ
 	int m_point;	//GameMainで得たポイント
-	int m_ranking[16];//ランキング情報
+	int m_ranking[15];//ランキング情報
 };
 //------------------------------------------------
 
@@ -101,7 +102,6 @@ enum ITEM
 //------------------------------------------------
 
 //ゲームシーンオブジェクトヘッダ------------------
-#include "SceneTitle.h"
 #include "ObjMap1.h"
 #include "ObjMap2.h"
 #include "ObjMap3.h"
@@ -136,9 +136,10 @@ enum ITEM
 #include"Objstair.h"
 #include"ObjCharView.h"
 #include"ObjPose.h"
-#include"ObjSosasetsumei.h"
+#include"ObjOD.h"
 #include"ObjScore.h"
 #include"ObjItemsetsumei.h"
+#include"CObjText.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------
@@ -155,13 +156,12 @@ enum ITEM
 #include"SceneGameOver.h"
 #include"ScecneClear.h"
 #include"SceneSummary.h"
-#include"ScenePose.h"
-#include"SceneSosasetsumei.h"
+#include"SceneOD.h"
 #include"SceneScore.h"
 #include"SceneItemsetsumei.h"
 //-----------------------------------------------
 
 //シーンスタートクラス---------------------------
 //ゲーム開始時のシーンクラス登録
-#define SET_GAME_START CSceneTitle
+#define SET_GAME_START  CSceneTitle
 //-----------------------------------------------

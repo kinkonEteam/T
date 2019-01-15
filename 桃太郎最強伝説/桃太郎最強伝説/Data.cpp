@@ -2,7 +2,7 @@
 
 
 int HP = 5;//初期主人公HP			 0,	  1,   2,
-bool OTOMO[3]{ false,false,false };//犬、キジ、猿、仲間の場合true でない場合初期false
+bool OTOMO[3]{ false,false,false };//犬、キジ、猿、
 
 //所持アイテム数
 int item_list[7] =
@@ -16,4 +16,4 @@ int item_list[7] =
 	0,			//棍棒・所持数
 };
 
-int s = 0, m = 0;//秒と分
+int s = 0, m = 0;//秒と分 ObjCharViewで計算&表示

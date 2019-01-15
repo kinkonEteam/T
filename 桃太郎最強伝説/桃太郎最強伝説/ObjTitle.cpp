@@ -15,7 +15,7 @@ void CObjTitle::Init()
 {
 	
 	
-
+	
 	m_key_flag = false;
 }
 

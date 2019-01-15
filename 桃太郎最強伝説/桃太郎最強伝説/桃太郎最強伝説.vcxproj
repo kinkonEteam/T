@@ -117,8 +117,12 @@
     <ClCompile Include="CObjhomingfire.cpp" />
     <ClCompile Include="CObjSword.cpp" />
     <ClCompile Include="CObjEveDog.cpp" />
+    <ClCompile Include="CObjText.cpp" />
     <ClCompile Include="Data.cpp" />
     <ClCompile Include="ObjCharView.cpp" />
+    <ClCompile Include="ObjCharView.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="ObjInventory.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
@@ -154,7 +158,7 @@
     <ClCompile Include="ObjSilverBullion.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="ObjSosasetsumei.cpp" />
+    <ClCompile Include="ObjOD.cpp" />
     <ClCompile Include="Objstair.cpp" />
     <ClCompile Include="ObjSummary.cpp" />
     <ClCompile Include="ObjTitle.cpp">
@@ -206,10 +210,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="SceneMain.cpp" />
-    <ClCompile Include="ScenePose.cpp" />
     <ClCompile Include="SceneScore.cpp" />
     <ClCompile Include="SceneSell.cpp" />
-    <ClCompile Include="SceneSosasetsumei.cpp" />
+    <ClCompile Include="SceneOD.cpp" />
     <ClCompile Include="SceneSummary.cpp" />
     <ClCompile Include="SceneTitle.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -225,7 +228,10 @@
     <ClInclude Include="CObjhomingfire.h" />
     <ClInclude Include="CObjSword.h" />
     <ClInclude Include="CObjEveDog.h" />
-    <ClInclude Include="ObjCharView.h" />
+    <ClInclude Include="CObjText.h" />
+    <ClInclude Include="ObjCharView.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="ObjInventory.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
@@ -262,7 +268,7 @@
     <ClInclude Include="ObjSilverBullion.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="ObjSosasetsumei.h" />
+    <ClInclude Include="ObjOD.h" />
     <ClInclude Include="Objstair.h" />
     <ClInclude Include="ObjSummary.h" />
     <ClInclude Include="ObjTitle.h">
@@ -311,10 +317,9 @@
     <ClInclude Include="Scenefloor5.h" />
     <ClInclude Include="SceneGameOver.h" />
     <ClInclude Include="SceneMain.h" />
-    <ClInclude Include="ScenePose.h" />
     <ClInclude Include="SceneScore.h" />
     <ClInclude Include="SceneSell.h" />
-    <ClInclude Include="SceneSosasetsumei.h" />
+    <ClInclude Include="SceneOD.h" />
     <ClInclude Include="SceneSummary.h" />
     <ClInclude Include="SceneTitle.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>

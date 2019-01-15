@@ -17,6 +17,7 @@ public:
 	float GetVx() { return m_vx; }
 
 private:
+	
 	float m_px;		//位置
 	float m_py;
 	float m_vx;		//移動ベクトル
@@ -33,6 +34,8 @@ private:
 	int m_key_f;//無敵時間行動制御
 	int m_t;
 	int count;
+
+	int m_ftime;//階層突入後の時間測定
 
 	float m_speed_power;	//通常速度
 	float m_ani_max_time;	//アニメーション動作間隔最大値
