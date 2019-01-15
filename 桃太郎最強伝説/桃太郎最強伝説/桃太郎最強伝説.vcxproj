@@ -117,8 +117,12 @@
     <ClCompile Include="CObjhomingfire.cpp" />
     <ClCompile Include="CObjSword.cpp" />
     <ClCompile Include="CObjEveDog.cpp" />
+    <ClCompile Include="CObjText.cpp" />
     <ClCompile Include="Data.cpp" />
     <ClCompile Include="ObjCharView.cpp" />
+    <ClCompile Include="ObjCharView.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="ObjInventory.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
@@ -224,7 +228,10 @@
     <ClInclude Include="CObjhomingfire.h" />
     <ClInclude Include="CObjSword.h" />
     <ClInclude Include="CObjEveDog.h" />
-    <ClInclude Include="ObjCharView.h" />
+    <ClInclude Include="CObjText.h" />
+    <ClInclude Include="ObjCharView.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="ObjInventory.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>

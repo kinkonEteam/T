@@ -391,22 +391,26 @@ void CObjHero::Action()
 		if (m_time == 30)
 			m_key_f = false;
 
-		alpha = 0.5f;
-	}
-	if (m_time <= 0)
-	{
-		m_f = false;
-		hit->SetInvincibility(false);//無敵オフ
-		CObjEveDog* evedog1 = (CObjEveDog*)Objs::GetObj(OBJ_EVEDOG);
-		CObjEveKiji* evekiji1 = (CObjEveKiji*)Objs::GetObj(OBJ_EVEKIJI);
-		CObjEveMnky* evemnky1 = (CObjEveMnky*)Objs::GetObj(OBJ_EVEMNKY);
-		if (evedog1 != nullptr || evekiji1 != nullptr || evemnky1 != nullptr)//主人公情報が存在する場合
-		{
-			hit->SetInvincibility(true);//無敵オン
+			alpha = 0.5f;
 		}
-		alpha = 1.0f;
-		m_time = 70;
-	}
+
+		if (m_time <= 0)
+		{
+			m_f = false;
+			hit->SetInvincibility(false);//無敵オフ
+
+			CObjEveDog* evedog1 = (CObjEveDog*)Objs::GetObj(OBJ_EVEDOG);
+			CObjEveKiji* evekiji1 = (CObjEveKiji*)Objs::GetObj(OBJ_EVEKIJI);
+			CObjEveMnky* evemnky1 = (CObjEveMnky*)Objs::GetObj(OBJ_EVEMNKY);
+			CObjText* text = (CObjText*)Objs::GetObj(OBJ_TEXT);
+			if (text != nullptr || evedog1 != nullptr || evekiji1 != nullptr || evemnky1 != nullptr)//主人公情報が存在する場合
+			{
+				hit->SetInvincibility(true);//無敵オン
+			}
+
+			alpha = 1.0f;
+			m_time = 70;
+		}
 
 	//アイテムに当たった場合以下の処理をする
 	if (hit->CheckElementHit(ELEMENT_ITEM) == true)
@@ -509,11 +513,12 @@ void CObjHero::Action()
 			if (iob != nullptr)
 				iob->SetEf(true);
 
-			if (hit->CheckObjNameHit(OBJ_DOG) && df == true)//犬に当たった場合
-			{
-				//犬イベント発生
-				CObjEveDog* evedog = new CObjEveDog();//オブジェクト作成
-				Objs::InsertObj(evedog, OBJ_EVEDOG, 10);//マネージャに登録
+
+				if (hit->CheckObjNameHit(OBJ_DOG) && df ==true)//犬に当たった場合
+				{
+					//犬イベント発生
+					CObjEveDog* evedog = new CObjEveDog();//オブジェクト作成
+					Objs::InsertObj(evedog, OBJ_EVEDOG, 10);//マネージャに登録
 
 				df = false;
 
@@ -545,14 +550,21 @@ void CObjHero::Action()
 		}
 	}
 
-	//主人公の情報を取得
-	CObjEveDog* evedog = (CObjEveDog*)Objs::GetObj(OBJ_EVEDOG);
-	CObjEveKiji* evekiji = (CObjEveKiji*)Objs::GetObj(OBJ_EVEKIJI);
-	CObjEveMnky* evemnky = (CObjEveMnky*)Objs::GetObj(OBJ_EVEMNKY);
-	if (evedog != nullptr || evekiji != nullptr || evemnky != nullptr)
-	{
-		m_f = true;
-	}
+		//主人公の情報を取得
+		CObjEveDog* evedog = (CObjEveDog*)Objs::GetObj(OBJ_EVEDOG);
+		CObjEveKiji* evekiji = (CObjEveKiji*)Objs::GetObj(OBJ_EVEKIJI);
+		CObjEveMnky* evemnky = (CObjEveMnky*)Objs::GetObj(OBJ_EVEMNKY);
+		CObjText* text = (CObjText*)Objs::GetObj(OBJ_TEXT);
+		if (text != nullptr || evedog != nullptr || evekiji != nullptr || evemnky != nullptr)
+		{
+			m_f = true;
+			m_key_f = true;
+		}
+		else
+			m_key_f = false;
+
+
+
 
 	if (hit->CheckElementHit(ELEMENT_FIELD) == true && Input::GetVKey('F') == true)
 	{

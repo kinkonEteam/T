@@ -45,7 +45,7 @@ void CObjTalk::Draw()
 	RECT_F dst; //描画先表示位置
 
 	if (m_tipe == 0) {//tipe0は、吹き出し＆名前用画像を表示
-					  //切り取り位置の設定
+		 //切り取り位置の設定
 		src.m_top = 0.0f;
 		src.m_left = 0.0f;
 		src.m_right = 128.0f;
@@ -60,11 +60,23 @@ void CObjTalk::Draw()
 
 		if (m_p != 1) {//ページ数が1ではない場合
 					   //同じ画像を名前用に上から表示
-					   //表示位置の設定
-			dst.m_top = 380.0f;
-			dst.m_left = 30.0f;
-			dst.m_right = 100.0f;
-			dst.m_bottom = 420.0f;
+			CObjText* text = (CObjText*)Objs::GetObj(OBJ_TEXT);
+			if (text != nullptr)
+			{
+				//表示位置の設定
+				dst.m_top = 380.0f;
+				dst.m_left = 30.0f;
+				dst.m_right = 200.0f;
+				dst.m_bottom = 420.0f;
+			}
+			else
+			{
+				//表示位置の設定
+				dst.m_top = 380.0f;
+				dst.m_left = 30.0f;
+				dst.m_right = 100.0f;
+				dst.m_bottom = 420.0f;
+			}
 			//描画
 			Draw::Draw(m_picture, &src, &dst, c, 0.0f);
 		}
