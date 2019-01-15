@@ -21,7 +21,7 @@ CObjBoss::CObjBoss(float x, float y)
 //イニシャライズ
 void CObjBoss::Init()
 {
-	m_hp = 1;        //ボスの体力
+	m_hp = 10;        //ボスの体力
 	m_patterntime = 0;      //値の初期化
 	m_vx = 0.0f;	//移動ベクトル
 	m_vy = 0.0f;
