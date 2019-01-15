@@ -38,12 +38,21 @@ void CSceneSummary::InitScene()
 	Font::SetStrTex(L"おじいさんは山へ芝刈りに、おばあさんは川へ洗濯に行きました");
 
 	//あらすじオブジェクト
-	CObjSummary*obj = new CObjSummary();
-	Objs::InsertObj(obj, OBJ_SUMMARY, 10);
+//	CObjSummary*obj = new CObjSummary();
+//	Objs::InsertObj(obj, OBJ_SUMMARY, 10);
+
+	//テキスト作成
+	CObjSummary* summary = new CObjSummary();
+	Objs::InsertObj(summary, OBJ_SUMMARY, 20);
 }
 
 //実行中メソッド
 void CSceneSummary::Scene()
 {
 
+	CObjSummary* summary = (CObjSummary*)Objs::GetObj(OBJ_SUMMARY);
+	if (summary == nullptr)
+	{
+		Scene::SetScene(new CScenefloor1());
+	}
 }
