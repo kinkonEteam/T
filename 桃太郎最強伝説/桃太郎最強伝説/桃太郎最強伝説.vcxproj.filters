@@ -299,9 +299,6 @@
     <ClCompile Include="SceneSummary.cpp">
       <Filter>ソース ファイル\Scene\あらすじ</Filter>
     </ClCompile>
-    <ClCompile Include="SceneSosasetsumei.cpp">
-      <Filter>ソース ファイル\Scene\操作説明</Filter>
-    </ClCompile>
     <ClCompile Include="GameL\SceneManager.cpp">
       <Filter>リソースファイル</Filter>
     </ClCompile>
@@ -327,9 +324,6 @@
     <ClCompile Include="CObjFlyKiji.cpp">
       <Filter>ソース ファイル\Character\主人公</Filter>
     </ClCompile>
-    <ClCompile Include="ObjSosasetsumei.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="ObjCharView.cpp">
       <Filter>ソース ファイル\暗闇</Filter>
     </ClCompile>
@@ -350,6 +344,12 @@
     </ClCompile>
     <ClCompile Include="CObjText.cpp">
       <Filter>ソース ファイル\Map\floor1</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneOD.cpp">
+      <Filter>ソース ファイル\Scene\操作説明</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjOD.cpp">
+      <Filter>ソース ファイル\Scene\操作説明</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -550,6 +550,9 @@
     <ClInclude Include="ScenePose.h">
       <Filter>ソース ファイル\Scene\メイン</Filter>
     </ClInclude>
+    <ClInclude Include="ObjInventory.h">
+      <Filter>ソース ファイル\Scene\メイン</Filter>
+    </ClInclude>
     <ClInclude Include="GameL\DrawTexture.h">
       <Filter>リソースファイル</Filter>
     </ClInclude>
@@ -589,10 +592,13 @@
     <ClInclude Include="ObjKeyUse.h">
       <Filter>ソース ファイル\Scene\メイン</Filter>
     </ClInclude>
-    <ClInclude Include="ObjSosasetsumei.h">
+    <ClInclude Include="ObjCharView.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneOD.h">
       <Filter>ソース ファイル\Scene\操作説明</Filter>
     </ClInclude>
-    <ClInclude Include="SceneSosasetsumei.h">
+    <ClInclude Include="ObjOD.h">
       <Filter>ソース ファイル\Scene\操作説明</Filter>
     </ClInclude>
     <ClInclude Include="ObjCharView.h">
@@ -763,12 +769,6 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="ObjSosasetsumei.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="ScenePose.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneSosasetsumei.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="CObjFlyKiji.h">

@@ -33,6 +33,8 @@ private:
 	int m_key_f;//–³“GŠÔs“®§Œä
 	int m_t;
 	int count;
+	int e_time;//“Gs“®ŠÔ
+	int enemy_move;//“GˆÚ“®
 
 	int m_ftime;//ŠK‘w“Ë“üŒã‚ÌŠÔ‘ª’è
 
@@ -50,4 +52,5 @@ private:
 	bool m_movey;//ã‰º
 
 	bool knock;
+	bool m_do_f;//“GUŒ‚ƒtƒ‰ƒO
 };

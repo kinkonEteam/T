@@ -43,7 +43,7 @@ enum OBJ_NAME
 	OBJ_HOMING_FIRE,
 	OBJ_SUMMARY,
 	OBJ_POSE,
-	OBJ_SOSASETSUMEI,
+	OBJ_OD,
 	OBJ_STAIR,
 	OBJ_CAPTURE,		
 	OBJ_CV,	
@@ -136,7 +136,7 @@ enum ITEM
 #include"Objstair.h"
 #include"ObjCharView.h"
 #include"ObjPose.h"
-#include"ObjSosasetsumei.h"
+#include"ObjOD.h"
 #include"ObjScore.h"
 #include"ObjItemsetsumei.h"
 #include"CObjText.h"
@@ -156,8 +156,7 @@ enum ITEM
 #include"SceneGameOver.h"
 #include"ScecneClear.h"
 #include"SceneSummary.h"
-#include"ScenePose.h"
-#include"SceneSosasetsumei.h"
+#include"SceneOD.h"
 #include"SceneScore.h"
 #include"SceneItemsetsumei.h"
 //-----------------------------------------------

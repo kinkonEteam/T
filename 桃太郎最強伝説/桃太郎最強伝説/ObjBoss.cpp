@@ -66,9 +66,6 @@ void CObjBoss::Action()
 
 	}
 
-	m_vx = 0;
-	m_vy = 0;
-
 	if (m_ani_time > m_ani_max_time)
 	{
 		m_ani_frame += 1;
@@ -208,6 +205,7 @@ void CObjBoss::Action()
 		hit->SetInvincibility(true);//–³“GƒIƒ“
 	}
 
+	//“Ëis“®
 	if (m_do_f==true)
 	{
 		m_dotime++;

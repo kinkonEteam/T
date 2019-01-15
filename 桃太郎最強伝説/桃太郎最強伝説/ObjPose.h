@@ -13,8 +13,11 @@ public:
 	void Init();     //イニシャライズ
 	void Action();   //アクション
 	void Draw();     //ドロー
+	void SetAf(bool af) { m_Af = af; }
 private:
 	bool m_CSceneposeFlag;
+	bool m_Af; //フラグ
+	bool m_Pf;
 
 
 };
