@@ -74,7 +74,7 @@ void CObjTalk::Draw()
 				//ï\é¶à íuÇÃê›íË
 				dst.m_top = 380.0f;
 				dst.m_left = 30.0f;
-				dst.m_right = 100.0f;
+				dst.m_right = 150.0f;
 				dst.m_bottom = 420.0f;
 			}
 			//ï`âÊ

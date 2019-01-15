@@ -18,14 +18,14 @@ void CObjEveDog::Init()
 	Draw::LoadImage(L"inu.png", 19, TEX_SIZE_1024);
 
 	//トークオブジェクト作成
-	CObjTalk* talk = new CObjTalk(0, 4);	//オブジェクト作成
-	Objs::InsertObj(talk, OBJ_TALK, 4);		//優先度4(高)に設定し登録
+	CObjTalk* talk = new CObjTalk(0, 4);	//オブジェクト作成(タイプ,ページ)
+	Objs::InsertObj(talk, OBJ_TALK, 4);		//優先度4(中)に設定し登録
 	//コメントの上に黒い画像表示
-	CObjTalk* black = new CObjTalk(1, 4);	//オブジェクト作成
-	Objs::InsertObj(black, OBJ_TALK, 10);	//優先度5(高)に設定し登録
+	CObjTalk* black = new CObjTalk(1, 4);	//オブジェクト作成(タイプ,ページ)
+	Objs::InsertObj(black, OBJ_TALK, 10);	//優先度10(高)に設定し登録
 	//立ち絵表示
-	CObjTalk* dog = new CObjTalk(3, 4);		//オブジェクト作成
-	Objs::InsertObj(dog, OBJ_TALK, 4);		//優先度5(高)に設定し登録
+	CObjTalk* dog = new CObjTalk(3, 4);		//オブジェクト作成(タイプ,ページ)
+	Objs::InsertObj(dog, OBJ_TALK, 4);		//優先度4(中)に設定し登録
 }
 
 void CObjEveDog::Action()
