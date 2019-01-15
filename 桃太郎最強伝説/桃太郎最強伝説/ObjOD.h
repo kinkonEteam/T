@@ -5,16 +5,18 @@
 using namespace GameL;
 
 //オブジェクト：タイトルに戻る
-class CObjSosasetsumei : public CObj
+class CObjOD : public CObj
 {
 public:
-	CObjSosasetsumei() {};
-	~CObjSosasetsumei() {};
+	CObjOD() {};
+	~CObjOD() {};
 	void Init();     //イニシャライズ
 	void Action();   //アクション
 	void Draw();     //ドロー
-private:
 
+private:
+	bool m_key_f;//エンターキー
+	bool m_Af; //フラグ
 
 };
 

@@ -159,7 +159,7 @@
     <ClCompile Include="ObjSilverBullion.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="ObjSosasetsumei.cpp" />
+    <ClCompile Include="ObjOD.cpp" />
     <ClCompile Include="Objstair.cpp" />
     <ClCompile Include="ObjSummary.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -213,10 +213,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="SceneMain.cpp" />
-    <ClCompile Include="ScenePose.cpp" />
     <ClCompile Include="SceneScore.cpp" />
     <ClCompile Include="SceneSell.cpp" />
-    <ClCompile Include="SceneSosasetsumei.cpp" />
+    <ClCompile Include="SceneOD.cpp" />
     <ClCompile Include="SceneSummary.cpp" />
     <ClCompile Include="SceneTitle.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -273,7 +272,7 @@
     <ClInclude Include="ObjSilverBullion.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="ObjSosasetsumei.h" />
+    <ClInclude Include="ObjOD.h" />
     <ClInclude Include="Objstair.h" />
     <ClInclude Include="ObjSummary.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -324,10 +323,9 @@
     <ClInclude Include="Scenefloor5.h" />
     <ClInclude Include="SceneGameOver.h" />
     <ClInclude Include="SceneMain.h" />
-    <ClInclude Include="ScenePose.h" />
     <ClInclude Include="SceneScore.h" />
     <ClInclude Include="SceneSell.h" />
-    <ClInclude Include="SceneSosasetsumei.h" />
+    <ClInclude Include="SceneOD.h" />
     <ClInclude Include="SceneSummary.h" />
     <ClInclude Include="SceneTitle.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>

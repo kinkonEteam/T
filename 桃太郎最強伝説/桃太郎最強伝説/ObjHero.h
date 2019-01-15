@@ -60,6 +60,8 @@ class CObjHero :public CObj
 		bool m_Df;			//犬生存確認用
 		bool m_If;		//持ち物リスト制御用
 		bool m_Mf;		//持ち物リスト表示フラグ用
+		bool m_Pf1;
+		bool m_Pf;
 
 		//blockとの衝突状態確認用
 		bool m_hit_up;
