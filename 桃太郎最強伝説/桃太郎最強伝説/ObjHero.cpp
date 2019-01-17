@@ -57,22 +57,22 @@ void CObjHero::Init()
 	m_hp_max = 5;		//初期最大HP
 	m_speed = 1.0f;			//速度
 
-	bool m_otm[3];
+	
 	m_Sf = true;		//ソード制御
 	m_Kf = true;		//  キジ制御
 
 	//OTOMO[0犬,1キジ,2猿] == true(ある) or false(ない)
 	if (OTOMO[0] == true)		//犬が居る場合
 	{
-		m_hp_max += 1;			//最大HPに1加算
+		m_hp_max == 6;			//最大HPを6にセット
 	}
-	if (OTOMO[1] == true)		//キジが居る場合
-	{
-		m_Kf = false;			//制御を解除
-	}
-	if (OTOMO[2] == true)		//猿が居る場合
+	if (OTOMO[1] == true)		//猿が居る場合
 	{
 		m_speed = 1.2f;			//速度
+	}
+	if (OTOMO[2] == true)		//キジが居る場合
+	{
+		m_Kf = false;			//制御を解除
 	}
 	SetYAMI();					//暗闇作成
 	

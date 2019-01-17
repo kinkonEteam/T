@@ -18,7 +18,7 @@ void CObjScore::Init()
 {
 	
 	//得点情報をランキング最下位に登録
-	((UserData*)Save::GetData())->m_ranking[10] = ((UserData*)Save::GetData())->m_point;
+	((UserData*)Save::GetData())->m_ranking[8] = ((UserData*)Save::GetData())->m_point;
 
 	//得点が高い順に並び変えする
 	RankingSort(((UserData*)Save::GetData())->m_ranking);
@@ -79,7 +79,7 @@ void CObjScore::Draw()
 //ランキングソートメソッド
 //引数1　int[16]:ランキング用配列
 //降順でバブルソートを行う
-void CObjScore::RankingSort(int rank[10])
+void CObjScore::RankingSort(int rank[9])
 {
 	//値交換用変数
 	int c;
