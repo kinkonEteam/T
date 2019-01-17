@@ -139,7 +139,7 @@ void CObjstair::Action()
 						break;
 				}
 			}
-			Scene::SetScene(new CSceneClear());
+			Scene::SetScene(new CSceneSell());
 		}
 
 		CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);//主人公データ取得

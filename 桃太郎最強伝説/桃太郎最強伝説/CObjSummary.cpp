@@ -20,8 +20,7 @@ void CObjSummary::Init()
 	Objs::InsertObj(talk, OBJ_TALK, 4);		//優先度4(高)に設定し登録
 	//コメントの上に黒い画像表示
 	CObjTalk* black = new CObjTalk(1, 18);	//オブジェクト作成
-	Objs::InsertObj(black, OBJ_TALK, 10);	//優先度5(高)に設定し登録
-
+	Objs::InsertObj(black, OBJ_TALK, 20);	//優先度5(高)に設定し登録
 }
 
 void CObjSummary::Action()
