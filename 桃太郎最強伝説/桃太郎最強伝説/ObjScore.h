@@ -17,5 +17,6 @@ private:
 	bool m_key_flag;//キーフラグ
 
 	//ランキングソートメソッド
-	void RankingSort(int rank[16]);
+	void RankingSort(int rank[10]);
+	void TimeSort(int rank[10][3]);
 };

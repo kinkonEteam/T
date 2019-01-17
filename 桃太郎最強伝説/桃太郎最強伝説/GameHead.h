@@ -82,7 +82,7 @@ struct UserData
 	int mSeveData;	//サンプルセーブデータ
 	int m_point;	//GameMainで得たポイント
 	int m_ranking[10];//ランキング情報
-	int m_timerank[10];//タイムランク
+	int m_timerank[10][3];//タイムランク
 };
 //------------------------------------------------
 
