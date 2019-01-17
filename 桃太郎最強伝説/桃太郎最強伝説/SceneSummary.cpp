@@ -34,9 +34,6 @@ void CSceneSummary::InitScene()
 	//音楽スタート
 	Audio::Start(0);
 
-	Font::SetStrTex(L"むかしむかし、あるところに、おじいさんとおばあさんが住んでいました。");
-	Font::SetStrTex(L"おじいさんは山へ芝刈りに、おばあさんは川へ洗濯に行きました");
-
 	//あらすじオブジェクト
 //	CObjSummary*obj = new CObjSummary();
 //	Objs::InsertObj(obj, OBJ_SUMMARY, 10);

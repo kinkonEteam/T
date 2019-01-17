@@ -47,7 +47,7 @@ void CObjEnemy::Init()
 	m_t = false;
 
 	knock = false;
-	m_do_f=false;//“GUŒ‚ƒtƒ‰ƒO
+//	m_do_f=false;//“GUŒ‚ƒtƒ‰ƒO
 
 	m_ftime = 0;
 
@@ -160,21 +160,21 @@ void CObjEnemy::Action()
 		);
 	}
 
-	//“G‚ª“®‚­ŠÔQQQQQQQQQQQQQQQQQQ
-	
-	enemy_move++;//‘«‚µ‘±‚¯‚é
+	////“G‚ª“®‚­ŠÔQQQQQQQQQQQQQQQQQQ
+	//
+	//enemy_move++;//‘«‚µ‘±‚¯‚é
 
-	//“GˆÚ“®ŠÔ‚ª250‚ÅŠ„‚èØ‚ê‚éê‡m_do_f‚ğtrue‚É‚·‚é
-	if (enemy_move % 250 == 0)
-	{
-		m_do_f = true;
-	}
+	////“GˆÚ“®ŠÔ‚ª250‚ÅŠ„‚èØ‚ê‚éê‡m_do_f‚ğtrue‚É‚·‚é
+	//if (enemy_move % 250 == 0)
+	//{
+	//	m_do_f = true;
+	//}
 
-	//e_time‚Ì‰Šú‰»
-	if (enemy_move > 500)
-	{
-		enemy_move = 0;
-	}
+	////e_time‚Ì‰Šú‰»
+	//if (enemy_move > 500)
+	//{
+	//	enemy_move = 0;
+	//}
 	//QQQQQQQQQQQQQQQQQQQQQQQQ
 
 	//ålŒö‚ÌˆÊ’u‚ğæ“¾
@@ -289,6 +289,15 @@ void CObjEnemy::Action()
 		m_vy = 0;
 	}
 
+	//ƒCƒxƒ“ƒg’†‚Í“®‚«‚ğ~‚ß‚é
+	CObjTalk* talk = (CObjTalk*)Objs::GetObj(OBJ_TALK);
+	if (talk != nullptr)
+	{
+		m_vx = 0;
+		m_vy = 0;
+	}
+
+
 	//HitBox‚Ì“à—e‚ğXV
 	CHitBox*hit = Hits::GetHitBox(this);
 	if (map1 != nullptr)
@@ -339,32 +348,32 @@ void CObjEnemy::Action()
 		hit->SetInvincibility(true);//–³“GƒIƒ“
 	}
 
-	//“GUŒ‚
-	if (m_do_f == true)
-	{
+	////“GUŒ‚
+	//if (m_do_f == true)
+	//{
 
-		e_time++;//‘«‚µ‘±‚¯‚é
+	//	e_time++;//‘«‚µ‘±‚¯‚é
 
-		//e_time‚ª40ˆÈã‚È‚ç“ü‚è‘±‚¯‚é
-		if (e_time >= 40)
-		{
-			m_vx *= 3;
-			m_vy *= 3;
-		//e_time‚ª60‚È‚çm_do_f‚ğfalse‚ÉAe_time‚ğ‰Šú‰»‚·‚é
-		if (e_time == 60)
-		{
-		m_do_f = false;
-		e_time = 0;
-		}
-		
-		}
-		//e_time‚ª40ˆÈã‚É‚È‚é‚Ü‚Å~‚Ü‚éF“Ëi‚·‚é‚Ü‚Å‚Ì—Í‚ğ‚½‚ß‚éƒ‚[ƒVƒ‡ƒ““I‚ÈH
-		else
-		{
-			m_vx = 0;
-			m_vy = 0;
-		}
-	}
+	//	//e_time‚ª40ˆÈã‚È‚ç“ü‚è‘±‚¯‚é
+	//	if (e_time >= 40)
+	//	{
+	//		m_vx *= 3;
+	//		m_vy *= 3;
+	//	//e_time‚ª60‚È‚çm_do_f‚ğfalse‚ÉAe_time‚ğ‰Šú‰»‚·‚é
+	//	if (e_time == 60)
+	//	{
+	//	m_do_f = false;
+	//	e_time = 0;
+	//	}
+	//	
+	//	}
+	//	//e_time‚ª40ˆÈã‚É‚È‚é‚Ü‚Å~‚Ü‚éF“Ëi‚·‚é‚Ü‚Å‚Ì—Í‚ğ‚½‚ß‚éƒ‚[ƒVƒ‡ƒ““I‚ÈH
+	//	else
+	//	{
+	//		m_vx = 0;
+	//		m_vy = 0;
+	//	}
+	//}
 
 	if (m_f == false)
 	{

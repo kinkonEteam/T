@@ -18,7 +18,7 @@ void CObjSummary::Init()
 	//トークオブジェクト作成
 	CObjTalk* talk = new CObjTalk(0, 18);	//オブジェクト作成
 	Objs::InsertObj(talk, OBJ_TALK, 4);		//優先度4(高)に設定し登録
-											//コメントの上に黒い画像表示
+	//コメントの上に黒い画像表示
 	CObjTalk* black = new CObjTalk(1, 18);	//オブジェクト作成
 	Objs::InsertObj(black, OBJ_TALK, 20);	//優先度5(高)に設定し登録
 }
@@ -37,6 +37,12 @@ void CObjSummary::Action()
 	}
 	else//放している場合
 		m_f = true;
+
+	//Fキーでスキップ
+	if (Input::GetVKey('F') == true)
+	{
+		Scene::SetScene(new CScenefloor1());
+	}
 }
 
 void CObjSummary::Draw()
@@ -54,7 +60,7 @@ void CObjSummary::Draw()
 		Font::StrDraw(L"", 50, 520, 30, c);
 	}
 	else if (m_page == 2) {					//2ページ
-		Font::StrDraw(L"ある日、いつものようにおじいさんは山へ芝刈りに、", 50, 440, 30, c);
+		Font::StrDraw(L"ある日、おじいさんは山へ芝刈りに、", 50, 440, 30, c);
 		Font::StrDraw(L"おばあさんは川へ洗濯に行きました。", 50, 480, 30, c);
 		Font::StrDraw(L"", 50, 520, 30, c);
 	}
@@ -140,4 +146,6 @@ void CObjSummary::Draw()
 	}
 	else
 		this->SetStatus(false);			//オブジェクト削除
+
+		Font::StrDraw(L"'F'スキップ", 10, 10, 25, c);
 }
