@@ -19,11 +19,7 @@ using namespace GameL;
 //コンストラクタ
 CSceneSell::CSceneSell()
 {
-	//外部グラフィックを読み込み29番に登録(512×512ピクセル)
-	Draw::LoadImage(L"換金所.png", 29, TEX_SIZE_512);
-
-	//外部グラフィックを読み込み9番に登録(512*512)
-	Draw::LoadImage(L"talk.png", 9, TEX_SIZE_512);
+	
 }
 
 //デストラクタ
@@ -44,5 +40,5 @@ void CSceneSell::Scene()
 {
 	ObjSell*sell = (ObjSell*)Objs::GetObj(OBJ_SELL);
 	if (sell == nullptr)
-		Scene::SetScene(new CScenefloor5());
+		Scene::SetScene(new CSceneClear());
 }

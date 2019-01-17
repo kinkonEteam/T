@@ -14,6 +14,7 @@ using namespace GameL;
 extern int HP;				//HP
 extern bool OTOMO[3];		//お供所持情報
 extern int item_list[5];	//
+extern int c, s, m;
 void CObjHero::SaveDATA() {		//セーブ関数----------------------データをセーブ
 	HP = m_hp;					//シーン切り替え時のhpデータを、HPへ格納
 	ObjCharView* cv = (ObjCharView*)Objs::GetObj(OBJ_CV);//文字表示のデータ
@@ -21,8 +22,9 @@ void CObjHero::SaveDATA() {		//セーブ関数----------------------データをセーブ
 }
 void CObjHero::SetDATA() {		//セット関数----------------------データをセット
 	HP = 5;						//ゲームオーバー後、HPを初期値に戻す
-	for (int n = 0; n < 2; n++)
+	for (int n = 0; n <= 2; n++)
 		OTOMO[n] = false;
+	c = 0, s = 0, m = 0;
 }
 //シーン表示時の暗闇作成()又は、イベントから関数を使って暗闇を開放していく時(false)
 void CObjHero::SetYAMI(bool tipe) {//暗闇セット関数-----------------------暗闇
@@ -55,22 +57,22 @@ void CObjHero::Init()
 	m_hp_max = 5;		//初期最大HP
 	m_speed = 1.0f;			//速度
 
-	bool m_otm[3];
+	
 	m_Sf = true;		//ソード制御
 	m_Kf = true;		//  キジ制御
 
 	//OTOMO[0犬,1キジ,2猿] == true(ある) or false(ない)
 	if (OTOMO[0] == true)		//犬が居る場合
 	{
-		m_hp_max += 1;			//最大HPに1加算
+		m_hp_max == 6;			//最大HPを6にセット
 	}
-	if (OTOMO[1] == true)		//キジが居る場合
-	{
-		m_Kf = false;			//制御を解除
-	}
-	if (OTOMO[2] == true)		//猿が居る場合
+	if (OTOMO[1] == true)		//猿が居る場合
 	{
 		m_speed = 1.2f;			//速度
+	}
+	if (OTOMO[2] == true)		//キジが居る場合
+	{
+		m_Kf = false;			//制御を解除
 	}
 	SetYAMI();					//暗闇作成
 	
