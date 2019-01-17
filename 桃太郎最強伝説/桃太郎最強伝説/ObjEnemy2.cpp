@@ -264,6 +264,14 @@ void CObjEnemy2::Action()
 		m_vx = 0;
 	}
 
+	//イベント中は動きを止める
+	CObjTalk* talk = (CObjTalk*)Objs::GetObj(OBJ_TALK);
+	if (talk != nullptr)
+	{
+		m_vx = 0;
+		m_vy = 0;
+	}
+
 	//HitBoxの内容を更新
 	CHitBox*hit = Hits::GetHitBox(this);
 	if (map1 != nullptr)

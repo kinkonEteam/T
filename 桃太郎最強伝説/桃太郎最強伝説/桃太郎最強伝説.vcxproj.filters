@@ -317,9 +317,6 @@
     <ClCompile Include="ObjPose.cpp">
       <Filter>ソース ファイル\Scene\メイン</Filter>
     </ClCompile>
-    <ClCompile Include="ScenePose.cpp">
-      <Filter>ソース ファイル\Scene\メイン</Filter>
-    </ClCompile>
     <ClCompile Include="Data.cpp" />
     <ClCompile Include="CObjFlyKiji.cpp">
       <Filter>ソース ファイル\Character\主人公</Filter>
@@ -329,9 +326,6 @@
     </ClCompile>
     <ClCompile Include="ObjInventory.cpp">
       <Filter>ソース ファイル\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjSosasetsumei.cpp">
-      <Filter>ソース ファイル\Scene\操作説明</Filter>
     </ClCompile>
     <ClCompile Include="ObjCharView.cpp">
       <Filter>ソース ファイル\Scene\スコアランキング</Filter>
@@ -356,6 +350,9 @@
     </ClCompile>
     <ClCompile Include="ObjOD.cpp">
       <Filter>ソース ファイル\Scene\操作説明</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjCharView.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -427,9 +424,6 @@
     <ClInclude Include="ObjClub.h">
       <Filter>ソース ファイル\Item</Filter>
     </ClInclude>
-    <ClInclude Include="ObjDog.h">
-      <Filter>ソース ファイル\Events\Dog</Filter>
-    </ClInclude>
     <ClInclude Include="ObjEnemy.h">
       <Filter>ソース ファイル\Character\敵</Filter>
     </ClInclude>
@@ -474,9 +468,6 @@
     </ClInclude>
     <ClInclude Include="ObjPeach.h">
       <Filter>ソース ファイル\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjPheasant.h">
-      <Filter>ソース ファイル\Events\Kiji</Filter>
     </ClInclude>
     <ClInclude Include="ObjPlum.h">
       <Filter>ソース ファイル\Item</Filter>
@@ -553,9 +544,6 @@
     <ClInclude Include="ObjPose.h">
       <Filter>ソース ファイル\Scene\メイン</Filter>
     </ClInclude>
-    <ClInclude Include="ScenePose.h">
-      <Filter>ソース ファイル\Scene\メイン</Filter>
-    </ClInclude>
     <ClInclude Include="ObjInventory.h">
       <Filter>ソース ファイル\Scene\メイン</Filter>
     </ClInclude>
@@ -621,6 +609,12 @@
     </ClInclude>
     <ClInclude Include="ObjCharView.h">
       <Filter>ソース ファイル\暗闇</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjDog.h">
+      <Filter>ソース ファイル\Character\おとも</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjPheasant.h">
+      <Filter>ソース ファイル\Character\おとも</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -775,9 +769,6 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="ObjSell.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjSosasetsumei.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="CObjFlyKiji.h">
