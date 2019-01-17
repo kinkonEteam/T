@@ -55,32 +55,90 @@ void CObjstair::Action()
 	{
 		if (m_c == 1 && Input::GetVKey('F') == true)
 		{
+			int i = 0;
+			int j = 0;
 			Audio::Start(0);
-			Sleep(900);
+			while (1)
+			{
+				i++;
+				if (i % 800 == 0)
+				{
+					j++;
+					if (j == 500000)
+						break;
+				}
+			}
 			Scene::SetScene(new CScenefloor2());
 		}
 		else if (m_c == 2 && Input::GetVKey('F') == true)
 		{
+			int i = 0;
+			int j = 0;
 			Audio::Start(0);
-			Sleep(900);
+			//’x‰„‚³‚¹‚é
+			while (1)
+			{
+				i++;
+				if (i % 800 == 0)
+				{
+					j++;
+					if (j == 500000)
+						break;
+				}
+			}
 			Scene::SetScene(new CScenefloor3());
 		}
 		else if (m_c == 3 && Input::GetVKey('F') == true)
 		{
+			int i = 0;
+			int j = 0;
 			Audio::Start(0);
-			Sleep(900);
+			//’x‰„‚³‚¹‚é
+			while (1)
+			{
+				i++;
+				if (i % 800 == 0)
+				{
+					j++;
+					if (j == 500000)
+						break;
+				}
+			}
 			Scene::SetScene(new CScenefloor4());
 		}
 		else if (m_c == 4 && Input::GetVKey('F') == true)
 		{
+			int i = 0;
+			int j = 0;
 			Audio::Start(0);
-			Sleep(900);
+			//’x‰„‚³‚¹‚é
+			while (1)
+			{
+				i++;
+				if (i % 800 == 0)
+				{
+					j++;
+					if (j == 500000)
+						break;
+				}
+			}
 			Scene::SetScene(new CScenefloor5());
 		}
 		else if (m_c == 5 && Input::GetVKey('F') == true)
 		{
+			int i = 0;
+			int j = 0;
 			Audio::Start(0);
-			Sleep(900);
+			while (1)
+			{
+				i++;
+				if (i % 800 == 0)
+				{
+					j++;
+					if (j == 500000)
+						break;
+				}
+			}
 			Scene::SetScene(new CSceneClear());
 		}
 

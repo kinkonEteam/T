@@ -16,4 +16,4 @@ int item_list[7] =
 	0,			//–_EŠ”
 };
 
-int s = 0, m = 0;//•b‚Æ•ª ObjCharView‚ÅŒvZ&•\¦
+int c = 0, s = 0, m = 0;//•b‚Æ•ª ObjCharView‚ÅŒvZ&•\¦

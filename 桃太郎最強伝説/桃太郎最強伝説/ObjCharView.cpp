@@ -13,14 +13,18 @@ using namespace GameL;
 //イニシャライズ
 void ObjCharView::Init()
 {
-	count = 0;
-	sec = 0;
-	min = 0;
+	count = c;
+	sec = s;
+	min = m;
 }
 //アクション
 void ObjCharView::Action()
 {
-	count++;//常に1加算
+	CObjTalk* talk = (CObjTalk*)Objs::GetObj(OBJ_TALK);
+	if (talk != nullptr){}
+	else
+		count++;//カウント
+	
 
 	if (count == 60)
 	{
@@ -43,19 +47,21 @@ void ObjCharView::Draw()
 
 	wchar_t str[STR_MAX];
 
-	swprintf_s(str, L"%d：%d", min, sec);//そのまま登録
-
-	if ((sec < 10) || (min < 10)) {//秒数か分数が、二桁でない場合のみ上書き
-		swprintf_s(str, L"%d：0%d", min, sec);
-		if (min < 10) {					//分
-			swprintf_s(str, L"0%d：%d", min, sec);
-		}
-		if ((sec < 10) && (min < 10)) {	//両方小さい場合
-			swprintf_s(str, L"0%d：0%d", min, sec);
-		}
-	}
+	swprintf_s(str, L"%d：", min);
+	if(min < 10)
+		swprintf_s(str, L"0%d：", min);
+	Font::StrDraw(str, 650, 20, SCORE_FONT_SIZE, c);
+	swprintf_s(str, L"%d：", sec);
+	if (sec < 10)
+		swprintf_s(str, L"0%d：", sec);
+	Font::StrDraw(str, 700, 20, SCORE_FONT_SIZE, c);
+	swprintf_s(str, L"%d"  , count);
+	if (count < 10)
+		swprintf_s(str, L"0%d", count);
+	Font::StrDraw(str, 750, 20, SCORE_FONT_SIZE, c);
 	
-	Font::StrDraw(str, 100, 100, SCORE_FONT_SIZE, c);
+	
+	
 	
 
 	CObjTalk* obj = (CObjTalk*)Objs::GetObj(OBJ_TALK);//イベント取得
