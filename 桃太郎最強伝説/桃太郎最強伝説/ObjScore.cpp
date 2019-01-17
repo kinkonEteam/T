@@ -11,6 +11,7 @@
 //使用するネームスペース
 using namespace GameL;
 extern int item_list[5];
+extern int c, s, m;//カウント、セコンド、ミニッツ
 
 //イニシャライズ
 void CObjScore::Init()
