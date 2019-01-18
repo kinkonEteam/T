@@ -173,8 +173,8 @@ void CObjHero::Action()
 
 						if (m_Pf == true)
 						{
-							//Vを押してTitleに移行する
-							if (Input::GetVKey('V') == true)
+							//Xを押してTitleに移行する
+							if (Input::GetVKey('X') == true)
 							{
 								//タイトルに移動
 								Scene::SetScene(new CSceneTitle());
@@ -182,7 +182,7 @@ void CObjHero::Action()
 
 							}
 						}
-						if (Input::GetVKey('Z') == true)//Mキー入力時
+						if (Input::GetVKey('Z') == true)//Zキー入力時
 						{
 							if (m_Pf == true) {
 								Sleep(1);
