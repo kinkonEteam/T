@@ -64,7 +64,7 @@ void CObjHero::Init()
 	//OTOMO[0犬,1キジ,2猿] == true(ある) or false(ない)
 	if (OTOMO[0] == true)		//犬が居る場合
 	{
-		m_hp_max == 6;			//最大HPを6にセット
+		m_hp_max = 6;			//最大HPを6にセット
 	}
 	if (OTOMO[1] == true)		//猿が居る場合
 	{
@@ -524,7 +524,7 @@ void CObjHero::Action()
 
 				df = false;
 
-				m_hp_max += 1;
+				m_hp_max = 6;
 				OTOMO[0] = true;
 			}
 			else if (hit->CheckObjNameHit(OBJ_MONKE) && mf == true)//猿に当たった場合
