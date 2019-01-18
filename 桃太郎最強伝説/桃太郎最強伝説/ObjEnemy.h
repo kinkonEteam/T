@@ -52,5 +52,5 @@ private:
 	bool m_movey;//ã‰º
 
 	bool knock;
-//	bool m_do_f;//“GUŒ‚ƒtƒ‰ƒO
+	bool m_do_f;//“GUŒ‚ƒtƒ‰ƒO
 };

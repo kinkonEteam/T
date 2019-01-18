@@ -116,7 +116,7 @@ void CObjScore::RankingSort(int rank[10])
 void CObjScore::TimeSort(int time[10][3])
 {
 	//’lŒğŠ·—p•Ï”
-	int c;
+	int c=0;
 	int rank[10];
 	//		  41 +	  32 00	 +	02 00 00  (—á)
 	rank[9] = c + (s * 100) + (m * 1000);//Å‰ºˆÊ‚É‘ã“ü

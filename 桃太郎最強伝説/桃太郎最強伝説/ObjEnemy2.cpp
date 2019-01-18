@@ -21,7 +21,7 @@ CObjEnemy2::CObjEnemy2(float x, float y)
 //イニシャライズ
 void CObjEnemy2::Init()
 {
-	m_hp = 3;        //体力
+	m_hp = 5;        //体力
 	m_vx = 0.0f;	//移動ベクトル
 	m_vy = 0.0f;
 	m_posture = 0.0f;//正面(0.0f) 左(1.0f) 右(2.0f) 背面(3.0f)
@@ -325,8 +325,8 @@ void CObjEnemy2::Action()
 	if (m_f == false)
 	{
 		//位置の更新
-		m_px += m_vx;
-		m_py += m_vy;
+		m_px += m_vx*0.8;
+		m_py += m_vy*0.8;
 	}
 
 	if (m_f == true)
