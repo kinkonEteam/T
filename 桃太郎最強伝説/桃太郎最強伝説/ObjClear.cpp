@@ -71,10 +71,7 @@ void CObjClear::Action()
 		{
 			p += item_list[i] * 500;
 		}
-		/*else if (i==7)
-		{
-			
-		}*/
+	
 	}
 	
 	//‚±‚±‚ÅƒXƒRƒA‚ğŒˆ’è‚·‚é
