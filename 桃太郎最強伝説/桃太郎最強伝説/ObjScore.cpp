@@ -128,11 +128,10 @@ void CObjScore::TimeSort(int time[10][3])
 {
 	//値交換用変数
 	int n;
-	int rank[10];
 	for (int a = 0; a < 3; a++) {
 		//ソート
 		for (int i = 0; i < 10; i++) {//0~9(10個ソートする)
-			for (int j = i + 1; j < 11; j++) {//0~10(11回上下で比べる)
+			for (int j = i + 1; j < 11; j++) {//i+1~10(i以上で比べる)
 				if (time[i][a] < time[j][a]) {
 					//cを仲介に値の交換
 					n = time[i][a];
