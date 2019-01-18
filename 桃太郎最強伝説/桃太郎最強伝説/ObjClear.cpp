@@ -30,6 +30,8 @@ void CObjClear::Action()
 		for (int i = 0; i < 10; i++)
 		{
 			((UserData*)Save::GetData())->m_ranking[i] = 0;
+			for(int j=0;j<3;j++)
+				((UserData*)Save::GetData())->m_timerank[i][j] = 0;
 		}
 
 		//ÉçÅ[Éh
