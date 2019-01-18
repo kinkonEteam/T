@@ -144,6 +144,8 @@ enum ITEM
 #include"ObjItemsetsumei.h"
 #include"CObjText.h"
 #include"ObjSell.h"
+#include"ObjGoldBullion.h"
+#include"ObjSilverBullion.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------

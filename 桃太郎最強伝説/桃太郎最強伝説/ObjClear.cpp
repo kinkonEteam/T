@@ -45,15 +45,15 @@ void CObjClear::Action()
 	{
 		if (i == 0)
 		{
-			p+=item_list[i] * 100;//白桃
+			p+=item_list[i] * 100;//白桃　40％
 		}
 		else if (i==1)
 		{
-			p += item_list[i] * 1000;//黄桃
+			p += item_list[i] * 1000;//黄桃　20％
 		}
 		else if (i==2)
 		{
-			p += item_list[i] * 1;//すもも
+			p += item_list[i] * 1;//すもも　25％
 		}
 		else if (i==3)
 		{
@@ -61,11 +61,11 @@ void CObjClear::Action()
 		}
 		else if (i==4)
 		{
-			p += item_list[i] * 10000;//金塊
+			p += item_list[i] * 10000;//金塊　5％
 		}
 		else if (i==5)
 		{
-			p += item_list[i] * 5000;//銀塊
+			p += item_list[i] * 5000;//銀塊　10％
 		}
 		else if (i==6)
 		{

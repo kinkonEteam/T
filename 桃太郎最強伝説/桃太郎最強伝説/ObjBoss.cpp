@@ -286,10 +286,10 @@ void CObjBoss::Draw()
 	CObjMap5*map5 = (CObjMap5*)Objs::GetObj(OBJ_MAP5);
 
 	//Ø‚èŽæ‚èˆÊ’u‚ÌÝ’è
-	src.m_top = 48.0f * m_posture;
-	src.m_left = 0.0f + (AniData[m_ani_frame] * 45);
-	src.m_right = 50.0f + (AniData[m_ani_frame] * 45);
-	src.m_bottom = src.m_top + 48.0f;
+	src.m_top = 64.0f * m_posture;
+	src.m_left = 0.0f + (AniData[m_ani_frame] * 64);
+	src.m_right = 64.0f + (AniData[m_ani_frame] * 64);
+	src.m_bottom = src.m_top + 64.0f;
 
 	//•\Ž¦ˆÊ’u‚ÌÝ’è
 	dst.m_top = 0.0f + m_y + map5->GetScrolly();

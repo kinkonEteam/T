@@ -44,16 +44,16 @@ void CObjMap5::Init()
 //	sethero();
 
 
-	//アイテム出現
+	//雑魚出現
 	for (int i = 0; i < 56; i++)
 	{
 		for (int j = 0; j < 56; j++)
 		{
 			if (m_map[i][j] == 5)
 			{
-				//アイテムオブジェクト作成
-				CObjPeach* p = new CObjPeach(j * 50.0f, i * 50.0f);		//オブジェクト作成
-				Objs::InsertObj(p, OBJ_PEACH, 2);	//マネージャに登録
+				//敵オブジェクト作成
+				CObjEnemy* p = new CObjEnemy(j * 50.0f, i * 50.0f);		//オブジェクト作成
+				Objs::InsertObj(p, OBJ_ENEMY, 2);	//マネージャに登録
 
 			}
 		}

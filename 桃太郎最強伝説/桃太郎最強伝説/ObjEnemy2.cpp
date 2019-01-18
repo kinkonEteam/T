@@ -30,7 +30,7 @@ void CObjEnemy2::Init()
 	m_ani_frame = 1;	//静止フレームを初期にする
 
 	m_speed_power = 2.0f;//通常速度
-	m_ani_max_time = 10;	//アニメーション間隔幅
+	m_ani_max_time = 5;	//アニメーション間隔幅
 
 	m_movey = true; //true=背面　false=正面
 	m_movex = true;	//true=右　false=左
@@ -374,10 +374,10 @@ void CObjEnemy2::Draw()
 	CObjMap5*map5 = (CObjMap5*)Objs::GetObj(OBJ_MAP5);
 
 	//切り取り位置の設定
-	src.m_top = 48.0f * m_posture;	
-	src.m_left = 0.0f + (AniData[m_ani_frame] * 45);
-	src.m_right = 50.0f + (AniData[m_ani_frame] * 45);
-	src.m_bottom = src.m_top + 48.0f;
+	src.m_top = 64.0f * m_posture;
+	src.m_left = 0.0f + (AniData[m_ani_frame] * 64);
+	src.m_right = 64.0f + (AniData[m_ani_frame] * 64);
+	src.m_bottom = src.m_top + 64.0f;
 
 	//表示位置の設定
 	if (map1 != nullptr)
