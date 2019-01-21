@@ -16,15 +16,6 @@ extern int c, s, m;//カウント、セコンド、ミニッツ
 //イニシャライズ
 void CObjScore::Init()
 {
-	/*
-	for (int i = 0; i < 10; i++)
-	{
-		((UserData*)Save::GetData())->m_ranking[i] = 0;
-		for (int j = 0; j < 3; j++)
-			((UserData*)Save::GetData())->m_timerank[i][j] = 0;
-	}
-	*/
-	
 	//得点情報をランキング最下位に登録
 	((UserData*)Save::GetData())->m_ranking[9] = ((UserData*)Save::GetData())->m_point;
 	((UserData*)Save::GetData())->m_timerank[9][0] = c;

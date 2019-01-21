@@ -41,7 +41,7 @@ void CObjSummary::Action()
 	//Fキーでスキップ
 	if (Input::GetVKey('F') == true)
 	{
-		Scene::SetScene(new CScenefloor1());
+		m_page = 19;
 	}
 }
 
@@ -143,6 +143,10 @@ void CObjSummary::Draw()
 		Font::StrDraw(L"こうして、桃太郎による鬼退治の旅が", 50, 440, 30, c);
 		Font::StrDraw(L"幕を開けたのでした。", 50, 480, 30, c);
 		Font::StrDraw(L"", 50, 520, 30, c);
+	}
+	else if (m_page == 19) {
+		ObjCapture* sosa = new ObjCapture(40);	//40番画像表示
+		Objs::InsertObj(sosa, OBJ_CAPTURE, 40);	//優先度40
 	}
 	else
 		this->SetStatus(false);			//オブジェクト削除
