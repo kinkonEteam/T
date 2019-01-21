@@ -325,8 +325,8 @@ void CObjEnemy2::Action()
 	if (m_f == false)
 	{
 		//à íuÇÃçXêV
-		m_px += m_vx*0.8;
-		m_py += m_vy*0.8;
+		m_px += m_vx*1.2;
+		m_py += m_vy*1.2;
 	}
 
 	if (m_f == true)

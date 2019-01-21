@@ -87,6 +87,19 @@ void CObjMap3::Init()
 		}
 	}
 
+	for (int i = 0; i < 56; i++)
+	{
+		for (int j = 0; j < 56; j++)
+		{
+			if (m_map[i][j] == 17)
+			{
+				//アイテムオブジェクト作成
+				CObjGoldBullion* gb = new CObjGoldBullion(j * 50.0f, i * 50.0f);		//オブジェクト作成
+				Objs::InsertObj(gb, OBJ_GOLD_BULLION, 2);	//マネージャに登録
+			}
+		}
+	}
+
 	//敵出現
 	for (int i = 0; i < 56; i++)
 	{
