@@ -35,7 +35,7 @@ void CObjScore::Init()
 	RankingSort(((UserData*)Save::GetData())->m_ranking);
 	TimeSort(((UserData*)Save::GetData())->m_timerank);
 	
-	//セーブデータ？
+	//セーブ
 	Save::Seve();
 
 	m_key_flag = false;//キーフラグ
@@ -137,7 +137,7 @@ void CObjScore::TimeSort(int time[10][3])
 					//cを仲介に値の交換
 					for (int b = 0; b < 3; b++) {
 						n = time[i][b];
-						time[i][b] = time[j][b+1];
+						time[i][b] = time[j][b];
 						time[j][b] = n;
 					}//b
 				}//if
