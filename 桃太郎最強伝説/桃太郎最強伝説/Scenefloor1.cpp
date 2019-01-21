@@ -126,6 +126,7 @@ void CScenefloor1::InitScene()
 	ObjCapture* yami = (ObjCapture*)Objs::GetObj(OBJ_CAPTURE);
 	yami->SetAlpha(0.6f);
 
+
 }
 
 //実行中メソッド
