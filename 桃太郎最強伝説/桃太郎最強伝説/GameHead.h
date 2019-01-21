@@ -25,7 +25,6 @@ enum OBJ_NAME
 	OBJ_CLUB,
 	OBJ_ENEMY,
 	OBJ_ENEMY2,
-	OBJ_ENEMY3,
 	OBJ_DOG,
 	OBJ_MONKE,
 	OBJ_PHEASANT,
@@ -123,7 +122,6 @@ enum ITEM
 #include"CObjFlyKiji.h"
 #include"ObjEnemy.h"
 #include"ObjEnemy2.h"
-#include"ObjEnemy3.h"
 #include"ObjTitle.h"
 #include"ObjInventory.h"
 #include"ObjGameOver.h"

@@ -399,7 +399,7 @@ void CObjMap3::setenemy()
 			{
 				//15‚Ì’†‚©‚çoŒ»êŠ‚ğŒˆ’è‚·‚é
 				int herop = 0;
-				herop = rand() % 1;
+				herop = rand() % 2;
 				if (herop == 0)
 				{
 					m_map[i][j] = 10;//Â‹S

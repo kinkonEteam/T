@@ -137,7 +137,6 @@
     <ClCompile Include="ObjDog.cpp" />
     <ClCompile Include="ObjEnemy.cpp" />
     <ClCompile Include="ObjEnemy2.cpp" />
-    <ClCompile Include="ObjEnemy3.cpp" />
     <ClCompile Include="ObjGameOver.cpp" />
     <ClCompile Include="ObjGoldBullion.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -247,7 +246,6 @@
     <ClInclude Include="ObjDog.h" />
     <ClInclude Include="ObjEnemy.h" />
     <ClInclude Include="ObjEnemy2.h" />
-    <ClInclude Include="ObjEnemy3.h" />
     <ClInclude Include="ObjGameOver.h" />
     <ClInclude Include="ObjGoldBullion.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
