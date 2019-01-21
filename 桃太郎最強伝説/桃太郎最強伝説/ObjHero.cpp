@@ -416,7 +416,10 @@ void CObjHero::Action()
 			}
 			else if (hit->CheckObjNameHit(OBJ_YELLOW_PEACH) != nullptr)
 			{
-				m_hp += 1;	//HP‚ð3‰ñ•œ
+				if (m_hp != m_hp_max - 1)
+					m_hp+2;		//HP‚ð2‰ñ•œ
+				if (m_hp == m_hp_max - 1)
+					m_hp += 1;	//HP‚ð1‰ñ•œ
 				Audio::Start(6);//‰ñ•œ‰¹			
 			}
 			else if (hit->CheckObjNameHit(OBJ_PLUM) != nullptr)
