@@ -387,6 +387,7 @@ void CObjEnemy::Action()
 
 		alpha = 0.5f;
 	}
+
 	if (m_time <= 0)
 	{
 		m_f = false;

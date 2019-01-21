@@ -40,7 +40,7 @@ void CScenefloor1::InitScene()
 	v = Audio::VolumeMaster((1.0 - v));
 						
 	//BGMボリュームを下げる
-	float Volume = Audio::VolumeMaster(-0.98f);
+	float Volume = Audio::VolumeMaster(-0.58f);
 														//音楽スタート
 	Audio::Start(1);
 
@@ -125,6 +125,7 @@ void CScenefloor1::InitScene()
 	//暗闇の透明度をセット
 	ObjCapture* yami = (ObjCapture*)Objs::GetObj(OBJ_CAPTURE);
 	yami->SetAlpha(0.6f);
+
 
 }
 

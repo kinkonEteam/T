@@ -45,7 +45,7 @@ void CSceneClear::InitScene()
 		v = Audio::VolumeMaster((1.0 - v));
 
 		//BGMƒ{ƒŠƒ…[ƒ€‚ğ‰º‚°‚é
-		float Volume = Audio::VolumeMaster(-0.95f);
+		float Volume = Audio::VolumeMaster(-0.55f);
 		Audio::Start(1);
 }
 

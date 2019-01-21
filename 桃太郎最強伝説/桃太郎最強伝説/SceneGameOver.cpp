@@ -39,7 +39,7 @@ void CSceneGameOver::InitScene()
 	v = Audio::VolumeMaster((1.0 - v));
 
 	//BGMボリュームを0.4下げる
-	float Volume = Audio::VolumeMaster(-0.95f);
+	float Volume = Audio::VolumeMaster(-0.55f);
 
 	//BGMスタート
 	Audio::Start(0);

@@ -13,7 +13,7 @@ using namespace GameL;
 //Date.cpp内で宣言したグローバル変数をextern宣言----------------------保持データ
 extern int HP;				//HP
 extern bool OTOMO[3];		//お供所持情報
-extern int item_list[5];	//
+extern int item_list[7];	//
 extern int c, s, m;
 void CObjHero::SaveDATA() {		//セーブ関数----------------------データをセーブ
 	HP = m_hp;					//シーン切り替え時のhpデータを、HPへ格納
@@ -55,7 +55,7 @@ void CObjHero::Init()
 	m_vx = 0.0f;		//移動ベクトル
 	m_vy = 0.0f;
 	m_hp_max = 5;		//初期最大HP
-	m_speed = 1.0f;			//速度
+	m_speed = 2.0f;			//速度
 
 	
 	m_Sf = true;		//ソード制御
@@ -416,33 +416,38 @@ void CObjHero::Action()
 			}
 			else if (hit->CheckObjNameHit(OBJ_YELLOW_PEACH) != nullptr)
 			{
-				m_hp += 1;	//HPを3回復
+				if (m_hp < m_hp_max - 1) {
+					m_hp += 2;		//HPを2回復
+				}
+				else {
+					m_hp += 1;	//HPを1回復
+				}
 				Audio::Start(6);//回復音			
 			}
 			else if (hit->CheckObjNameHit(OBJ_PLUM) != nullptr)
 			{
-				item_list[2] += 1;
+				item_list[2]++;
 				Audio::Start(2);//アイテム取得音
 			}
 			else if (hit->CheckObjNameHit(OBJ_HORN) != nullptr)
 			{
-				item_list[3] += 1;
+				item_list[3]++;
 				Audio::Start(2);//アイテム取得音
 			}
 			else if (hit->CheckObjNameHit(OBJ_GOLD_BULLION) != nullptr)
 			{
 
-				item_list[4] += 1;
+				item_list[4]++;
 				Audio::Start(2);//アイテム取得音
 			}
 			else if (hit->CheckObjNameHit(OBJ_SILVER_BULLION) != nullptr)
 			{
-				item_list[5] += 1;
+				item_list[5]++;
 				Audio::Start(2);//アイテム取得音
 			}
 			else if (hit->CheckObjNameHit(OBJ_CLUB) != nullptr)
 			{
-				item_list[6] += 1;
+				item_list[6]++;
 				Audio::Start(7);//デバフ音
 			}
 		}
@@ -450,38 +455,37 @@ void CObjHero::Action()
 		{
 			if (hit->CheckObjNameHit(OBJ_PEACH) != nullptr)
 			{
-				item_list[0] += 1;
+				item_list[0]++;
 				Audio::Start(2);//アイテム取得音
 			}
 			else if (hit->CheckObjNameHit(OBJ_YELLOW_PEACH) != nullptr)
 			{
-				item_list[1] += 1;
+				item_list[1]++;
 				Audio::Start(2);//アイテム取得音			
 			}
 			else if (hit->CheckObjNameHit(OBJ_PLUM) != nullptr)
 			{
-				item_list[2] += 1;
+				item_list[2]++;
 				Audio::Start(2);//アイテム取得音
 			}
 			else if (hit->CheckObjNameHit(OBJ_HORN) != nullptr)
 			{
-				item_list[3] += 1;
+				item_list[3]++;
 				Audio::Start(2);//アイテム取得音
 			}
 			else if (hit->CheckObjNameHit(OBJ_GOLD_BULLION) != nullptr)
 			{
-
-				item_list[4] += 1;
+				item_list[4]++;
 				Audio::Start(2);//アイテム取得音
 			}
 			else if (hit->CheckObjNameHit(OBJ_SILVER_BULLION) != nullptr)
 			{
-				item_list[5] += 1;
+				item_list[5]++;
 				Audio::Start(2);//アイテム取得音
 			}
 			else if (hit->CheckObjNameHit(OBJ_CLUB) != nullptr)
 			{
-				item_list[6] += 1;
+				item_list[6]++;
 				Audio::Start(7);//デバフ音
 			}
 		}
