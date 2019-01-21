@@ -109,9 +109,9 @@ void CObjScore::RankingSort(int rank[10])
 	int c;
 
 	//バブルソート
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 9; i++)
 	{
-		for (int j = i + 1; j < 11; j++)
+		for (int j = i + 1; j < 10; j++)
 		{
 			if (rank[i] < rank[j])
 			{
@@ -127,21 +127,30 @@ void CObjScore::RankingSort(int rank[10])
 
 void CObjScore::TimeSort(int time[10][3])
 {
+	for (int m = 0; m < 10; m++)
+		if (time[m][0] == 0 && time[m][1] == 0) {
+			time[m][0] = 99, time[m][1] = 99, time[m][2] = 99;
+		}
+
 	//値交換用変数
 	int n;
 	for (int a = 0; a < 3; a++) {
 		//ソート
-		for (int i = 0; i < 10; i++) {//0~9(10個ソートする)
-			for (int j = i + 1; j < 11; j++) {//i+1~10(i以上で比べる)
-				if (time[i][a] < time[j][a]) {
-					//cを仲介に値の交換
+		for (int i = 0; i < 9; i++) {//0~8(10個ソートする)
+			for (int j = i + 1; j < 10; j++) {//i+1~9(i以上で比べる)
+				if (time[i][a] > time[j][a]) {
 					for (int b = 0; b < 3; b++) {
 						n = time[i][b];
 						time[i][b] = time[j][b];
 						time[j][b] = n;
-					}//b
-				}//if
+					}//b値交換×3
+				}//if大小比較
 			}//j
 		}//i
 	}//a
+
+	for (int m = 0; m < 10; m++)
+		if (time[m][0] == 99 && time[m][1] == 99) {
+			time[m][0] = 0, time[m][1] = 0, time[m][2] = 0;
+		}
 }
