@@ -26,7 +26,6 @@ void CObjHeroGauge::Init()
 void CObjHeroGauge::Action()
 {
 	CObjHero* obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
-	//CObjPeach* objp = (CObjPeach*)Objs::GetObj(OBJ_PEACH);
 	if (obj != nullptr)
 	{
 		gethp = obj->Gethp();

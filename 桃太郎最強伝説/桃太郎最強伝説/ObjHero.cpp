@@ -416,7 +416,7 @@ void CObjHero::Action()
 			}
 			else if (hit->CheckObjNameHit(OBJ_YELLOW_PEACH) != nullptr)
 			{
-				m_hp += 3;	//HP‚ð3‰ñ•œ
+				m_hp += 2;	//HP‚ð3‰ñ•œ
 				Audio::Start(6);//‰ñ•œ‰¹‚ð–Â‚ç‚·			
 			}
 			else if (hit->CheckObjNameHit(OBJ_PLUM) != nullptr)
