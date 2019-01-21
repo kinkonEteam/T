@@ -90,12 +90,6 @@ void CObjMap4::Init()
 				CObjEnemy2* e2 = new CObjEnemy2(j*50.0f, i*50.0f);
 				Objs::InsertObj(e2, OBJ_ENEMY2, 2);
 			}
-			/*		else if (m_map[i][j] == 12)
-			{
-			//緑鬼オブジェクト作成
-			CObjEnemy3* e3 = new CObjEnemy3(j*50.0f, i*50.0f);
-			Objs::InsertObj(e3, OBJ_ENEMY3, 5);
-			}*/
 		}
 	}
 
@@ -375,7 +369,7 @@ void CObjMap4::setenemy()
 			{
 				//15の中から出現場所を決定する
 				int herop = 0;
-				herop = rand() % 2;
+				herop = rand() % 1;
 				if (herop == 0)
 				{
 					m_map[i][j] = 10;//青鬼
@@ -384,10 +378,6 @@ void CObjMap4::setenemy()
 				{
 					m_map[i][j] = 11;//黄鬼
 				}
-				/*				else if (herop == 2)
-				{
-				m_map[i][j] = 12;//緑鬼
-				}*/
 			}
 		}
 	}

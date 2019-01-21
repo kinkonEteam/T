@@ -39,9 +39,6 @@ void CObjMap5::Init()
 
 	srand(time(NULL));
 
-//	setstair();
-//	setenemy();
-//	sethero();
 
 
 	//雑魚出現
@@ -59,31 +56,6 @@ void CObjMap5::Init()
 		}
 	}
 
-/*	//敵出現
-	for (int i = 0; i < 56; i++)
-	{
-		for (int j = 0; j < 56; j++)
-		{
-			if (m_map[i][j] == 10)
-			{
-				//青鬼オブジェクト作成
-				CObjEnemy* e = new CObjEnemy(j*50.0f, i*50.0f);
-				Objs::InsertObj(e, OBJ_ENEMY, 2);
-			}
-			if (m_map[i][j] == 11)
-			{
-				//黄鬼オブジェクト作成
-				CObjEnemy2* e2 = new CObjEnemy2(j*50.0f, i*50.0f);
-				Objs::InsertObj(e2, OBJ_ENEMY2, 2);
-			}
-					else if (m_map[i][j] == 12)
-			{
-			//緑鬼オブジェクト作成
-			CObjEnemy3* e3 = new CObjEnemy3(j*50.0f, i*50.0f);
-			Objs::InsertObj(e3, OBJ_ENEMY3, 5);
-			}
-		}
-	}*/
 
 	//BOSS出現
 	for (int i = 0; i < 56; i++)
@@ -312,33 +284,3 @@ void CObjMap5::Map5Hit
 		}
 	}
 }
-
-/*void CObjMap5::setenemy()
-{
-	//敵出現位置の設定
-	for (int i = 0; i < 56; i++)
-	{
-		for (int j = 0; j < 56; j++)
-		{
-			//15を発見
-			if (m_map[i][j] == 15)
-			{
-				//15の中から出現場所を決定する
-				int herop = 0;
-				herop = rand() % 2;
-				if (herop == 0)
-				{
-					m_map[i][j] = 10;//青鬼
-				}
-				else if (herop == 1)
-				{
-					m_map[i][j] = 11;//黄鬼
-				}
-				/*				else if (herop == 2)
-				{
-				m_map[i][j] = 12;//緑鬼
-				}
-			}
-		}
-	}
-}*/
