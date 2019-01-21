@@ -26,7 +26,7 @@ void CObjClear::Action()
 	if (init_point == false)
 	{
 
-		//ランキングも初期化する
+		//ランキング初期化
 		for (int i = 0; i < 10; i++)
 		{
 			((UserData*)Save::GetData())->m_ranking[i] = 0;

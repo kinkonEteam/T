@@ -33,9 +33,9 @@ void CObjScore::Init()
 
 	//得点が高い順に並び変えする
 	RankingSort(((UserData*)Save::GetData())->m_ranking);
-	//TimeSort(((UserData*)Save::GetData())->m_timerank);
+	TimeSort(((UserData*)Save::GetData())->m_timerank);
 	
-	//セーブデータ？
+	//セーブ
 	Save::Seve();
 
 	m_key_flag = false;//キーフラグ
@@ -93,7 +93,7 @@ void CObjScore::Draw()
 		Font::StrDraw(atk, 400, y_point, 40, c);
 
 		for (int n = 0; n < 3; n++) {
-			swprintf_s(atk, L" %2d", ((UserData*)Save::GetData())->m_timerank[i][n]);
+			swprintf_s(atk, L" %02d", ((UserData*)Save::GetData())->m_timerank[i][n]);
 			Font::StrDraw(atk, 710 - (n * 60), y_point, 40, c);
 		}
 	}
@@ -124,6 +124,7 @@ void CObjScore::RankingSort(int rank[10])
 	}
 }
 
+
 void CObjScore::TimeSort(int time[10][3])
 {
 	//値交換用変数
@@ -134,42 +135,13 @@ void CObjScore::TimeSort(int time[10][3])
 			for (int j = i + 1; j < 11; j++) {//i+1~10(i以上で比べる)
 				if (time[i][a] < time[j][a]) {
 					//cを仲介に値の交換
-					n = time[i][a];
-					time[i][a] = time[j][a];
-					time[j][a] = n;
-				}
-			}
-		}
-
-	}
+					for (int b = 0; b < 3; b++) {
+						n = time[i][b];
+						time[i][b] = time[j][b];
+						time[j][b] = n;
+					}//b
+				}//if
+			}//j
+		}//i
+	}//a
 }
-/*
-void CObjScore::TimeSort(int time[10][3])
-{
-	//値交換用変数
-	int n;
-	int rank[10];
-	for (int j = 0; j < 10; j++) {
-		//				 ??  +			 ?? 00	  +	?? 00 00  
-		rank[j] = time[j][0] + (time[j][1] * 100) + (time[j][2] * 1000);//時間をまとめる
-	}
-
-	//ソート
-	for (int i = 0; i < 10; i++){//0~9(10個ソートする)
-		for (int j = i + 1; j < 11; j++){//0~10(11回上下で比べる)
-			if (rank[i] < rank[j]){
-				//cを仲介に値の交換
-				n = rank[i];
-				rank[i] = rank[j];
-				rank[j] = n;
-			}
-		}
-	}
-
-	for (int a = 0; a < 10; a++) {//時間を分ける
-		time[a][0] = rank[a] - (s * 100 + m * 10000);//sとmを引いてc
-		time[a][1] = rank[a] - (c       + m * 10000);//cとmを引いてs
-		time[a][2] = rank[a] - (c		+ s * 100  );//cとsを引いてm
-	}
-}
-*/
