@@ -21,5 +21,6 @@ class CObjHeroGauge : public CObj
 		int change;
 		int ad;//HP‘‰Á’²®—p
 		int ac;//HPŒ¸­’²®—p
+		int ab;
 
 };
