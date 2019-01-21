@@ -524,7 +524,7 @@ void CObjHero::Action()
 
 				df = false;
 
-				m_hp_max += 1;
+				m_hp_max = 6;
 				OTOMO[0] = true;
 			}
 			else if (hit->CheckObjNameHit(OBJ_MONKE) && mf == true)//‰‚É“–‚½‚Á‚½ê‡

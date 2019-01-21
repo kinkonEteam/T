@@ -30,6 +30,8 @@ void CObjClear::Action()
 		for (int i = 0; i < 10; i++)
 		{
 			((UserData*)Save::GetData())->m_ranking[i] = 0;
+			for(int j=0;j<3;j++)
+				((UserData*)Save::GetData())->m_timerank[i][j] = 0;
 		}
 
 		//ロード
@@ -45,36 +47,33 @@ void CObjClear::Action()
 	{
 		if (i == 0)
 		{
-			p+=item_list[i] * 100;
+			p+=item_list[i] * 100;//白桃　40％
 		}
 		else if (i==1)
 		{
-			p += item_list[i] * 1000;
+			p += item_list[i] * 1000;//黄桃　20％
 		}
 		else if (i==2)
 		{
-			p += item_list[i] * 1;
+			p += item_list[i] * 1;//すもも　25％
 		}
 		else if (i==3)
 		{
-			p += item_list[i] * 3000;
+			p += item_list[i] * 3000;//角
 		}
 		else if (i==4)
 		{
-			p += item_list[i] * 10000;
+			p += item_list[i] * 10000;//金塊　5％
 		}
 		else if (i==5)
 		{
-			p += item_list[i] * 5000;
+			p += item_list[i] * 5000;//銀塊　10％
 		}
 		else if (i==6)
 		{
-			p += item_list[i] * 500;
+			p += item_list[i] * 500;//棍棒
 		}
-		/*else if (i==7)
-		{
-			
-		}*/
+	
 	}
 	
 	//ここでスコアを決定する

@@ -21,7 +21,7 @@ CObjBoss::CObjBoss(float x, float y)
 //イニシャライズ
 void CObjBoss::Init()
 {
-	m_hp = 10;        //ボスの体力
+	m_hp = 1;        //ボスの体力
 	m_patterntime = 0;      //値の初期化
 	m_vx = 0.0f;	//移動ベクトル
 	m_vy = 0.0f;
@@ -286,10 +286,10 @@ void CObjBoss::Draw()
 	CObjMap5*map5 = (CObjMap5*)Objs::GetObj(OBJ_MAP5);
 
 	//切り取り位置の設定
-	src.m_top = 48.0f * m_posture;
-	src.m_left = 0.0f + (AniData[m_ani_frame] * 45);
-	src.m_right = 50.0f + (AniData[m_ani_frame] * 45);
-	src.m_bottom = src.m_top + 48.0f;
+	src.m_top = 64.0f * m_posture;
+	src.m_left = 0.0f + (AniData[m_ani_frame] * 64);
+	src.m_right = 64.0f + (AniData[m_ani_frame] * 64);
+	src.m_bottom = src.m_top + 64.0f;
 
 	//表示位置の設定
 	dst.m_top = 0.0f + m_y + map5->GetScrolly();

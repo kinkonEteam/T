@@ -39,9 +39,35 @@ void CObjMap2::Init()
 		{
 			if (m_map[i][j] == 5)
 			{
-				//アイテムオブジェクト作成
-				CObjPeach* p = new CObjPeach(j * 50.0f, i * 50.0f);		//オブジェクト作成
-				Objs::InsertObj(p, OBJ_PEACH, 2);	//マネージャに登録
+				int put = 0;
+				put = rand() % 100;
+				if (put >= 0 && put <= 39)
+				{
+					//アイテムオブジェクト作成
+					CObjPeach* p = new CObjPeach(j * 50.0f, i * 50.0f);		//オブジェクト作成
+					Objs::InsertObj(p, OBJ_PEACH, 2);	//マネージャに登録
+				}
+				else if (put >= 40 && put <= 59)
+				{
+					//アイテムオブジェクト作成
+					CObjYellowPeach* g = new CObjYellowPeach(j * 50.0f, i * 50.0f);		//オブジェクト作成
+					Objs::InsertObj(g, OBJ_YELLOW_PEACH, 2);	//マネージャに登録
+				}
+				else if (put >= 60 && put <= 84)
+				{
+					CObjPlum* g = new CObjPlum(j * 50.0f, i * 50.0f);		//オブジェクト作成
+					Objs::InsertObj(g, OBJ_PLUM, 2);	//マネージャに登録
+				}
+				else if (put >= 85 && put <= 89)
+				{
+					CObjGoldBullion* gb = new CObjGoldBullion(j * 50.0f, i * 50.0f);		//オブジェクト作成
+					Objs::InsertObj(gb, OBJ_GOLD_BULLION, 2);	//マネージャに登録
+				}
+				else
+				{
+					CObjSilverBullion* sb = new CObjSilverBullion(j * 50.0f, i * 50.0f);		//オブジェクト作成
+					Objs::InsertObj(sb, OBJ_SILVER_BULLION, 2);	//マネージャに登録
+				}
 
 			}
 		}
