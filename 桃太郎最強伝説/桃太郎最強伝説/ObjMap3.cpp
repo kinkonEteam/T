@@ -87,6 +87,19 @@ void CObjMap3::Init()
 		}
 	}
 
+	for (int i = 0; i < 56; i++)
+	{
+		for (int j = 0; j < 56; j++)
+		{
+			if (m_map[i][j] == 17)
+			{
+				//アイテムオブジェクト作成
+				CObjGoldBullion* gb = new CObjGoldBullion(j * 50.0f, i * 50.0f);		//オブジェクト作成
+				Objs::InsertObj(gb, OBJ_GOLD_BULLION, 2);	//マネージャに登録
+			}
+		}
+	}
+
 	//敵出現
 	for (int i = 0; i < 56; i++)
 	{
@@ -104,12 +117,6 @@ void CObjMap3::Init()
 				CObjEnemy2* e2 = new CObjEnemy2(j*50.0f, i*50.0f);
 				Objs::InsertObj(e2, OBJ_ENEMY2, 2);
 			}
-			/*		else if (m_map[i][j] == 12)
-			{
-			//緑鬼オブジェクト作成
-			CObjEnemy3* e3 = new CObjEnemy3(j*50.0f, i*50.0f);
-			Objs::InsertObj(e3, OBJ_ENEMY3, 5);
-			}*/
 		}
 	}
 
@@ -392,7 +399,7 @@ void CObjMap3::setenemy()
 			{
 				//15の中から出現場所を決定する
 				int herop = 0;
-				herop = rand() % 2;
+				herop = rand() % 1;
 				if (herop == 0)
 				{
 					m_map[i][j] = 10;//青鬼
@@ -401,10 +408,6 @@ void CObjMap3::setenemy()
 				{
 					m_map[i][j] = 11;//黄鬼
 				}
-				/*				else if (herop == 2)
-				{
-				m_map[i][j] = 12;//緑鬼
-				}*/
 			}
 		}
 	}

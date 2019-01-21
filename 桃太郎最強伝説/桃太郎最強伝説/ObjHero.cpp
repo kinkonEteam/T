@@ -401,15 +401,6 @@ void CObjHero::Action()
 			m_f = false;
 			hit->SetInvincibility(false);//無敵オフ
 
-			CObjEveDog* evedog1 = (CObjEveDog*)Objs::GetObj(OBJ_EVEDOG);
-			CObjEveKiji* evekiji1 = (CObjEveKiji*)Objs::GetObj(OBJ_EVEKIJI);
-			CObjEveMnky* evemnky1 = (CObjEveMnky*)Objs::GetObj(OBJ_EVEMNKY);
-			CObjText* text = (CObjText*)Objs::GetObj(OBJ_TEXT);
-			if (text != nullptr || evedog1 != nullptr || evekiji1 != nullptr || evemnky1 != nullptr)//主人公情報が存在する場合
-			{
-				hit->SetInvincibility(true);//無敵オン
-			}
-
 			alpha = 1.0f;
 			m_time = 70;
 		}
@@ -425,37 +416,34 @@ void CObjHero::Action()
 			}
 			else if (hit->CheckObjNameHit(OBJ_YELLOW_PEACH) != nullptr)
 			{
-				m_hp += 3;	//HPを3回復
-				Audio::Start(6);//回復音を鳴らす			
+				m_hp += 1;	//HPを3回復
+				Audio::Start(6);//回復音			
 			}
 			else if (hit->CheckObjNameHit(OBJ_PLUM) != nullptr)
 			{
 				item_list[2] += 1;
-				Audio::Start(2);//アイテム取得音を鳴らす
+				Audio::Start(2);//アイテム取得音
 			}
 			else if (hit->CheckObjNameHit(OBJ_HORN) != nullptr)
 			{
 				item_list[3] += 1;
-				Audio::Start(2);//アイテム取得音を鳴らす
+				Audio::Start(2);//アイテム取得音
 			}
 			else if (hit->CheckObjNameHit(OBJ_GOLD_BULLION) != nullptr)
 			{
 
 				item_list[4] += 1;
-				Audio::Start(2);//アイテム取得音を鳴らす
+				Audio::Start(2);//アイテム取得音
 			}
 			else if (hit->CheckObjNameHit(OBJ_SILVER_BULLION) != nullptr)
 			{
 				item_list[5] += 1;
-				Audio::Start(2);//アイテム取得音を鳴らす
+				Audio::Start(2);//アイテム取得音
 			}
 			else if (hit->CheckObjNameHit(OBJ_CLUB) != nullptr)
 			{
 				item_list[6] += 1;
-				Audio::Start(7);//デバフ音を鳴らす
-								//移動速度を0.8倍する
-								//m_px *= 0.8;
-								//m_py *= 0.8;
+				Audio::Start(7);//デバフ音
 			}
 		}
 		else //最大値の場合、回復出来ない
@@ -463,12 +451,38 @@ void CObjHero::Action()
 			if (hit->CheckObjNameHit(OBJ_PEACH) != nullptr)
 			{
 				item_list[0] += 1;
-				Audio::Start(2);//アイテム取得音を鳴らす
+				Audio::Start(2);//アイテム取得音
 			}
 			else if (hit->CheckObjNameHit(OBJ_YELLOW_PEACH) != nullptr)
 			{
 				item_list[1] += 1;
-				Audio::Start(2);//アイテム取得音を鳴らす			
+				Audio::Start(2);//アイテム取得音			
+			}
+			else if (hit->CheckObjNameHit(OBJ_PLUM) != nullptr)
+			{
+				item_list[2] += 1;
+				Audio::Start(2);//アイテム取得音
+			}
+			else if (hit->CheckObjNameHit(OBJ_HORN) != nullptr)
+			{
+				item_list[3] += 1;
+				Audio::Start(2);//アイテム取得音
+			}
+			else if (hit->CheckObjNameHit(OBJ_GOLD_BULLION) != nullptr)
+			{
+
+				item_list[4] += 1;
+				Audio::Start(2);//アイテム取得音
+			}
+			else if (hit->CheckObjNameHit(OBJ_SILVER_BULLION) != nullptr)
+			{
+				item_list[5] += 1;
+				Audio::Start(2);//アイテム取得音
+			}
+			else if (hit->CheckObjNameHit(OBJ_CLUB) != nullptr)
+			{
+				item_list[6] += 1;
+				Audio::Start(7);//デバフ音
 			}
 		}
 	}
@@ -559,7 +573,6 @@ void CObjHero::Action()
 		CObjText* text = (CObjText*)Objs::GetObj(OBJ_TEXT);
 		if (text != nullptr || evedog != nullptr || evekiji != nullptr || evemnky != nullptr)
 		{
-			m_f = true;
 			m_key_f = true;
 		}
 		else
