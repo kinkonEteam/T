@@ -45,7 +45,7 @@ void CObjHeroGauge::Action()
 			ad++;//減用の値を調整する
 			ab++;
 		}
-		else if (gethp == ab)
+		else if (gethp >= ab)
 		{
 			change-=2;//ハートを1増やす
 			ac+=2;//調整値を1ずらす
