@@ -24,11 +24,11 @@ CObjGoldBullion::CObjGoldBullion(float x, float y)
 //イニシャライズ
 void CObjGoldBullion::Init()
 {
-	m_x = 200.0f;
+	m_x = 0.0f;
 	m_y = 0.0f;
 
 	//アイテムのヒットボックスを作成
-	Hits::SetHitBox(this, m_x + 4, m_y, 50, 50, ELEMENT_ITEM, OBJ_GOLD_BULLION, 1);
+	Hits::SetHitBox(this, m_x + 4, m_y + 6, 50, 50, ELEMENT_ITEM, OBJ_GOLD_BULLION, 1);
 
 
 }
@@ -84,10 +84,10 @@ void CObjGoldBullion::Draw()
 	CObjMap5*map5 = (CObjMap5*)Objs::GetObj(OBJ_MAP5);
 
 	//切り取り位置の設定
-	src.m_top = 134.0f;
+	src.m_top = 0.0f;
 	src.m_left = 134.0f;
 	src.m_right = 158.0f;
-	src.m_bottom = 158.0f;
+	src.m_bottom = 32.0f;
 
 	//表示位置の設定
 	if (map1 != nullptr)

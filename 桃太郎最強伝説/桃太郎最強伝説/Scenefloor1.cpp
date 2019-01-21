@@ -40,7 +40,7 @@ void CScenefloor1::InitScene()
 	v = Audio::VolumeMaster((1.0 - v));
 						
 	//BGMボリュームを下げる
-	float Volume = Audio::VolumeMaster(-0.98f);
+	float Volume = Audio::VolumeMaster(-0.58f);
 														//音楽スタート
 	Audio::Start(1);
 
@@ -89,14 +89,14 @@ void CScenefloor1::InitScene()
 	//外部グラフィックを読み込み4番に登録(512×512ピクセル)
 	Draw::LoadImage(L"アイテム.png", 4, TEX_SIZE_512);
 
-	//外部グラフィックを読み込み5番に登録(151×200ピクセル)
-	Draw::LoadImage(L"鬼原画 青鬼 新二.png", 5, TEX_SIZE_151_200);
+	//外部グラフィックを読み込み5番に登録(512×512ピクセル
+	Draw::LoadImage(L"青鬼.png", 5, TEX_SIZE_512);
 
-	//外部グラフィックを読み込み6番に登録(151×200ピクセル)
-	Draw::LoadImage(L"鬼原画 黄鬼 新二.png", 6, TEX_SIZE_151_200);
+	//外部グラフィックを読み込み6番に登録(512×512ピクセル)
+	Draw::LoadImage(L"黄鬼.png", 6, TEX_SIZE_512);
 
-	//外部グラフィックを読み込み7番に登録(151×200ピクセル)
-	Draw::LoadImage(L"鬼原画 緑鬼 新二.png", 7, TEX_SIZE_151_200);
+	//外部グラフィックを読み込み7番に登録(512×512ピクセル)
+	Draw::LoadImage(L"緑鬼.png", 7, TEX_SIZE_512);
 
 	//外部グラフィックを読み込み8番に登録(512ピクセル)
 	Draw::LoadImage(L"体力ゲージフル.png", 8, TEX_SIZE_512);
@@ -125,6 +125,7 @@ void CScenefloor1::InitScene()
 	//暗闇の透明度をセット
 	ObjCapture* yami = (ObjCapture*)Objs::GetObj(OBJ_CAPTURE);
 	yami->SetAlpha(0.6f);
+
 
 }
 

@@ -82,7 +82,7 @@ struct UserData
 	int mSeveData;	//サンプルセーブデータ
 	int m_point;	//GameMainで得たポイント
 	int m_ranking[10];//ランキング情報
-	int m_timerank[10];//タイムランク
+	int m_timerank[10][3];//タイムランク
 };
 //------------------------------------------------
 
@@ -144,6 +144,8 @@ enum ITEM
 #include"ObjItemsetsumei.h"
 #include"CObjText.h"
 #include"ObjSell.h"
+#include"ObjGoldBullion.h"
+#include"ObjSilverBullion.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------
@@ -168,5 +170,6 @@ enum ITEM
 
 //シーンスタートクラス---------------------------
 //ゲーム開始時のシーンクラス登録
+//#define SET_GAME_START  CScenefloor5
 #define SET_GAME_START  CSceneTitle
 //-----------------------------------------------

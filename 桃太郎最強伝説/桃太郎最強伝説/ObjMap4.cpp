@@ -39,9 +39,35 @@ void CObjMap4::Init()
 		{
 			if (m_map[i][j] == 5)
 			{
-				//アイテムオブジェクト作成
-				CObjPeach* p = new CObjPeach(j * 50.0f, i * 50.0f);		//オブジェクト作成
-				Objs::InsertObj(p, OBJ_PEACH, 2);	//マネージャに登録
+				int put = 0;
+				put = rand() % 100;
+				if (put >= 0 && put <= 39)
+				{
+					//アイテムオブジェクト作成
+					CObjPeach* p = new CObjPeach(j * 50.0f, i * 50.0f);		//オブジェクト作成
+					Objs::InsertObj(p, OBJ_PEACH, 2);	//マネージャに登録
+				}
+				else if (put >= 40 && put <= 59)
+				{
+					//アイテムオブジェクト作成
+					CObjYellowPeach* g = new CObjYellowPeach(j * 50.0f, i * 50.0f);		//オブジェクト作成
+					Objs::InsertObj(g, OBJ_YELLOW_PEACH, 2);	//マネージャに登録
+				}
+				else if (put >= 60 && put <= 84)
+				{
+					CObjPlum* g = new CObjPlum(j * 50.0f, i * 50.0f);		//オブジェクト作成
+					Objs::InsertObj(g, OBJ_PLUM, 2);	//マネージャに登録
+				}
+				else if (put >= 85 && put <= 89)
+				{
+					CObjGoldBullion* gb = new CObjGoldBullion(j * 50.0f, i * 50.0f);		//オブジェクト作成
+					Objs::InsertObj(gb, OBJ_GOLD_BULLION, 2);	//マネージャに登録
+				}
+				else
+				{
+					CObjSilverBullion* sb = new CObjSilverBullion(j * 50.0f, i * 50.0f);		//オブジェクト作成
+					Objs::InsertObj(sb, OBJ_SILVER_BULLION, 2);	//マネージャに登録
+				}
 
 			}
 		}
@@ -64,12 +90,6 @@ void CObjMap4::Init()
 				CObjEnemy2* e2 = new CObjEnemy2(j*50.0f, i*50.0f);
 				Objs::InsertObj(e2, OBJ_ENEMY2, 2);
 			}
-			/*		else if (m_map[i][j] == 12)
-			{
-			//緑鬼オブジェクト作成
-			CObjEnemy3* e3 = new CObjEnemy3(j*50.0f, i*50.0f);
-			Objs::InsertObj(e3, OBJ_ENEMY3, 5);
-			}*/
 		}
 	}
 
@@ -349,7 +369,7 @@ void CObjMap4::setenemy()
 			{
 				//15の中から出現場所を決定する
 				int herop = 0;
-				herop = rand() % 2;
+				herop = rand() % 1;
 				if (herop == 0)
 				{
 					m_map[i][j] = 10;//青鬼
@@ -358,10 +378,6 @@ void CObjMap4::setenemy()
 				{
 					m_map[i][j] = 11;//黄鬼
 				}
-				/*				else if (herop == 2)
-				{
-				m_map[i][j] = 12;//緑鬼
-				}*/
 			}
 		}
 	}

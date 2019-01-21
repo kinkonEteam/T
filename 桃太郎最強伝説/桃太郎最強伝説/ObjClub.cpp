@@ -17,7 +17,7 @@ using namespace GameL;
 //イニシャライズ
 void CObjClub::Init()
 {
-	m_x = 300.0f;
+	m_x = 0.0f;
 	m_y = 0.0f;
 
 	//アイテムのヒットボックスを作成
@@ -52,10 +52,10 @@ void CObjClub::Draw()
 
 
 				//切り取り位置の設定
-	src.m_top = 192.0f;
+	src.m_top = 0.0f;
 	src.m_left = 192.0f;
 	src.m_right = 220.0f;
-	src.m_bottom = 220.0f;
+	src.m_bottom = 32.0f;
 
 	//表示位置の設定
 	dst.m_top = 0.0f + m_y;

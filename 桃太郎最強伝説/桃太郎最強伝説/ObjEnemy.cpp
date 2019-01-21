@@ -32,7 +32,7 @@ void CObjEnemy::Init()
 	m_ani_frame = 1;	//Ã~ƒtƒŒ[ƒ€‚ğ‰Šú‚É‚·‚é
 	
 	m_speed_power = 1.5f;//’Êí‘¬“x
-	m_ani_max_time = 10;	//ƒAƒjƒ[ƒVƒ‡ƒ“ŠÔŠu•
+	m_ani_max_time = 5;	//ƒAƒjƒ[ƒVƒ‡ƒ“ŠÔŠu•
 
 	m_movey = true; //true=”w–Ê@false=³–Ê
 	m_movex = true;	//true=‰E@false=¶
@@ -47,12 +47,12 @@ void CObjEnemy::Init()
 	m_t = false;
 
 	knock = false;
-//	m_do_f=false;//“GUŒ‚ƒtƒ‰ƒO
+	//m_do_f=false;//“GUŒ‚ƒtƒ‰ƒO
 
 	m_ftime = 0;
 
 	//“–‚½‚è”»’è—p‚ÌHitBox‚ğì¬
-	Hits::SetHitBox(this, m_px, m_py, 50, 50, ELEMENT_ENEMY, OBJ_ENEMY, 1);
+	Hits::SetHitBox(this, m_px, m_py, 50,50, ELEMENT_ENEMY, OBJ_ENEMY, 1);
 }
 
 //ƒAƒNƒVƒ‡ƒ“
@@ -160,23 +160,20 @@ void CObjEnemy::Action()
 		);
 	}
 
-	////“G‚ª“®‚­ŠÔQQQQQQQQQQQQQQQQQQ
-	//
-	//enemy_move++;//‘«‚µ‘±‚¯‚é
+	/*//“G‚ª“®‚­ŠÔQQQQQQQQQQQQQQQQQQ
+	
+	enemy_move++;//‘«‚µ‘±‚¯‚é
 
-	////“GˆÚ“®ŠÔ‚ª250‚ÅŠ„‚èØ‚ê‚éê‡m_do_f‚ğtrue‚É‚·‚é
-	//if (enemy_move % 250 == 0)
-	//{
-	//	m_do_f = true;
-	//}
-
-	////e_time‚Ì‰Šú‰»
-	//if (enemy_move > 500)
-	//{
-	//	enemy_move = 0;
-	//}
+	//“GˆÚ“®ŠÔ‚ª250‚ÅŠ„‚èØ‚ê‚éê‡m_do_f‚ğtrue‚É‚·‚é
+	if (enemy_move % 250 == 0)
+		m_do_f = true;
+	
+	//e_time‚Ì‰Šú‰»
+	if (enemy_move > 500)
+	enemy_move = 0;
+	
 	//QQQQQQQQQQQQQQQQQQQQQQQQ
-
+	*/
 	//ålŒö‚ÌˆÊ’u‚ğæ“¾
 	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
 	float hx = hero->GetX();
@@ -348,38 +345,37 @@ void CObjEnemy::Action()
 		hit->SetInvincibility(true);//–³“GƒIƒ“
 	}
 
-	////“GUŒ‚
-	//if (m_do_f == true)
-	//{
+	/*//“GUŒ‚
+	if (m_do_f == true)
+	{
 
-	//	e_time++;//‘«‚µ‘±‚¯‚é
+		e_time++;//‘«‚µ‘±‚¯‚é
 
-	//	//e_time‚ª40ˆÈã‚È‚ç“ü‚è‘±‚¯‚é
-	//	if (e_time >= 40)
-	//	{
-	//		m_vx *= 3;
-	//		m_vy *= 3;
-	//	//e_time‚ª60‚È‚çm_do_f‚ğfalse‚ÉAe_time‚ğ‰Šú‰»‚·‚é
-	//	if (e_time == 60)
-	//	{
-	//	m_do_f = false;
-	//	e_time = 0;
-	//	}
-	//	
-	//	}
-	//	//e_time‚ª40ˆÈã‚É‚È‚é‚Ü‚Å~‚Ü‚éF“Ëi‚·‚é‚Ü‚Å‚Ì—Í‚ğ‚½‚ß‚éƒ‚[ƒVƒ‡ƒ““I‚ÈH
-	//	else
-	//	{
-	//		m_vx = 0;
-	//		m_vy = 0;
-	//	}
-	//}
+		//e_time‚ª40ˆÈã‚È‚ç“ü‚è‘±‚¯‚é
+		if (e_time >= 50)
+		{
+			m_vx *= 3;
+			m_vy *= 3;
+		//e_time‚ª60‚È‚çm_do_f‚ğfalse‚ÉAe_time‚ğ‰Šú‰»‚·‚é
+		if (e_time == 60)
+		{
+		m_do_f = false;
+		e_time = 0;
+		}
+		
+		}
+		//e_time‚ª40ˆÈã‚É‚È‚é‚Ü‚Å~‚Ü‚éF“Ëi‚·‚é‚Ü‚Å‚Ì—Í‚ğ‚½‚ß‚éƒ‚[ƒVƒ‡ƒ““I‚ÈH
+		else
+		{
+			
+		}
+	}*/
 
 	if (m_f == false)
 	{
 		//ˆÊ’u‚ÌXV
-		m_px += m_vx;
-		m_py += m_vy;
+		m_px += m_vx*1.0f;
+		m_py += m_vy*1.0f;
 	}
 
 	if (m_f == true)
@@ -391,6 +387,7 @@ void CObjEnemy::Action()
 
 		alpha = 0.5f;
 	}
+
 	if (m_time <= 0)
 	{
 		m_f = false;
@@ -427,10 +424,10 @@ void CObjEnemy::Draw()
 	CObjMap5*map5 = (CObjMap5*)Objs::GetObj(OBJ_MAP5);
 
 	//Ø‚èæ‚èˆÊ’u‚Ìİ’è
-	src.m_top = 48.0f * m_posture;
-	src.m_left = 0.0f + (AniData[m_ani_frame] * 45);
-	src.m_right = 50.0f + (AniData[m_ani_frame] * 45);
-	src.m_bottom = src.m_top+ 48.0f;
+	src.m_top = 64.0f * m_posture;
+	src.m_left = 0.0f + (AniData[m_ani_frame] * 64);
+	src.m_right = 64.0f + (AniData[m_ani_frame] * 64);
+	src.m_bottom = src.m_top+ 64.0f;
 
 	if (map1 != nullptr)
 	{
