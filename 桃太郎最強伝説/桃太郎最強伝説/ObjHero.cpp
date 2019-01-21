@@ -401,15 +401,6 @@ void CObjHero::Action()
 			m_f = false;
 			hit->SetInvincibility(false);//–³“GƒIƒt
 
-			CObjEveDog* evedog1 = (CObjEveDog*)Objs::GetObj(OBJ_EVEDOG);
-			CObjEveKiji* evekiji1 = (CObjEveKiji*)Objs::GetObj(OBJ_EVEKIJI);
-			CObjEveMnky* evemnky1 = (CObjEveMnky*)Objs::GetObj(OBJ_EVEMNKY);
-			CObjText* text = (CObjText*)Objs::GetObj(OBJ_TEXT);
-			if (text != nullptr || evedog1 != nullptr || evekiji1 != nullptr || evemnky1 != nullptr)//ŽålŒöî•ñ‚ª‘¶Ý‚·‚éê‡
-			{
-				hit->SetInvincibility(true);//–³“GƒIƒ“
-			}
-
 			alpha = 1.0f;
 			m_time = 70;
 		}
@@ -582,7 +573,6 @@ void CObjHero::Action()
 		CObjText* text = (CObjText*)Objs::GetObj(OBJ_TEXT);
 		if (text != nullptr || evedog != nullptr || evekiji != nullptr || evemnky != nullptr)
 		{
-			m_f = true;
 			m_key_f = true;
 		}
 		else
