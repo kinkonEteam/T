@@ -23,7 +23,7 @@ void CObjOD::Action()
 	Audio::LoadAudio(0, L"ButtonSE.wav", EFFECT);	//コマンドSE
 
 	//Dを押してポーズに移行する 
-	if (Input::GetVKey('D') == true)
+	if (Input::GetVKey('H') == true)
 	{
 		//コマンド用SEを鳴らす
 		Audio::Start(0);
@@ -72,7 +72,7 @@ void CObjOD::Draw()
 	dst.m_bottom = 600.0f;
 
 	//描画
-	Draw::Draw(30, &src, &dst, c, 0.0f);
+	Draw::Draw(40, &src, &dst, c, 0.0f);
 
 	
 }

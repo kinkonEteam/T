@@ -22,11 +22,8 @@ void  CObjPose::Action()
 	
 			if (Input::GetVKey('X') == true)
 			{
-				this->SetStatus(false);	//自身に削除命令を出す
-				
-
+				this->SetStatus(false);	//自身に削除命令を出す			
 			}
-
 	
 }
 
@@ -39,6 +36,7 @@ void  CObjPose::Draw()
 	Font::StrDraw(L"タイトルに戻りますか?", 200, 120, 45, c);
 	Font::StrDraw(L"いいえ(X)", 450, 300, 30, c);
 	Font::StrDraw(L"はい(Z)", 250, 300, 30, c);
+	
 
 
 }

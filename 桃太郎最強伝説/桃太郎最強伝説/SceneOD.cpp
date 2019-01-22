@@ -23,7 +23,7 @@ void CSceneOD::InitScene()
 	Objs::InsertObj(obj, OBJ_OD, 10);    //主人公オブジェクト登録
 
 	//外部グラフィックを読み込み30番に登録(512×512ピクセル)
-	Draw::LoadImage(L"操作説明ペイント.png", 30, TEX_SIZE_512);
+	Draw::LoadImage(L"操作説明ペイント.png", 40, TEX_SIZE_512);
 
 	
 }
