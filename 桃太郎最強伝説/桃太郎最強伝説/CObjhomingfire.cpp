@@ -20,11 +20,11 @@ void CObjHomingfire::Init()
 	m_vx = -1.0f;
 	m_vy = 0.0f;
 
-	m_time = 250;
+	m_time = 300;
 	//移動ベクトルの正規化
 	UnitVec(&m_vy, &m_vx);
 	//当たり判定用Hitboxを作成
-	Hits::SetHitBox(this, m_x, m_y, 50, 50, ELEMENT_ENEMY, OBJ_BULLET, 1);
+	Hits::SetHitBox(this, m_x, m_y, 80, 80, ELEMENT_ENEMY, OBJ_BULLET, 1);
 }
 
 //アクション
@@ -89,8 +89,8 @@ void CObjHomingfire::Draw()
 	//表示位置の設定
 	dst.m_top = 0.0f + m_y + map5->GetScrolly();
 	dst.m_left = 0.0f + m_x + map5->GetScrollx();
-	dst.m_right = 50.0f + m_x + map5->GetScrollx();
-	dst.m_bottom = 50.0f + m_y + map5->GetScrolly();
+	dst.m_right = 80.0f + m_x + map5->GetScrollx();
+	dst.m_bottom = 80.0f + m_y + map5->GetScrolly();
 
 	float r = 0.0f;
 	//主人公機と誘導弾丸で角度を取る

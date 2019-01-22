@@ -55,7 +55,7 @@ void CObjBoss::Init()
 	m_hit_right = false;
 
 	//当たり判定用のHitBoxを作成
-	Hits::SetHitBox(this, m_x, m_y, 64, 64, ELEMENT_ENEMY, OBJ_BOSS, 1);
+	Hits::SetHitBox(this, m_x, m_y, 128, 128, ELEMENT_ENEMY, OBJ_BOSS, 1);
 }
 
 //アクション
@@ -294,8 +294,8 @@ void CObjBoss::Draw()
 	//表示位置の設定
 	dst.m_top = 0.0f + m_y + map5->GetScrolly();
 	dst.m_left = 0.0f + m_x + map5->GetScrollx();
-	dst.m_right = 64.0f + m_x + map5->GetScrollx();
-	dst.m_bottom = 64.0f + m_y + map5->GetScrolly();
+	dst.m_right = 128.0f + m_x + map5->GetScrollx();
+	dst.m_bottom = 128.0f + m_y + map5->GetScrolly();
 
 	float r = 0.0f;
 	//主人公機とBOSSで角度を取る
