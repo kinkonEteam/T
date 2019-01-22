@@ -115,7 +115,7 @@ enum ITEM
 #include"ObjPeach.h"
 #include "ObjYellowPeach.h"
 #include "ObjPlum.h"
-#include "ObjHone.h"
+#include "ObjHorn.h"
 #include"ObjDog.h"
 #include"ObjMonke.h"
 #include"ObjPheasant.h"
@@ -135,6 +135,7 @@ enum ITEM
 #include"CObjSummary.h"
 #include"ObjHeroGauge.h"
 #include"ObjCapture.h"
+#include"ObjClub.h"
 #include"Objstair.h"
 #include"ObjCharView.h"
 #include"ObjPose.h"
@@ -156,7 +157,6 @@ enum ITEM
 #include "Scenefloor5.h"
 
 
-#include "SceneMain.h"
 #include "SceneTitle.h"
 #include"SceneGameOver.h"
 #include"ScecneClear.h"

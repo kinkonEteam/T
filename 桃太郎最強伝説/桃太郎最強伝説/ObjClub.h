@@ -12,12 +12,14 @@ using namespace GameL;
 class CObjClub : public CObj
 {
 public:
-	CObjClub() {};
+	CObjClub(float x, float y);
 	~CObjClub() {};
 	void Init();	//イニシャライズ
 	void Action();	//アクション
 	void Draw();	//ドロー
 private:
+	float m_px;		 //位置
+	float m_py;
 	float m_x;	//アイテムヒットボックス用
 	float m_y;	//アイテムヒットボックス用
 	bool m_del;	//削除チェック

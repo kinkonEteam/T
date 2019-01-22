@@ -48,6 +48,4 @@ private:
 	//ˆÚ“®—p‚ÌŒü‚«§Œä—p
 	bool m_movex;//¶‰E
 	bool m_movey;//ã‰º
-
-	bool knock;
 };
