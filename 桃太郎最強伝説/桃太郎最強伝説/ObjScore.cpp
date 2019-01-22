@@ -11,21 +11,27 @@
 //使用するネームスペース
 using namespace GameL;
 extern int item_list[5];
+extern int c, s, m;//カウント、セコンド、ミニッツ
 
 //イニシャライズ
 void CObjScore::Init()
 {
-	
 	//得点情報をランキング最下位に登録
-	((UserData*)Save::GetData())->m_ranking[14] = ((UserData*)Save::GetData())->m_point;
+	((UserData*)Save::GetData())->m_ranking[9] = ((UserData*)Save::GetData())->m_point;
+	((UserData*)Save::GetData())->m_timerank[9][0] = c;
+	((UserData*)Save::GetData())->m_timerank[9][1] = s;
+	((UserData*)Save::GetData())->m_timerank[9][2] = m;
 
 	//得点が高い順に並び変えする
 	RankingSort(((UserData*)Save::GetData())->m_ranking);
+	TimeSort(((UserData*)Save::GetData())->m_timerank);
 	
-	//セーブデータ？
+	//セーブ
 	Save::Seve();
-	
+
 	m_key_flag = false;//キーフラグ
+
+
 }
 
 //アクション
@@ -45,8 +51,7 @@ void CObjScore::Action()
 	{
 		m_key_flag = true;
 	}
-
-
+	
 }
 
 //ドロー
@@ -54,7 +59,7 @@ void CObjScore::Draw()
 {
 
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
-	int y_point = -40;//y軸
+	int y_point = -10;//y軸
 	int rank= 0;//順位変数
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置
@@ -64,13 +69,24 @@ void CObjScore::Draw()
 
 	//描画
 	swprintf_s(atk, L"ゲームランキング");
-	Font::StrDraw(atk, 0, 0 , 30, c);
+	Font::StrDraw(atk, 100, 0 , 30, c);
+
+	swprintf_s(atk, L"タイムランキング");
+	Font::StrDraw(atk, 500, 0, 30, c);
 
 	//ここでスコアを描画してる
-	for (int i = 0; i < 15;i++)
+	for (int i = 0; i < 10; i++)
 	{
-		swprintf_s(atk, L"%d位:Score・%d",rank=rank+1, ((UserData*)Save::GetData())->m_ranking[i]);//スコアをとって？
-		Font::StrDraw(atk, 300, y_point=y_point+40 , 40, c);
+		swprintf_s(atk, L" %2d位:円・%d", rank = rank + 1, ((UserData*)Save::GetData())->m_ranking[i]);//スコアをとって？
+		Font::StrDraw(atk, 0, y_point = y_point + 55, 40, c);
+
+		swprintf_s(atk, L"%2d位:Time   ： ：", rank);
+		Font::StrDraw(atk, 400, y_point, 40, c);
+
+		for (int n = 0; n < 3; n++) {
+			swprintf_s(atk, L" %02d", ((UserData*)Save::GetData())->m_timerank[i][n]);
+			Font::StrDraw(atk, 710 - (n * 60), y_point, 40, c);
+		}
 	}
 
 }
@@ -78,15 +94,15 @@ void CObjScore::Draw()
 //ランキングソートメソッド
 //引数1　int[16]:ランキング用配列
 //降順でバブルソートを行う
-void CObjScore::RankingSort(int rank[16])
+void CObjScore::RankingSort(int rank[10])
 {
 	//値交換用変数
 	int c;
 
 	//バブルソート
-	for (int i = 0; i < 15; i++)
+	for (int i = 0; i < 9; i++)
 	{
-		for (int j = i + 1; j < 16; j++)
+		for (int j = i + 1; j < 10; j++)
 		{
 			if (rank[i] < rank[j])
 			{
@@ -97,4 +113,35 @@ void CObjScore::RankingSort(int rank[16])
 			}
 		}
 	}
+}
+
+
+void CObjScore::TimeSort(int time[10][3])
+{
+	for (int m = 0; m < 10; m++)
+		if (time[m][0] == 0 && time[m][1] == 0) {
+			time[m][0] = 99, time[m][1] = 99, time[m][2] = 99;
+		}
+
+	//値交換用変数
+	int n;
+	for (int a = 0; a < 3; a++) {
+		//ソート
+		for (int i = 0; i < 9; i++) {//0~8(10個ソートする)
+			for (int j = i + 1; j < 10; j++) {//i+1~9(i以上で比べる)
+				if (time[i][a] > time[j][a]) {
+					for (int b = 0; b < 3; b++) {
+						n = time[i][b];
+						time[i][b] = time[j][b];
+						time[j][b] = n;
+					}//b値交換×3
+				}//if大小比較
+			}//j
+		}//i
+	}//a
+
+	for (int m = 0; m < 10; m++)
+		if (time[m][0] == 99 && time[m][1] == 99) {
+			time[m][0] = 0, time[m][1] = 0, time[m][2] = 0;
+		}
 }

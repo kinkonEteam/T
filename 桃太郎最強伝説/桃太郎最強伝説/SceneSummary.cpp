@@ -22,24 +22,37 @@ using namespace GameL;
 void CSceneSummary::InitScene()
 {
 	//あらすじ用BGM
-	Audio::LoadAudio(0, L"あらすじ.wav", BACK_MUSIC);		
+	Audio::LoadAudio(0, L"あらすじ.wav", BACK_MUSIC);	
 
-	//BGMボリュームを0.4下げ、元の1/10の音量にする。
-	float Volume = Audio::VolumeMaster(-0.4f);
+	/*//外部グラフィックを読み込み29番に登録(512×512ピクセル)
+	Draw::LoadImage(L"操作説明ペイント.png", 40, TEX_SIZE_512);//40番に登録*/
+
+	//ボリュームを1.0に戻す
+	float v = Audio::VolumeMaster(0);
+	v = Audio::VolumeMaster((1.0 - v));
+
+	//BGMボリュームを下げる
+	float Volume = Audio::VolumeMaster(-0.59f);
 
 	//音楽スタート
 	Audio::Start(0);
 
-	Font::SetStrTex(L"むかしむかし、あるところに、おじいさんとおばあさんが住んでいました。");
-	Font::SetStrTex(L"おじいさんは山へ芝刈りに、おばあさんは川へ洗濯に行きました");
-
 	//あらすじオブジェクト
-	CObjSummary*obj = new CObjSummary();
-	Objs::InsertObj(obj, OBJ_SUMMARY, 10);
+//	CObjSummary*obj = new CObjSummary();
+//	Objs::InsertObj(obj, OBJ_SUMMARY, 10);
+
+	//テキスト作成
+	CObjSummary* summary = new CObjSummary();
+	Objs::InsertObj(summary, OBJ_SUMMARY, 20);
 }
 
 //実行中メソッド
 void CSceneSummary::Scene()
 {
 
+	CObjSummary* summary = (CObjSummary*)Objs::GetObj(OBJ_SUMMARY);
+	if (summary == nullptr)
+	{
+		Scene::SetScene(new CScenefloor1());
+	}
 }

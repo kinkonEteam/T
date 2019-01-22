@@ -24,7 +24,7 @@ CObjHorn::CObjHorn(float x, float y)
 //イニシャライズ
 void CObjHorn::Init()
 {
-	m_x = 150.0f;
+	m_x = 0.0f;
 	m_y = 0.0f;
 
 	//アイテムのヒットボックスを作成
@@ -84,10 +84,10 @@ void CObjHorn::Draw()
 	CObjMap5*map5 = (CObjMap5*)Objs::GetObj(OBJ_MAP5);
 	
 	//切り取り位置の設定
-	src.m_top = 96.0f;
+	src.m_top = 0.0f;
 	src.m_left = 96.0f;
 	src.m_right = 128.0f;
-	src.m_bottom = 128.0f;
+	src.m_bottom = 32.0f;
 
 	//表示位置の設定
 	if (map1 != nullptr)

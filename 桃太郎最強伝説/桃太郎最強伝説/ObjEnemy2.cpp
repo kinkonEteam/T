@@ -1,4 +1,6 @@
 //使用するヘッダーファイル
+#include <stdlib.h>
+#include <time.h>
 #include"GameL\DrawTexture.h"
 #include"GameL\WinInputs.h"
 #include"GameL\SceneManager.h"
@@ -30,7 +32,7 @@ void CObjEnemy2::Init()
 	m_ani_frame = 1;	//静止フレームを初期にする
 
 	m_speed_power = 2.0f;//通常速度
-	m_ani_max_time = 10;	//アニメーション間隔幅
+	m_ani_max_time = 5;	//アニメーション間隔幅
 
 	m_movey = true; //true=背面　false=正面
 	m_movex = true;	//true=右　false=左
@@ -42,11 +44,15 @@ void CObjEnemy2::Init()
 	m_hit_right = false;
 
 	m_key_f = false;		//無敵時間行動制御
-	m_t = false;
+	m_f = false;
 
 	m_ftime = 0;
 
-	knock = false;
+	m_time = 30;
+
+	alpha = 1.0;
+
+	srand(time(NULL));
 	//当たり判定用のHitBoxを作成
 	Hits::SetHitBox(this, m_px, m_py, 50, 50, ELEMENT_ENEMY, OBJ_ENEMY, 1);
 }
@@ -264,6 +270,14 @@ void CObjEnemy2::Action()
 		m_vx = 0;
 	}
 
+	//イベント中は動きを止める
+	CObjTalk* talk = (CObjTalk*)Objs::GetObj(OBJ_TALK);
+	if (talk != nullptr)
+	{
+		m_vx = 0;
+		m_vy = 0;
+	}
+
 	//HitBoxの内容を更新
 	CHitBox*hit = Hits::GetHitBox(this);
 	if (map1 != nullptr)
@@ -317,8 +331,8 @@ void CObjEnemy2::Action()
 	if (m_f == false)
 	{
 		//位置の更新
-		m_px += m_vx;
-		m_py += m_vy;
+		m_px += m_vx*1.1;
+		m_py += m_vy*1.1;
 	}
 
 	if (m_f == true)
@@ -341,8 +355,52 @@ void CObjEnemy2::Action()
 	//HPが0になったら破棄
 	if (m_hp <= 0)
 	{
+
+		//敵を倒すと確率でアイテム出現
+		int put = 0;
+		put = rand() % 100;
+
+		//ブロック情報を持ってくる
+		CObjMap1*map1 = (CObjMap1*)Objs::GetObj(OBJ_MAP1);
+		CObjMap2*map2 = (CObjMap2*)Objs::GetObj(OBJ_MAP2);
+		CObjMap3*map3 = (CObjMap3*)Objs::GetObj(OBJ_MAP3);
+		CObjMap4*map4 = (CObjMap4*)Objs::GetObj(OBJ_MAP4);
+		CObjMap5*map5 = (CObjMap5*)Objs::GetObj(OBJ_MAP5);
+
+		//ボス階層のみ確率で回復出現
+		if (map5 != nullptr)
+		{
+			if (put >= 0 && put <= 29)
+			{
+				//桃オブジェクト作成
+				CObjPeach* p = new CObjPeach(m_px, m_py);		//オブジェクト作成
+				Objs::InsertObj(p, OBJ_PEACH, 2);	//マネージャに登録
+			}
+			else if (put >= 30 && put <= 35)
+			{
+				//桃オブジェクト作成
+				CObjYellowPeach* g = new CObjYellowPeach(m_px, m_py);		//オブジェクト作成
+				Objs::InsertObj(g, OBJ_YELLOW_PEACH, 2);	//マネージャに登録
+			}
+		}
+		//それ以外の階層では角か棍棒出現
+		else
+		{
+			if (put >= 0 && put <= 14)
+			{
+				CObjHorn* sb = new CObjHorn(m_px, m_py);		//オブジェクト作成
+				Objs::InsertObj(sb, OBJ_HORN, 2);	//マネージャに登録
+			}
+			else if (put >= 15 && put <= 29)
+			{
+				CObjClub* sb = new CObjClub(m_px, m_py);		//オブジェクト作成
+				Objs::InsertObj(sb, OBJ_CLUB, 2);	//マネージャに登録
+			}
+		}
+
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
+;
 	}
 }
 
@@ -366,10 +424,10 @@ void CObjEnemy2::Draw()
 	CObjMap5*map5 = (CObjMap5*)Objs::GetObj(OBJ_MAP5);
 
 	//切り取り位置の設定
-	src.m_top = 48.0f * m_posture;	
-	src.m_left = 0.0f + (AniData[m_ani_frame] * 45);
-	src.m_right = 50.0f + (AniData[m_ani_frame] * 45);
-	src.m_bottom = src.m_top + 48.0f;
+	src.m_top = 64.0f * m_posture;
+	src.m_left = 0.0f + (AniData[m_ani_frame] * 64);
+	src.m_right = 64.0f + (AniData[m_ani_frame] * 64);
+	src.m_bottom = src.m_top + 64.0f;
 
 	//表示位置の設定
 	if (map1 != nullptr)

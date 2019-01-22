@@ -25,6 +25,9 @@ void CSceneTitle::InitScene()
 		item_list[i] = 0;
 		
 	}
+	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
+	hero->SetDATA();//主人公HPとお供データリセット関数
+
 	//外部グラフィックを読み込み19番に登録(512×512ピクセル)
 	Draw::LoadImage(L"ゲームタイトル.png", 20, TEX_SIZE_512);
 
@@ -39,8 +42,8 @@ void CSceneTitle::InitScene()
 	float v = Audio::VolumeMaster(0);
 	v = Audio::VolumeMaster((1.0 - v));
 
-	//BGMボリュームを0.5下げる
-	float Volume = Audio::VolumeMaster(-0.5f);
+	//BGMボリュームを下げる
+	float Volume = Audio::VolumeMaster(-0.95f);
 	//音楽スタート
 	Audio::Start(0);
 }

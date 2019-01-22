@@ -4,6 +4,7 @@
 //使用するネームスペース
 using namespace GameL;
 
+extern int c;
 extern int s;
 extern int m;
 
@@ -17,7 +18,7 @@ public:
 	void Action();		//アクション
 	void Draw();		//ドロー
 
-	void SaveSM() { s = sec, m = min; }//セーブ、セコンドミニッツ
+	void SaveSM() { c = count; s = sec, m = min; }//セーブ、セコンドミニッツ
 private:
 	int count;			//カウント用
 	int sec;			//セコンド(秒)

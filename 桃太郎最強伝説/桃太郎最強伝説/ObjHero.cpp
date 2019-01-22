@@ -13,7 +13,8 @@ using namespace GameL;
 //Date.cpp内で宣言したグローバル変数をextern宣言----------------------保持データ
 extern int HP;				//HP
 extern bool OTOMO[3];		//お供所持情報
-extern int item_list[5];	//
+extern int item_list[7];	//
+extern int c, s, m;
 void CObjHero::SaveDATA() {		//セーブ関数----------------------データをセーブ
 	HP = m_hp;					//シーン切り替え時のhpデータを、HPへ格納
 	ObjCharView* cv = (ObjCharView*)Objs::GetObj(OBJ_CV);//文字表示のデータ
@@ -21,8 +22,9 @@ void CObjHero::SaveDATA() {		//セーブ関数----------------------データをセーブ
 }
 void CObjHero::SetDATA() {		//セット関数----------------------データをセット
 	HP = 5;						//ゲームオーバー後、HPを初期値に戻す
-	for (int n = 0; n < 2; n++)
+	for (int n = 0; n <= 2; n++)
 		OTOMO[n] = false;
+	c = 0, s = 0, m = 0;
 }
 //シーン表示時の暗闇作成()又は、イベントから関数を使って暗闇を開放していく時(false)
 void CObjHero::SetYAMI(bool tipe) {//暗闇セット関数-----------------------暗闇
@@ -55,22 +57,22 @@ void CObjHero::Init()
 	m_hp_max = 5;		//初期最大HP
 	m_speed = 1.0f;			//速度
 
-	bool m_otm[3];
+	
 	m_Sf = true;		//ソード制御
 	m_Kf = true;		//  キジ制御
 
 	//OTOMO[0犬,1キジ,2猿] == true(ある) or false(ない)
 	if (OTOMO[0] == true)		//犬が居る場合
 	{
-		m_hp_max += 1;			//最大HPに1加算
+		m_hp_max = 6;			//最大HPを6にセット
 	}
-	if (OTOMO[1] == true)		//キジが居る場合
-	{
-		m_Kf = false;			//制御を解除
-	}
-	if (OTOMO[2] == true)		//猿が居る場合
+	if (OTOMO[1] == true)		//猿が居る場合
 	{
 		m_speed = 1.2f;			//速度
+	}
+	if (OTOMO[2] == true)		//キジが居る場合
+	{
+		m_Kf = false;			//制御を解除
 	}
 	SetYAMI();					//暗闇作成
 	
@@ -399,15 +401,6 @@ void CObjHero::Action()
 			m_f = false;
 			hit->SetInvincibility(false);//無敵オフ
 
-			CObjEveDog* evedog1 = (CObjEveDog*)Objs::GetObj(OBJ_EVEDOG);
-			CObjEveKiji* evekiji1 = (CObjEveKiji*)Objs::GetObj(OBJ_EVEKIJI);
-			CObjEveMnky* evemnky1 = (CObjEveMnky*)Objs::GetObj(OBJ_EVEMNKY);
-			CObjText* text = (CObjText*)Objs::GetObj(OBJ_TEXT);
-			if (text != nullptr || evedog1 != nullptr || evekiji1 != nullptr || evemnky1 != nullptr)//主人公情報が存在する場合
-			{
-				hit->SetInvincibility(true);//無敵オン
-			}
-
 			alpha = 1.0f;
 			m_time = 70;
 		}
@@ -423,50 +416,77 @@ void CObjHero::Action()
 			}
 			else if (hit->CheckObjNameHit(OBJ_YELLOW_PEACH) != nullptr)
 			{
-				m_hp += 3;	//HPを3回復
-				Audio::Start(6);//回復音を鳴らす			
+				if (m_hp < m_hp_max - 1) {
+					m_hp += 2;		//HPを2回復
+				}
+				else {
+					m_hp += 1;	//HPを1回復
+				}
+				Audio::Start(6);//回復音			
 			}
 			else if (hit->CheckObjNameHit(OBJ_PLUM) != nullptr)
 			{
-				item_list[2] += 1;
-				Audio::Start(2);//アイテム取得音を鳴らす
+				item_list[2]++;
+				Audio::Start(2);//アイテム取得音
 			}
 			else if (hit->CheckObjNameHit(OBJ_HORN) != nullptr)
 			{
-				item_list[3] += 1;
-				Audio::Start(2);//アイテム取得音を鳴らす
+				item_list[3]++;
+				Audio::Start(2);//アイテム取得音
 			}
 			else if (hit->CheckObjNameHit(OBJ_GOLD_BULLION) != nullptr)
 			{
 
-				item_list[4] += 1;
-				Audio::Start(2);//アイテム取得音を鳴らす
+				item_list[4]++;
+				Audio::Start(2);//アイテム取得音
 			}
 			else if (hit->CheckObjNameHit(OBJ_SILVER_BULLION) != nullptr)
 			{
-				item_list[5] += 1;
-				Audio::Start(2);//アイテム取得音を鳴らす
+				item_list[5]++;
+				Audio::Start(2);//アイテム取得音
 			}
 			else if (hit->CheckObjNameHit(OBJ_CLUB) != nullptr)
 			{
-				item_list[6] += 1;
-				Audio::Start(7);//デバフ音を鳴らす
-								//移動速度を0.8倍する
-								//m_px *= 0.8;
-								//m_py *= 0.8;
+				item_list[6]++;
+				Audio::Start(7);//デバフ音
 			}
 		}
 		else //最大値の場合、回復出来ない
 		{
 			if (hit->CheckObjNameHit(OBJ_PEACH) != nullptr)
 			{
-				item_list[0] += 1;
-				Audio::Start(2);//アイテム取得音を鳴らす
+				item_list[0]++;
+				Audio::Start(2);//アイテム取得音
 			}
 			else if (hit->CheckObjNameHit(OBJ_YELLOW_PEACH) != nullptr)
 			{
-				item_list[1] += 1;
-				Audio::Start(2);//アイテム取得音を鳴らす			
+				item_list[1]++;
+				Audio::Start(2);//アイテム取得音			
+			}
+			else if (hit->CheckObjNameHit(OBJ_PLUM) != nullptr)
+			{
+				item_list[2]++;
+				Audio::Start(2);//アイテム取得音
+			}
+			else if (hit->CheckObjNameHit(OBJ_HORN) != nullptr)
+			{
+				item_list[3]++;
+				Audio::Start(2);//アイテム取得音
+			}
+			else if (hit->CheckObjNameHit(OBJ_GOLD_BULLION) != nullptr)
+			{
+				item_list[4]++;
+				Audio::Start(2);//アイテム取得音
+			}
+			else if (hit->CheckObjNameHit(OBJ_SILVER_BULLION) != nullptr)
+			{
+				item_list[5]++;
+				Audio::Start(2);//アイテム取得音
+			}
+			else if (hit->CheckObjNameHit(OBJ_CLUB) != nullptr)
+			{
+				item_list[6]++;
+				Audio::Start(7);//デバフ音
 			}
 		}
 	}
@@ -522,7 +542,7 @@ void CObjHero::Action()
 
 				df = false;
 
-				m_hp_max += 1;
+				m_hp_max = 6;
 				OTOMO[0] = true;
 			}
 			else if (hit->CheckObjNameHit(OBJ_MONKE) && mf == true)//猿に当たった場合
@@ -557,20 +577,10 @@ void CObjHero::Action()
 		CObjText* text = (CObjText*)Objs::GetObj(OBJ_TEXT);
 		if (text != nullptr || evedog != nullptr || evekiji != nullptr || evemnky != nullptr)
 		{
-			m_f = true;
 			m_key_f = true;
 		}
 		else
 			m_key_f = false;
-
-
-
-
-	if (hit->CheckElementHit(ELEMENT_FIELD) == true && Input::GetVKey('F') == true)
-	{
-		//遅延
-		Sleep(900);
-	}
 
 	//HPが0になったら破棄------死亡判定----------------------------------------------------------------
 	if (m_hp <= 0)

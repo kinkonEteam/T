@@ -77,20 +77,17 @@ void CScenefloor5::InitScene()
 	//外部グラフィックを読み込み4番に登録(512×512ピクセル)
 	Draw::LoadImage(L"アイテム.png", 4, TEX_SIZE_512);
 
-	//外部グラフィックを読み込み5番に登録(151×200ピクセル)
-	Draw::LoadImage(L"鬼原画 青鬼 新二.png", 5, TEX_SIZE_151_200);
+	//外部グラフィックを読み込み5番に登録(512×512ピクセル
+	Draw::LoadImage(L"青鬼.png", 5, TEX_SIZE_512);
 
-	//外部グラフィックを読み込み6番に登録(151×200ピクセル)
-	Draw::LoadImage(L"鬼原画 黄鬼 新二.png", 6, TEX_SIZE_151_200);
-
-	//外部グラフィックを読み込み7番に登録(151×200ピクセル)
-	Draw::LoadImage(L"鬼原画 緑鬼 新二.png", 7, TEX_SIZE_151_200);
+	//外部グラフィックを読み込み6番に登録(512×512ピクセル)
+	Draw::LoadImage(L"黄鬼.png", 6, TEX_SIZE_512);
 
 	//外部グラフィックを読み込み8番に登録(512ピクセル)
 	Draw::LoadImage(L"体力ゲージフル.png", 8, TEX_SIZE_512);
 
 	//外部グラフィックファイルを読み込み9番に登録
-	Draw::LoadImage(L"鬼原画 赤鬼 新二.png", 9, TEX_SIZE_151_200);
+	Draw::LoadImage(L"赤鬼.png", 9, TEX_SIZE_151_200);
 
 	//外部グラフィックファイルを読み込み10番に登録
 	Draw::LoadImage(L"ファイアボール.png", 10, TEX_SIZE_151_200);

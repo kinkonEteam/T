@@ -7,7 +7,6 @@
 #include <stdlib.h>
 #include "ObjInventory.h"
 #include "GameHead.h"
-#include "SceneMain.h"
 #include "GameL\UserData.h"
 
 extern int item_list[7];
@@ -75,33 +74,32 @@ void CObjInventory::Draw()
 		wchar_t str[STR_MAX];
 		switch (i)
 		{
-		case 0:
-			
-				swprintf_s(str, L"桃　　　  %d個", item_list[0]);
+		case 0:	
+				swprintf_s(str, L"桃　　　  %d個", item_list[i]);
 				Font::StrDraw(str, SCORE_POS_X, SCORE_POS_Y + SCORE_INTERVAL*i, SCORE_FONT_SIZE, c);
 				break;
 		case 1:
-				swprintf_s(str, L"黄桃　　　%d個", item_list[1]);
+				swprintf_s(str, L"黄桃　　　%d個", item_list[i]);
 				Font::StrDraw(str, SCORE_POS_X, SCORE_POS_Y + SCORE_INTERVAL*i, SCORE_FONT_SIZE, c);
 				break;
 		case 2:
-				swprintf_s(str, L"すもも　　%d個", item_list[2]);
+				swprintf_s(str, L"すもも　　%d個", item_list[i]);
 				Font::StrDraw(str, SCORE_POS_X, SCORE_POS_Y + SCORE_INTERVAL*i, SCORE_FONT_SIZE, c);
 				break;
 		case 3:
-				swprintf_s(str, L"つの　　　%d個", item_list[3]);
+				swprintf_s(str, L"つの　　　%d個", item_list[i]);
 				Font::StrDraw(str, SCORE_POS_X, SCORE_POS_Y + SCORE_INTERVAL*i, SCORE_FONT_SIZE, c);
 				break;
 		case 4:
-				swprintf_s(str, L"金塊　　　%d個", item_list[4]);
+				swprintf_s(str, L"金塊　　　%d個", item_list[i]);
 				Font::StrDraw(str, SCORE_POS_X, SCORE_POS_Y + SCORE_INTERVAL*i, SCORE_FONT_SIZE, c);
 				break;
 		case 5:
-				swprintf_s(str, L"銀塊　　　%d個", item_list[5]);
+				swprintf_s(str, L"銀塊　　　%d個", item_list[i]);
 				Font::StrDraw(str, SCORE_POS_X, SCORE_POS_Y + SCORE_INTERVAL*i, SCORE_FONT_SIZE, c);
 				break;
 		case 6:
-				swprintf_s(str, L"棍棒　　　%d個", item_list[6]);
+				swprintf_s(str, L"棍棒　　　%d個", item_list[i]);
 				Font::StrDraw(str, SCORE_POS_X, SCORE_POS_Y + SCORE_INTERVAL*i, SCORE_FONT_SIZE, c);
 				break;
 		}

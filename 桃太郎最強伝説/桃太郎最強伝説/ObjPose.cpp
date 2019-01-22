@@ -20,13 +20,10 @@ void CObjPose::Init()
 void  CObjPose::Action()
 {
 	
-			if (Input::GetVKey('Z') == true)
+			if (Input::GetVKey('X') == true)
 			{
-				this->SetStatus(false);	//自身に削除命令を出す
-				
-
+				this->SetStatus(false);	//自身に削除命令を出す			
 			}
-
 	
 }
 

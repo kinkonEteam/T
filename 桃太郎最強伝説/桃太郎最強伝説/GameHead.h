@@ -25,7 +25,6 @@ enum OBJ_NAME
 	OBJ_CLUB,
 	OBJ_ENEMY,
 	OBJ_ENEMY2,
-	OBJ_ENEMY3,
 	OBJ_DOG,
 	OBJ_MONKE,
 	OBJ_PHEASANT,
@@ -41,7 +40,6 @@ enum OBJ_NAME
 	OBJ_YAMI,
 	OBJ_BULLET,
 	OBJ_HOMING_FIRE,
-	OBJ_SUMMARY,
 	OBJ_POSE,
 	OBJ_OD,
 	OBJ_STAIR,
@@ -51,6 +49,9 @@ enum OBJ_NAME
 	OBJ_SCORE,
 	OBJ_ITEMSETSUMEI,
 	OBJ_TEXT,
+	OBJ_SUMMARY,
+	OBJ_SELL,
+
 };
 //------------------------------------------------
 
@@ -79,7 +80,8 @@ struct UserData
 {
 	int mSeveData;	//サンプルセーブデータ
 	int m_point;	//GameMainで得たポイント
-	int m_ranking[15];//ランキング情報
+	int m_ranking[10];//ランキング情報
+	int m_timerank[10][3];//タイムランク
 };
 //------------------------------------------------
 
@@ -112,7 +114,7 @@ enum ITEM
 #include"ObjPeach.h"
 #include "ObjYellowPeach.h"
 #include "ObjPlum.h"
-#include "ObjHone.h"
+#include "ObjHorn.h"
 #include"ObjDog.h"
 #include"ObjMonke.h"
 #include"ObjPheasant.h"
@@ -120,7 +122,6 @@ enum ITEM
 #include"CObjFlyKiji.h"
 #include"ObjEnemy.h"
 #include"ObjEnemy2.h"
-#include"ObjEnemy3.h"
 #include"ObjTitle.h"
 #include"ObjInventory.h"
 #include"ObjGameOver.h"
@@ -130,9 +131,10 @@ enum ITEM
 #include"CObjEveKiji.h"
 #include"CObjEveMnky.h"
 #include"CObjhomingfire.h"
-#include"ObjSummary.h"
+#include"CObjSummary.h"
 #include"ObjHeroGauge.h"
 #include"ObjCapture.h"
+#include"ObjClub.h"
 #include"Objstair.h"
 #include"ObjCharView.h"
 #include"ObjPose.h"
@@ -140,6 +142,9 @@ enum ITEM
 #include"ObjScore.h"
 #include"ObjItemsetsumei.h"
 #include"CObjText.h"
+#include"ObjSell.h"
+#include"ObjGoldBullion.h"
+#include"ObjSilverBullion.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------
@@ -151,7 +156,6 @@ enum ITEM
 #include "Scenefloor5.h"
 
 
-#include "SceneMain.h"
 #include "SceneTitle.h"
 #include"SceneGameOver.h"
 #include"ScecneClear.h"
@@ -159,9 +163,11 @@ enum ITEM
 #include"SceneOD.h"
 #include"SceneScore.h"
 #include"SceneItemsetsumei.h"
+#include"SceneSell.h"
 //-----------------------------------------------
 
 //シーンスタートクラス---------------------------
 //ゲーム開始時のシーンクラス登録
+//#define SET_GAME_START  CScenefloor5
 #define SET_GAME_START  CSceneTitle
 //-----------------------------------------------
