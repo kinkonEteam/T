@@ -17,7 +17,7 @@ extern int item_list[7];	//
 extern int c, s, m;
 void CObjHero::SaveDATA() {		//セーブ関数----------------------データをセーブ
 	HP = m_hp;					//シーン切り替え時のhpデータを、HPへ格納
-	ObjCharView* cv = (ObjCharView*)Objs::GetObj(OBJ_CV);//文字表示のデータ
+	ObjCharView* cv = (ObjCharView*)Objs::GetObj(OBJ_CV);//オブジェ情報取得
 	cv->SaveSM();//セーブ、セコンドミニッツ
 }
 void CObjHero::SetDATA() {		//セット関数----------------------データをセット
