@@ -21,7 +21,7 @@ CObjEnemy::CObjEnemy(float x, float y)
 //イニシャライズ
 void CObjEnemy::Init()
 {
-	m_hp = 3;        //体力
+	m_hp = 5;        //体力
 	m_vx = 0.0f;	//移動ベクトル
 	m_vy = 0.0f;
 	m_posture = 0.0f;//正面(0.0f) 左(1.0f) 右(2.0f) 背面(3.0f)
