@@ -400,6 +400,7 @@ void CObjEnemy2::Action()
 
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
+;
 	}
 }
 
