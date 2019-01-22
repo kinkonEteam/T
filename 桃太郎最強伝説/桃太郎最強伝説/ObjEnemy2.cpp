@@ -42,9 +42,13 @@ void CObjEnemy2::Init()
 	m_hit_right = false;
 
 	m_key_f = false;		//–³“GŠÔs“®§Œä
-	m_t = false;
+	m_f = false;
 
 	m_ftime = 0;
+
+	m_time = 30;
+
+	alpha = 1.0;
 
 	knock = false;
 	//“–‚½‚è”»’è—p‚ÌHitBox‚ğì¬

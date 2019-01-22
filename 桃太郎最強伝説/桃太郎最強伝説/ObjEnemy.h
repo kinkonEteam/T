@@ -31,7 +31,6 @@ private:
 	int m_time;//–³“GŠÔ‘ª’è
 	int m_f;//–³“GŠÔ
 	int m_key_f;//–³“GŠÔs“®§Œä
-	int m_t;
 	int count;
 	int e_time;//“Gs“®ŠÔ
 	int enemy_move;//“GˆÚ“®
