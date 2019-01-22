@@ -13,6 +13,10 @@ using namespace GameL;
 void ObjCapture::Init()
 {
 	m_alpha = 1.0f;
+
+
+	//外部グラフィックを読み込み30番に登録(512×512ピクセル)
+	Draw::LoadImage(L"操作説明ペイント.png", 40, TEX_SIZE_512);
 }
 
 //アクション

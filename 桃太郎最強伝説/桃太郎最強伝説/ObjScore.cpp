@@ -77,7 +77,7 @@ void CObjScore::Draw()
 	//ここでスコアを描画してる
 	for (int i = 0; i < 10; i++)
 	{
-		swprintf_s(atk, L" %2d位:Score・%d", rank = rank + 1, ((UserData*)Save::GetData())->m_ranking[i]);//スコアをとって？
+		swprintf_s(atk, L" %2d位:円・%d", rank = rank + 1, ((UserData*)Save::GetData())->m_ranking[i]);//スコアをとって？
 		Font::StrDraw(atk, 0, y_point = y_point + 55, 40, c);
 
 		swprintf_s(atk, L"%2d位:Time   ： ：", rank);

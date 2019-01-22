@@ -55,7 +55,7 @@ void CObjHero::Init()
 	m_vx = 0.0f;		//移動ベクトル
 	m_vy = 0.0f;
 	m_hp_max = 5;		//初期最大HP
-	m_speed = 2.0f;			//速度
+	m_speed = 1.0f;			//速度
 
 	
 	m_Sf = true;		//ソード制御
@@ -175,8 +175,8 @@ void CObjHero::Action()
 
 						if (m_Pf == true)
 						{
-							//Vを押してTitleに移行する
-							if (Input::GetVKey('V') == true)
+							//Xを押してTitleに移行する
+							if (Input::GetVKey('X') == true)
 							{
 								//タイトルに移動
 								Scene::SetScene(new CSceneTitle());
@@ -184,7 +184,7 @@ void CObjHero::Action()
 
 							}
 						}
-						if (Input::GetVKey('Z') == true)//Mキー入力時
+						if (Input::GetVKey('Z') == true)//Zキー入力時
 						{
 							if (m_Pf == true) {
 								Sleep(1);

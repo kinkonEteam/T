@@ -7,7 +7,6 @@
 #include <stdlib.h>
 #include "ObjInventory.h"
 #include "GameHead.h"
-#include "SceneMain.h"
 #include "GameL\UserData.h"
 
 extern int item_list[7];
