@@ -67,7 +67,7 @@ void ObjCharView::Draw()
 	CObjTalk* obj = (CObjTalk*)Objs::GetObj(OBJ_TALK);//イベント取得
 	if (obj == nullptr)//存在しない場合のみ表示
 	{
-		Font::StrDraw(L"「H」ポーズ", 10, 560, 25, c);
+		Font::StrDraw(L"「M」ポーズ", 10, 560, 25, c);
 		Font::StrDraw(L"「i」持ち物", 200, 560, 25, c);
 	}
 }
