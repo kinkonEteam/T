@@ -19,13 +19,10 @@ CObjSword::CObjSword(float x, float y, int pos)//渡されるだけの変数
 //イニシャライズ
 void CObjSword::Init()
 {
-	m_r = 180;
+	m_r = 0;
+	m_vr = 15;
 	m_posx = 0;			//Swordの座標	
 	m_posy = 0;
-
-	m_ani_time = 0;		//アニメーションタイム
-	m_ani_frame = 0;	//フレーム
-	m_s = 1;			//アニメーション緩急
 
 						//当たり判定用HitBoxを作成
 	Hits::SetHitBox(this, m_px, m_py, 50, 50, ELEMENT_MAGIC, OBJ_SWORD, 1);
@@ -60,13 +57,20 @@ void CObjSword::Action()
 	{
 		m_posy = -1;
 	}
+	
+	
+	if (m_pos == 1)
+		m_r += m_vr;
+	else
+		m_r -= m_vr;
 
 	//HitBoxの内容を更新
 	CHitBox*hit = Hits::GetHitBox(this);
 	hit->SetPos(m_px + (50.0f * m_posx), m_py + (50.0f * m_posy));
 
-	if (m_ani_frame == 4)
-	{
+	if (m_vr > 0)
+		m_vr -= 1;
+	else {
 		this->SetStatus(false);	 //オブジェクト削除
 		Hits::DeleteHitBox(this);//HitBox削除
 	}
@@ -80,12 +84,17 @@ void CObjSword::Draw()
 
 	RECT_F src; //描画元切り取り位置
 	RECT_F dst; //描画先表示位置
-
+	/*
 	//切り取り位置の設定
 	src.m_top	= 0.0f + (32.0f*m_pos);
 	src.m_left	= 0.0f + (32.0f*m_ani_frame);
 	src.m_right =32.0f + (32.0f*m_ani_frame);
 	src.m_bottom=32.0f + (32.0f*m_pos);
+	*/
+	src.m_top = 0.0f;
+	src.m_left = 0.0f;
+	src.m_right = 32.0f;
+	src.m_bottom = 32.0f;
 
 	//表示位置の設定	
 	dst.m_top	=(  0.0f + m_py) + (50.0f * m_posy);
