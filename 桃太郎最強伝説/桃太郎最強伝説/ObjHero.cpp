@@ -55,7 +55,7 @@ void CObjHero::Init()
 	m_vx = 0.0f;		//移動ベクトル
 	m_vy = 0.0f;
 	m_hp_max = 5;		//初期最大HP
-	m_speed = 2.0f;			//速度
+	m_speed = 1.0f;			//速度
 
 	
 	m_Sf = true;		//ソード制御
