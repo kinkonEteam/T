@@ -32,7 +32,6 @@ private:
 	int m_time;//–³“GŠÔ‘ª’è
 	int m_f;//–³“GŠÔ
 	int m_key_f;//–³“GŠÔs“®§Œä
-	int m_t;
 	int count;
 
 	int m_ftime;//ŠK‘w“Ë“üŒã‚ÌŠÔ‘ª’è
@@ -49,6 +48,4 @@ private:
 	//ˆÚ“®—p‚ÌŒü‚«§Œä—p
 	bool m_movex;//¶‰E
 	bool m_movey;//ã‰º
-
-	bool knock;
 };

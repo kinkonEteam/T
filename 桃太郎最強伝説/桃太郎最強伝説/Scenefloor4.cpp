@@ -78,13 +78,11 @@ void CScenefloor4::InitScene()
 	Draw::LoadImage(L"アイテム.png", 4, TEX_SIZE_512);
 
 	//外部グラフィックを読み込み5番に登録(512×512ピクセル
+	//外部グラフィックを読み込み5番に登録(512×512ピクセル
 	Draw::LoadImage(L"青鬼.png", 5, TEX_SIZE_512);
 
 	//外部グラフィックを読み込み6番に登録(512×512ピクセル)
 	Draw::LoadImage(L"黄鬼.png", 6, TEX_SIZE_512);
-
-	//外部グラフィックを読み込み7番に登録(512×512ピクセル)
-	Draw::LoadImage(L"緑鬼.png", 7, TEX_SIZE_512);
 
 	//外部グラフィックを読み込み8番に登録(512ピクセル)
 	Draw::LoadImage(L"体力ゲージフル.png", 8, TEX_SIZE_512);

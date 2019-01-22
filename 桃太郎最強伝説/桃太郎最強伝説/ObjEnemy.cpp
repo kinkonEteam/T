@@ -1,4 +1,6 @@
 //使用するヘッダーファイル
+#include <stdlib.h>
+#include <time.h>
 #include"GameL\DrawTexture.h"
 #include"GameL\WinInputs.h"
 #include"GameL\SceneManager.h"
@@ -21,38 +23,39 @@ CObjEnemy::CObjEnemy(float x, float y)
 //イニシャライズ
 void CObjEnemy::Init()
 {
-	enemy_move = 0;//敵移動時間
-	e_time=0;//敵行動時間
-	m_hp = 3;        //体力
+	m_hp = 5;        //体力
 	m_vx = 0.0f;	//移動ベクトル
 	m_vy = 0.0f;
 	m_posture = 0.0f;//正面(0.0f) 左(1.0f) 右(2.0f) 背面(3.0f)
 
 	m_ani_time = 0;
 	m_ani_frame = 1;	//静止フレームを初期にする
-	
-	m_speed_power = 1.5f;//通常速度
+
+	m_speed_power = 2.0f;//通常速度
 	m_ani_max_time = 5;	//アニメーション間隔幅
 
 	m_movey = true; //true=背面　false=正面
 	m_movex = true;	//true=右　false=左
 
-	//blockとの衝突状態確認用
+					//blockとの衝突状態確認用
 	m_hit_up = false;
 	m_hit_down = false;
 	m_hit_left = false;
 	m_hit_right = false;
 
 	m_key_f = false;		//無敵時間行動制御
-	m_t = false;
-
-	knock = false;
-	//m_do_f=false;//敵攻撃フラグ
+	m_f = false;
 
 	m_ftime = 0;
 
+	m_time = 30;
+
+	alpha = 1.0;
+
+	srand(time(NULL));
+
 	//当たり判定用のHitBoxを作成
-	Hits::SetHitBox(this, m_px, m_py, 50,50, ELEMENT_ENEMY, OBJ_ENEMY, 1);
+	Hits::SetHitBox(this, m_px, m_py, 50, 50, ELEMENT_ENEMY, OBJ_ENEMY, 1);
 }
 
 //アクション
@@ -160,26 +163,10 @@ void CObjEnemy::Action()
 		);
 	}
 
-	/*//敵が動く時間＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
-	
-	enemy_move++;//足し続ける
-
-	//敵移動時間が250で割り切れる場合m_do_fをtrueにする
-	if (enemy_move % 250 == 0)
-		m_do_f = true;
-	
-	//e_timeの初期化
-	if (enemy_move > 500)
-	enemy_move = 0;
-	
-	//＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
-	*/
 	//主人公の位置を取得
 	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
 	float hx = hero->GetX();
 	float hy = hero->GetY();
-
-
 
 	//UtilityModuleのチェック関数に場所と領域を渡し、領域外か判定
 	bool check;
@@ -201,7 +188,7 @@ void CObjEnemy::Action()
 	}
 	if (map5 != nullptr)
 	{
-		check = CheckWindow(m_px + map5->GetScrollx(), m_py + map5->GetScrolly(), 50.0f, 50.0f, 750.0f, 550.0f);
+		check = CheckWindow(m_px + map5->GetScrollx(), m_py + map5->GetScrolly(), 50.0f, 0.0f, 750.0f, 550.0f);
 	}
 
 	CObjText* text = (CObjText*)Objs::GetObj(OBJ_TEXT);
@@ -275,15 +262,13 @@ void CObjEnemy::Action()
 			}
 
 			//主人公機と敵角度があんまりにもかけ離れたら
-			m_vx = cos(3.14 / 180 * ar) * 2.2;
-			m_vy = sin(3.14 / 180 * ar) * 2.2;
-
-
+			m_vx = cos(3.14 / 180 * ar) * 2.5;
+			m_vy = sin(3.14 / 180 * ar) * 2.5;
 		}
 	}
 	else
 	{
-		m_vy = 0;
+		m_vx = 0;
 	}
 
 	//イベント中は動きを止める
@@ -293,7 +278,6 @@ void CObjEnemy::Action()
 		m_vx = 0;
 		m_vy = 0;
 	}
-
 
 	//HitBoxの内容を更新
 	CHitBox*hit = Hits::GetHitBox(this);
@@ -345,37 +329,11 @@ void CObjEnemy::Action()
 		hit->SetInvincibility(true);//無敵オン
 	}
 
-	/*//敵攻撃
-	if (m_do_f == true)
-	{
-
-		e_time++;//足し続ける
-
-		//e_timeが40以上なら入り続ける
-		if (e_time >= 50)
-		{
-			m_vx *= 3;
-			m_vy *= 3;
-		//e_timeが60ならm_do_fをfalseに、e_timeを初期化する
-		if (e_time == 60)
-		{
-		m_do_f = false;
-		e_time = 0;
-		}
-		
-		}
-		//e_timeが40以上になるまで止まる：突進するまでの力をためるモーション的な？
-		else
-		{
-			
-		}
-	}*/
-
 	if (m_f == false)
 	{
 		//位置の更新
-		m_px += m_vx*1.0f;
-		m_py += m_vy*1.0f;
+		m_px += m_vx*1.0;
+		m_py += m_vy*1.0;
 	}
 
 	if (m_f == true)
@@ -399,6 +357,49 @@ void CObjEnemy::Action()
 	//HPが0になったら破棄
 	if (m_hp <= 0)
 	{
+		//敵を倒すと確率でアイテム出現
+		int put = 0;
+		put = rand() % 100;
+
+		//ブロック情報を持ってくる
+		CObjMap1*map1 = (CObjMap1*)Objs::GetObj(OBJ_MAP1);
+		CObjMap2*map2 = (CObjMap2*)Objs::GetObj(OBJ_MAP2);
+		CObjMap3*map3 = (CObjMap3*)Objs::GetObj(OBJ_MAP3);
+		CObjMap4*map4 = (CObjMap4*)Objs::GetObj(OBJ_MAP4);
+		CObjMap5*map5 = (CObjMap5*)Objs::GetObj(OBJ_MAP5);
+
+		//ボス階層のみ確率で回復出現
+		if (map5 != nullptr)
+		{
+			if (put >= 0 && put <= 29)
+			{
+				//桃オブジェクト作成
+				CObjPeach* p = new CObjPeach(m_px, m_py);		//オブジェクト作成
+				Objs::InsertObj(p, OBJ_PEACH, 2);	//マネージャに登録
+			}
+			else if (put >= 30 && put <= 35)
+			{
+				//桃オブジェクト作成
+				CObjYellowPeach* g = new CObjYellowPeach(m_px, m_py);		//オブジェクト作成
+				Objs::InsertObj(g, OBJ_YELLOW_PEACH, 2);	//マネージャに登録
+			}
+		}
+		//それ以外の階層では角か棍棒出現
+		else
+		{
+			if (put >= 0 && put <= 14)
+			{
+				CObjHorn* sb = new CObjHorn(m_px, m_py);		//オブジェクト作成
+				Objs::InsertObj(sb, OBJ_HORN, 2);	//マネージャに登録
+			}
+			else if (put >= 15 && put <= 29)
+			{
+				CObjClub* sb = new CObjClub(m_px, m_py);		//オブジェクト作成
+				Objs::InsertObj(sb, OBJ_CLUB, 2);	//マネージャに登録
+			}
+		}
+
+		//敵削除
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
 	}
@@ -408,7 +409,7 @@ void CObjEnemy::Action()
 void CObjEnemy::Draw()
 {
 	int AniData[4] =
-	{	1,0,2,0,	};
+	{ 1,0,2,0, };
 
 	//描画カラー情報
 	float c[4] = { 1.0f,1.0f,1.0f,alpha };
@@ -416,7 +417,7 @@ void CObjEnemy::Draw()
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置
 
-	//ブロック情報を持ってくる
+			   //ブロック情報を持ってくる
 	CObjMap1*map1 = (CObjMap1*)Objs::GetObj(OBJ_MAP1);
 	CObjMap2*map2 = (CObjMap2*)Objs::GetObj(OBJ_MAP2);
 	CObjMap3*map3 = (CObjMap3*)Objs::GetObj(OBJ_MAP3);
@@ -427,8 +428,9 @@ void CObjEnemy::Draw()
 	src.m_top = 64.0f * m_posture;
 	src.m_left = 0.0f + (AniData[m_ani_frame] * 64);
 	src.m_right = 64.0f + (AniData[m_ani_frame] * 64);
-	src.m_bottom = src.m_top+ 64.0f;
+	src.m_bottom = src.m_top + 64.0f;
 
+	//表示位置の設定
 	if (map1 != nullptr)
 	{
 		dst.m_top = 0.0f + m_py + map1->GetScrolly();
