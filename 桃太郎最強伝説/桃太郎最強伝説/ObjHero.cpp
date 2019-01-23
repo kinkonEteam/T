@@ -90,6 +90,8 @@ void CObjHero::Init()
 	m_Mf = false;			//持ち物リスト表示フラグ管理
 	m_Pf = false;
 	m_Pf1 = true;
+	m_stime = 13;
+	m_Sf = true;
 	m_of = true;
 	m_of_d = false;
 
