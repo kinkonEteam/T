@@ -120,6 +120,6 @@ void CObjClear::Draw()
 	//スコアの描画
 	float se[4] = { 1.0f,1.0f,1.0f,1.0f };
 	wchar_t str[128];
-	swprintf_s(str, L"Score:%d", ((UserData*)Save::GetData())->m_point);//スコアをとって？
+	swprintf_s(str, L"%d銭", ((UserData*)Save::GetData())->m_point);//スコアをとって？
 	Font::StrDraw(str, 200, 400, 64, se); //こちらで画面に描画する位置や文字のサイズを変える
 }
