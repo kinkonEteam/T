@@ -52,6 +52,7 @@ class CObjHero :public CObj
 		int m_key_f;//無敵時間行動制御
 		int m_t;
 		int count;
+		int m_stime;	//剣クールタイム測定用
 
 		int m_ani_time;  //アニメーションフレーム動作間隔
 		int m_ani_frame;	//描画フレーム
@@ -62,6 +63,7 @@ class CObjHero :public CObj
 		bool m_Mf;		//持ち物リスト表示フラグ用
 		bool m_Pf1;
 		bool m_Pf;
+
 
 		//blockとの衝突状態確認用
 		bool m_hit_up;

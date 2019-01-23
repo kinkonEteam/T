@@ -54,7 +54,7 @@ void CObjEnemy2::Init()
 
 	srand(time(NULL));
 	//当たり判定用のHitBoxを作成
-	Hits::SetHitBox(this, m_px, m_py, 50, 50, ELEMENT_ENEMY, OBJ_ENEMY, 1);
+	Hits::SetHitBox(this, m_px + 9, m_py + 7, 30, 40, ELEMENT_ENEMY, OBJ_ENEMY, 1);
 }
 
 //アクション
@@ -281,15 +281,15 @@ void CObjEnemy2::Action()
 	//HitBoxの内容を更新
 	CHitBox*hit = Hits::GetHitBox(this);
 	if (map1 != nullptr)
-		hit->SetPos(m_px + map1->GetScrollx(), m_py + map1->GetScrolly());
+		hit->SetPos(m_px + 9 + map1->GetScrollx(), m_py + 7 + map1->GetScrolly());
 	if (map2 != nullptr)
-		hit->SetPos(m_px + map2->GetScrollx(), m_py + map2->GetScrolly());
+		hit->SetPos(m_px + 9 + map2->GetScrollx(), m_py + 7 + map2->GetScrolly());
 	if (map3 != nullptr)
-		hit->SetPos(m_px + map3->GetScrollx(), m_py + map3->GetScrolly());
+		hit->SetPos(m_px + 9 + map3->GetScrollx(), m_py + 7 + map3->GetScrolly());
 	if (map4 != nullptr)
-		hit->SetPos(m_px + map4->GetScrollx(), m_py + map4->GetScrolly());
+		hit->SetPos(m_px + 9 + map4->GetScrollx(), m_py + 7 + map4->GetScrolly());
 	if (map5 != nullptr)
-		hit->SetPos(m_px + map5->GetScrollx(), m_py + map5->GetScrolly());
+		hit->SetPos(m_px + 9 + map5->GetScrollx(), m_py + 7 + map5->GetScrolly());
 
 	//ELEMENT_MAGICを持つオブジェクトと接触したら
 	if (hit->CheckElementHit(ELEMENT_MAGIC) == true)

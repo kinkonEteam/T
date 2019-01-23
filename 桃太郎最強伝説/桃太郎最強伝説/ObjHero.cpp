@@ -90,6 +90,8 @@ void CObjHero::Init()
 	m_Mf = false;			//持ち物リスト表示フラグ管理
 	m_Pf = false;
 	m_Pf1 = true;
+	m_stime = 13;
+	m_Sf = true;
 
 	df = true;
 	mf = true;
@@ -126,17 +128,27 @@ void CObjHero::Action()
 		if (Input::GetVKey('A') == true && hit->CheckElementHit(ELEMENT_RED) == false)//Aキー入力時かつおともに当たっていないとき
 		{
 			if (m_Sf == true) {//m_fがtrueの場合
-				//近距離攻撃音を鳴らす
-				Audio::Start(3);
-				//剣オブジェクト作成			剣に座標と向きを渡す
-				CObjSword* swd = new CObjSword(m_px, m_py, m_posture);
-				Objs::InsertObj(swd, OBJ_SWORD, 3);//マネージャーに登録
+				if (m_stime >= 12)
+				{
+					//近距離攻撃音を鳴らす
+					Audio::Start(3);
+					//剣オブジェクト作成			剣に座標と向きを渡す
+					CObjSword* swd = new CObjSword(m_px, m_py, m_posture);
+					Objs::InsertObj(swd, OBJ_SWORD, 3);//マネージャーに登録
 
-				m_Sf = false;
+					m_Sf = false;
+				}
 			}
 		}
 		else		//放している場合
 			m_Sf = true;//trueを代入
+
+		if (m_Sf == true)
+			m_stime--;
+
+		//クールセットを元に戻す
+		if (m_stime <= 0)
+			m_stime = 13;
 
 		//キジ攻撃処理------------------------------------------------------------------
 		//キジの情報を取得
