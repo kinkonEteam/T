@@ -69,5 +69,6 @@ void ObjCharView::Draw()
 	{
 		Font::StrDraw(L"「M」ポーズ", 10, 560, 25, c);
 		Font::StrDraw(L"「i」持ち物", 200, 560, 25, c);
+		Font::StrDraw(L"「H」操作説明", 400, 560, 25, c);
 	}
 }

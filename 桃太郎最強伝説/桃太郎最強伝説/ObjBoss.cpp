@@ -226,6 +226,14 @@ void CObjBoss::Action()
 		}
 	}
 
+	CObjOD* od = (CObjOD*)Objs::GetObj(OBJ_OD);
+	//操作説明表示中は動作を止める
+	if (od != nullptr)
+	{
+		m_vx = 0.0f;
+		m_vy = 0.0f;
+	}
+
 	//位置の更新
 	m_x += m_vx;
 	m_y += m_vy;

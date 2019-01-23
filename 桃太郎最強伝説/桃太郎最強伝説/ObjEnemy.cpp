@@ -271,9 +271,10 @@ void CObjEnemy::Action()
 		m_vx = 0;
 	}
 
-	//イベント中は動きを止める
+	//イベント中、操作説明中は動きを止める
 	CObjTalk* talk = (CObjTalk*)Objs::GetObj(OBJ_TALK);
-	if (talk != nullptr)
+	CObjOD* od = (CObjOD*)Objs::GetObj(OBJ_OD);
+	if (talk != nullptr || od != nullptr)
 	{
 		m_vx = 0;
 		m_vy = 0;
