@@ -20,16 +20,16 @@ void CObjInventory::Init()
 
 void CObjInventory::Action()
 {
-
+	if (m_Ef == true)
+	{
+		this->SetStatus(false);	//自身に削除命令を出す
+	}
 
 }
 
 void CObjInventory::Draw()
 {
-	if (m_Ef == true)
-	{
-		this->SetStatus(false);	//自身に削除命令を出す
-	}
+
 	//文字用
 	float c[4] = { 1.0f,1.0f,1.0f,1 };
 	//枠用
