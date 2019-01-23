@@ -48,8 +48,7 @@ class CObjHero :public CObj
 		int m_hp_max;		//最大HP
 		int m_map[56][56];//マップ情報
 		int m_time;//無敵時間測定
-		int m_f;//無敵時間
-		int m_key_f;//無敵時間行動制御
+
 		int m_t;
 		int count;
 		int m_stime;	//剣クールタイム測定用
@@ -63,6 +62,10 @@ class CObjHero :public CObj
 		bool m_Mf;		//持ち物リスト表示フラグ用
 		bool m_Pf1;
 		bool m_Pf;
+		bool m_of;	//操作説明制御用
+		bool m_of_d; //操作説明削除用
+		bool m_f;//無敵時間
+		bool m_key_f;//行動制御
 
 
 		//blockとの衝突状態確認用

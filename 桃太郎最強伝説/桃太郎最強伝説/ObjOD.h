@@ -13,10 +13,12 @@ public:
 	void Init();     //イニシャライズ
 	void Action();   //アクション
 	void Draw();     //ドロー
+	void SetOf(bool of) { m_Of = of; }
 
 private:
-	bool m_key_f;//エンターキー
 	bool m_Af; //フラグ
+	bool m_Cf;
+	bool m_Of; //フラグ
 
 };
 

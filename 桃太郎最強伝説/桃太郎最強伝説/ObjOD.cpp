@@ -12,7 +12,7 @@ using namespace GameL;
 //イニシャライズ
 void CObjOD::Init()
 {
-	m_Af = false;
+	m_Of = false;
 }
 
 //アクション
@@ -20,31 +20,9 @@ void CObjOD::Action()
 {
 
 
-	Audio::LoadAudio(0, L"ButtonSE.wav", EFFECT);	//コマンドSE
 
-	//Dを押してポーズに移行する 
-	if (Input::GetVKey('H') == true)
-	{
-		//コマンド用SEを鳴らす
-		Audio::Start(0);
-		Sleep(100);
-		
-	}
-	else {}
-	//エンターキーを押してシーン：メイン移行する
-	if (Input::GetVKey(VK_RETURN) == true)
-	{
-		if (m_key_f == true)
-		{
-			Scene::SetScene(new CScenefloor1());
-			m_key_f = false;
-		}
-	}
-	else
-	{
-		m_key_f = true;
-	}
 
+	
 }
 
 
@@ -52,13 +30,17 @@ void CObjOD::Action()
 void CObjOD::Draw()
 {
 
+	if (m_Of == true)
+	{
+		this->SetStatus(false);	//自身に削除命令を出す
+	}
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 
 
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置
 
-			   //切り取り位置の設定
+	//切り取り位置の設定
 	src.m_top = 0.0f;
 	src.m_left = 0.0f;
 	src.m_right = 800.0f;
@@ -74,5 +56,4 @@ void CObjOD::Draw()
 	//描画
 	Draw::Draw(40, &src, &dst, c, 0.0f);
 
-	
 }
