@@ -39,8 +39,8 @@ void  CObjPose::Draw()
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 
 	Font::StrDraw(L"ƒ^ƒCƒgƒ‹‚É–ß‚è‚Ü‚·‚©?", 200, 120, 45, c);
-	Font::StrDraw(L"‚¢‚¢‚¦(Z)", 450, 300, 30, c);
-	Font::StrDraw(L"‚Í‚¢(X)", 250, 300, 30, c);
+	Font::StrDraw(L"‚¢‚¢‚¦(Z)", 250, 300, 30, c);
+	Font::StrDraw(L"‚Í‚¢(X)", 450, 300, 30, c);
 	
 
 
