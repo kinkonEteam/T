@@ -161,8 +161,6 @@ void CObjHero::Action()
 		CObjPose* pob= (CObjPose*)Objs::GetObj(OBJ_POSE);
 		if (pob == nullptr)
 			m_Pf = false;
-		while (1)
-		{
 			if (Input::GetVKey('M') == true)//MÉLÅ[ì¸óÕéû
 			{
 
@@ -196,8 +194,6 @@ void CObjHero::Action()
 							}
 						}
 
-
-
 					}
 					
 				}
@@ -211,8 +207,6 @@ void CObjHero::Action()
 				}
 				else{}
 			}
-			break;
-		}
 
 
 
