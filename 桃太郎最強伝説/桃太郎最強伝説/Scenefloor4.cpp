@@ -99,6 +99,9 @@ void CScenefloor4::InitScene()
 	//外部グラフィックを読み込み11番に登録(512×512ピクセル)
 	Draw::LoadImage(L"風エフェクト.png", 11, TEX_SIZE_512);
 
+	//外部グラフィックを読み込み40番に登録(512×512ピクセル)
+	Draw::LoadImage(L"操作説明ペイント.png", 40, TEX_SIZE_512);
+
 	//階層4オブジェクト作成
 	CObjMap4* objb = new CObjMap4(map);
 	Objs::InsertObj(objb, OBJ_MAP1, 1);
@@ -110,6 +113,7 @@ void CScenefloor4::InitScene()
 	//文字表示作成
 	ObjCharView* c = new ObjCharView();
 	Objs::InsertObj(c, OBJ_CV, 20);
+
 
 }
 

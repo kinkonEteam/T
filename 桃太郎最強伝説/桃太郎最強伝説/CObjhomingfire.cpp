@@ -54,6 +54,15 @@ void CObjHomingfire::Action()
 	m_x += m_vx * 3.0f;
 	m_y += m_vy * 3.0f;
 
+	CObjOD* od = (CObjOD*)Objs::GetObj(OBJ_OD);
+
+	//‘€ìà–¾•\¦’†‚Í“®ì‚ğ~‚ß‚é
+	if (od != nullptr)
+	{
+		m_vx = 0.0f;
+		m_vy = 0.0f;
+	}
+
 	m_time--;//Á–Å‚Ü‚Å‚ÌŠÔ‘ª’è
 
 	CObjMap5*map5 = (CObjMap5*)Objs::GetObj(OBJ_MAP5);

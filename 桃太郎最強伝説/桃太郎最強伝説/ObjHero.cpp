@@ -90,6 +90,10 @@ void CObjHero::Init()
 	m_Mf = false;			//持ち物リスト表示フラグ管理
 	m_Pf = false;
 	m_Pf1 = true;
+	m_stime = 13;
+	m_Sf = true;
+	m_of = true;
+	m_of_d = false;
 
 	df = true;
 	mf = true;
@@ -119,6 +123,152 @@ void CObjHero::Action()
 	//HitBoxの内容を更新
 	CHitBox*hit = Hits::GetHitBox(this);
 	hit->SetPos(m_px + 5, m_py + 3);//HitBox主人公座標 + 位置調整
+
+
+	//各情報を取得
+	CObjPose* pob = (CObjPose*)Objs::GetObj(OBJ_POSE);
+	CObjInventory* iob = (CObjInventory*)Objs::GetObj(OBJ_INVENTORY);
+	CObjOD* od = (CObjOD*)Objs::GetObj(OBJ_OD);
+
+	//操作説明表示中は動作を止める
+	if (od != nullptr)
+	{
+		m_key_f = true;
+	}
+
+	//ポーズ
+	if (pob == nullptr)
+		m_Pf = false;
+	while (1)
+	{
+		if (Input::GetVKey('M') == true)//Mキー入力時
+		{
+
+			if (m_Pf == true) {//m_fがtrueの場合
+							   //コマンド用SEを鳴らす
+				if (od == nullptr || iob == nullptr)
+				{
+					Audio::Start(8);
+					while (1)
+					{
+						//ポーズが表示されていたらポーズを非表示にする
+
+						if (m_Pf == true)
+						{
+							//Xを押してTitleに移行する
+							if (Input::GetVKey('X') == true)
+							{
+								//タイトルに移動
+								Scene::SetScene(new CSceneTitle());
+								break;
+
+							}
+						}
+						if (Input::GetVKey('Z') == true)//Zキー入力時
+						{
+							if (m_Pf == true) {
+								Sleep(1);
+								//ポーズオブジェクトを削除
+								if (pob != nullptr)
+									pob->SetAf(true);
+								break;
+							}
+						}
+
+					}
+				}
+
+			}
+
+			if (m_Pf == false) {
+				//ポーズオブジェクト作成
+				CObjPose* po = new CObjPose();       //ポーズオブジェクト作成
+				Objs::InsertObj(po, OBJ_POSE, 11);    //ポーズオブジェクト登録
+				m_Pf = true;
+
+			}
+			else {}
+		}
+		break;
+	}
+
+
+
+	//持ち物リスト------------------------------------------------------------------------------
+	//
+
+	if (iob == nullptr)
+		m_Mf = false;
+	if (Input::GetVKey('I') == true)//Iキー入力時
+	{
+
+		if (m_If == true)
+		{
+			if (od == nullptr || pob == nullptr)
+			{
+				//コマンド用SEを鳴らす
+				Audio::Start(8);
+				//持ち物リストが表示されていたら持ち物リストを非表示にする
+				if (m_Mf == true) {
+					if (iob != nullptr)
+						iob->SetEf(true);
+				}
+
+				if (m_Mf == false)
+				{
+					//持ち物リスト表示
+					CObjInventory* it = new CObjInventory();       //持ち物オブジェクト作成
+					Objs::InsertObj(it, OBJ_INVENTORY, 50);    //持ち物オブジェクト登録
+															   //非表示フラグを立てる
+					m_Mf = true;
+				}
+				m_If = false;
+			}
+		}
+	}
+	else //無入力時
+	{
+		m_If = true;
+
+	}
+
+	//操作説明
+
+	if (od == nullptr)
+		m_of_d = false;
+	if (Input::GetVKey('H') == true)//Hキー入力時
+	{
+
+		if (m_of == true)
+		{
+			if (od == nullptr || pob == nullptr)
+			{
+				//コマンド用SEを鳴らす
+				Audio::Start(8);
+				//操作説明を非表示にする
+				if (m_of_d == true) {
+					od->SetOf(true);
+				}
+
+				if (m_of_d == false)
+				{
+					//操作説明表示
+					CObjOD* od = new CObjOD();       //持ち物オブジェクト作成
+					Objs::InsertObj(od, OBJ_OD, 50);    //持ち物オブジェクト登録
+					//非表示フラグを立てる
+					m_of_d = true;
+				}
+				m_of = false;
+			}
+		}
+	}
+	else //無入力時
+	{
+		m_of = true;
+
+	}
+
+
 
 	//通常攻撃処理---------------------------------------------------------------------
 	if (m_key_f == false)
@@ -158,95 +308,6 @@ void CObjHero::Action()
 		}
 
 
-		CObjPose* pob= (CObjPose*)Objs::GetObj(OBJ_POSE);
-		if (pob == nullptr)
-			m_Pf = false;
-			if (Input::GetVKey('M') == true)//Mキー入力時
-			{
-
-				if (m_Pf == true) {//m_fがtrueの場合
-					//コマンド用SEを鳴らす
-					Audio::Start(8);
-					while (1)
-					{
-					//ポーズが表示されていたらポーズを非表示にする
-
-						if (m_Pf == true)
-						{
-							//Xを押してTitleに移行する
-							if (Input::GetVKey('X') == true)
-							{
-								//タイトルに移動
-								Scene::SetScene(new CSceneTitle());
-								break;
-
-							}
-						}
-						if (Input::GetVKey('Z') == true)//Zキー入力時
-						{
-							if (m_Pf == true) {
-								Sleep(1);
-								//ポーズオブジェクトを削除
-								CObjPose* pob = (CObjPose*)Objs::GetObj(OBJ_POSE);
-								if (pob != nullptr)
-									pob->SetAf(true);
-								break;
-							}
-						}
-
-					}
-					
-				}
-
-				if (m_Pf == false) {
-					//ポーズオブジェクト作成
-					CObjPose* po = new CObjPose();       //ポーズオブジェクト作成
-					Objs::InsertObj(po, OBJ_POSE, 11);    //ポーズオブジェクト登録
-					m_Pf = true;
-					
-				}
-				else{}
-			}
-
-
-
-		//持ち物リスト------------------------------------------------------------------------------
-				//
-		CObjInventory* iob = (CObjInventory*)Objs::GetObj(OBJ_INVENTORY);
-		if (iob == nullptr)
-			m_Mf = false;
-		if (Input::GetVKey('I') == true)//Iキー入力時
-		{
-
-			if (m_If == true)
-			{
-				//コマンド用SEを鳴らす
-				Audio::Start(8);
-				//持ち物リストが表示されていたら持ち物リストを非表示にする
-				if (m_Mf == true) {
-
-
-					CObjInventory* iob = (CObjInventory*)Objs::GetObj(OBJ_INVENTORY);
-					if (iob != nullptr)
-						iob->SetEf(true);
-				}
-
-				if (m_Mf == false)
-				{
-					//持ち物リスト表示
-					CObjInventory* it = new CObjInventory();       //持ち物オブジェクト作成
-					Objs::InsertObj(it, OBJ_INVENTORY, 50);    //持ち物オブジェクト登録
-					//非表示フラグを立てる
-					m_Mf = true;
-				}
-				m_If = false;
-			}
-		}
-		else //無入力時
-		{
-			m_If = true;
-
-		}
 
 
 		//主人公移動キー入力判定--------------------------------------------------------

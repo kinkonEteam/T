@@ -98,6 +98,9 @@ void CScenefloor3::InitScene()
 	//外部グラフィックを読み込み11番に登録(512×512ピクセル)
 	Draw::LoadImage(L"風エフェクト.png", 11, TEX_SIZE_512);
 
+	//外部グラフィックを読み込み40番に登録(512×512ピクセル)
+	Draw::LoadImage(L"操作説明ペイント.png", 40, TEX_SIZE_512);
+
 	//階層3オブジェクト作成
 	CObjMap3* objb = new CObjMap3(map);
 	Objs::InsertObj(objb, OBJ_MAP3, 1);
