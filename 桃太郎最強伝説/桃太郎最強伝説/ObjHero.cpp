@@ -17,7 +17,7 @@ extern int item_list[7];	//
 extern int c, s, m;
 void CObjHero::SaveDATA() {		//セーブ関数----------------------データをセーブ
 	HP = m_hp;					//シーン切り替え時のhpデータを、HPへ格納
-	ObjCharView* cv = (ObjCharView*)Objs::GetObj(OBJ_CV);//文字表示のデータ
+	ObjCharView* cv = (ObjCharView*)Objs::GetObj(OBJ_CV);//オブジェ情報取得
 	cv->SaveSM();//セーブ、セコンドミニッツ
 }
 void CObjHero::SetDATA() {		//セット関数----------------------データをセット
@@ -153,8 +153,8 @@ void CObjHero::Action()
 
 						if (m_Pf == true)
 						{
-							//Vを押してTitleに移行する
-							if (Input::GetVKey('V') == true)
+							//Xを押してTitleに移行する
+							if (Input::GetVKey('X') == true)
 							{
 								//タイトルに移動
 								Scene::SetScene(new CSceneTitle());
@@ -162,7 +162,7 @@ void CObjHero::Action()
 
 							}
 						}
-						if (Input::GetVKey('Z') == true)//Mキー入力時
+						if (Input::GetVKey('Z') == true)//Zキー入力時
 						{
 							if (m_Pf == true) {
 								Sleep(1);
@@ -172,8 +172,6 @@ void CObjHero::Action()
 								break;
 							}
 						}
-
-
 
 					}
 				}
