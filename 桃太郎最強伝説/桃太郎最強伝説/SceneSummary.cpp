@@ -24,9 +24,6 @@ void CSceneSummary::InitScene()
 	//あらすじ用BGM
 	Audio::LoadAudio(0, L"あらすじ.wav", BACK_MUSIC);	
 
-	//外部グラフィックを読み込み29番に登録(512×512ピクセル)
-	Draw::LoadImage(L"操作説明ペイント.png", 40, TEX_SIZE_512);//40番に登録
-
 	//ボリュームを1.0に戻す
 	float v = Audio::VolumeMaster(0);
 	v = Audio::VolumeMaster((1.0 - v));
