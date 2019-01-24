@@ -111,6 +111,13 @@ void CObjHero::Init()
 	Audio::LoadAudio(7, L"speeddown.wav", EFFECT);			//棍棒取得時用SE
 	Audio::LoadAudio(8, L"ButtonSE.wav", EFFECT);				//コマンドSE
 
+																//ボリュームを1.0に戻す
+	float v = Audio::VolumeMaster(0);
+	v = Audio::VolumeMaster((1.0 - v));
+
+	//BGMボリュームを下げる
+	float Volume = Audio::VolumeMaster(-0.95f);
+
 }
 
 //アクション
@@ -156,7 +163,7 @@ void CObjHero::Action()
 						if (m_Pf == true)
 						{
 							//Xを押してTitleに移行する
-							if (Input::GetVKey('X') == true)
+							if (Input::GetVKey('Z') == true)
 							{
 								//タイトルに移動
 								Scene::SetScene(new CSceneTitle());
@@ -164,10 +171,11 @@ void CObjHero::Action()
 
 							}
 						}
-						if (Input::GetVKey('Z') == true)//Zキー入力時
+						if (Input::GetVKey('X') == true)//Zキー入力時
 						{
 							if (m_Pf == true) {
-								Sleep(1);
+
+								Audio::Start(8);
 								//ポーズオブジェクトを削除
 								if (pob != nullptr)
 									pob->SetAf(true);

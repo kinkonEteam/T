@@ -19,12 +19,12 @@ void CObjPose::Init()
 //アクション
 void  CObjPose::Action()
 {
-	if (Input::GetVKey('Z') == true)
+	if (Input::GetVKey('X') == true)
 	{
 		this->SetStatus(false);	//自身に削除命令を出す			
 
 	}
-	if (Input::GetVKey('X') == true)
+	if (Input::GetVKey('Z') == true)
 	{
 		Scene::SetScene(new CSceneTitle());
 	}
@@ -39,8 +39,8 @@ void  CObjPose::Draw()
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 
 	Font::StrDraw(L"タイトルに戻りますか?", 200, 120, 45, c);
-	Font::StrDraw(L"いいえ(Z)", 450, 300, 30, c);
-	Font::StrDraw(L"はい(X)", 250, 300, 30, c);
+	Font::StrDraw(L"いいえ(X)", 450, 300, 30, c);
+	Font::StrDraw(L"はい(Z)", 250, 300, 30, c);
 	
 
 
