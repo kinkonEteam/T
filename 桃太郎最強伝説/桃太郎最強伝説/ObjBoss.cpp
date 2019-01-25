@@ -41,6 +41,8 @@ void CObjBoss::Init()
 	m_t = false;
 	m_do_f = false;//突進フラグ
 
+	m_speed = 1.5f;
+
 	m_rand = 0;//行動パターン選択用
 	srand(time(NULL));
 
@@ -61,10 +63,6 @@ void CObjBoss::Init()
 //アクション
 void CObjBoss::Action()
 {
-	if (knock == true)
-	{
-
-	}
 
 	if (m_ani_time > m_ani_max_time)
 	{
@@ -78,7 +76,6 @@ void CObjBoss::Action()
 	}
 
 	m_patterntime++;
-	
 
 	//時間経過によるボスの行動決定
 	if (m_patterntime % 200 == 0)
@@ -91,13 +88,6 @@ void CObjBoss::Action()
 	{
 		m_patterntime = 0;
 	}
-
-	//移動ベクトルの正規化
-	UnitVec(&m_vy, &m_vx);
-
-	//速度
-	m_vx *= 1.5f;
-	m_vy *= 1.5f;
 
 	//ブロックタイプ検知用の変数がないためのダミー
 	int d;
@@ -129,29 +119,25 @@ void CObjBoss::Action()
 		if ((ar < 45 && ar>0) || ar > 315)
 		{
 			//右
-			m_vx += m_speed_power;
-			m_posture = 2.0f;
+			m_posture = 1.0f;
 			m_ani_time += 1;
 		}
 
 		if (ar > 45 && ar < 135)
 		{
 			//上
-			m_vy += m_speed_power;
 			m_posture = 0.0f;
 			m_ani_time += 1;
 		}
 		if (ar > 135 && ar < 225)
 		{
 			//左
-			m_vy -= m_speed_power;
-			m_posture = 1.0f;
+			m_posture = 2.0f;
 			m_ani_time += 1;
 		}
 		if (ar > 225 && ar < 315)
 		{
 			//下
-			m_vy -= m_speed_power;
 			m_posture = 3.0f;
 			m_ani_time += 1;
 
@@ -171,7 +157,7 @@ void CObjBoss::Action()
 	//ELEMENT_MAGICを持つオブジェクトと接触したら
 	if (hit->CheckElementHit(ELEMENT_MAGIC) == true)
 	{
-		//主人公が敵とどの角度で当たっているかを確認
+		//敵が主人公とどの角度で当たっているかを確認
 		HIT_DATA**hit_data;							//当たった時の細かな情報を入れるための構造体
 		hit_data = hit->SearchElementHit(ELEMENT_MAGIC);//hit_dataに主人公と当たっている他全てのHitBoxとの情報を入れる
 
@@ -205,6 +191,7 @@ void CObjBoss::Action()
 		hit->SetInvincibility(true);//無敵オン
 	}
 
+
 	//突進行動
 	if (m_do_f==true)
 	{
@@ -230,41 +217,47 @@ void CObjBoss::Action()
 	//操作説明表示中は動作を止める
 	if (od != nullptr)
 	{
-		m_vx = 0.0f;
-		m_vy = 0.0f;
+		m_vx = 0;
+		m_vy = 0;
 	}
+	else
+		m_patterntime++;
 
 	//位置の更新
 	m_x += m_vx;
 	m_y += m_vy;
 	
-	
-	
+	if (m_f == false)
+	{
+		//位置の更新
+		m_x += m_vx*1.0;
+		m_y += m_vy*1.0;
+	}
+
 	if (m_f == true)
 	{
 		m_time--;//無敵時間開始
 
-		if (m_time == 30)
+		if (m_time == 10)
 			m_key_f = false;
 
 		alpha = 0.5f;
 	}
+
 	if (m_time <= 0)
 	{
 		m_f = false;
 		hit->SetInvincibility(false);//無敵オフ
 		alpha = 1.0f;
-		m_time = 70;
+		m_time = 30;
 	}
+
 
 	//ブロックとの当たり判定
 	map5->Map5Hit(&m_x, &m_y, false,
 		&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
 		&d
 	);
-
-	//通常速度
-	m_speed_power = 0.5f;
 
 	//HPが0になったら破棄
 	if (m_hp <= 0)
