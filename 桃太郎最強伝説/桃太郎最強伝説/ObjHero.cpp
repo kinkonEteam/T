@@ -291,7 +291,10 @@ void CObjHero::Action()
 					Audio::Start(3);
 					//剣オブジェクト作成			剣に座標と向きを渡す
 					CObjSword* swd = new CObjSword(m_px, m_py, m_posture);
-					Objs::InsertObj(swd, OBJ_SWORD, 3);//マネージャーに登録
+					if(m_posture == 0)
+						Objs::InsertObj(swd, OBJ_SWORD, 11);//マネージャーに登録
+					else
+						Objs::InsertObj(swd, OBJ_SWORD, 8);//マネージャーに登録
 
 					m_Sf = false;
 				}
