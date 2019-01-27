@@ -283,14 +283,18 @@ void CObjHero::Action()
 	{
 		if (Input::GetVKey('A') == true && hit->CheckElementHit(ELEMENT_RED) == false)//Aキー入力時かつおともに当たっていないとき
 		{
-			if (m_Sf == true) {//m_fがtrueの場合
-				//近距離攻撃音を鳴らす
-				Audio::Start(3);
-				//剣オブジェクト作成			剣に座標と向きを渡す
-				CObjSword* swd = new CObjSword(m_px, m_py, m_posture);
-				Objs::InsertObj(swd, OBJ_SWORD, 3);//マネージャーに登録
+			CObjSword* sword = (CObjSword*)Objs::GetObj(OBJ_SWORD);//剣の情報を取得
+			if (sword == nullptr)//剣が無い場合
+			{
+				if (m_Sf == true) {//m_fがtrueの場合
+					//近距離攻撃音を鳴らす
+					Audio::Start(3);
+					//剣オブジェクト作成			剣に座標と向きを渡す
+					CObjSword* swd = new CObjSword(m_px, m_py, m_posture);
+					Objs::InsertObj(swd, OBJ_SWORD, 3);//マネージャーに登録
 
-				m_Sf = false;
+					m_Sf = false;
+				}
 			}
 		}
 		else		//放している場合

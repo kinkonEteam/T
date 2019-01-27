@@ -20,43 +20,48 @@ CObjSword::CObjSword(float x, float y, int pos)//渡されるだけの変数
 void CObjSword::Init()
 {
 	m_r = 0;
-	m_vr = 15;
+	m_vr = 14;
 	m_posx = 0;			//Swordの座標	
 	m_posy = 0;
-
-						//当たり判定用HitBoxを作成
-	Hits::SetHitBox(this, m_px, m_py, 50, 50, ELEMENT_MAGIC, OBJ_SWORD, 1);
-}
-
-//アクション
-void CObjSword::Action()
-{
-	//主人公の情報を取得
-	CObjHero* obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
-	if (obj != nullptr)//主人公が存在する場合
-	{
-		//主人公の位置を常に取得し、代入
-		m_px = obj->GetX();
-		m_py = obj->GetY();
-	}
 
 	//主人公向きで表示位置の変更用py,px
 	if (m_pos == 0)     //↓
 	{
 		m_posy = 1;
+		m_r = -30;
 	}
 	else if (m_pos == 1)//←
 	{
 		m_posx = -1;
+		m_r = -40;
 	}
 	else if (m_pos == 2)//→
 	{
 		m_posx = 1;
+		m_r = 40;
 	}
 	else			  //↑
 	{
 		m_posy = -1;
+		m_r = 130;
 	}
+
+	CObjHero* obj = (CObjHero*)Objs::GetObj(OBJ_HERO);//主人公の情報を取得
+	if (obj != nullptr)//主人公が存在する場合
+	{
+		//主人公の位置を取得し、代入
+		m_px = obj->GetX();
+		m_py = obj->GetY();
+	}
+
+	//当たり判定用HitBoxを作成
+	Hits::SetHitBox(this, m_px, m_py, 40, 40, ELEMENT_MAGIC, OBJ_SWORD, 1);
+}
+
+//アクション
+void CObjSword::Action()
+{
+	
 	
 	
 	if (m_pos == 1)
@@ -66,10 +71,10 @@ void CObjSword::Action()
 
 	//HitBoxの内容を更新
 	CHitBox*hit = Hits::GetHitBox(this);
-	hit->SetPos(m_px + (50.0f * m_posx), m_py + (50.0f * m_posy));
+	hit->SetPos(m_px + (32.0f * m_posx)+5, m_py + (32.0f * m_posy)+5);
 
-	if (m_vr > 0)
-		m_vr -= 1;
+	if (m_vr > 13)
+		m_vr -= 0.09f;
 	else {
 		this->SetStatus(false);	 //オブジェクト削除
 		Hits::DeleteHitBox(this);//HitBox削除
@@ -93,14 +98,14 @@ void CObjSword::Draw()
 	*/
 	src.m_top = 0.0f;
 	src.m_left = 0.0f;
-	src.m_right = 32.0f;
-	src.m_bottom = 32.0f;
+	src.m_right = 512.0f;
+	src.m_bottom = 512.0f;
 
 	//表示位置の設定	
-	dst.m_top	=(  0.0f + m_py) + (50.0f * m_posy);
-	dst.m_left	=(  0.0f + m_px) + (50.0f * m_posx);
-	dst.m_right =( 50.0f + m_px) + (50.0f * m_posx);
-	dst.m_bottom=( 50.0f + m_py) + (50.0f * m_posy);
+	dst.m_top	=(  0.0f + m_py) + (32.0f * m_posy);
+	dst.m_left	=(  0.0f + m_px) + (32.0f * m_posx);
+	dst.m_right =( 50.0f + m_px) + (32.0f * m_posx);
+	dst.m_bottom=( 50.0f + m_py) + (32.0f * m_posy);
 		
 	//描画
 	Draw::Draw(3, &src, &dst, c, m_r);
