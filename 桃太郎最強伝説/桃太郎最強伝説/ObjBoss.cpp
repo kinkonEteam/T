@@ -43,6 +43,8 @@ void CObjBoss::Init()
 
 	m_speed = 1.5f;
 
+	m_time = 30;
+
 	m_rand = 0;//行動パターン選択用
 	srand(time(NULL));
 
@@ -119,7 +121,7 @@ void CObjBoss::Action()
 		if ((ar < 45 && ar>0) || ar > 315)
 		{
 			//右
-			m_posture = 1.0f;
+			m_posture = 2.0f;
 			m_ani_time += 1;
 		}
 
@@ -132,7 +134,7 @@ void CObjBoss::Action()
 		if (ar > 135 && ar < 225)
 		{
 			//左
-			m_posture = 2.0f;
+			m_posture = 1.0f;
 			m_ani_time += 1;
 		}
 		if (ar > 225 && ar < 315)

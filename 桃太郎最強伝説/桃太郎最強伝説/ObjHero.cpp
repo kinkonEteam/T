@@ -34,12 +34,12 @@ void CObjHero::SetYAMI(bool tipe) {//ˆÃˆÅƒZƒbƒgŠÖ”-----------------------ˆÃˆÅ
 			m_image += 1;		//‰æ‘œ”Ô†+1
 	}
 	if (tipe == true){			//SetYAMI(true or ‹ó”’)
-		ObjCapture* yami = new ObjCapture(m_image);	//ˆÃˆÅì¬
-		Objs::InsertObj(yami, OBJ_CAPTURE, 3);		//“o˜^
+		//ObjCapture* yami = new ObjCapture(m_image);	//ˆÃˆÅì¬
+		//Objs::InsertObj(yami, OBJ_CAPTURE, 3);		//“o˜^
 	}
 	else{						//SetYami(false)
-		ObjCapture* yami = (ObjCapture*)Objs::GetObj(OBJ_CAPTURE);
-		yami->SetImage(m_image);
+		//ObjCapture* yami = (ObjCapture*)Objs::GetObj(OBJ_CAPTURE);
+		//yami->SetImage(m_image);
 	}
 }
 
