@@ -20,7 +20,7 @@ CObjSword::CObjSword(float x, float y, int pos)//渡されるだけの変数
 void CObjSword::Init()
 {
 	m_r = 0;
-	m_vr = 14;
+	m_vr = 16;
 	m_posx = 0;			//Swordの座標	
 	m_posy = 0;
 
@@ -73,8 +73,8 @@ void CObjSword::Action()
 	CHitBox*hit = Hits::GetHitBox(this);
 	hit->SetPos(m_px + (32.0f * m_posx)+5, m_py + (32.0f * m_posy)+5);
 
-	if (m_vr > 13)
-		m_vr -= 0.09f;
+	if (m_vr > 15)
+		m_vr -= 0.1f;
 	else {
 		this->SetStatus(false);	 //オブジェクト削除
 		Hits::DeleteHitBox(this);//HitBox削除
