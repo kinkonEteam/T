@@ -329,12 +329,7 @@ void CObjEnemy2::Action()
 		hit->SetInvincibility(true);//無敵オン
 	}
 
-	if (m_f == false)
-	{
-		//位置の更新
-		m_px += m_vx*1.1;
-		m_py += m_vy*1.1;
-	}
+
 
 	if (m_f == true)
 	{
@@ -351,6 +346,40 @@ void CObjEnemy2::Action()
 		hit->SetInvincibility(false);//無敵オフ
 		alpha = 1.0f;
 		m_time = 30;
+	}
+
+	//おともの当たり判定
+	HIT_DATA**hit_data;		//Hit時データ型、hit_dataを宣言
+	hit_data = hit->SearchElementHit(ELEMENT_RED);//hit_dataに主人公と当たっている他全てのHitBoxとの情報を入れる
+
+	for (int i = 0; i < hit->GetCount(); i++)//同時に複数のHitBoxに当たった場合、
+	{										 //当たった数だけ処理させる為のループ
+		if (hit_data[i] == nullptr)
+			continue;
+		float r = hit_data[i]->r;
+		if ((r < 45 && r >= 0) || r > 315)
+		{
+			m_vx = 0.0f;
+		}
+		if (r >= 45 && r < 135)
+		{
+			m_vy = 0.0f;
+		}
+		if (r >= 135 && r < 225)
+		{
+			m_vx = 0.0f;
+		}
+		if (r >= 225 && r < 315)
+		{
+			m_vy = 0.0f;
+		}
+	}
+
+	if (m_f == false)
+	{
+		//位置の更新
+		m_px += m_vx*1.1;
+		m_py += m_vy*1.1;
 	}
 
 	//HPが0になったら破棄
