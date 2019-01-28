@@ -43,6 +43,8 @@ void CObjBoss::Init()
 
 	m_speed = 1.5f;
 
+	m_time = 30;
+
 	m_rand = 0;//行動パターン選択用
 	srand(time(NULL));
 
@@ -78,13 +80,13 @@ void CObjBoss::Action()
 	m_patterntime++;
 
 	//時間経過によるボスの行動決定
-	if (m_patterntime % 200 == 0)
+	if (m_patterntime % 300 == 0)
 	{
 		pattern();
 	}
 
 	//m_patterntimeの初期化
-	if (m_patterntime > 1000)
+	if (m_patterntime > 300)
 	{
 		m_patterntime = 0;
 	}
@@ -119,7 +121,7 @@ void CObjBoss::Action()
 		if ((ar < 45 && ar>0) || ar > 315)
 		{
 			//右
-			m_posture = 1.0f;
+			m_posture = 2.0f;
 			m_ani_time += 1;
 		}
 
@@ -132,7 +134,7 @@ void CObjBoss::Action()
 		if (ar > 135 && ar < 225)
 		{
 			//左
-			m_posture = 2.0f;
+			m_posture = 1.0f;
 			m_ani_time += 1;
 		}
 		if (ar > 225 && ar < 315)
@@ -324,6 +326,6 @@ void CObjBoss::pattern()
 		CObjHomingfire* obj_homing_fire = new CObjHomingfire(m_x, m_y);
 		Objs::InsertObj(obj_homing_fire, OBJ_HOMING_FIRE, 10);
 	}
-	else //2の時突進
+	else //1の時突進
 		m_do_f = true;
 }
