@@ -24,6 +24,8 @@ void CObjMap4::Init()
 {
 	m_f = 0;
 
+	m_ftime = 0;
+
 	srand(time(NULL));
 
 	setstair();
@@ -119,6 +121,15 @@ void CObjMap4::Init()
 //アクション
 void CObjMap4::Action()
 {
+	m_ftime++;
+
+	if (m_ftime == 40)
+	{
+		//テキスト作成
+		CObjText4* text = new CObjText4();
+		Objs::InsertObj(text, OBJ_TEXT4, 20);
+	}
+
 	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
 	//シーン切り替え
 	for (int i = 0; i < 56; i++)

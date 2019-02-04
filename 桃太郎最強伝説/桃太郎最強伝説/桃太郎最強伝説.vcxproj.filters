@@ -244,9 +244,6 @@
     <ClCompile Include="SceneClear.cpp">
       <Filter>ソース ファイル\Scene\ゲームクリア</Filter>
     </ClCompile>
-    <ClCompile Include="SceneMain.cpp">
-      <Filter>ソース ファイル\Scene\メイン</Filter>
-    </ClCompile>
     <ClCompile Include="SceneSummary.cpp">
       <Filter>ソース ファイル\Scene\あらすじ</Filter>
     </ClCompile>
@@ -349,6 +346,18 @@
     </ClCompile>
     <ClCompile Include="ObjCharView.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjCharView.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjText3.cpp">
+      <Filter>ソース ファイル\Map\floor3</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjText4.cpp">
+      <Filter>ソース ファイル\Map\floor4</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjText5.cpp">
+      <Filter>ソース ファイル\Character\BOSS</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -605,6 +614,15 @@
     <ClInclude Include="ObjPheasant.h">
       <Filter>ソース ファイル\Character\おとも</Filter>
     </ClInclude>
+    <ClInclude Include="CObjText3.h">
+      <Filter>ソース ファイル\Map\floor3</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjText4.h">
+      <Filter>ソース ファイル\Map\floor4</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjText5.h">
+      <Filter>ソース ファイル\Character\BOSS</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="リソースファイル">
@@ -723,9 +741,6 @@
     </ClInclude>
     <ClInclude Include="ScecneClear.h">
       <Filter>ソース ファイル\Scene\ゲームクリア</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneMain.h">
-      <Filter>ソース ファイル\Scene\メイン</Filter>
     </ClInclude>
     <ClInclude Include="SceneSummary.h">
       <Filter>ソース ファイル\Scene\あらすじ</Filter>

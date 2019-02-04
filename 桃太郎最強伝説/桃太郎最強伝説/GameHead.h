@@ -51,6 +51,9 @@ enum OBJ_NAME
 	OBJ_TEXT,
 	OBJ_SUMMARY,
 	OBJ_SELL,
+	OBJ_TEXT3,
+	OBJ_TEXT4,
+	OBJ_TEXT5,
 
 };
 //------------------------------------------------
@@ -145,6 +148,9 @@ enum ITEM
 #include"ObjSell.h"
 #include"ObjGoldBullion.h"
 #include"ObjSilverBullion.h"
+#include"CObjText3.h"
+#include"CObjText4.h"
+#include"CObjText5.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------
@@ -168,6 +174,6 @@ enum ITEM
 
 //シーンスタートクラス---------------------------
 //ゲーム開始時のシーンクラス登録
-//#define SET_GAME_START  CScenefloor5
-#define SET_GAME_START  CSceneTitle
+#define SET_GAME_START  CScenefloor4
+//#define SET_GAME_START  CSceneTitle
 //-----------------------------------------------

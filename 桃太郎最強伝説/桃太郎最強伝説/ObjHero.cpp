@@ -645,7 +645,17 @@ void CObjHero::Action()
 		CObjEveKiji* evekiji = (CObjEveKiji*)Objs::GetObj(OBJ_EVEKIJI);
 		CObjEveMnky* evemnky = (CObjEveMnky*)Objs::GetObj(OBJ_EVEMNKY);
 		CObjText* text = (CObjText*)Objs::GetObj(OBJ_TEXT);
-		if (text != nullptr || evedog != nullptr || evekiji != nullptr || evemnky != nullptr)
+		CObjText3* text3 = (CObjText3*)Objs::GetObj(OBJ_TEXT3);
+		CObjText4* text4 = (CObjText4*)Objs::GetObj(OBJ_TEXT4);
+		CObjText5* text5 = (CObjText5*)Objs::GetObj(OBJ_TEXT5);
+
+		if (text != nullptr ||
+			text3 != nullptr ||
+			text4 != nullptr ||
+			text5 != nullptr ||
+			evedog != nullptr ||
+			evekiji != nullptr ||
+			evemnky != nullptr)
 		{
 			m_key_f = true;
 		}

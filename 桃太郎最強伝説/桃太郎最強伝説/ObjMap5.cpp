@@ -41,6 +41,10 @@ void CObjMap5::Init()
 
 	srand(time(NULL));
 
+	swich = true;
+
+
+
 
 	//アイテム出現
 	for (int i = 0; i < 56; i++)
@@ -116,6 +120,7 @@ void CObjMap5::Init()
 //アクション
 void CObjMap5::Action()
 {
+
 	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
 	//シーン切り替え
 	for (int i = 0; i < 56; i++)
@@ -143,6 +148,16 @@ void CObjMap5::Action()
 
 		hero->SetY(275);
 		m_scrolly -= hero->GetVY() * 4;
+	}
+
+	CObjBoss* boss = (CObjBoss*)Objs::GetObj(OBJ_BOSS);
+	if (boss == nullptr && swich ==true)
+	{
+		////テキスト作成
+		//CObjText5* text5 = new CObjText5();
+		//Objs::InsertObj(text5, OBJ_TEXT5, 20);
+
+		//swich = false;
 	}
 }
 //ドロー

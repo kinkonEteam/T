@@ -119,6 +119,9 @@
     <ClCompile Include="CObjSword.cpp" />
     <ClCompile Include="CObjEveDog.cpp" />
     <ClCompile Include="CObjText.cpp" />
+    <ClCompile Include="CObjText3.cpp" />
+    <ClCompile Include="CObjText4.cpp" />
+    <ClCompile Include="CObjText5.cpp" />
     <ClCompile Include="Data.cpp" />
     <ClCompile Include="ObjCharView.cpp" />
     <ClCompile Include="ObjCharView.cpp">
@@ -228,6 +231,9 @@
     <ClInclude Include="CObjSword.h" />
     <ClInclude Include="CObjEveDog.h" />
     <ClInclude Include="CObjText.h" />
+    <ClInclude Include="CObjText3.h" />
+    <ClInclude Include="CObjText4.h" />
+    <ClInclude Include="CObjText5.h" />
     <ClInclude Include="ObjCharView.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>

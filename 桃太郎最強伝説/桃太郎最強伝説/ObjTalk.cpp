@@ -59,7 +59,14 @@ void CObjTalk::Draw()
 					   //同じ画像を名前用に上から表示
 			CObjText* text = (CObjText*)Objs::GetObj(OBJ_TEXT);
 			CObjSummary* summary = (CObjSummary*)Objs::GetObj(OBJ_SUMMARY);
-			if (text != nullptr || summary != nullptr)
+			CObjText3* text3 = (CObjText3*)Objs::GetObj(OBJ_TEXT3);
+			CObjText4* text4 = (CObjText4*)Objs::GetObj(OBJ_TEXT4);
+			CObjText5* text5 = (CObjText5*)Objs::GetObj(OBJ_TEXT5);
+			if (text != nullptr ||
+				summary != nullptr ||
+				text3 != nullptr ||
+				text4 != nullptr ||
+				text5 != nullptr)
 			{
 				//表示位置の設定
 				dst.m_top = 380.0f;
