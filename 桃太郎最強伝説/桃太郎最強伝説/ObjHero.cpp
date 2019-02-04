@@ -664,10 +664,6 @@ void CObjHero::Action()
 		Scene::SetScene(new CSceneGameOver());
 	}
 	else {}
-
-	bool k = true;
-	if (k  == true)
-		m_hp = 5;
 }
 //ÉhÉçÅ[
 void CObjHero::Draw()
