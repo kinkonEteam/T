@@ -34,12 +34,12 @@ void CObjHero::SetYAMI(bool tipe) {//à√à≈ÉZÉbÉgä÷êî-----------------------à√à≈
 			m_image += 1;		//âÊëúî‘çÜ+1
 	}
 	if (tipe == true){			//SetYAMI(true or ãÛîí)
-		//ObjCapture* yami = new ObjCapture(m_image);	//à√à≈çÏê¨
-		//Objs::InsertObj(yami, OBJ_CAPTURE, 3);		//ìoò^
+		ObjCapture* yami = new ObjCapture(m_image);	//à√à≈çÏê¨
+		Objs::InsertObj(yami, OBJ_CAPTURE, 3);		//ìoò^
 	}
 	else{						//SetYami(false)
-		//ObjCapture* yami = (ObjCapture*)Objs::GetObj(OBJ_CAPTURE);
-		//yami->SetImage(m_image);
+		ObjCapture* yami = (ObjCapture*)Objs::GetObj(OBJ_CAPTURE);
+		yami->SetImage(m_image);
 	}
 }
 
@@ -665,7 +665,6 @@ void CObjHero::Action()
 		Scene::SetScene(new CSceneGameOver());
 	}
 	else {}
-
 }
 //ÉhÉçÅ[
 void CObjHero::Draw()
