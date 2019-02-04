@@ -150,6 +150,10 @@ void CObjHero::Action()
 	{
 		if (Input::GetVKey('M') == true)//Mキー入力時
 		{
+			//持ち物リストが開いていたら閉じる
+			CObjInventory* iob = (CObjInventory*)Objs::GetObj(OBJ_INVENTORY);
+			if (iob != nullptr)
+				iob->SetEf(true);
 
 			if (m_Pf == true) {//m_fがtrueの場合
 							   //コマンド用SEを鳴らす
@@ -163,6 +167,7 @@ void CObjHero::Action()
 						if (m_Pf == true)
 						{
 							//Xを押してTitleに移行する
+
 							if (Input::GetVKey('Z') == true)
 							{
 								//タイトルに移動
