@@ -163,6 +163,7 @@ void CObjHero::Action()
 						if (m_Pf == true)
 						{
 							//Xを押してTitleに移行する
+
 							if (Input::GetVKey('Z') == true)
 							{
 								//タイトルに移動
