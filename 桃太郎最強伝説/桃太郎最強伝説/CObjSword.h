@@ -21,4 +21,5 @@ class CObjSword :public CObj
 		float m_r;		//剣の角度
 		float m_vr;		//角度の増分
 		int m_pos;		//主人公の向き格納
+		bool m_f;		//剣の加速減速フラグ
 };
