@@ -21,6 +21,7 @@ void CObjHomingfire::Init()
 	m_vy = 0.0f;
 
 	m_time = 300;
+	m_speed = 3.0f;
 	//移動ベクトルの正規化
 	UnitVec(&m_vy, &m_vx);
 	//当たり判定用Hitboxを作成
@@ -51,19 +52,20 @@ void CObjHomingfire::Action()
 		UnitVec(&m_vx, &m_vy);
 	}
 	//移動
-	m_x += m_vx * 3.0f;
-	m_y += m_vy * 3.0f;
+	m_x += m_vx * m_speed;
+	m_y += m_vy * m_speed;
 
 	CObjOD* od = (CObjOD*)Objs::GetObj(OBJ_OD);
-
 	//操作説明表示中は動作を止める
 	if (od != nullptr)
 	{
-		m_vx = 0.0f;
-		m_vy = 0.0f;
+		m_speed = 0.0f;
 	}
-
-	m_time--;//消滅までの時間測定
+	else
+	{
+		m_speed = 3.0f;
+		m_time--;//消滅までの時間測定
+	}
 
 	CObjMap5*map5 = (CObjMap5*)Objs::GetObj(OBJ_MAP5);
 

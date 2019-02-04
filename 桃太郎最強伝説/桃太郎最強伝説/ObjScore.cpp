@@ -72,7 +72,7 @@ void CObjScore::Draw()
 	Font::StrDraw(atk, 100, 0 , 30, c);
 
 	swprintf_s(atk, L"タイムランキング");
-	Font::StrDraw(atk, 500, 0, 30, c);
+	Font::StrDraw(atk, 450, 0, 30, c);
 
 	//ここでスコアを描画してる
 	for (int i = 0; i < 10; i++)
@@ -81,14 +81,22 @@ void CObjScore::Draw()
 		Font::StrDraw(atk, 0, y_point = y_point + 55, 40, c);
 
 		swprintf_s(atk, L"%2d位:Time   ： ：", rank);
-		Font::StrDraw(atk, 400, y_point, 40, c);
+		Font::StrDraw(atk, 350, y_point, 40, c);
 
 		for (int n = 0; n < 3; n++) {
 			swprintf_s(atk, L" %02d", ((UserData*)Save::GetData())->m_timerank[i][n]);
-			Font::StrDraw(atk, 710 - (n * 60), y_point, 40, c);
+			Font::StrDraw(atk, 660 - (n * 60), y_point, 40, c);
+			if (((UserData*)Save::GetData())->m_timerank[i][n] == s) {
+				s = 0;
+			}
+			if (((UserData*)Save::GetData())->m_timerank[i][n] == m) {
+				if (s == 0) {
+					//swprintf_s(atk, L"New!");
+					//Font::StrDraw(atk, 700, y_point, 40, c);
+				}
+			}
 		}
 	}
-
 }
 
 //ランキングソートメソッド
