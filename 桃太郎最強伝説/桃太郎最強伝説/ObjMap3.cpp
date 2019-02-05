@@ -28,7 +28,7 @@ void CObjMap3::Setwall(bool type)
 			for (int j = 0; j < 56; j++)
 			{
 				if (m_map[i][j] == 3)
-					m_map[i][j] = 13;
+					m_map[i][j] = 0;
 			}
 		}
 }
@@ -37,6 +37,8 @@ void CObjMap3::Setwall(bool type)
 void CObjMap3::Init()
 {
 	m_f = 0;
+
+	m_ftime = 0;
 
 	srand(time(NULL));
 
@@ -144,6 +146,15 @@ void CObjMap3::Init()
 //アクション
 void CObjMap3::Action()
 {
+	m_ftime++;
+
+	if (m_ftime == 40)
+	{
+		//テキスト作成
+		CObjText3* text = new CObjText3();
+		Objs::InsertObj(text, OBJ_TEXT3, 20);
+	}
+
 	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
 	//シーン切り替え
 	for (int i = 0; i < 56; i++)

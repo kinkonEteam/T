@@ -2,6 +2,7 @@
 #include"GameL\DrawFont.h"
 #include"GameL\WinInputs.h"
 #include"GameL\SceneObjManager.h"
+#include"GameL\UserData.h" 
 
 #include"GameHead.h"
 #include"ObjSell.h"
@@ -35,6 +36,44 @@ void ObjSell::Init()
 //アクション
 void ObjSell::Action()
 {
+	int p = 0;
+	//ここではアイテムごとにスコアを計算し'ｐ'にスコアの数値を渡している
+	for (int i = 0; i<7; i++)
+	{
+		if (i == 0)
+		{
+			p += item_list[i] * 100;//白桃　40％
+		}
+		else if (i == 1)
+		{
+			p += item_list[i] * 1000;//黄桃　20％
+		}
+		else if (i == 2)
+		{
+			p += item_list[i] * 1;//すもも　25％
+		}
+		else if (i == 3)
+		{
+			p += item_list[i] * 3000;//角
+		}
+		else if (i == 4)
+		{
+			p += item_list[i] * 10000;//金塊　5％
+		}
+		else if (i == 5)
+		{
+			p += item_list[i] * 5000;//銀塊　10％
+		}
+		else if (i == 6)
+		{
+			p += item_list[i] * 500;//棍棒
+		}
+
+	}
+
+	//ここでスコアを決定する
+	((UserData*)Save::GetData())->m_point = p;
+
 	//入力判定、押しっぱなし制御
 	if (Input::GetVKey(VK_RETURN) == true)
 	{
@@ -59,10 +98,10 @@ void ObjSell::Draw()
 	}
 	else if (m_count == 110) {
 		//トークオブジェクト作成
-		CObjTalk* talk2 = new CObjTalk(0, 4);	//オブジェクト作成
+		CObjTalk* talk2 = new CObjTalk(0, 5);	//オブジェクト作成
 		Objs::InsertObj(talk2, OBJ_TALK, 4);		//優先度4(中)に設定し登録
 		//コメントの上に黒い画像表示
-		CObjTalk* black2 = new CObjTalk(1, 4);	//オブジェクト作成
+		CObjTalk* black2 = new CObjTalk(1, 5);	//オブジェクト作成
 		Objs::InsertObj(black2, OBJ_TALK, 20);	//優先度10(高)に設定し登録
 	}
 	else if (m_count == 111) {
@@ -133,7 +172,14 @@ void ObjSell::Draw()
 			Font::StrDraw(L"", 50, 480, 30, c);
 			Font::StrDraw(L"", 50, 520, 30, c);
 		}
-		else if (m_page == 3) {					//3ページ
+		else if (m_page == 3)//4ページ
+		{
+			swprintf_s(a, L"合計%d銭！", ((UserData*)Save::GetData())->m_point);
+			Font::StrDraw(a, 50, 440, 30, c);
+			Font::StrDraw(L"", 50, 480, 30, c);
+			Font::StrDraw(L"", 50, 520, 30, c);
+		}
+		else if (m_page == 4) {					//5ページ
 			Font::StrDraw(L"この村人が、皆に渡してくれるだろうか。。。", 50, 440, 30, c);
 			Font::StrDraw(L"", 50, 480, 30, c);
 			Font::StrDraw(L"", 50, 520, 30, c);

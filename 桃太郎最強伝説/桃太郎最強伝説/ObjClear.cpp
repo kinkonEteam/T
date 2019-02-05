@@ -117,10 +117,4 @@ void CObjClear::Draw()
 	//描画
 	Draw::Draw(19, &src, &dst, c, 0.0f);
 
-	//スコアの描画　赤   緑    青
-	float se[4] = { 1.5f,0.5f,0.0f,1.0f };
-	wchar_t str[128];
-	swprintf_s(str, L"%d銭", ((UserData*)Save::GetData())->m_point);//スコアをとって？
-	Font::StrDraw(str, 200, 400, 64, se); //こちらで画面に描画する位置や文字のサイズを変える
-
 }

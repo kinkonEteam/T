@@ -150,6 +150,10 @@ void CObjHero::Action()
 	{
 		if (Input::GetVKey('M') == true)//Mキー入力時
 		{
+			//持ち物リストが開いていたら閉じる
+			CObjInventory* iob = (CObjInventory*)Objs::GetObj(OBJ_INVENTORY);
+			if (iob != nullptr)
+				iob->SetEf(true);
 
 			if (m_Pf == true) {//m_fがtrueの場合
 							   //コマンド用SEを鳴らす
@@ -163,6 +167,7 @@ void CObjHero::Action()
 						if (m_Pf == true)
 						{
 							//Xを押してTitleに移行する
+
 							if (Input::GetVKey('Z') == true)
 							{
 								//タイトルに移動
@@ -645,7 +650,17 @@ void CObjHero::Action()
 		CObjEveKiji* evekiji = (CObjEveKiji*)Objs::GetObj(OBJ_EVEKIJI);
 		CObjEveMnky* evemnky = (CObjEveMnky*)Objs::GetObj(OBJ_EVEMNKY);
 		CObjText* text = (CObjText*)Objs::GetObj(OBJ_TEXT);
-		if (text != nullptr || evedog != nullptr || evekiji != nullptr || evemnky != nullptr)
+		CObjText3* text3 = (CObjText3*)Objs::GetObj(OBJ_TEXT3);
+		CObjText4* text4 = (CObjText4*)Objs::GetObj(OBJ_TEXT4);
+		CObjText5* text5 = (CObjText5*)Objs::GetObj(OBJ_TEXT5);
+
+		if (text != nullptr ||
+			text3 != nullptr ||
+			text4 != nullptr ||
+			text5 != nullptr ||
+			evedog != nullptr ||
+			evekiji != nullptr ||
+			evemnky != nullptr)
 		{
 			m_key_f = true;
 		}
@@ -664,10 +679,6 @@ void CObjHero::Action()
 		Scene::SetScene(new CSceneGameOver());
 	}
 	else {}
-
-	bool k = true;
-	if (k  == true)
-		m_hp = 5;
 }
 //ドロー
 void CObjHero::Draw()

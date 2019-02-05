@@ -45,5 +45,7 @@ private:
 	float m_scrollx;		//左右スクロール用
 	float m_scrolly;	//上下スクロール用
 
+	bool swich;
+
 	void setenemy();//敵出現用関数
 };
