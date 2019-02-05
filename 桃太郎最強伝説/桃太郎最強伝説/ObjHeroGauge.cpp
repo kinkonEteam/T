@@ -1,5 +1,5 @@
 //GameLで使用するヘッダー
-#include "GameL\DrawTexture.h"
+#include"GameL\DrawTexture.h"
 #include "GameL\WinInputs.h"
 #include "GameL\SceneManager.h"
 #include "GameL\DrawFont.h"
